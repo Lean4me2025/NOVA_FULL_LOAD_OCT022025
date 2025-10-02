@@ -51,3 +51,11 @@ label{display:block;margin-bottom:6px;color:#c7d2ff;font-weight:600}
 .pillline{display:inline-flex;align-items:center;gap:10px;border:1px solid #2a386e;background:#0d1a3b;border-radius:999px;padding:10px 14px}
 .hero .cta{margin-top:8px}
 @media (max-width:640px){.hero h1{font-size:32px}}
+
+/* v8.3f welcome subtitle stronger */
+.hero .subtitle{
+  color:#fff !important;
+  font-size:1.2em;
+  font-weight:500;
+  line-height:1.5;
+}
