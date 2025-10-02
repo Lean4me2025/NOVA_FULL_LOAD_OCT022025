@@ -1,0 +1,33 @@
+{
+  "version": "8.3",
+  "tokens": {
+    "bg": "#0b1020",
+    "card": "#131a33",
+    "text": "#e7ecff",
+    "muted": "#7f8ba6",
+    "accent": "#39d98a",
+    "accent_2": "#8ab4ff",
+    "danger": "#ff6b6b"
+  },
+  "components": {
+    "button": {
+      "shape": "12px rounded",
+      "primary_bg": "accent",
+      "ghost_border": "#2a386e",
+      "hover_raise": "1px"
+    },
+    "pill": {
+      "rounded": "999px",
+      "bg": "#0d1a3b",
+      "border": "#25356e",
+      "selected_border": "#3651a3"
+    },
+    "card": {
+      "border": "#1d264a",
+      "radius": "14px",
+      "gradient": "180deg, var(--card) to #0f1630"
+    }
+  },
+  "flow": "Welcome \u2192 Categories \u2192 Traits \u2192 Reflections \u2192 Results \u2192 Plan",
+  "notes": "Do not change component classes or tokens without updating this manifest."
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "start_career",
+    "label": "I\u2019m starting my career",
+    "note": "We\u2019ll emphasize foundational roles and high-growth paths."
+  },
+  {
+    "id": "switching_career",
+    "label": "I\u2019m switching careers",
+    "note": "We\u2019ll map transferable traits and fast-bridge roles."
+  },
+  {
+    "id": "leveling_up",
+    "label": "I\u2019m leveling up in my field",
+    "note": "We\u2019ll target stretch roles and leadership tracks."
+  }
+]

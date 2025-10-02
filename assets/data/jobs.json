@@ -1,0 +1,225 @@
+[
+  {
+    "id": "ba_ops",
+    "title": "Business Analyst (Ops Excellence)",
+    "category": "business",
+    "required_traits": [
+      "analytical_thinking",
+      "process_improvement",
+      "communication",
+      "excel_advanced",
+      "power_bi"
+    ]
+  },
+  {
+    "id": "it_compliance_ba",
+    "title": "IT Compliance BA (SOX)",
+    "category": "technology",
+    "required_traits": [
+      "it_sox",
+      "compliance_risk",
+      "sql_proficiency",
+      "analytical_thinking",
+      "technical_writing"
+    ]
+  },
+  {
+    "id": "data_analyst",
+    "title": "Data Analyst",
+    "category": "finance_analytics",
+    "required_traits": [
+      "sql_proficiency",
+      "analytical_thinking",
+      "data_visualization",
+      "excel_advanced",
+      "power_bi"
+    ]
+  },
+  {
+    "id": "product_manager",
+    "title": "Product Manager",
+    "category": "business",
+    "required_traits": [
+      "product_management",
+      "communication",
+      "systems_thinking",
+      "api_integration",
+      "project_management"
+    ]
+  },
+  {
+    "id": "qa_engineer",
+    "title": "QA Engineer",
+    "category": "technology",
+    "required_traits": [
+      "testing_qa",
+      "quality_assurance",
+      "python_scripting",
+      "problem_solving"
+    ]
+  },
+  {
+    "id": "ux_designer",
+    "title": "UX Designer",
+    "category": "creative_media",
+    "required_traits": [
+      "ux_design",
+      "communication",
+      "research_methods",
+      "technical_writing"
+    ]
+  },
+  {
+    "id": "sales_manager",
+    "title": "Sales Manager",
+    "category": "sales_service",
+    "required_traits": [
+      "sales_strategy",
+      "account_management",
+      "negotiation",
+      "presentation_skills",
+      "customer_empathy"
+    ]
+  },
+  {
+    "id": "supply_chain_mgr",
+    "title": "Supply Chain Manager",
+    "category": "operations_logistics",
+    "required_traits": [
+      "supply_chain",
+      "inventory_optimization",
+      "process_improvement",
+      "excel_advanced",
+      "project_management"
+    ]
+  },
+  {
+    "id": "security_analyst",
+    "title": "Security Analyst",
+    "category": "technology",
+    "required_traits": [
+      "privacy_security",
+      "analytical_thinking",
+      "systems_thinking",
+      "python_scripting"
+    ]
+  },
+  {
+    "id": "healthcare_admin",
+    "title": "Healthcare Administrator",
+    "category": "healthcare",
+    "required_traits": [
+      "healthcare_admin",
+      "clinical_compliance",
+      "communication",
+      "project_management"
+    ]
+  },
+  {
+    "id": "policy_analyst",
+    "title": "Policy Analyst",
+    "category": "public_legal",
+    "required_traits": [
+      "policy_analysis",
+      "research_methods",
+      "technical_writing",
+      "communication"
+    ]
+  },
+  {
+    "id": "devops_engineer",
+    "title": "DevOps Engineer",
+    "category": "technology",
+    "required_traits": [
+      "cloud_infra",
+      "automation_rpa",
+      "api_integration",
+      "testing_qa"
+    ]
+  },
+  {
+    "id": "financial_analyst",
+    "title": "Financial Analyst",
+    "category": "finance_analytics",
+    "required_traits": [
+      "financial_modeling",
+      "excel_advanced",
+      "budget_forecasting",
+      "analytical_thinking"
+    ]
+  },
+  {
+    "id": "technical_writer",
+    "title": "Technical Writer",
+    "category": "creative_media",
+    "required_traits": [
+      "technical_writing",
+      "communication",
+      "research_methods",
+      "copywriting"
+    ]
+  },
+  {
+    "id": "education_coach",
+    "title": "Learning & Development Coach",
+    "category": "education_training",
+    "required_traits": [
+      "teaching_coaching",
+      "curriculum_design",
+      "communication",
+      "presentation_skills"
+    ]
+  },
+  {
+    "id": "industrial_engineer",
+    "title": "Industrial Engineer",
+    "category": "engineering",
+    "required_traits": [
+      "process_improvement",
+      "industrial_safety",
+      "reliability_testing",
+      "systems_thinking"
+    ]
+  },
+  {
+    "id": "customer_success_mgr",
+    "title": "Customer Success Manager",
+    "category": "sales_service",
+    "required_traits": [
+      "customer_success",
+      "account_management",
+      "communication",
+      "negotiation"
+    ]
+  },
+  {
+    "id": "seo_specialist",
+    "title": "SEO/SEM Specialist",
+    "category": "creative_media",
+    "required_traits": [
+      "seo_sem",
+      "copywriting",
+      "data_visualization"
+    ]
+  },
+  {
+    "id": "maintenance_planner",
+    "title": "Maintenance Planner",
+    "category": "engineering",
+    "required_traits": [
+      "maintenance_planning",
+      "quality_assurance",
+      "project_management"
+    ]
+  },
+  {
+    "id": "ops_project_manager",
+    "title": "Operations Project Manager",
+    "category": "operations_logistics",
+    "required_traits": [
+      "project_management",
+      "process_improvement",
+      "change_management"
+    ]
+  }
+]
