@@ -1,7 +1,7 @@
 [
   {
     "id": "ba_ops",
-    "title": "Business Analyst (Ops Excellence)",
+    "title": "Process Improvement Specialist",
     "category": "business",
     "required_traits": [
       "analytical_thinking",
@@ -9,7 +9,16 @@
       "communication",
       "excel_advanced",
       "power_bi"
-    ]
+    ],
+    "entry_pathway": [
+      "Operations Coordinator",
+      "Junior Business Analyst"
+    ],
+    "bricks": [
+      "Visio or Lucidchart basics",
+      "Six Sigma Yellow\u2192Green Belt"
+    ],
+    "timeframe": "\u2248 3 months"
   },
   {
     "id": "it_compliance_ba",
@@ -21,7 +30,16 @@
       "sql_proficiency",
       "analytical_thinking",
       "technical_writing"
-    ]
+    ],
+    "entry_pathway": [
+      "IT Audit Assistant",
+      "Junior Compliance Analyst"
+    ],
+    "bricks": [
+      "SOX/ITGC basics",
+      "SQL fundamentals"
+    ],
+    "timeframe": "\u2248 3\u20134 months"
   },
   {
     "id": "data_analyst",
@@ -33,7 +51,16 @@
       "data_visualization",
       "excel_advanced",
       "power_bi"
-    ]
+    ],
+    "entry_pathway": [
+      "Reporting Analyst",
+      "BI Assistant"
+    ],
+    "bricks": [
+      "SQL to intermediate",
+      "Power BI/Tableau basics"
+    ],
+    "timeframe": "\u2248 3\u20136 months"
   },
   {
     "id": "product_manager",
@@ -45,7 +72,16 @@
       "systems_thinking",
       "api_integration",
       "project_management"
-    ]
+    ],
+    "entry_pathway": [
+      "Product Coordinator",
+      "Associate PM"
+    ],
+    "bricks": [
+      "User interviews",
+      "API fundamentals"
+    ],
+    "timeframe": "\u2248 3\u20136 months"
   },
   {
     "id": "qa_engineer",
@@ -56,7 +92,16 @@
       "quality_assurance",
       "python_scripting",
       "problem_solving"
-    ]
+    ],
+    "entry_pathway": [
+      "QA Tester",
+      "Manual Tester"
+    ],
+    "bricks": [
+      "QA concepts",
+      "Beginner Python for testing"
+    ],
+    "timeframe": "\u2248 2\u20134 months"
   },
   {
     "id": "ux_designer",
@@ -67,7 +112,16 @@
       "communication",
       "research_methods",
       "technical_writing"
-    ]
+    ],
+    "entry_pathway": [
+      "UX Research Assistant",
+      "Junior Designer"
+    ],
+    "bricks": [
+      "Figma basics",
+      "User research methods"
+    ],
+    "timeframe": "\u2248 3\u20136 months"
   },
   {
     "id": "sales_manager",
@@ -79,7 +133,16 @@
       "negotiation",
       "presentation_skills",
       "customer_empathy"
-    ]
+    ],
+    "entry_pathway": [
+      "SDR",
+      "Account Coordinator"
+    ],
+    "bricks": [
+      "Prospecting",
+      "Negotiation fundamentals"
+    ],
+    "timeframe": "\u2248 2\u20133 months"
   },
   {
     "id": "supply_chain_mgr",
@@ -91,7 +154,16 @@
       "process_improvement",
       "excel_advanced",
       "project_management"
-    ]
+    ],
+    "entry_pathway": [
+      "Inventory Analyst",
+      "Logistics Coordinator"
+    ],
+    "bricks": [
+      "Excel for ops",
+      "Intro to supply chain (SCOR)"
+    ],
+    "timeframe": "\u2248 3\u20135 months"
   },
   {
     "id": "security_analyst",
@@ -102,7 +174,16 @@
       "analytical_thinking",
       "systems_thinking",
       "python_scripting"
-    ]
+    ],
+    "entry_pathway": [
+      "IT Support Specialist",
+      "Network Technician"
+    ],
+    "bricks": [
+      "CompTIA Security+",
+      "Intro Python for security"
+    ],
+    "timeframe": "\u2248 3\u20136 months"
   },
   {
     "id": "healthcare_admin",
@@ -113,7 +194,16 @@
       "clinical_compliance",
       "communication",
       "project_management"
-    ]
+    ],
+    "entry_pathway": [
+      "Clinic Admin Assistant",
+      "Medical Office Coordinator"
+    ],
+    "bricks": [
+      "HIPAA basics",
+      "Project coordination"
+    ],
+    "timeframe": "\u2248 2\u20134 months"
   },
   {
     "id": "policy_analyst",
@@ -124,7 +214,16 @@
       "research_methods",
       "technical_writing",
       "communication"
-    ]
+    ],
+    "entry_pathway": [
+      "Program Assistant",
+      "Research Assistant"
+    ],
+    "bricks": [
+      "Policy frameworks",
+      "Brief writing"
+    ],
+    "timeframe": "\u2248 3\u20135 months"
   },
   {
     "id": "devops_engineer",
@@ -135,7 +234,16 @@
       "automation_rpa",
       "api_integration",
       "testing_qa"
-    ]
+    ],
+    "entry_pathway": [
+      "IT Ops Support",
+      "Junior SysAdmin"
+    ],
+    "bricks": [
+      "Linux fundamentals",
+      "CI/CD basics"
+    ],
+    "timeframe": "\u2248 4\u20136 months"
   },
   {
     "id": "financial_analyst",
@@ -146,7 +254,16 @@
       "excel_advanced",
       "budget_forecasting",
       "analytical_thinking"
-    ]
+    ],
+    "entry_pathway": [
+      "Junior FP&A",
+      "Reporting Assistant"
+    ],
+    "bricks": [
+      "Excel modeling",
+      "Budgeting basics"
+    ],
+    "timeframe": "\u2248 3\u20135 months"
   },
   {
     "id": "technical_writer",
@@ -157,7 +274,16 @@
       "communication",
       "research_methods",
       "copywriting"
-    ]
+    ],
+    "entry_pathway": [
+      "Documentation Assistant",
+      "Content Specialist"
+    ],
+    "bricks": [
+      "Structured writing",
+      "Editing technical content"
+    ],
+    "timeframe": "\u2248 2\u20133 months"
   },
   {
     "id": "education_coach",
@@ -168,7 +294,16 @@
       "curriculum_design",
       "communication",
       "presentation_skills"
-    ]
+    ],
+    "entry_pathway": [
+      "Instructional Assistant",
+      "Training Coordinator"
+    ],
+    "bricks": [
+      "Facilitation basics",
+      "Curriculum design intro"
+    ],
+    "timeframe": "\u2248 2\u20133 months"
   },
   {
     "id": "industrial_engineer",
@@ -179,7 +314,16 @@
       "industrial_safety",
       "reliability_testing",
       "systems_thinking"
-    ]
+    ],
+    "entry_pathway": [
+      "Process Technician",
+      "Quality Tech"
+    ],
+    "bricks": [
+      "Lean fundamentals",
+      "Time & motion basics"
+    ],
+    "timeframe": "\u2248 4\u20136 months"
   },
   {
     "id": "customer_success_mgr",
@@ -190,7 +334,16 @@
       "account_management",
       "communication",
       "negotiation"
-    ]
+    ],
+    "entry_pathway": [
+      "CS Associate",
+      "Support Specialist"
+    ],
+    "bricks": [
+      "Success playbooks",
+      "Relationship management"
+    ],
+    "timeframe": "\u2248 2\u20133 months"
   },
   {
     "id": "seo_specialist",
@@ -200,7 +353,16 @@
       "seo_sem",
       "copywriting",
       "data_visualization"
-    ]
+    ],
+    "entry_pathway": [
+      "Marketing Assistant",
+      "Content Coordinator"
+    ],
+    "bricks": [
+      "SEO fundamentals",
+      "Keyword research"
+    ],
+    "timeframe": "\u2248 2\u20133 months"
   },
   {
     "id": "maintenance_planner",
@@ -210,7 +372,16 @@
       "maintenance_planning",
       "quality_assurance",
       "project_management"
-    ]
+    ],
+    "entry_pathway": [
+      "Maintenance Tech Assistant",
+      "Planner Intern"
+    ],
+    "bricks": [
+      "CMMS basics",
+      "Preventive maintenance scheduling"
+    ],
+    "timeframe": "\u2248 3\u20134 months"
   },
   {
     "id": "ops_project_manager",
@@ -220,6 +391,15 @@
       "project_management",
       "process_improvement",
       "change_management"
-    ]
+    ],
+    "entry_pathway": [
+      "Project Coordinator",
+      "Operations Assistant"
+    ],
+    "bricks": [
+      "Project planning basics",
+      "Change management overview"
+    ],
+    "timeframe": "\u2248 3\u20135 months"
   }
 ]

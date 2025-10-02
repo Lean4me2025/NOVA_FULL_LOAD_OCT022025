@@ -2,16 +2,16 @@
   {
     "id": "start_career",
     "label": "I\u2019m starting my career",
-    "note": "We\u2019ll emphasize foundational roles and high-growth paths."
+    "note": "You\u2019re at the beginning, and that can feel uncertain \u2014 but you\u2019re not alone. Nova will help you discover where your natural strengths fit best, and Navi will point you to the tools and training to get started without overwhelm. You\u2019ll know what\u2019s required, and we\u2019ll walk you through it step by step."
   },
   {
     "id": "switching_career",
     "label": "I\u2019m switching careers",
-    "note": "We\u2019ll map transferable traits and fast-bridge roles."
+    "note": "You\u2019ve already built experience, and now you\u2019re stepping into something new. That takes courage. We\u2019ll help you bridge the gap by showing how your current skills carry over, and what new skills matter in your next field. (You can even tell us what you\u2019re switching from, so we can tailor the bridge more clearly.)"
   },
   {
-    "id": "leveling_up",
-    "label": "I\u2019m leveling up in my field",
-    "note": "We\u2019ll target stretch roles and leadership tracks."
+    "id": "returning_work",
+    "label": "I\u2019m returning to work",
+    "note": "Coming back to work isn\u2019t easy, but it\u2019s possible \u2014 and you don\u2019t have to start from zero. Your past skills are still valuable. With focus, discipline, and the right resources, you can re-enter the workforce, earn again, and thrive. Nova will show your fit today, and Navi will give you a simple on-ramp to catch up and succeed."
   }
 ]
