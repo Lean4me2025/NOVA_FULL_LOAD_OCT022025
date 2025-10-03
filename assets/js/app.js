@@ -12,9 +12,76 @@ function hasFamilyPass(){return'1'===localStorage.getItem(STORAGE_KEYS.FAMILY)}
 async function fetchJSON(e){const t=await fetch(e);if(!t.ok)throw new Error('Failed to load '+e);return await t.json()}
 function qs(e){return document.querySelector(e)}function qsa(e){return[...document.querySelectorAll(e)]}function navigate(e){window.location.href=e}
 function computeMatchPercent(e,t){const n=new Set(e),a=t.length;if(0===a)return 0;const r=t.filter(e=>n.has(e)).length;return Math.round(r/a*100)}
+
 async function initWelcome(){const e=qs('#start');e&&e.addEventListener('click',()=>navigate('categories.html'))}
-async function initCategories(){const e=qs('#category-grid'),t=qs('#to-traits'),n=qs('#reset'),a=await fetchJSON('assets/data/categories.json'),r=new Set(loadSelectedCategories());a.forEach(t=>{const n=document.createElement('button');n.className='pill'+(r.has(t.id)?' selected':''),n.innerHTML=`<input type="checkbox" ${r.has(t.id)?'checked':''} data-id="${t.id}"><span>${t.name}</span>`,n.addEventListener('click',()=>{r.has(t.id)?r.delete(t.id):r.add(t.id),n.classList.toggle('selected'),saveSelectedCategories([...r])}),e.appendChild(n)}),t.addEventListener('click',()=>{0===r.size?alert('Please select at least one category.'):navigate('traits.html')}),n.addEventListener('click',()=>{localStorage.removeItem(STORAGE_KEYS.CATEGORIES),localStorage.removeItem(STORAGE_KEYS.TRAITS),localStorage.removeItem(STORAGE_KEYS.REFLECTION),qsa('.pill.selected').forEach(e=>e.classList.remove('selected'))})}
-async function initTraits(){const e=qs('#trait-grid'),t=qs('#to-reflections'),n=new Set(loadSelectedCategories());0===n.size&&navigate('categories.html');const a=await fetchJSON('assets/data/traits.json'),r=a.filter(e=>e.categories.some(e=>n.has(e))),s=new Set(JSON.parse(localStorage.getItem(STORAGE_KEYS.TRAITS)||'[]')),o=12;r.forEach(t=>{const n=document.createElement('button');n.className='pill'+(s.has(t.id)?' selected':''),n.innerHTML=`<input type="checkbox" ${s.has(t.id)?'checked':''} data-id="${t.id}"><span>${t.label}</span>`,n.addEventListener('click',()=>{if(!s.has(t.id)&&s.size>=o)return void alert(`You can choose up to ${o} traits.`);s.has(t.id)?s.delete(t.id):s.add(t.id),n.classList.toggle('selected'),localStorage.setItem(STORAGE_KEYS.TRAITS,JSON.stringify([...s])),qs('#trait-count').textContent=s.size}),e.appendChild(n)}),qs('#trait-count').textContent=s.size,t.addEventListener('click',()=>{s.size<6&&!confirm('Fewer than 6 traits selected. Continue?')||navigate('reflections.html')})}
+
+async function initCategories(){
+  const grid = qs('#category-grid'), toTraits = qs('#to-traits'), reset = qs('#reset');
+  const data = await fetchJSON('assets/data/categories.json');
+  const selected = new Set(loadSelectedCategories());
+
+  data.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'pill' + (selected.has(cat.id) ? ' selected' : '');
+    btn.dataset.id = cat.id;
+    btn.innerHTML = `<div class="label" style="font-weight:700">${cat.name}</div>
+                     <div class="desc">${cat.desc || ''}</div>`;
+    btn.addEventListener('click', ()=>{
+      selected.has(cat.id) ? selected.delete(cat.id) : selected.add(cat.id);
+      btn.classList.toggle('selected');
+      saveSelectedCategories([...selected]);
+    });
+    grid.appendChild(btn);
+  });
+
+  toTraits.addEventListener('click', ()=>{
+    if(selected.size===0){ alert('Please select at least one category.'); return; }
+    navigate('traits.html');
+  });
+  reset.addEventListener('click', ()=>{
+    localStorage.removeItem(STORAGE_KEYS.CATEGORIES);
+    localStorage.removeItem(STORAGE_KEYS.TRAITS);
+    localStorage.removeItem(STORAGE_KEYS.REFLECTION);
+    qsa('.pill.selected').forEach(p=>p.classList.remove('selected'));
+  });
+}
+
+async function initTraits(){
+  const grid = qs('#trait-grid'), toRefs = qs('#to-reflections');
+  const selectedCats = new Set(loadSelectedCategories());
+  if(selectedCats.size===0){ navigate('categories.html'); return; }
+
+  const allTraits = await fetchJSON('assets/data/traits.json');
+  const filtered = allTraits.filter(t => t.categories.some(c => selectedCats.has(c)));
+  const selected = new Set(loadSelectedTraits());
+  const MAX = 12;
+
+  filtered.forEach(tr => {
+    const btn = document.createElement('button');
+    btn.className = 'pill' + (selected.has(tr.id) ? ' selected' : '');
+    btn.dataset.id = tr.id;
+    btn.innerHTML = `<div class="label" style="font-weight:700">${tr.label}</div>
+                     <div class="desc">${tr.desc || ''}</div>`;
+    btn.addEventListener('click', ()=>{
+      if(!selected.has(tr.id) && selected.size >= MAX){
+        alert(`You can choose up to ${MAX} traits.`);
+        return;
+      }
+      selected.has(tr.id) ? selected.delete(tr.id) : selected.add(tr.id);
+      btn.classList.toggle('selected');
+      saveSelectedTraits([...selected]);
+      qs('#trait-count').textContent = selected.size;
+    });
+    grid.appendChild(btn);
+  });
+  qs('#trait-count').textContent = selected.size;
+
+  toRefs.addEventListener('click', ()=>{
+    if(selected.size<6 && !confirm('Fewer than 6 traits selected. Continue?')) return;
+    navigate('reflections.html');
+  });
+}
+
 async function initReflections(){
   const cont = qs('#reflections'), next = qs('#to-results');
   const data = await fetchJSON('assets/data/reflections.json');
@@ -22,7 +89,7 @@ async function initReflections(){
   data.forEach(item => {
     const btn = document.createElement('button');
     btn.className = 'pill' + (prevSel===item.id?' selected':'');
-    btn.innerHTML = `<div>${item.label}</div><div class="desc">${item.note}</div>`;
+    btn.innerHTML = `<div class="label" style="font-weight:700">${item.label}</div><div class="desc">${item.note}</div>`;
     btn.addEventListener('click', ()=>{
       qsa('#reflections .pill').forEach(p=>p.classList.remove('selected'));
       btn.classList.add('selected');
@@ -60,7 +127,7 @@ async function initResults(){
   const list = qs('#results');
   if(roles.length === 0){
     list.innerHTML = `<div class="card"><div class="title">No strong matches yet</div>
-      <p class="subtitle">Try adding more traits or different categories. Nova will show roles once there’s enough alignment.</p></div>`;
+      <p class="subtitle" style="font-size:1rem;color:#c9d4ff">Try adding more traits or different categories. Nova will show roles once there’s enough alignment.</p></div>`;
     return;
   }
 
@@ -88,12 +155,60 @@ async function initResults(){
 
   qs('#to-plan').addEventListener('click', () => navigate('plan.html'));
 }
-async function initPlan(){const e=qs('#plans'),t=qs('#family-badge'),n=qs('#pin'),a=qs('#pin-btn');hasFamilyPass()&&t.classList.remove('hidden'),a.addEventListener('click',()=>{setFamilyPass(n.value||'')?(t.classList.remove('hidden'),alert('Family access granted. You can proceed without payment.'),qsa('button[data-plan]').forEach(e=>e.textContent=e.textContent.replace('Start','Start')+' (Family Pass)')):alert('PIN not recognized.')});let r=await fetchJSON('assets/data/plans.json').catch(()=>({}));r&&Array.isArray(r)||(r=[{id:'starter',name:'Starter',price:'29.99/mo',features:['Nova 50-trait discovery + PDF','Basic resume builder','Standard cover letter generator','Job match suggestions','1 Pro doc preview / month','Navi’s Golden Nugget newsletter'],payhip:null},{id:'pro',name:'Pro',price:'99/mo',features:['Everything in Starter','Resume rewrite AI (unlimited)','Unlimited cover letters','Company intelligence reports','Advanced job filters + saved searches','Priority support'],payhip:'re4Hy'},{id:'mastery',name:'Mastery',price:'149/mo',features:['Everything in Pro','1:1 coaching & premium support','Career roadmap PDF','Extended document library','Early access to features','Quarterly masterclass invite'],payhip:'re4Hy'}]),r.forEach(t=>{const n=document.createElement('div');n.className='card';const a=t.features.map(e=>`<li>${e}</li>`).join(''),r=t.payhip?`<a href="https://payhip.com/b/${t.payhip}" class="payhip-buy-button" data-theme="green" data-product="${t.payhip}">Buy Now</a>`:'',s=`<button class="btn primary" data-plan="${t.id}">Start ${t.name}${hasFamilyPass()?' (Family Pass)':''}</button>`;n.innerHTML=`
-      <div class="title">${t.name} <span class="small">— ${t.price}</span></div>
-      <ul class="list">${a}</ul>
+
+async function initPlan(){
+  const wrap = qs('#plans'), badge = qs('#family-badge'), pin = qs('#pin'), btn = qs('#pin-btn');
+  if(hasFamilyPass()) badge.classList.remove('hidden');
+  btn.addEventListener('click', ()=>{
+    if(setFamilyPass(pin.value||'')){
+      badge.classList.remove('hidden');
+      alert('Family access granted. You can proceed without payment.');
+      qsa('button[data-plan]').forEach(b=>b.textContent=b.textContent.replace('Start','Start')+' (Family Pass)');
+    } else {
+      alert('PIN not recognized.');
+    }
+  });
+  let plans = await fetchJSON('assets/data/plans.json').catch(()=>([]));
+  if(!Array.isArray(plans) || plans.length===0){
+    plans=[
+      {id:'starter',name:'Starter',price:'29.99/mo',features:['Nova 50-trait discovery + PDF','Basic resume builder','Standard cover letter generator','Job match suggestions','1 Pro doc preview / month','Navi’s Golden Nugget newsletter'],payhip:null},
+      {id:'pro',name:'Pro',price:'99/mo',features:['Everything in Starter','Resume rewrite AI (unlimited)','Unlimited cover letters','Company intelligence reports','Advanced job filters + saved searches','Priority support'],payhip:'re4Hy'}
+    ];
+  }
+  plans.forEach(p => {
+    const card = document.createElement('div');
+    card.className='card';
+    const feats = p.features.map(f=>`<li>${f}</li>`).join('');
+    const pay = p.payhip?`<a href="https://payhip.com/b/${p.payhip}" class="payhip-buy-button" data-theme="green" data-product="${p.payhip}">Buy Now</a>`:'';
+    const start = `<button class="btn primary" data-plan="${p.id}">Start ${p.name}${hasFamilyPass()?' (Family Pass)':''}</button>`;
+    card.innerHTML = `
+      <div class="title">${p.name} <span class="small">— ${p.price}</span></div>
+      <ul class="list">${feats}</ul>
       <div style="display:flex; gap:12px; align-items:center; margin-top:12px;">
-        ${r}
-        ${s}
-      </div>
-    `,e.appendChild(n)}),e.addEventListener('click',t=>{const n=t.target.closest('button[data-plan]');n&&(hasFamilyPass()?(alert(`Proceeding to Navi with ${n.getAttribute('data-plan')} (Family Pass).`),window.location.href='https://navi.meetnovanow.com/'):(alert('Please complete the Payhip purchase to proceed, or enter Family PIN.')))});const s=document.createElement('script');s.setAttribute('src','https://payhip.com/payhip.js'),s.setAttribute('type','text/javascript'),document.body.appendChild(s)}
-document.addEventListener('DOMContentLoaded',()=>{const e=document.body.getAttribute('data-page')||'';'welcome'===e&&initWelcome(),'categories'===e&&initCategories(),'traits'===e&&initTraits(),'reflections'===e&&initReflections(),'results'===e&&initResults(),'plan'===e&&initPlan()});
+        ${pay}
+        ${start}
+      </div>`;
+    wrap.appendChild(card);
+  });
+  wrap.addEventListener('click', e=>{
+    const b = e.target.closest('button[data-plan]');
+    if(!b) return;
+    if(hasFamilyPass()){
+      alert(\`Proceeding to Navi with \${b.getAttribute('data-plan')} (Family Pass).\`);
+      window.location.href='https://navi.meetnovanow.com/';
+    } else {
+      alert('Please complete the Payhip purchase to proceed, or enter Family PIN.');
+    }
+  });
+  const s=document.createElement('script');s.src='https://payhip.com/payhip.js';s.type='text/javascript';document.body.appendChild(s);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const p = document.body.getAttribute('data-page')||'';
+  if(p==='welcome') initWelcome();
+  if(p==='categories') initCategories();
+  if(p==='traits') initTraits();
+  if(p==='reflections') initReflections();
+  if(p==='results') initResults();
+  if(p==='plan') initPlan();
+});

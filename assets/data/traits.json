@@ -2,6 +2,7 @@
   {
     "id": "analytical_thinking",
     "label": "Analytical Thinking",
+    "desc": "You spot patterns in data and use them to make decisions.",
     "categories": [
       "finance_analytics",
       "technology",
@@ -11,6 +12,7 @@
   {
     "id": "process_improvement",
     "label": "Process Improvement",
+    "desc": "You streamline steps to make work faster, better, and cheaper.",
     "categories": [
       "business",
       "operations_logistics",
@@ -20,6 +22,7 @@
   {
     "id": "problem_solving",
     "label": "Problem Solving",
+    "desc": "You enjoy figuring out root causes and practical fixes.",
     "categories": [
       "engineering",
       "technology",
@@ -29,6 +32,7 @@
   {
     "id": "customer_empathy",
     "label": "Customer Empathy",
+    "desc": "You understand people\u2019s needs and frustrations and respond well.",
     "categories": [
       "sales_service",
       "healthcare",
@@ -38,6 +42,7 @@
   {
     "id": "communication",
     "label": "Clear Communication",
+    "desc": "You explain ideas clearly in writing and in conversation.",
     "categories": [
       "business",
       "education_training",
@@ -47,6 +52,7 @@
   {
     "id": "data_visualization",
     "label": "Data Visualization",
+    "desc": "You turn data into charts and visuals people can understand.",
     "categories": [
       "finance_analytics",
       "technology",
@@ -56,6 +62,7 @@
   {
     "id": "sql_proficiency",
     "label": "SQL Proficiency",
+    "desc": "You can query databases to answer questions with data.",
     "categories": [
       "technology",
       "finance_analytics"
@@ -64,6 +71,7 @@
   {
     "id": "python_scripting",
     "label": "Python Scripting",
+    "desc": "You write simple scripts to automate tasks or analyze data.",
     "categories": [
       "technology",
       "engineering"
@@ -72,6 +80,7 @@
   {
     "id": "lean_six_sigma",
     "label": "Lean Six Sigma",
+    "desc": "You use Lean/6\u03c3 ideas to reduce waste and defects.",
     "categories": [
       "operations_logistics",
       "business",
@@ -81,6 +90,7 @@
   {
     "id": "project_management",
     "label": "Project Management",
+    "desc": "You plan, organize, and deliver work with teams.",
     "categories": [
       "business",
       "engineering",
@@ -90,6 +100,7 @@
   {
     "id": "compliance_risk",
     "label": "Compliance & Risk",
+    "desc": "You help work stay inside rules and manage risks.",
     "categories": [
       "public_legal",
       "finance_analytics",
@@ -99,6 +110,7 @@
   {
     "id": "it_sox",
     "label": "IT SOX & Controls",
+    "desc": "You understand IT controls and audit basics for SOX.",
     "categories": [
       "technology",
       "finance_analytics"
@@ -107,6 +119,7 @@
   {
     "id": "privacy_security",
     "label": "Privacy & Security",
+    "desc": "You think about protecting data and systems from threats.",
     "categories": [
       "technology",
       "public_legal"
@@ -115,6 +128,7 @@
   {
     "id": "ux_design",
     "label": "UX Design",
+    "desc": "You design interfaces that are easy and enjoyable to use.",
     "categories": [
       "creative_media",
       "technology"
@@ -123,6 +137,7 @@
   {
     "id": "copywriting",
     "label": "Copywriting",
+    "desc": "You write words that persuade and inform.",
     "categories": [
       "creative_media",
       "business"
@@ -131,6 +146,7 @@
   {
     "id": "sales_strategy",
     "label": "Sales Strategy",
+    "desc": "You plan how to find customers and grow revenue.",
     "categories": [
       "sales_service",
       "business"
@@ -139,6 +155,7 @@
   {
     "id": "account_management",
     "label": "Account Management",
+    "desc": "You build trust and grow customer relationships.",
     "categories": [
       "sales_service",
       "business"
@@ -147,6 +164,7 @@
   {
     "id": "teaching_coaching",
     "label": "Teaching & Coaching",
+    "desc": "You help people learn and improve in practical ways.",
     "categories": [
       "education_training",
       "business"
@@ -155,6 +173,7 @@
   {
     "id": "curriculum_design",
     "label": "Curriculum Design",
+    "desc": "You structure lessons and learning experiences.",
     "categories": [
       "education_training",
       "creative_media"
@@ -163,6 +182,7 @@
   {
     "id": "supply_chain",
     "label": "Supply Chain",
+    "desc": "You coordinate materials, inventory, and deliveries.",
     "categories": [
       "operations_logistics",
       "business"
@@ -171,6 +191,7 @@
   {
     "id": "quality_assurance",
     "label": "Quality Assurance",
+    "desc": "You ensure products or services meet standards.",
     "categories": [
       "engineering",
       "operations_logistics",
@@ -180,6 +201,7 @@
   {
     "id": "reliability_testing",
     "label": "Reliability Testing",
+    "desc": "You test for durability and consistent performance.",
     "categories": [
       "engineering"
     ]
@@ -187,6 +209,7 @@
   {
     "id": "systems_thinking",
     "label": "Systems Thinking",
+    "desc": "You connect moving parts into a working whole.",
     "categories": [
       "engineering",
       "technology",
@@ -196,6 +219,7 @@
   {
     "id": "cloud_infra",
     "label": "Cloud Infrastructure",
+    "desc": "You understand hosting, servers, and cloud services.",
     "categories": [
       "technology"
     ]
@@ -203,6 +227,7 @@
   {
     "id": "api_integration",
     "label": "API Integration",
+    "desc": "You connect systems so they share data and actions.",
     "categories": [
       "technology",
       "business"
@@ -211,6 +236,7 @@
   {
     "id": "etl_pipelines",
     "label": "ETL Pipelines",
+    "desc": "You move and clean data so it\u2019s ready for analysis.",
     "categories": [
       "technology",
       "finance_analytics"
@@ -219,6 +245,7 @@
   {
     "id": "power_bi",
     "label": "Power BI",
+    "desc": "You build dashboards and reports with Power BI.",
     "categories": [
       "finance_analytics",
       "business",
@@ -228,6 +255,7 @@
   {
     "id": "excel_advanced",
     "label": "Excel (Advanced)",
+    "desc": "You use formulas, pivots, and models in spreadsheets.",
     "categories": [
       "finance_analytics",
       "business"
@@ -236,6 +264,7 @@
   {
     "id": "financial_modeling",
     "label": "Financial Modeling",
+    "desc": "You project outcomes using revenue and cost drivers.",
     "categories": [
       "finance_analytics",
       "business"
@@ -244,6 +273,7 @@
   {
     "id": "budget_forecasting",
     "label": "Budget & Forecasting",
+    "desc": "You plan spend and predict future results.",
     "categories": [
       "finance_analytics",
       "business"
@@ -252,6 +282,7 @@
   {
     "id": "healthcare_admin",
     "label": "Healthcare Administration",
+    "desc": "You keep clinics and programs running smoothly.",
     "categories": [
       "healthcare",
       "public_legal"
@@ -260,6 +291,7 @@
   {
     "id": "clinical_compliance",
     "label": "Clinical Compliance",
+    "desc": "You align with clinical rules and standards.",
     "categories": [
       "healthcare"
     ]
@@ -267,6 +299,7 @@
   {
     "id": "grant_writing",
     "label": "Grant Writing",
+    "desc": "You craft proposals that win funding.",
     "categories": [
       "public_legal",
       "education_training"
@@ -275,6 +308,7 @@
   {
     "id": "policy_analysis",
     "label": "Policy Analysis",
+    "desc": "You evaluate policies and their real-world impact.",
     "categories": [
       "public_legal"
     ]
@@ -282,6 +316,7 @@
   {
     "id": "technical_writing",
     "label": "Technical Writing",
+    "desc": "You turn complex info into clear documentation.",
     "categories": [
       "technology",
       "engineering",
@@ -291,6 +326,7 @@
   {
     "id": "automation_rpa",
     "label": "Automation / RPA",
+    "desc": "You automate repetitive tasks and workflows.",
     "categories": [
       "technology",
       "operations_logistics"
@@ -299,6 +335,7 @@
   {
     "id": "testing_qa",
     "label": "Testing & QA (Software)",
+    "desc": "You test software to catch bugs early.",
     "categories": [
       "technology"
     ]
@@ -306,6 +343,7 @@
   {
     "id": "product_management",
     "label": "Product Management",
+    "desc": "You align problems, vision, and delivery for products.",
     "categories": [
       "business",
       "technology",
@@ -315,6 +353,7 @@
   {
     "id": "change_management",
     "label": "Change Management",
+    "desc": "You guide teams through new ways of working.",
     "categories": [
       "business",
       "education_training"
@@ -323,6 +362,7 @@
   {
     "id": "negotiation",
     "label": "Negotiation",
+    "desc": "You find agreements that work for both sides.",
     "categories": [
       "sales_service",
       "business"
@@ -331,6 +371,7 @@
   {
     "id": "presentation_skills",
     "label": "Presentation Skills",
+    "desc": "You tell stories and persuade groups live.",
     "categories": [
       "business",
       "education_training"
@@ -339,6 +380,7 @@
   {
     "id": "research_methods",
     "label": "Research Methods",
+    "desc": "You design studies and analyze findings.",
     "categories": [
       "education_training",
       "finance_analytics"
@@ -347,6 +389,7 @@
   {
     "id": "industrial_safety",
     "label": "Industrial Safety",
+    "desc": "You plan for safe work and prevent accidents.",
     "categories": [
       "engineering",
       "operations_logistics"
@@ -355,6 +398,7 @@
   {
     "id": "maintenance_planning",
     "label": "Maintenance Planning",
+    "desc": "You schedule upkeep so equipment keeps running.",
     "categories": [
       "engineering",
       "operations_logistics"
@@ -363,6 +407,7 @@
   {
     "id": "inventory_optimization",
     "label": "Inventory Optimization",
+    "desc": "You balance stock so it\u2019s available without waste.",
     "categories": [
       "operations_logistics",
       "finance_analytics"
@@ -371,6 +416,7 @@
   {
     "id": "customer_success",
     "label": "Customer Success",
+    "desc": "You help customers realize value and stay long-term.",
     "categories": [
       "sales_service",
       "business",
@@ -380,6 +426,7 @@
   {
     "id": "seo_sem",
     "label": "SEO / SEM",
+    "desc": "You help people find content through search and ads.",
     "categories": [
       "creative_media",
       "business"
@@ -388,6 +435,7 @@
   {
     "id": "video_editing",
     "label": "Video Editing",
+    "desc": "You craft narratives with footage and sound.",
     "categories": [
       "creative_media"
     ]
@@ -395,6 +443,7 @@
   {
     "id": "digital_illustration",
     "label": "Digital Illustration",
+    "desc": "You create visuals with digital tools.",
     "categories": [
       "creative_media"
     ]

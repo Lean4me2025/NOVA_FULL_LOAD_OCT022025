@@ -1,42 +1,52 @@
 [
   {
     "id": "business",
-    "name": "Business"
+    "name": "Business",
+    "desc": "Strategy, planning, and operations that help organizations run and grow."
   },
   {
     "id": "sales_service",
-    "name": "Sales & Service"
+    "name": "Sales & Service",
+    "desc": "Serving customers, building relationships, and driving revenue."
   },
   {
     "id": "technology",
-    "name": "Technology"
+    "name": "Technology",
+    "desc": "Building software, systems, and digital experiences."
   },
   {
     "id": "engineering",
-    "name": "Engineering"
+    "name": "Engineering",
+    "desc": "Designing, optimizing, and improving physical or technical systems."
   },
   {
     "id": "healthcare",
-    "name": "Healthcare"
+    "name": "Healthcare",
+    "desc": "Supporting patient care, compliance, and health operations."
   },
   {
     "id": "creative_media",
-    "name": "Creative & Media"
+    "name": "Creative & Media",
+    "desc": "Design, storytelling, content, and brand experiences."
   },
   {
     "id": "education_training",
-    "name": "Education & Training"
+    "name": "Education & Training",
+    "desc": "Teaching, coaching, and building learning programs."
   },
   {
     "id": "operations_logistics",
-    "name": "Operations & Logistics"
+    "name": "Operations & Logistics",
+    "desc": "Keeping work moving: processes, supply chains, delivery."
   },
   {
     "id": "finance_analytics",
-    "name": "Finance & Analytics"
+    "name": "Finance & Analytics",
+    "desc": "Insights from numbers: analysis, modeling, forecasting."
   },
   {
     "id": "public_legal",
-    "name": "Public Service & Legal"
+    "name": "Public Service & Legal",
+    "desc": "Service and policy: public programs, legal and civic work."
   }
 ]
