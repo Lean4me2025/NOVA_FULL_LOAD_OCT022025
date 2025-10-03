@@ -1,8 +1,5 @@
-
-# NOVA v8.3h
-
-- Welcome: bright subtitle, clearer pills, strong CTA
-- Categories & Traits: larger text, helper definitions
-- Reflections: empathetic language + optional "Switching from" input
-- Results: "Your Reveal" + fit labels + coaching + pathway + bricks + timeframe (+ switching-aware line)
-- Plan: Payhip + Family PIN
+# NOVA v8.3j (Self-Contained)
+- Embedded fallback data in app.js (Reflections, Plans, Jobs, Categories, Traits)
+- JSON files still included; if they fail in production, UI renders from embedded data
+- Start CTA is a real link to avoid sticky button
+- All v8.3 UI upgrades kept
