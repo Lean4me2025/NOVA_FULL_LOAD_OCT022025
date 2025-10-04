@@ -111,3 +111,14 @@ input,select,textarea{background:#0d1629;border:1px solid rgba(255,255,255,.18);
 }
 .play-btn:hover{ border-color: var(--accent); box-shadow: 0 0 0 2px rgba(23,214,91,.35); }
 .muted-help{ opacity:.9; font-size:14px; }
+
+/* HOTFIX: Show PIN modal when backdrop has .open */
+.modal-backdrop.open{
+  display:flex;
+  z-index: 9999;
+}
+
+/* HOTFIX: Keep secondary button text visible on hover/active/focus */
+.secondary, .secondary:hover, .secondary:active, .secondary:focus-visible{
+  color:#fff;
+}
