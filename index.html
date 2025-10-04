@@ -3,38 +3,56 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>NOVA — Welcome</title>
+    <title>Nova — Welcome</title>
     <link rel="stylesheet" href="/assets/css/style.css" />
     <script defer src="/assets/js/app.js"></script>
     <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
-</head>
+    <style>
+      /* Small, page-specific tweaks for warm clarity */
+      .hero { max-width: 860px; margin: 10vh auto 0; padding: 28px; border-radius: 16px;
+              background: rgba(17,26,45,.32); border: 1px solid rgba(255,255,255,.12); text-align:center; }
+      .hero h1 { font-size: 40px; line-height: 1.1; margin: 0 0 12px 0; }
+      .hero p.lead { font-size: 18px; opacity: .95; margin: 0 0 18px 0; }
+      .pill { display:inline-block; margin: 8px 0; padding: 10px 14px; border-radius: 999px;
+              border: 1px solid rgba(255,255,255,.24); background: rgba(255,255,255,.06); }
+      .tiny { font-size: 14px; opacity: .95; margin-top: 10px; }
+      .cta .primary { font-size: 18px; padding: 14px 22px; }
+      .play-link { background: transparent; border: 0; text-decoration: underline; font-size: 14px; }
+      .header .right { display:flex; gap:10px; }
+    </style>
+  </head>
   <body data-page="welcome">
     <div class="container">
       <div class="header">
-        <h1>Welcome to NOVA</h1>
-        <div class="row">
+        <h1 style="margin:0">Welcome to Nova</h1>
+        <div class="right">
           <button class="secondary" onclick="openPin()">Enter PIN</button>
-          <button class="ghost" onclick="(function(){localStorage.removeItem('selectedCategories');localStorage.removeItem('selectedTraits');localStorage.removeItem('selectedJourney');localStorage.removeItem('planTier'); alert('Selections cleared. Starting fresh.');})();">Start Fresh</button>
         </div>
       </div>
-      <div class="card">
-        <p><strong>I'll help you figure out your purpose.</strong></p>
-        <p>89% of people believe they were made for something more — let’s discover your direction and turn it into a plan.</p>
-        <audio controls style="width:100%;margin-top:12px"><source src="/assets/audio/intro.mp3" type="audio/mpeg"><source src="/assets/audio/intro.wav" type="audio/wav">Your browser does not support the audio element.</audio>
-      </div>
-      <div class="footer-nav">
-        <div></div>
-        <a class="primary" href="/categories.html"><button class="primary">Start — Choose My Categories</button></a>
-      
-      <div style="margin-top:14px">
-        <p class="small" style="margin:0 0 8px 0">Returning? Enter your PIN to restore your choices.</p>
-        <button class="secondary" onclick="openPin()">Enter PIN</button>
-      </div>
 
+      <div class="hero">
+        <h1>I’ll help you discover your purpose — then turn it into strengths, direction, and next steps.</h1>
+
+        <div class="pill">89% of people do not know their purpose.</div>
+        <div class="pill">Flow: choose categories → pick traits → see roles that express your purpose.</div>
+        <div class="pill">Reflection matters: capture what resonates so your next steps align with calling.</div>
+
+        <div class="cta">
+          <a href="/categories.html"><button class="primary">Start → Choose My Categories</button></a>
+          <div class="tiny">
+            <button class="play-link" onclick="(function(){var a=document.getElementById('intro-audio'); if(a){a.play();}})()">▶ Play Welcome</button>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- PIN Modal (generic) -->
+    <!-- Hidden audio only (no player bar) -->
+    <audio id="intro-audio" style="display:none">
+      <source src="/assets/audio/intro.mp3" type="audio/mpeg">
+      <source src="/assets/audio/intro.wav" type="audio/wav">
+    </audio>
+
+    <!-- PIN Modal (generic, single location accessible via header button) -->
     <div id="pin-backdrop" class="modal-backdrop">
       <div class="modal">
         <h2 id="pin-title">Enter PIN</h2>
@@ -43,14 +61,10 @@
           <input type="password" id="pin" inputmode="numeric" placeholder="Enter PIN" aria-label="Enter PIN" />
         </div>
         <div class="row" style="justify-content:flex-end">
-          <button class="ghost" onclick="(function(){var v=document.getElementById('pin').value||''; if(v.length>=4){localStorage.setItem('signedIn','true');} closePin();})();">Cancel</button>
-          <button class="primary" onclick="(function(){var v=document.getElementById('pin').value||''; if(v.length>=4){localStorage.setItem('signedIn','true');} closePin();})();">Continue</button>
+          <button class="ghost" onclick="(function(){localStorage.removeItem('signedIn'); closePin();})()">Cancel</button>
+          <button class="primary" onclick="(function(){var v=document.getElementById('pin').value||''; if(v.length>=4){localStorage.setItem('signedIn','true');} closePin();})()">Continue</button>
         </div>
       </div>
     </div>
-    <script>
-      // open modal handler bound to header button
-      document.querySelector('.header .secondary').addEventListener('click', openPin);
-    </script>
   </body>
 </html>
