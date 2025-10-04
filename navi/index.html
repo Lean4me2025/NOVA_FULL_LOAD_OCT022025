@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NAVI — Dashboard</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <script defer src="/assets/js/app.js"></script>
+    <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
+</head>
+  <body>
+    <div class="container">
+      <div class="header"><h1>NAVI — Dashboard</h1></div>
+      <div class="grid">
+        <div class="card"><strong>Today</strong><p class="small">Welcome back.</p></div>
+        <div class="card"><strong>Assets</strong><p class="small">Resume • Cover Letter • Trait Report</p></div>
+        <div class="card"><strong>Opportunities</strong><p class="small">Job matches & company insights</p></div>
+        <div class="card"><strong>Training</strong><p class="small">Recommended courses & skill paths</p></div>
+      </div>
+      <div class="footer-nav">
+        <a href="/plans.html"><button class="secondary">Back to NOVA</button></a>
+      </div>
+    </div>
+    <script>
+      // Simple read of bridged params (for future use)
+      const qp = new URLSearchParams(location.search);
+      const plan = qp.get('plan') || '';
+      const journey = qp.get('journey') || '';
+      try{
+        const cats = JSON.parse(qp.get('cats') || '[]');
+        const traits = JSON.parse(qp.get('traits') || '[]');
+        console.log('NAVI bridge:', {plan, journey, cats, traits});
+      }catch(e){}
+    </script>
+  </body>
+</html>

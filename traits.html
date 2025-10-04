@@ -1,29 +1,21 @@
-
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Select Traits • NOVA</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NOVA — Traits</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <script defer src="/assets/js/app.js"></script>
+    <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
 </head>
-<body data-page="traits">
-  <div class="container step">
-    <div class="header">
-      <div class="logo">🌟 NOVA</div>
-      <a class="btn ghost" href="categories.html">Back</a>
-    </div>
-    <div class="card">
-      <h2 class="title">Select your traits <span class="small">(up to 12)</span></h2>
-      <p class="subtitle" style="font-size:1.05rem">Tap traits that sound like you. Each one includes a quick explanation so you don’t have to guess what it means.</p>
-      <div id="trait-grid" class="grid cols-3" style="margin-top:12px"></div>
-      <div class="footer">
-        <a class="btn" href="categories.html">Previous</a>
-        <button id="to-reflections" class="btn primary">Continue → Reflections</button>
+  <body data-page="traits">
+    <div class="container">
+      <div class="header"><h1>Select Your Traits</h1></div>
+      <div id="traits-grid" class="grid"></div>
+      <div class="footer-nav">
+        <a href="/categories.html"><button class="secondary">Back</button></a>
+        <a href="/results.html"><button class="primary">See Results</button></a>
       </div>
-      <div class="small" style="margin-top:6px">Chosen: <strong id="trait-count">0</strong></div>
     </div>
-  </div>
-  <script src="assets/js/app.js"></script>
-</body>
+  </body>
 </html>

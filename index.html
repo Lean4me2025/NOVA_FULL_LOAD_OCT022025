@@ -1,36 +1,56 @@
-
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Welcome to NOVA</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <meta name="theme-color" content="#0b1020">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NOVA — Welcome</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <script defer src="/assets/js/app.js"></script>
+    <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
 </head>
-<body data-page="welcome">
-  <div class="container step">
-    <div class="header">
-      <div class="logo">🌟 NOVA</div>
-      <a class="btn ghost" href="plan.html">Plans</a>
-    </div>
+  <body data-page="welcome">
+    <div class="container">
+      <div class="header">
+        <h1>Welcome to NOVA</h1>
+        <div class="row">
+          <button class="secondary" onclick="openPin()">Enter PIN</button>
+          <button class="ghost" onclick="(function(){localStorage.removeItem('selectedCategories');localStorage.removeItem('selectedTraits');localStorage.removeItem('selectedJourney');localStorage.removeItem('planTier'); alert('Selections cleared. Starting fresh.');})();">Start Fresh</button>
+        </div>
+      </div>
+      <div class="card">
+        <p><strong>I'll help you figure out your purpose.</strong></p>
+        <p>89% of people believe they were made for something more — let’s discover your direction and turn it into a plan.</p>
+        <audio controls style="width:100%;margin-top:12px"><source src="/assets/audio/intro.mp3" type="audio/mpeg"><source src="/assets/audio/intro.wav" type="audio/wav">Your browser does not support the audio element.</audio>
+      </div>
+      <div class="footer-nav">
+        <div></div>
+        <a class="primary" href="/categories.html"><button class="primary">Start — Choose My Categories</button></a>
+      
+      <div style="margin-top:14px">
+        <p class="small" style="margin:0 0 8px 0">Returning? Enter your PIN to restore your choices.</p>
+        <button class="secondary" onclick="openPin()">Enter PIN</button>
+      </div>
 
-    <div class="card hero">
-      <h1>WELCOME TO NOVA</h1>
-      <p class="subtitle">I’ll help you <strong>discover your purpose</strong> — then turn it into strengths, direction, and next steps.</p>
-
-      <div class="pillline">89% of people do not know their purpose.</div>
-      <div class="pillline">Flow: choose categories → pick traits → see roles that express your purpose.</div>
-      <div class="pillline">Reflection matters: capture what resonates so your next steps align with calling.</div>
-
-      <div class="footer" style="justify-content:center">
-        <a id="start" class="btn primary" href="categories.html">Start → Choose My Categories</a>
       </div>
     </div>
 
-    <hr>
-    <div class="small">v8.3j • Categories → Traits → Reflections → Results → Plan • Self-contained with embedded fallbacks</div>
-  </div>
-  <script src="assets/js/app.js"></script>
-</body>
+    <!-- PIN Modal (generic) -->
+    <div id="pin-backdrop" class="modal-backdrop">
+      <div class="modal">
+        <h2 id="pin-title">Enter PIN</h2>
+        <p id="pin-subtitle" class="small">For returning users</p>
+        <div class="row">
+          <input type="password" id="pin" inputmode="numeric" placeholder="Enter PIN" aria-label="Enter PIN" />
+        </div>
+        <div class="row" style="justify-content:flex-end">
+          <button class="ghost" onclick="(function(){var v=document.getElementById('pin').value||''; if(v.length>=4){localStorage.setItem('signedIn','true');} closePin();})();">Cancel</button>
+          <button class="primary" onclick="(function(){var v=document.getElementById('pin').value||''; if(v.length>=4){localStorage.setItem('signedIn','true');} closePin();})();">Continue</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      // open modal handler bound to header button
+      document.querySelector('.header .secondary').addEventListener('click', openPin);
+    </script>
+  </body>
 </html>

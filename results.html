@@ -1,36 +1,21 @@
-
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Your Reveal • NOVA</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NOVA — Results</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <script defer src="/assets/js/app.js"></script>
+    <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
 </head>
-<body data-page="results">
-  <div class="container step">
-    <div class="header">
-      <div class="logo">🌟 NOVA</div>
-      <a class="btn ghost" href="reflections.html">Back</a>
-    </div>
-    <div class="card">
-      <h2 class="title">Your Reveal</h2>
-      <p class="subtitle">This is your makeover moment. Nova looked at your traits and surfaced roles where your strengths can shine. Fit labels tell you how naturally each role aligns — and Navi will help you step into it.</p>
-      <div class="card" style="margin:12px 0;">
-        <div class="kpis">
-          <div class="kpi"><div class="num" id="kpi-cats">0</div><div class="cap">Focus areas</div></div>
-          <div class="kpi"><div class="num" id="kpi-traits">0</div><div class="cap">Traits selected</div></div>
-          <div class="kpi"><div class="num" id="kpi-path">—</div><div class="cap">Journey</div></div>
-        </div>
-        <p class="small" style="margin-top:8px">This snapshot helps you see where you are now and where Nova is taking you next.</p>
-      </div>
-      <div id="results" class="grid cols-2"></div>
-      <div class="footer">
-        <a class="btn" href="reflections.html">Previous</a>
-        <button id="to-plan" class="btn primary">Continue → Plan</button>
+  <body data-page="results">
+    <div class="container">
+      <div class="header"><h1>Your Results</h1></div>
+      <div id="results-table" class="grid"></div>
+      <div class="footer-nav">
+        <a href="/traits.html"><button class="secondary">Back</button></a>
+        <a href="/reflection.html"><button class="primary">Continue</button></a>
       </div>
     </div>
-  </div>
-  <script src="assets/js/app.js"></script>
-</body>
+  </body>
 </html>

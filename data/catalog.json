@@ -1,0 +1,320 @@
+{
+  "categories": [
+    {
+      "id": "tech",
+      "label": "Technology"
+    },
+    {
+      "id": "education",
+      "label": "Education & Community"
+    },
+    {
+      "id": "public_safety",
+      "label": "Public Safety"
+    },
+    {
+      "id": "health",
+      "label": "Healthcare"
+    },
+    {
+      "id": "business",
+      "label": "Business & Finance"
+    },
+    {
+      "id": "arts",
+      "label": "Arts & Media"
+    },
+    {
+      "id": "engineering",
+      "label": "Engineering"
+    },
+    {
+      "id": "trades",
+      "label": "Skilled Trades"
+    },
+    {
+      "id": "science",
+      "label": "Science"
+    }
+  ],
+  "traitsByCategory": {
+    "tech": [
+      {
+        "id": "problem_solving",
+        "label": "Problem Solving"
+      },
+      {
+        "id": "systems_thinking",
+        "label": "Systems Thinking"
+      },
+      {
+        "id": "curiosity",
+        "label": "Curiosity"
+      },
+      {
+        "id": "debugging",
+        "label": "Debugging"
+      },
+      {
+        "id": "data_literacy",
+        "label": "Data Literacy"
+      },
+      {
+        "id": "automation_mindset",
+        "label": "Automation Mindset"
+      },
+      {
+        "id": "security_awareness",
+        "label": "Security Awareness"
+      },
+      {
+        "id": "api_integration",
+        "label": "API Integration"
+      },
+      {
+        "id": "cloud_basics",
+        "label": "Cloud Basics"
+      }
+    ],
+    "education": [
+      {
+        "id": "mentoring",
+        "label": "Mentoring"
+      },
+      {
+        "id": "public_speaking",
+        "label": "Public Speaking"
+      },
+      {
+        "id": "patience",
+        "label": "Patience"
+      },
+      {
+        "id": "curriculum_design",
+        "label": "Curriculum Design"
+      },
+      {
+        "id": "assessment",
+        "label": "Assessment"
+      },
+      {
+        "id": "empathy",
+        "label": "Empathy"
+      },
+      {
+        "id": "community_outreach",
+        "label": "Community Outreach"
+      },
+      {
+        "id": "classroom_management",
+        "label": "Classroom Management"
+      }
+    ],
+    "public_safety": [
+      {
+        "id": "situational_awareness",
+        "label": "Situational Awareness"
+      },
+      {
+        "id": "calm_under_pressure",
+        "label": "Calm Under Pressure"
+      },
+      {
+        "id": "ethics",
+        "label": "Ethics & Integrity"
+      },
+      {
+        "id": "report_writing",
+        "label": "Report Writing"
+      },
+      {
+        "id": "conflict_deescalation",
+        "label": "Conflict De-escalation"
+      },
+      {
+        "id": "first_aid",
+        "label": "First Aid Basics"
+      },
+      {
+        "id": "radio_protocol",
+        "label": "Radio Protocol"
+      }
+    ],
+    "health": [
+      {
+        "id": "compassion",
+        "label": "Compassion"
+      },
+      {
+        "id": "attention_to_detail",
+        "label": "Attention to Detail"
+      },
+      {
+        "id": "sterile_practice",
+        "label": "Sterile Practice"
+      },
+      {
+        "id": "patient_education",
+        "label": "Patient Education"
+      },
+      {
+        "id": "triage",
+        "label": "Triage"
+      },
+      {
+        "id": "med_recordkeeping",
+        "label": "Medical Recordkeeping"
+      },
+      {
+        "id": "team_collab",
+        "label": "Team Collaboration"
+      }
+    ],
+    "business": [
+      {
+        "id": "analysis",
+        "label": "Business Analysis"
+      },
+      {
+        "id": "process_improvement",
+        "label": "Process Improvement"
+      },
+      {
+        "id": "stakeholder_mgmt",
+        "label": "Stakeholder Management"
+      },
+      {
+        "id": "financial_literacy",
+        "label": "Financial Literacy"
+      },
+      {
+        "id": "presentation",
+        "label": "Executive Presentation"
+      },
+      {
+        "id": "vendor_mgmt",
+        "label": "Vendor Management"
+      },
+      {
+        "id": "risk_assessment",
+        "label": "Risk Assessment"
+      },
+      {
+        "id": "compliance",
+        "label": "Compliance Awareness"
+      }
+    ],
+    "arts": [
+      {
+        "id": "storytelling",
+        "label": "Storytelling"
+      },
+      {
+        "id": "design_eye",
+        "label": "Design Eye"
+      },
+      {
+        "id": "editing",
+        "label": "Editing"
+      },
+      {
+        "id": "content_strategy",
+        "label": "Content Strategy"
+      },
+      {
+        "id": "visual_composition",
+        "label": "Visual Composition"
+      },
+      {
+        "id": "sound_sense",
+        "label": "Sound Sense"
+      },
+      {
+        "id": "brand_consistency",
+        "label": "Brand Consistency"
+      }
+    ],
+    "engineering": [
+      {
+        "id": "spatial_reasoning",
+        "label": "Spatial Reasoning"
+      },
+      {
+        "id": "tolerance_calc",
+        "label": "Tolerance Calculation"
+      },
+      {
+        "id": "cad_basics",
+        "label": "CAD Basics"
+      },
+      {
+        "id": "quality_control",
+        "label": "Quality Control"
+      },
+      {
+        "id": "root_cause",
+        "label": "Root Cause Analysis"
+      },
+      {
+        "id": "prototype_iter",
+        "label": "Prototype Iteration"
+      },
+      {
+        "id": "safety_first",
+        "label": "Safety First"
+      }
+    ],
+    "trades": [
+      {
+        "id": "hands_on",
+        "label": "Hands-On Skill"
+      },
+      {
+        "id": "tools_care",
+        "label": "Tool Care"
+      },
+      {
+        "id": "blueprint_read",
+        "label": "Blueprint Reading"
+      },
+      {
+        "id": "measure_twice",
+        "label": "Measure Twice, Cut Once"
+      },
+      {
+        "id": "apprenticeship_spirit",
+        "label": "Apprenticeship Spirit"
+      },
+      {
+        "id": "jobsite_safety",
+        "label": "Jobsite Safety"
+      }
+    ],
+    "science": [
+      {
+        "id": "hypothesis",
+        "label": "Hypothesis Formation"
+      },
+      {
+        "id": "lab_protocol",
+        "label": "Lab Protocol"
+      },
+      {
+        "id": "stat_rigor",
+        "label": "Statistical Rigor"
+      },
+      {
+        "id": "observation",
+        "label": "Observation"
+      },
+      {
+        "id": "documentation",
+        "label": "Documentation"
+      },
+      {
+        "id": "peer_review",
+        "label": "Peer Review"
+      }
+    ]
+  }
+}

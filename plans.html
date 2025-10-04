@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NOVA — Plans</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <script defer src="/assets/js/app.js"></script>
+    <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
+</head>
+  <body data-page="plans">
+    <div class="container">
+      <div class="header"><h1>Choose Your Plan</h1></div>
+      <div class="grid">
+        <div id="plan-purpose" class="card">
+          <h3 class="plan-title">How to Know Your Purpose — $14.99</h3>
+          <a href="https://payhip.com/b/N7Lvg" class="payhip-buy-button" data-theme="green" data-product="N7Lvg">Buy Now</a>
+        </div>
+
+        <div id="plan-starter" class="card">
+          <h3 class="plan-title">Starter — $29.99/mo</h3>
+          <div class="row"><button class="primary" onclick="setPlanTier('starter')">Buy Now</button></div>
+        </div>
+        <div id="plan-pro" class="card">
+          <h3 class="plan-title">Pro — $99/mo</h3>
+          <div class="row"><button class="primary" onclick="setPlanTier('pro')">Buy Now</button></div>
+        </div>
+        <div id="plan-mastery" class="card">
+          <h3 class="plan-title">Mastery — $149/mo</h3>
+          <div class="row"><button class="primary" onclick="setPlanTier('mastery')">Buy Now</button></div>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <a href="/reflection.html"><button class="secondary">Back</button></a>
+        <button class="primary" onclick="goToNavi()">Launch Your Next Step →</button>
+      </div>
+    </div>
+  </body>
+</html>
