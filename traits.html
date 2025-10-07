@@ -1,21 +1,76 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>NOVA — Traits</title>
-    <link rel="stylesheet" href="/assets/css/style.css" />
-    <script defer src="/assets/js/app.js"></script>
-    <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Nova • Traits</title>
+  <link rel="stylesheet" href="/assets/css/style.css"/>
+  <script defer src="/assets/js/state.js"></script>
+  <script defer src="/assets/js/data.js"></script>
 </head>
-  <body data-page="traits">
-    <div class="container">
-      <div class="header"><h1>Select Your Traits</h1></div>
-      <div id="traits-grid" class="grid"></div>
-      <div class="footer-nav">
-        <a href="/categories.html"><button class="secondary">Back</button></a>
-        <a href="/results.html"><button class="primary">See Results</button></a>
-      </div>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="brand">Nova</div>
+    <div class="list"><a class="pill" href="/categories.html">Back to Categories</a></div>
+    <div class="badge">Selected: <span id="count">0</span> traits</div>
+  </div>
+  <div class="card">
+    <h1 class="h1">Select traits that feel true</h1>
+    <p class="p">Choose at least 8–12. Filtered by your categories.</p>
+    <div class="list" id="filters"></div>
+    <div class="hr"></div>
+    <div id="tray" class="grid cols-3"></div>
+    <div class="hr"></div>
+    <div class="grid cols-2">
+      <button id="next" class="btn primary">See My Results</button>
+      <button id="clear" class="btn ghost">Clear</button>
     </div>
-  </body>
+  </div>
+</div>
+<script>
+(async ()=>{
+  const data = await loadAllData();
+  const traits = data.traits||[];
+  NOVA.state.traits = traits;
+  const selectedCats = new Set(NOVA.state.selectedCategories||[]);
+  const selected = new Set((NOVA.state.selectedTraits||[]).map(t=> t.id||t.name||t));
+  function renderFilters(){
+    const f = document.getElementById('filters'); f.innerHTML = '';
+    Array.from(selectedCats).forEach(c=>{
+      const s = document.createElement('span');
+      s.className='pill'; s.textContent=c;
+      f.appendChild(s);
+    });
+  }
+  function render(){
+    const tray = document.getElementById('tray');
+    tray.innerHTML = '';
+    const pool = traits.filter(t=> !selectedCats.size || selectedCats.has(t.category));
+    pool.forEach(t=>{
+      const b = document.createElement('button');
+      b.className='btn ghost';
+      b.innerHTML = `<div><div style="font-weight:700">${t.name||'Trait'}</div><div class="small">${t.category||''}</div></div>`;
+      const key = t.id||t.name;
+      if(selected.has(key)) b.style.borderColor='var(--accent)';
+      b.onclick = ()=>{
+        if(selected.has(key)){ selected.delete(key); b.style.borderColor='var(--line)'; }
+        else { selected.add(key); b.style.borderColor='var(--accent)'; }
+        document.getElementById('count').textContent = selected.size;
+      };
+      tray.appendChild(b);
+    });
+    document.getElementById('count').textContent = selected.size;
+  }
+  renderFilters(); render();
+  document.getElementById('next').onclick = ()=>{
+    const chosen = traits.filter(t=> selected.has(t.id||t.name));
+    NOVA.state.selectedTraits = chosen;
+    NOVA.save();
+    location.href='/results.html';
+  };
+  document.getElementById('clear').onclick = ()=>{ selected.clear(); render(); };
+})();
+</script>
+</body>
 </html>

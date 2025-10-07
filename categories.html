@@ -1,23 +1,60 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>NOVA — Categories</title>
-    <link rel="stylesheet" href="/assets/css/style.css" />
-    <script defer src="/assets/js/app.js"></script>
-    <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Nova • Categories</title>
+  <link rel="stylesheet" href="/assets/css/style.css"/>
+  <script defer src="/assets/js/state.js"></script>
+  <script defer src="/assets/js/data.js"></script>
 </head>
-  <body data-page="categories">
-    <div class="container">
-      <div class="header"><h1>Select Your Categories</h1></div>
-      <div id="categories-grid" class="grid">
-        <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
-      </div>
-      <div class="footer-nav">
-        <a href="/index.html"><button class="secondary">Back</button></a>
-        <button class="primary" onclick="proceedToTraits()">Continue</button>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand">Nova</div>
+      <div class="list"><a class="pill" href="/index.html">Welcome</a><a class="pill" href="/categories.html">Categories</a><a class="pill" href="/traits.html">Traits</a><a class="pill" href="/results.html">Results</a></div>
+      <div class="badge">User: <span id="u"></span> • PIN: <span id="p"></span></div>
+    </div>
+    <div class="card">
+      <h1 class="h1">Choose categories that resonate</h1>
+      <p class="p">Pick 2–4 to start. You can always adjust later.</p>
+      <div class="hr"></div>
+      <div id="cats" class="grid cols-3"></div>
+      <div class="hr"></div>
+      <div class="grid cols-2">
+        <button id="next" class="btn primary">Next • Select Traits</button>
+        <button id="clear" class="btn ghost">Clear</button>
       </div>
     </div>
-  </body>
+  </div>
+<script>
+  qs('#u').textContent = NOVA.state.user||'guest';
+  qs('#p').textContent = NOVA.state.pin? '••••' : '—';
+  (async ()=>{
+    const data = await loadAllData();
+    const cats = data.categories||[];
+    NOVA.state.categories = cats;
+    let selected = new Set(NOVA.state.selectedCategories||[]);
+    const root = qs('#cats');
+    root.innerHTML = '';
+    cats.forEach(c=>{
+      const el = document.createElement('button');
+      el.className = 'btn ghost';
+      el.textContent = c;
+      if(selected.has(c)) el.style.borderColor = 'var(--accent)';
+      el.addEventListener('click', ()=>{
+        if(selected.has(c)){ selected.delete(c); el.style.borderColor='var(--line)'; }
+        else { selected.add(c); el.style.borderColor='var(--accent)'; }
+      });
+      root.appendChild(el);
+    });
+    qs('#next').onclick = ()=>{
+      NOVA.state.selectedCategories = Array.from(selected);
+      NOVA.save();
+      location.href='/traits.html';
+    };
+    qs('#clear').onclick = ()=>{ selected = new Set(); document.querySelectorAll('#cats .btn').forEach(b=> b.style.borderColor='var(--line)'); };
+  })();
+</script>
+</body>
 </html>

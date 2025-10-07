@@ -1,0 +1,10 @@
+{
+  "payhip": {
+    "starter": "https://payhip.com/b/STARTER-PRODUCT-ID",
+    "pro": "https://payhip.com/b/PRO-PRODUCT-ID",
+    "mastery": "https://payhip.com/b/MASTERY-PRODUCT-ID"
+  },
+  "features": {
+    "audio_enabled": false
+  }
+}
