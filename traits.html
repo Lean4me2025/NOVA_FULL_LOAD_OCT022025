@@ -47,6 +47,11 @@
     const tray = document.getElementById('tray');
     tray.innerHTML = '';
     const pool = traits.filter(t=> !selectedCats.size || selectedCats.has(t.category));
+    if(pool.length===0){
+      const note = document.createElement('div');
+      note.className='small'; note.textContent='No traits found. Check /data/traits.json.';
+      tray.appendChild(note);
+    }
     pool.forEach(t=>{
       const b = document.createElement('button');
       b.className='btn ghost';

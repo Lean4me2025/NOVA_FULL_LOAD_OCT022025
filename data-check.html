@@ -1,26 +1,36 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Data Check</title><link rel="stylesheet" href="assets/css/style.css"></head>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Nova • Data Check</title>
+  <link rel="stylesheet" href="/assets/css/style.css"/>
+  <script defer src="/assets/js/state.js"></script>
+  <script defer src="/assets/js/data.js"></script>
+</head>
 <body>
-<div class="card">
-  <h2>Nova Data Check</h2>
-  <pre id="output" style="text-align:left;"></pre>
+<div class="container">
+  <div class="header">
+    <div class="brand">Nova</div>
+    <div class="badge">Diagnostic</div>
+  </div>
+  <div class="card">
+    <h1 class="h1">Data Check</h1>
+    <p class="p">This page confirms Nova can read your deployed JSON files.</p>
+    <div class="hr"></div>
+    <div id="out" class="p"></div>
+  </div>
 </div>
 <script>
-async function check(){
-  const out=document.getElementById('output');
-  async function load(name){
-    try{
-      const r=await fetch('data/'+name+'.json');
-      const j=await r.json();
-      return j.length || Object.keys(j).length;
-    }catch{return 0;}
-  }
-  const c=await load('categories');
-  const t=await load('traits');
-  const j=await load('jobs');
-  out.textContent=`Categories: ${c}\nTraits: ${t}\nJobs: ${j}`;
-}
-check();
+(async ()=>{
+  const data = await loadAllData();
+  const out = document.getElementById('out');
+  out.innerHTML = `
+    <div><strong>Categories:</strong> ${data.categories?.length||0} (from /data/categories.json)</div>
+    <div><strong>Traits:</strong> ${data.traits?.length||0} (from /data/traits.json)</div>
+    <div><strong>Jobs (OOH):</strong> ${data.ooh?.length||0} (from /data/jobs.json)</div>
+  `;
+})();
 </script>
-</body></html>
+</body>
+</html>
