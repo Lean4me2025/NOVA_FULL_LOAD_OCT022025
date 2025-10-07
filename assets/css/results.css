@@ -1,0 +1,10 @@
+
+#results-section { padding:20px; color:#fff; background:#0b0f14; }
+.results-header h2 { color:#29c47a; margin-bottom:10px; }
+.traits-summary { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+.trait-chip.small { font-size:13px; padding:6px 10px; border:1px solid #29c47a;
+  border-radius:8px; background:#0e151b; }
+.results-actions { display:flex; justify-content:space-between; margin-top:20px; padding:0 20px; }
+.results-actions button { background:#1b6b63; color:#fff; border:none;
+  border-radius:10px; padding:10px 14px; cursor:pointer; }
+.results-actions button:hover { background:#218972; }

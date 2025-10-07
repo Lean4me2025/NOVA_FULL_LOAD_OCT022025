@@ -1,0 +1,62 @@
+[
+  {
+    "id": "swsp_committed",
+    "name": "Committed",
+    "description": "Shows up, stays steady, finishes what they start\u2014especially when unnoticed.",
+    "category": "Society, Workforce, and Service Pathways"
+  },
+  {
+    "id": "swsp_patient",
+    "name": "Patient",
+    "description": "Keeps a calm pace through long shifts and difficult situations.",
+    "category": "Society, Workforce, and Service Pathways"
+  },
+  {
+    "id": "swsp_overskilled",
+    "name": "Over-Skilled",
+    "description": "Carries talents beyond current role; quietly masters details others miss.",
+    "category": "Society, Workforce, and Service Pathways"
+  },
+  {
+    "id": "swsp_dependable",
+    "name": "Dependable",
+    "description": "Reliability keeps teams and systems running; rarely misses beats.",
+    "category": "Society, Workforce, and Service Pathways"
+  },
+  {
+    "id": "swsp_observant",
+    "name": "Observant",
+    "description": "Reads surroundings and people, seeing needs and risks early.",
+    "category": "Society, Workforce, and Service Pathways"
+  },
+  {
+    "id": "swsp_service",
+    "name": "Service-Minded",
+    "description": "Takes pride in helping; sees service as strength and calling.",
+    "category": "Society, Workforce, and Service Pathways"
+  },
+  {
+    "id": "swsp_resilient",
+    "name": "Resilient",
+    "description": "Adapts to unpredictable schedules, conditions, and attitudes.",
+    "category": "Society, Workforce, and Service Pathways"
+  },
+  {
+    "id": "swsp_protective",
+    "name": "Protective",
+    "description": "Carries a sense of duty for people, property, and process.",
+    "category": "Society, Workforce, and Service Pathways"
+  },
+  {
+    "id": "swsp_team",
+    "name": "Team-Grounded",
+    "description": "Thrives in coordination\u2014crews, shifts, and teams.",
+    "category": "Society, Workforce, and Service Pathways"
+  },
+  {
+    "id": "swsp_growth",
+    "name": "Growth-Driven",
+    "description": "Quiet ambition to advance, train, or build something of their own.",
+    "category": "Society, Workforce, and Service Pathways"
+  }
+]

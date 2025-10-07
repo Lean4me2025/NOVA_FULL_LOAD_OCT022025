@@ -1,0 +1,10 @@
+
+body{background:#0b0f14;color:#fff;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0}
+.nb-wrap{max-width:980px;margin:40px auto;padding:0 20px}
+.lead{opacity:.9}
+.btn{display:inline-block;background:#1b6b63;color:#fff;text-decoration:none;padding:10px 14px;border-radius:10px}
+.btn:hover{background:#218972}
+.tiers{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.tier{background:#10161c;border:2px solid #1b6b63;border-radius:12px;padding:16px}
+.tier h3{color:#29c47a;margin-top:0}
+.actions{margin-top:12px}

@@ -1,0 +1,39 @@
+
+#traits-root { min-height: 220px; }
+.traits-grid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:12px;
+}
+.trait-chip {
+  display:flex; align-items:flex-start; gap:8px;
+  padding:12px; border:2px solid #1f7a5a; border-radius:12px;
+  background:#0b0f14; color:#fff; text-align:left; cursor:pointer;
+  transition:transform .08s ease, box-shadow .12s ease, background .12s ease;
+}
+.trait-chip:hover { transform:translateY(-1px); box-shadow:0 6px 14px rgba(0,0,0,.25); }
+.trait-chip.selected { border-color:#29c47a; box-shadow:0 0 0 3px rgba(41,196,122,.25) inset; background:#0e151b; }
+.trait-name { font-weight:600; margin-bottom:2px; }
+.trait-desc { font-size:13px; opacity:.9; }
+.traits-header { display:flex; align-items:center; justify-content:space-between; margin:8px 0 12px; gap:10px; }
+.traits-actions button {
+  background:#1b6b63; color:#fff; border:none; border-radius:10px; padding:10px 14px; cursor:pointer;
+}
+.traits-actions button:disabled { opacity:.5; cursor:not-allowed; }
+
+.nav-btn {
+  background:none;
+  color:#29c47a;
+  border:1px solid #29c47a;
+  border-radius:8px;
+  padding:8px 12px;
+  font-size:14px;
+  cursor:pointer;
+  transition:background .15s ease,color .15s ease;
+}
+.nav-btn:hover {
+  background:#29c47a;
+  color:#0b0f14;
+}
+.cat-empty, .cat-error {
+  padding: 16px; border: 1px dashed #444; border-radius: 10px; color: #ddd; background: #12161b;
+}

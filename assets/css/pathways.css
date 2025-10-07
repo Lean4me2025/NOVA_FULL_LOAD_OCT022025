@@ -1,0 +1,37 @@
+
+#pathways-section { padding:24px; color:#fff; background:#0b0f14; }
+.pathways-header h2 { color:#29c47a; margin-bottom:4px; }
+#pathways-summary { margin-bottom:16px; opacity:.9; }
+.pathways-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:16px;
+}
+.path-card {
+  background:#10161c;
+  border:2px solid #1b6b63;
+  border-radius:12px;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:transform .1s ease, box-shadow .15s ease;
+}
+.path-card:hover { transform:translateY(-2px); box-shadow:0 8px 16px rgba(0,0,0,.25); }
+.path-card h3 { color:#29c47a; margin-bottom:6px; }
+.path-card p { font-size:14px; line-height:1.4; }
+.pathways-actions {
+  display:flex;
+  justify-content:space-between;
+  margin-top:24px;
+  padding:0 20px;
+}
+.pathways-actions button {
+  background:#1b6b63;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  padding:10px 14px;
+  cursor:pointer;
+}
+.pathways-actions button:hover { background:#218972; }

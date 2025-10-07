@@ -1,66 +1,70 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Nova • Welcome</title>
-  <link rel="stylesheet" href="/assets/css/style.css"/>
-  <script defer src="/assets/js/state.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NOVA 8.5 Integrated</title>
+  <link rel="stylesheet" href="/assets/css/categories.css">
+  <link rel="stylesheet" href="/assets/css/traits.css">
+  <link rel="stylesheet" href="/assets/css/results.css">
+  <link rel="stylesheet" href="/assets/css/pathways.css">
+  <style>body{background:#0b0f14;color:#fff;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:0}header{padding:16px 20px;border-bottom:1px solid #123}</style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <div class="brand">Nova</div>
-      <div class="tag">v8.4d • Ready</div>
-    </div>
+  <header>
+    <h1>Welcome to Nova 8.5</h1>
+    <p style="opacity:.85">Find your lane with clarity. (89% fact area)</p>
+  </header>
 
-    <div class="card">
-      <div class="grid cols-2" style="align-items:start">
-        <!-- LEFT: How it works (moved left) -->
-        <div>
-          <div class="kicker">Welcome</div>
-          <h1 class="h1">Find your lane with clarity.</h1>
-          <p class="p"><strong>89%</strong> of people say they want a clearer sense of purpose for their work and life — Nova helps you name it, then Navi helps you act on it.</p>
-          <div class="kicker" style="margin-top:10px">How it works</div>
-          <ul class="p">
-            <li>Pick a few <strong>categories</strong> that call to you.</li>
-            <li>Select <strong>traits</strong> that feel true.</li>
-            <li>See <strong>matches</strong> and next steps.</li>
-            <li>Bridge to <strong>Navi</strong> for resume, plan, and opportunities.</li>
-          </ul>
-          <div style="margin-top:12px;">
-            <a class="btn primary" href="/categories.html">Start • Choose My Categories</a>
-          </div>
-          <div class="list" style="margin-top:16px;">
-            <span class="pill">Clarity</span><span class="pill">Focus</span><span class="pill">Action</span><span class="pill">Momentum</span>
-          </div>
-        </div>
+  <main>
+    <section id="categories-section">
+      <h2 style="color:#29c47a;margin:16px 20px 8px;">Choose Your Category</h2>
+      <div id="categories-root" style="padding:0 20px;"></div>
+      <div id="categories-diagnostics" style="margin:8px 20px;font-size:12px;color:#9bb;"></div>
+    </section>
 
-        <!-- RIGHT: Returning User Access -->
-        <div class="card" style="background:transparent;border:1px dashed var(--line)">
-          <div class="kicker">Returning User Access</div>
-          <label class="small">Username</label>
-          <input id="user" class="input" placeholder="e.g. drew" />
-          <div style="height:8px"></div>
-          <label class="small">PIN</label>
-          <input id="pin" class="input" placeholder="4–6 digits" maxlength="6"/>
-          <div style="height:14px"></div>
-          <button class="btn block" id="btnResume">Resume where I left off</button>
-          <div class="small" style="margin-top:10px">Your PIN saves progress locally on this device.</div>
+    <section id="traits-section" style="display:none;padding:0 20px;">
+      <div class="traits-header">
+        <button id="traits-back" class="nav-btn">← Back to Categories</button>
+        <h3 id="traits-current">Select Traits</h3>
+        <div class="traits-actions">
+          <button id="traits-continue" disabled>Continue</button>
         </div>
       </div>
-    </div>
+      <div id="traits-root"></div>
+      <div id="traits-diagnostics" style="margin-top:8px;font-size:12px;color:#9bb;"></div>
+    </section>
 
-    <div class="footer">© Nova & Navi</div>
-  </div>
+    <section id="results-section" style="display:none;">
+      <div class="results-header">
+        <h2 id="results-category"></h2>
+      </div>
+      <div id="results-traits"></div>
+      <div id="results-narrative"></div>
+      <div class="results-actions">
+        <button id="results-back">← Back to Traits</button>
+        <button id="results-next">View Growth Pathways →</button>
+      </div>
+    </section>
 
-<script>
-  document.getElementById('btnResume').addEventListener('click', ()=>{
-    NOVA.state.user = document.getElementById('user').value.trim();
-    NOVA.state.pin  = document.getElementById('pin').value.trim();
-    NOVA.save();
-    location.href = '/categories.html';
-  });
-</script>
+    <section id="pathways-section" style="display:none;">
+      <div class="pathways-header">
+        <h2 id="pathways-category"></h2>
+        <p id="pathways-summary"></p>
+      </div>
+      <div id="pathways-cards"></div>
+      <div class="pathways-actions">
+        <button id="pathways-back">← Back to Reflection</button>
+        <button id="pathways-next">See Personalized Plan in Navi →</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- utils first, then modules -->
+  <script src="/assets/js/utils_dataLoader.js"></script>
+  <script src="/assets/js/categories.js"></script>
+  <script src="/assets/js/traits.js"></script>
+  <script src="/assets/js/results.js"></script>
+  <script src="/assets/js/pathways.js"></script>
 </body>
 </html>
