@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Check</title><link rel="stylesheet" href="assets/css/style.css"></head>
+<body>
+<div class="card">
+  <h2>Nova Data Check</h2>
+  <pre id="output" style="text-align:left;"></pre>
+</div>
+<script>
+async function check(){
+  const out=document.getElementById('output');
+  async function load(name){
+    try{
+      const r=await fetch('data/'+name+'.json');
+      const j=await r.json();
+      return j.length || Object.keys(j).length;
+    }catch{return 0;}
+  }
+  const c=await load('categories');
+  const t=await load('traits');
+  const j=await load('jobs');
+  out.textContent=`Categories: ${c}\nTraits: ${t}\nJobs: ${j}`;
+}
+check();
+</script>
+</body></html>
