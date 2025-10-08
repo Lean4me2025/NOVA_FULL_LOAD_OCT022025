@@ -1,19 +1,9 @@
-Nova H94i — Welcome Integrity (Drop-in)
----------------------------------------------
-What this is:
-- A drop-in replacement for: assets/js/welcome.js
-- No HTML edits needed (your Welcome page already references this path).
+Nova H94i RoleFix (Pure)
+--------------------------------
+This package replaces ONE file:
+- reflection_look_forward.html (contains the correct wording: "Discover these roles:")
 
-What it does:
-- Logs build/version to console for quick verification.
-- Forces the Start button to go to categories.html.
-- Clears local/session storage on click to prevent skipping Categories on next page.
-- Warns if an older cached Welcome is being served.
-
-How to use:
-1) In GitHub, navigate to assets/js/
-2) Replace the existing welcome.js with this one (same filename).
-3) Commit to main; let Vercel deploy.
-4) Open the Welcome page:
-   - Console shows: "✅ Welcome is correct (Start -> categories.html)"
-   - Clicking Start goes to Categories with a clean slate.
+Instructions:
+1) In GitHub, overwrite your existing reflection_look_forward.html with this one.
+2) Commit to main; let Vercel deploy (use "Redeploy → Clear build cache" if available).
+3) Open the new deployment URL or use an incognito window to verify.

@@ -1,17 +1,85 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NOVA · Reflection — Look Forward</title>
-<link rel="stylesheet" href="assets/css/style.css?v=H94i">
-</head><body>
-<div class="wrap"><h1>Reflection — Look Forward</h1>
-<div class="card"><h2>Your New Role</h2><div id="roleBlock" class="small">Loading role…</div></div>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NOVA · Reflection — Look Forward</title>
+  <link rel="stylesheet" href="assets/css/style.css?v=H94i" />
+</head>
+<body>
+<div class="wrap">
+  <h1>Reflection — Look Forward</h1>
+  <div class="card"><h2>Your New Role</h2><div id="roleBlock" class="small">Loading role…</div></div>
+  <div class="card"><h2>Career Snapshot <span class="small">(U.S. Bureau of Labor Statistics)</span></h2><div id="ooh" class="small">Loading outlook…</div></div>
+  <div class="card"><h2>Choose Your Focus</h2><p class="small">Choose one focus below — this helps Nova and Navi tailor your next step together.</p>
+    <div class="grid">
+      <div class="pill" data-choice="Starting Out">Starting Out</div>
+      <div class="pill" data-choice="Switching">Switching</div>
+      <div class="pill" data-choice="Leveling Up">Leveling Up</div>
+      <div class="pill" data-choice="Restarting">Restarting</div>
+    </div>
+  </div>
+  <div class="bar"><a class="btn" href="reflection_look_back.html">Back</a><button id="next" class="btn" disabled>Next • Invest in Yourself</button></div>
+</div>
+
+<div id="overlay" class="overlay" style="display:none">
+  <div class="panel">
+    <h2>Got it — you're <span id="choiceTxt"></span></h2>
+    <p class="small">Let's build your next step.</p>
+  </div>
+</div>
+
 <script type="module">
-import {get,set} from './assets/js/shared.js';
-const roleEl=document.getElementById('roleBlock');
-const role=get('revealedRole',null);
-const jobsHtml=(role?.jobs||[]).join(', ');
-if(roleEl&&role){
-roleEl.innerHTML=`<b>${role.title}</b><br>Best fit by: ${role.tm} traits · ${role.dm} attributes.<br><span class="role-link">Discover these roles:</span> ${jobsHtml}`;
+import { get, set } from './assets/js/shared.js';
+
+const roleEl = document.getElementById('roleBlock');
+const oohEl  = document.getElementById('ooh');
+const role = get('revealedRole', null);
+const jobsHtml = (role?.jobs || []).join(', ');
+
+// --- Exact wording change here ---
+if (roleEl && role) {
+  roleEl.innerHTML = `<b>${role.title}</b><br>Best fit by: ${role.tm} traits · ${role.dm} attributes.<br><span class="role-link">Discover these roles:</span> ${jobsHtml}`;
 }
+
+// OOH snapshot (if available)
+const odata = get('ooh_data', null);
+if (oohEl && odata && role?.ooh && odata[role.ooh]) {
+  const $ = odata[role.ooh];
+  oohEl.innerHTML = `<b>${role.title}</b><br>${$.summary}<br><b>10-Year Outlook:</b> ${$.growth_10yr} · <b>Median Pay:</b> ${$.median_pay}<br><b>Top Settings:</b> ${$.settings}`;
+}
+
+// Focus choices
+const pills = Array.from(document.querySelectorAll('.pill[data-choice]'));
+const nextBtn = document.getElementById('next');
+pills.forEach(el => el.addEventListener('click', () => {
+  pills.forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+  set('reflectionChoice', el.getAttribute('data-choice'));
+  document.getElementById('choiceTxt').textContent = el.getAttribute('data-choice');
+  document.getElementById('overlay').style.display = 'flex';
+  nextBtn.disabled = false;
+}));
+
+nextBtn?.addEventListener('click', () => { location.href = 'invest.html'; });
 </script>
-</body></html>
+
+<!-- Runtime safety: swap wording if a cached file slips through -->
+<script>
+(function(){
+  function swap(){
+    const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    let n; while ((n = w.nextNode())) {
+      const t = n.nodeValue || '';
+      if (/Try these roles:/i.test(t)) {
+        n.nodeValue = t.replace(/Try these roles:/i, 'Discover these roles:');
+        break;
+      }
+    }
+  }
+  (document.readyState === 'loading') ? document.addEventListener('DOMContentLoaded', swap) : swap();
+})();
+</script>
+
+</body>
+</html>
