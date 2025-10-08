@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>NOVA · Reflection — Look Forward</title><link rel="stylesheet" href="assets/css/style.css"/></head><body><div class="wrap">
+<h1>Reflection — Look Forward</h1>
+<div class="card"><h2>Your New Role</h2><div id="roleBlock" class="small">Loading role…</div></div>
+<div class="card"><h2>Career Snapshot <span class="small">(U.S. Bureau of Labor Statistics)</span></h2><div id="ooh" class="small">Loading outlook…</div></div>
+<div class="card"><h2>Choose Your Focus</h2><p class="small">Choose one focus below — this helps Nova and Navi tailor your next step together.</p>
+<div class="grid"><div class="pill" data-choice="Starting Out">Starting Out</div><div class="pill" data-choice="Switching">Switching</div><div class="pill" data-choice="Leveling Up">Leveling Up</div><div class="pill" data-choice="Restarting">Restarting</div></div></div>
+<div class="bar"><a class="btn" href="reflection_look_back.html">Back</a><button id="next" class="btn" disabled>Next → Invest in Yourself</button></div></div>
+<div id="overlay" class="overlay" style="display:none"><div class="panel"><h2>Got it — you're <span id="choiceTxt"></span>!</h2><p class="small">Let’s build your next step.</p></div></div>
+<script type="module">import {{ readJSON, get, set }} from './assets/js/shared.js';
+const role=get('revealedRole',null); const roleEl=document.getElementById('roleBlock');
+if(role){ const jobs=(role.jobs||[]).join(', ')||'—'; const match=role.isFallback?'':`Best fit by: ${role.tm} traits · ${role.dm} attributes.`; roleEl.innerHTML=`<b>${role.title}</b><br/>${role.summary}<br/>${match}<br/>Try these roles: ${jobs}`; } else {{ roleEl.textContent='No role found. Visit Role Reveal first.'; }}
+const omap=await (await fetch('/data/ooh_map.json',{cache:'no-store'})).json(); const odata=await (await fetch('/data/ooh_data.json',{cache:'no-store'})).json();
+const buckets=new Set(); if(role && role.id && omap[role.id]) omap[role.id].forEach(k=>buckets.add(k));
+if((!buckets.size) && role && role.isFallback && role.categories && role.categories[0]){{ const c=role.categories[0].toLowerCase(); if(c.includes('health')) omap['helper']?.forEach(k=>buckets.add(k)); if(c.includes('trade')) omap['builder']?.forEach(k=>buckets.add(k)); if(c.includes('law')||c.includes('government')) omap['guardian']?.forEach(k=>buckets.add(k)); if(c.includes('sales')||c.includes('marketing')) omap['connector']?.forEach(k=>buckets.add(k)); if(c.includes('art')||c.includes('media')) omap['connector']?.forEach(k=>buckets.add(k)); if(c.includes('tech')||c.includes('science')) omap['analyst']?.forEach(k=>buckets.add(k)); if(c.includes('business')||c.includes('finance')) omap['strategist']?.forEach(k=>buckets.add(k)); if(c.includes('operations')||c.includes('logistics')) omap['strategist']?.forEach(k=>buckets.add(k)); if(c.includes('essential')||c.includes('everyday')) omap['helper']?.forEach(k=>buckets.add(k)); }}
+const outlook=[...buckets].map(k=>odata[k]).filter(Boolean).map(it=>`<b>${it.title}</b><br/>${it.summary}<br/><b>10-Year Outlook:</b> ${it.growth_10yr} · <b>Median Pay:</b> ${it.median_pay}<br/><b>Typical Settings:</b> ${(it.settings||[]).join(', ')}`).join('<hr/>');
+document.getElementById('ooh').innerHTML = outlook || 'Add outlook data for this role to /data/ooh_data.json.';
+const cards=Array.from(document.querySelectorAll('.pill[data-choice]')); const next=document.getElementById('next'); let choice=null;
+cards.forEach(el=>el.addEventListener('click',()=>{{ cards.forEach(x=>x.classList.remove('selected')); el.classList.add('selected'); choice=el.getAttribute('data-choice'); next.disabled=false; }}));
+next.addEventListener('click',()=>{{ if(!choice) return; set('reflectionChoice', choice); const handoff={{ selectedTraits:get('selectedTraits',[]), revealedRole: role? role.title:'', categoriesChosen:get('selectedCategories',[]), reflectionChoice:choice, timestamp:new Date().toISOString(), novaVersion:'9.4c' }}; set('novaHandoff', handoff); document.getElementById('choiceTxt').textContent=choice; const ov=document.getElementById('overlay'); ov.style.display='flex'; setTimeout(()=>{{ location.href='invest.html'; }}, 1600); }});
+</script></body></html>

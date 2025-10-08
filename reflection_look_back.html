@@ -1,0 +1,7 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>NOVA · Reflection — Look Back</title><link rel="stylesheet" href="assets/css/style.css"/></head><body><div class="wrap">
+<h1>Reflection — Look Back</h1><div class="card"><p class="small">Before you move forward, see what your life has already said about you.</p></div>
+<div class="card"><h2>Your Traits</h2><div id="traits" class="small">Loading…</div></div>
+<div class="bar"><a class="btn" href="role.html">Back</a><a class="btn" href="reflection_look_forward.html">Next → Look Forward</a></div></div>
+<script type="module">import {{ get }} from './assets/js/shared.js'; const t=get('selectedTraits',[]); document.getElementById('traits').textContent=t&&t.length? t.join(', ') : 'No traits found. Go back and select your strengths.';</script>
+</body></html>

@@ -1,34 +1,15 @@
-
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>NOVA · Role Reveal</title>
-<link rel="stylesheet" href="assets/css/style.css"/></head><body>
-<div class="wrap">
-  <h1>Your Role Reveal</h1>
-  <div class="card" id="result"></div>
-  <div class="card" id="alt"></div>
-  
-  <div class="card">
-    <p class="small"><b>Want structured next steps?</b> The <i>Purpose Book</i> gives you 30 days of simple actions to grow into your role.</p>
-    <a class="paybtn" href="https://payhip.com/" target="_blank" rel="noopener">Get the Purpose Book</a>
-  </div>
-
-  <div class="card"><h2>What this means</h2><p class="small">This isn’t a label—it’s a signal. Based on your traits and attributes, this pattern explains how you naturally show up. Adjust traits to refine the signal.</p></div>
-  <div class="bar"><div class="small" id="meta"></div><div><a class="btn" href="traits.html">Back</a><a class="btn" href="reflection.html">Next: Reflection</a></div></div>
-</div>
-<script type="module">
-  import { readJSON, get, set } from './assets/js/shared.js';
-  const traits = get('selectedTraits', []); const cats = get('selectedCategories', []);
-  function score(role,map){ const tm=traits.filter(t=>(role.trait_weights||[]).includes(t)).length; let dm=0; traits.forEach(t=>{ const d=map[t]||[]; if((role.attribute_weights||[]).some(x=>d.includes(x))) dm+=1; }); return {score:2*tm+dm, tm, dm}; }
-  const FALLBACK_TEXT = {"Arts & Media":"Your selections lean toward creativity, expression, and communication. Explore roles that turn ideas into stories, visuals, and experiences.","Business":"Your selections point to planning, structure, and improving how work gets done. Explore operations, coordination, and analysis roles.","Technology":"Your selections point to problem-solving, systems, and building with tools and code. Explore maker and technical roles.","Education & Community":"Your selections show mentoring, communication, and service. Explore teaching, coaching, and community liaison roles.","Public Safety":"Your selections highlight steadiness, accountability, and protection. Explore safety, security, and compliance roles.","Healthcare":"Your selections show care, precision, and patience. Explore aide, technician, and patient support roles.","Science & Research":"Your selections highlight curiosity, testing, and documentation. Explore lab, data, and research assistant roles.","Skilled Trades":"Your selections point to hands-on craft and quality. Explore maintenance, fabrication, and field service roles.","Finance & Accounting":"Your selections show numbers, accuracy, and integrity. Explore bookkeeping, accounting support, and analyst roles.","Operations & Logistics":"Your selections show organizing, flow, and reliability. Explore scheduling, inventory, and coordination roles.","Sales & Marketing":"Your selections highlight communication, persuasion, and story. Explore sales, outreach, and brand support roles.","Law & Government":"Your selections show fairness, process, and documentation. Explore administrative, policy, and public service roles.","Essential & Everyday Workers":"Your selections show service, reliability, and teamwork. Explore retail, clerical, custodial, warehousing, and community support roles."};
-
-  Promise.all([readJSON('/data/roles.json'), readJSON('/data/trait_to_attributes.json')]).then(([roles, map])=>{
-    const scored = roles.map(r=>({...r, __:score(r,map)})).sort((a,b)=>b.__.score-a.__.score);
-    const top = scored[0]; const alt = scored[1];
-    if(!top || top.__.score<=0){ const cat=cats[0]||'Essential & Everyday Workers'; const payload={ id:`fallback-${cat}`, title:`${cat} Role`, summary:FALLBACK_TEXT[cat]||'', jobs:[], isFallback:true, tm:0, dm:0, traits, categories:cats }; set('revealedRole', payload); document.getElementById('result').innerHTML = `<h2>${cat} Role</h2><p class="small">${FALLBACK_TEXT[cat]||''}</p><hr/><div class="small">You chose: ${traits.join(', ')||'—'}</div>`; document.getElementById('alt').innerHTML=''; document.getElementById('meta').textContent=`Based on ${traits.length} selected trait${traits.length===1?'':'s'}.`; return; }
-    const payload={ id:top.id, title:top.title, summary:top.summary, jobs:top.jobs||[], isFallback:false, tm:top.__.tm, dm:top.__.dm, traits, categories:cats }; set('revealedRole', payload); document.getElementById('result').innerHTML = `<h2>${top.title}</h2><p class="small">${top.summary}</p><hr/><div class="small">Best fit by: <b>${top.__.tm}</b> trait matches · <b>${top.__.dm}</b> attribute matches.</div><div class="small">Try these roles: ${(top.jobs||[]).join(', ')||'—'}</div>`;
-    document.getElementById('alt').innerHTML = alt? `<h2>Also Consider: ${alt.title}</h2><p class="small">${alt.summary}</p><div class="small">Roles: ${(alt.jobs||[]).join(', ')||'—'}</div>` : '';
-    document.getElementById('meta').textContent=`Based on ${traits.length} selected trait${traits.length===1?'':'s'}.`;
-  }).catch(e=>{ const cat=cats[0]||'Essential & Everyday Workers'; document.getElementById('result').innerHTML = `<h2>${cat} Role</h2><p class="small">${FALLBACK_TEXT[cat]||''}</p>`; console.error(e); });
-</script>
-</body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>NOVA · Role Reveal</title><link rel="stylesheet" href="assets/css/style.css"/></head><body><div class="wrap"><h1>Your Role Reveal</h1>
+<div class="card" id="result"></div><div class="card" id="alt"></div><div class="card"><h2>What this means</h2><p class="small">This isn’t a label—it’s a signal.</p></div>
+<div class="bar"><div class="small" id="meta"></div><div><a class="btn" href="traits.html">Back</a><a class="btn" href="reflection_look_back.html">Next: Reflection</a></div></div></div>
+<script type="module">import {{ readJSON, get, set }} from './assets/js/shared.js'; const traits=get('selectedTraits',[]); const cats=get('selectedCategories',[]);
+function score(role,map){{ const tm=traits.filter(t=>(role.trait_weights||[]).includes(t)).length; let dm=0; traits.forEach(t=>{{ const d=map[t]||[]; if((role.attribute_weights||[]).some(x=>d.includes(x))) dm+=1; }}); return {{score:2*tm+dm, tm, dm}}; }}
+const FALLBACK_TEXT={{"Arts & Media":"Creative expression and communication.","Business":"Planning, structure, and improvement.","Technology":"Problem-solving and systems.","Education & Community":"Mentoring and service.","Public Safety":"Accountability and protection.","Healthcare":"Care, precision, and patience.","Science & Research":"Curiosity and testing.","Skilled Trades":"Hands-on craft and quality.","Finance & Accounting":"Numbers, accuracy, integrity.","Operations & Logistics":"Flow and reliability.","Sales & Marketing":"Communication and persuasion.","Law & Government":"Fairness and process.","Essential & Everyday Workers":"Service, reliability, teamwork."}};
+Promise.all([readJSON('/data/roles.json'), readJSON('/data/trait_to_attributes.json')]).then(([roles,map])=>{{ const scored=roles.map(r=>({{...r, __:score(r,map)}})).sort((a,b)=>b.__.score-a.__.score); const top=scored[0]; const alt=scored[1];
+ if(!top||top.__.score<=0){{ const cat=cats[0]||'Essential & Everyday Workers'; const payload={{ id:`fallback-${{cat}}`, title:`${{cat}} Role`, summary:FALLBACK_TEXT[cat]||'', jobs:[], isFallback:true, tm:0, dm:0, traits, categories:cats }}; set('revealedRole',payload);
+ document.getElementById('result').innerHTML=`<h2>${{cat}} Role</h2><p class='small'>${{FALLBACK_TEXT[cat]||''}}</p><hr/><div class='small'>You chose: ${traits.join(', ')||'—'}</div>`; document.getElementById('alt').innerHTML=''; document.getElementById('meta').textContent=`Based on ${traits.length} selected trait${traits.length===1?'':'s'}.`; return; }}
+ const payload={{ id:top.id, title:top.title, summary:top.summary, jobs:top.jobs||[], isFallback:false, tm:top.__.tm, dm:top.__.dm, traits, categories:cats }}; set('revealedRole',payload);
+ document.getElementById('result').innerHTML=`<h2>${{top.title}}</h2><p class='small'>${{top.summary}}</p><hr/><div class='small'>Best fit by: <b>${{top.__.tm}}</b> trait matches · <b>${{top.__.dm}}</b> attribute matches.</div><div class='small'>Try these roles: ${(top.jobs||[]).join(', ')||'—'}</div>`;
+ document.getElementById('alt').innerHTML = alt? `<h2>Also Consider: ${{alt.title}}</h2><p class='small'>${{alt.summary}}</p><div class='small'>Roles: ${(alt.jobs||[]).join(', ')||'—'}</div>` : '';
+ document.getElementById('meta').textContent=`Based on ${traits.length} selected trait${traits.length===1?'':'s'}.`; }});
+</script></body></html>
