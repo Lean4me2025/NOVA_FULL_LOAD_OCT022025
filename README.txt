@@ -1,9 +1,13 @@
-Nova H94i RoleFix (Pure)
---------------------------------
-This package replaces ONE file:
-- reflection_look_forward.html (contains the correct wording: "Discover these roles:")
+Nova H94i — One-Click Reset Page
+------------------------------------
+This adds a simple page you can visit to clear all saved Nova selections
+(localStorage + sessionStorage) and redirect to the Welcome page.
 
-Instructions:
-1) In GitHub, overwrite your existing reflection_look_forward.html with this one.
-2) Commit to main; let Vercel deploy (use "Redeploy → Clear build cache" if available).
-3) Open the new deployment URL or use an incognito window to verify.
+How to use:
+1) Upload reset.html to the root of your repo (same level as index.html).
+2) Deploy to Vercel.
+3) In your browser, open: https://<your-domain>/reset.html
+   (e.g., https://nova-full-load-oct-022025.vercel.app/reset.html)
+4) It will show "Resetting Nova…" for a moment, wipe saved data, then send you to the Welcome page.
+
+Use this whenever traits/categories feel "stuck" across deployments.
