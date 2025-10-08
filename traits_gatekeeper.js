@@ -1,15 +1,15 @@
-// Ensure Categories completed before Traits
 (function(){
 try{
 const stage=sessionStorage.getItem('nova_stage');
-if(stage!=='categories_done'){
+const started=sessionStorage.getItem('nova_run_started')==='1';
+if(stage!=='categories_done'||!started){
 localStorage.removeItem('nova_selected_traits');
 localStorage.removeItem('nova_selected_categories');
 window.location.replace('categories.html');
+return;
 }
+document.addEventListener('DOMContentLoaded',()=>{
+document.querySelectorAll('.trait-card.selected').forEach(el=>el.classList.remove('selected'));
+});
 }catch(e){}
 })();
-document.addEventListener('DOMContentLoaded',()=>{
-if(sessionStorage.getItem('nova_stage')!=='categories_done'){
-document.querySelectorAll('.trait-card.selected').forEach(el=>el.classList.remove('selected'));
-}});

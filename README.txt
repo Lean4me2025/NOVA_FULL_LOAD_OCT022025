@@ -1,13 +1,17 @@
-Nova H94i — One-Click Reset Page
-------------------------------------
-This adds a simple page you can visit to clear all saved Nova selections
-(localStorage + sessionStorage) and redirect to the Welcome page.
+Nova v9.4i — Clean Start Package
+=================================
+Drop-in replacements only. Overwrite existing files with the same names/paths.
 
-How to use:
-1) Upload reset.html to the root of your repo (same level as index.html).
-2) Deploy to Vercel.
-3) In your browser, open: https://<your-domain>/reset.html
-   (e.g., https://nova-full-load-oct-022025.vercel.app/reset.html)
-4) It will show "Resetting Nova…" for a moment, wipe saved data, then send you to the Welcome page.
+Files:
+- assets/js/welcome.js
+- traits_gatekeeper.js
+- categories_stage_set.js
+- reflection_look_forward.html
+- reset.html
 
-Use this whenever traits/categories feel "stuck" across deployments.
+Deploy:
+1) Replace files in GitHub (same names/paths).
+2) Commit to main; on Vercel use Redeploy → Clear build cache.
+3) Test in an incognito window.
+
+Flow enforced: Welcome → Categories → Traits → Reflection.

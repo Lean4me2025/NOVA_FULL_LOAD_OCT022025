@@ -1,4 +1,11 @@
-// Mark Categories completion
-document.getElementById('categoriesNextBtn')?.addEventListener('click',()=>{try{
+(function(){
+const btn=document.getElementById('categoriesNextBtn');
+if(!btn) return;
+btn.addEventListener('click',()=>{
+try{
 sessionStorage.setItem('nova_stage','categories_done');
-}catch(e){}});
+sessionStorage.setItem('nova_run_started','1');
+localStorage.removeItem('nova_selected_traits');
+}catch(e){}
+});
+})();
