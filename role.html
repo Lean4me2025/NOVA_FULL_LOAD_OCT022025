@@ -1,112 +1,28 @@
 
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>NOVA · Role Reveal</title>
-  <link rel="stylesheet" href="assets/css/style.css"/>
-</head>
-<body>
-  <div class="wrap">
-    <h1>Your Role Reveal</h1>
-    <div class="card" id="result"></div>
-    <div class="card" id="alt"></div>
-    <div class="card">
-      <h2>What this means</h2>
-      <p class="small">This isn’t a label—it’s a <b>signal</b>. Based on your traits and attributes, this pattern explains how you naturally show up. Adjust your traits to refine the signal.</p>
-    </div>
-    <div class="bar">
-      <div class="small" id="meta"></div>
-      <div>
-        <a class="btn" href="traits.html">Back</a>
-        <a class="btn" href="reflection.html">Next: Reflection</a>
-      </div>
-    </div>
-  </div>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>NOVA · Role Reveal</title>
+<link rel="stylesheet" href="assets/css/style.css"/></head><body>
+<div class="wrap">
+  <h1>Your Role Reveal</h1>
+  <div class="card" id="result"></div>
+  <div class="card" id="alt"></div>
+  <div class="card"><h2>What this means</h2><p class="small">This isn’t a label—it’s a signal. Based on your traits and attributes, this pattern explains how you naturally show up. Adjust traits to refine the signal.</p></div>
+  <div class="bar"><div class="small" id="meta"></div><div><a class="btn" href="traits.html">Back</a><a class="btn" href="reflection.html">Next: Reflection</a></div></div>
+</div>
+<script type="module">
+  import { readJSON, get } from './assets/js/shared.js';
+  const traits = get('selectedTraits', []); const cats = get('selectedCategories', []);
+  function score(role,map){ const tm=traits.filter(t=>(role.trait_weights||[]).includes(t)).length; let dm=0; traits.forEach(t=>{ const d=map[t]||[]; if((role.attribute_weights||[]).some(x=>d.includes(x))) dm+=1; }); return {score:2*tm+dm, tm, dm}; }
+  const FALLBACK_TEXT = {"Arts & Media":"Your selections lean toward creativity, expression, and communication. Explore roles that turn ideas into stories, visuals, and experiences.","Business":"Your selections point to planning, structure, and improving how work gets done. Explore operations, coordination, and analysis roles.","Technology":"Your selections point to problem-solving, systems, and building with tools and code. Explore maker and technical roles.","Education & Community":"Your selections show mentoring, communication, and service. Explore teaching, coaching, and community liaison roles.","Public Safety":"Your selections highlight steadiness, accountability, and protection. Explore safety, security, and compliance roles.","Healthcare":"Your selections show care, precision, and patience. Explore aide, technician, and patient support roles.","Science & Research":"Your selections highlight curiosity, testing, and documentation. Explore lab, data, and research assistant roles.","Skilled Trades":"Your selections point to hands-on craft and quality. Explore maintenance, fabrication, and field service roles.","Finance & Accounting":"Your selections show numbers, accuracy, and integrity. Explore bookkeeping, accounting support, and analyst roles.","Operations & Logistics":"Your selections show organizing, flow, and reliability. Explore scheduling, inventory, and coordination roles.","Sales & Marketing":"Your selections highlight communication, persuasion, and story. Explore sales, outreach, and brand support roles.","Law & Government":"Your selections show fairness, process, and documentation. Explore administrative, policy, and public service roles.","Essential & Everyday Workers":"Your selections show service, reliability, and teamwork. Explore retail, clerical, custodial, warehousing, and community support roles."};
 
-  <script type="module">
-    
-    import { readJSON, get } from './assets/js/shared.js';
-    const traits = get('selectedTraits', []);
-    const cats   = get('selectedCategories', []);
-
-    function roleScore(role, map){
-      const traitMatches = traits.filter(t => (role.trait_weights||[]).includes(t)).length;
-      let domainMatches = 0;
-      traits.forEach(t => {
-        const domains = map[t] || [];
-        if ((role.attribute_weights||[]).some(d => domains.includes(d))) domainMatches += 1;
-      });
-      const score = 2*traitMatches + 1*domainMatches;
-      return {score, traitMatches, domainMatches};
-    }
-
-    // Fallback text for categories
-    const CATEGORY_FALLBACK_TEXT = {
-      "Arts & Media": "Your selections lean toward creativity, expression, and communication. Explore roles that turn ideas into stories, visuals, and experiences.",
-      "Business": "Your selections point to planning, structure, and improving how work gets done. Explore operations, coordination, and analysis roles.",
-      "Technology": "Your selections point to problem-solving, systems, and building with tools and code. Explore maker and technical roles.",
-      "Education & Community": "Your selections show mentoring, communication, and service. Explore teaching, coaching, and community liaison roles.",
-      "Public Safety": "Your selections highlight steadiness, accountability, and protection. Explore safety, security, and compliance roles.",
-      "Healthcare": "Your selections show care, precision, and patience. Explore aide, technician, and patient support roles.",
-      "Science & Research": "Your selections highlight curiosity, testing, and documentation. Explore lab, data, and research assistant roles.",
-      "Skilled Trades": "Your selections point to hands-on craft and quality. Explore maintenance, fabrication, and field service roles.",
-      "Finance & Accounting": "Your selections show numbers, accuracy, and integrity. Explore bookkeeping, accounting support, and analyst roles.",
-      "Operations & Logistics": "Your selections show organizing, flow, and reliability. Explore scheduling, inventory, and coordination roles.",
-      "Sales & Marketing": "Your selections highlight communication, persuasion, and story. Explore sales, outreach, and brand support roles.",
-      "Law & Government": "Your selections show fairness, process, and documentation. Explore administrative, policy, and public service roles.",
-      "Essential & Everyday Workers": "Your selections show service, reliability, and teamwork. Explore retail, clerical, custodial, warehousing, and community support roles."
-    };
-
-    function renderFallback(category){
-      const title = `${category} Role`;
-      const text  = CATEGORY_FALLBACK_TEXT[category] || "Explore this area further to see roles that match your strengths.";
-      document.getElementById('result').innerHTML = `
-        <h2>${title}</h2>
-        <p class="small">${text}</p>
-        <hr/>
-        <div class="small">You chose: ${traits.join(', ') || '—'}</div>
-      `;
-      document.getElementById('alt').innerHTML = '';
-      document.getElementById('meta').textContent = `Based on ${traits.length} selected trait${traits.length===1?'':'s'}.`;
-    }
-
-    Promise.all([ readJSON('data/roles.json'), readJSON('data/trait_to_attributes.json') ]).then(([roles, map])=>{
-      const scored = roles.map(r => ({...r, __score: roleScore(r,map)})).sort((a,b)=>b.__score.score-a.__score.score);
-      const top = scored[0];
-      // If no role scored at all (or zero), present fallback from the selected category
-      if (!top || top.__score.score <= 0){
-        const cat = cats[0] || 'Essential & Everyday Workers';
-        renderFallback(cat);
-        return;
-      }
-
-      const alt = scored[1];
-      const topHTML = `
-        <h2>${top.title}</h2>
-        <p class="small">${top.summary}</p>
-        <hr/>
-        <div class="small">Best fit by: <b>${top.__score.traitMatches}</b> trait matches · <b>${top.__score.domainMatches}</b> attribute matches.</div>
-        <div class="small">Try these roles: ${ (top.jobs||[]).join(', ') || '—' }</div>
-      `;
-      document.getElementById('result').innerHTML = topHTML;
-
-      const altHTML = alt ? `
-        <h2>Also Consider: ${alt.title}</h2>
-        <p class="small">${alt.summary}</p>
-        <div class="small">Roles: ${ (alt.jobs||[]).join(', ') || '—' }</div>
-      ` : '';
-      document.getElementById('alt').innerHTML = altHTML;
-
-      document.getElementById('meta').textContent = `Based on ${traits.length} selected trait${traits.length===1?'':'s'}.`;
-    }).catch(e=>{
-      // If data fails to load for any reason, fall back to category
-      const cat = cats[0] || 'Essential & Everyday Workers';
-      renderFallback(cat);
-      console.error(e);
-    });
-
+  Promise.all([readJSON('/data/roles.json'), readJSON('/data/trait_to_attributes.json')]).then(([roles, map])=>{
+    const scored = roles.map(r=>({...r, __:score(r,map)})).sort((a,b)=>b.__.score-a.__.score);
+    const top = scored[0]; const alt = scored[1];
+    if(!top || top.__.score<=0){ const cat=cats[0]||'Essential & Everyday Workers'; document.getElementById('result').innerHTML = `<h2>${cat} Role</h2><p class="small">${FALLBACK_TEXT[cat]||''}</p><hr/><div class="small">You chose: ${traits.join(', ')||'—'}</div>`; document.getElementById('alt').innerHTML=''; document.getElementById('meta').textContent=`Based on ${traits.length} selected trait${traits.length===1?'':'s'}.`; return; }
+    document.getElementById('result').innerHTML = `<h2>${top.title}</h2><p class="small">${top.summary}</p><hr/><div class="small">Best fit by: <b>${top.__.tm}</b> trait matches · <b>${top.__.dm}</b> attribute matches.</div><div class="small">Try these roles: ${(top.jobs||[]).join(', ')||'—'}</div>`;
+    document.getElementById('alt').innerHTML = alt? `<h2>Also Consider: ${alt.title}</h2><p class="small">${alt.summary}</p><div class="small">Roles: ${(alt.jobs||[]).join(', ')||'—'}</div>` : '';
+    document.getElementById('meta').textContent=`Based on ${traits.length} selected trait${traits.length===1?'':'s'}.`;
+  }).catch(e=>{ const cat=cats[0]||'Essential & Everyday Workers'; document.getElementById('result').innerHTML = `<h2>${cat} Role</h2><p class="small">${FALLBACK_TEXT[cat]||''}</p>`; console.error(e); });
 </script>
-</body>
-</html>
+</body></html>

@@ -1,42 +1,21 @@
 
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>NOVA · Choose Categories</title>
-  <link rel="stylesheet" href="assets/css/style.css"/>
-</head>
-<body>
-  <div class="wrap">
-    <h1>Choose Your Categories</h1>
-    <p class="small">Why this matters: Categories <b>focus the conversation</b>. They don’t limit you—<b>they clarify the next step</b>. Pick what’s true of your interests or your everyday work (choose more than one if it fits).</p>
-    <div class="card">
-      <p class="small"><b>If you’re unsure:</b> If you’re in retail, warehousing, maintenance, clerical, or customer support, choose <b>Essential & Everyday Workers</b> so you’re fully represented.</p>
-    </div>
-    <div id="grid" class="grid" role="list"></div>
-    <div class="bar">
-      <div class="small" id="cap">0 selected</div>
-      <div>
-        <a class="btn" href="welcome.html">Back</a>
-        <button id="next" class="btn" disabled>Start: Select Traits</button>
-      </div>
-    </div>
-  </div>
-  <script type="module">
-    import { set } from './assets/js/shared.js';
-    const categories = ["Business", "Technology", "Education & Community", "Public Safety", "Healthcare", "Science & Research", "Skilled Trades", "Finance & Accounting", "Operations & Logistics", "Sales & Marketing", "Law & Government", "Arts & Media", "Essential & Everyday Workers"];
-    const grid = document.getElementById('grid');
-    const cap  = document.getElementById('cap');
-    const chosen = new Set();
-
-    function update(){ cap.textContent = `${chosen.size} selected`; document.getElementById('next').disabled = chosen.size===0; set('selectedCategories',[...chosen]); }
-    categories.forEach(cat=>{
-      const el=document.createElement('div'); el.className='pill'; el.textContent=cat;
-      el.addEventListener('click',()=>{ if(chosen.has(cat)) chosen.delete(cat); else chosen.add(cat); el.classList.toggle('selected', chosen.has(cat)); update(); });
-      grid.appendChild(el);
-    });
-    document.getElementById('next').addEventListener('click',()=>location.href='traits.html');
-  </script>
-</body>
-</html>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>NOVA · Choose Categories</title>
+<link rel="stylesheet" href="assets/css/style.css"/></head><body>
+<div class="wrap">
+  <h1>Choose Your Categories</h1>
+  <p class="small">Why this matters: Categories <b>focus the conversation</b>. They don’t limit you—<b>they clarify the next step</b>. Pick what’s true of your interests or your everyday work.</p>
+  <div class="card"><p class="small"><b>If you’re unsure:</b> If you’re in retail, warehousing, maintenance, clerical, or customer support, choose <b>Essential & Everyday Workers</b>.</p></div>
+  <div id="grid" class="grid" role="list"></div>
+  <div class="bar"><div class="small" id="cap">0 selected</div><div><a class="btn" href="index.html">Back</a><button id="next" class="btn" disabled>Start: Select Traits</button></div></div>
+</div>
+<script type="module">
+  import { set } from './assets/js/shared.js';
+  const categories = ["Business", "Technology", "Education & Community", "Public Safety", "Healthcare", "Science & Research", "Skilled Trades", "Finance & Accounting", "Operations & Logistics", "Sales & Marketing", "Law & Government", "Arts & Media", "Essential & Everyday Workers"];
+  const grid = document.getElementById('grid'); const cap = document.getElementById('cap'); const chosen = new Set();
+  function update(){ cap.textContent = `${chosen.size} selected`; document.getElementById('next').disabled = chosen.size===0; set('selectedCategories',[...chosen]); }
+  categories.forEach(cat=>{ const el=document.createElement('div'); el.className='pill'; el.textContent=cat; el.addEventListener('click',()=>{ if(chosen.has(cat)) chosen.delete(cat); else chosen.add(cat); el.classList.toggle('selected', chosen.has(cat)); update(); }); grid.appendChild(el); });
+  document.getElementById('next').addEventListener('click',()=>location.href='traits.html');
+</script>
+</body></html>

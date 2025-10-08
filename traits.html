@@ -1,85 +1,74 @@
 
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>NOVA · Select Your Traits</title>
-  <link rel="stylesheet" href="assets/css/style.css"/>
-</head>
-<body>
-  <div class="wrap">
-    <h1>Select Your Traits</h1>
-    <p>Why this matters: <b>Traits are the receipts of your life</b>—clues you’ve shown again and again. When we group them, your direction emerges.</p>
-    <div class="card">
-      <p class="small"><b>How to choose:</b> Tap traits you have actually demonstrated. If you’ve helped customers, kept things organized, fixed what’s broken, or stayed calm under pressure—count it. Select up to <b>12</b>.</p>
-      <p id="catLine" class="small" style="margin-top:6px"></p>
-      <p id="attrHint" class="small"></p>
-    </div>
-    <div id="grid" class="grid" role="list"></div>
-    <div class="bar">
-      <div class="small" id="cap">0 / 12 selected</div>
-      <div>
-        <a class="btn" href="index.html">Back</a>
-        <button id="next" class="btn" disabled>Next: Role Reveal</button>
-      </div>
-    </div>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>NOVA · Select Your Traits</title>
+<link rel="stylesheet" href="assets/css/style.css"/></head><body>
+<div class="wrap">
+  <div id="dbg" class="debug" style="display:none"></div>
+  <h1>Select Your Traits</h1>
+  <p>Why this matters: <b>Traits are the receipts of your life</b>—clues you’ve shown again and again. When we group them, your direction emerges.</p>
+  <div class="card">
+    <p class="small"><b>How to choose:</b> Tap traits you have actually demonstrated. Select up to <b>12</b>.</p>
+    <p id="catLine" class="small" style="margin-top:6px"></p>
+    <p id="attrHint" class="small"></p>
   </div>
-  <script type="module">
-    import {{ readJSON, get, set, byAlpha, dedupe }} from './assets/js/shared.js';
-    const MAX = 12;
-    const cats = get('selectedCategories', []);
-    const catLine = document.getElementById('catLine');
-    const attrHint = document.getElementById('attrHint');
-    catLine.textContent = cats.length ? `From categories: ${cats.join(', ')}` : 'No categories chosen yet.';
+  <div id="grid" class="grid" role="list"></div>
+  <div id="errorCard" class="card" style="display:none"></div>
+  <div class="bar"><div class="small" id="cap">0 / 12 selected</div><div><a class="btn" href="categories.html">Back</a><button id="next" class="btn" disabled>Next: Role Reveal</button></div></div>
+</div>
 
-    const selected = new Set(get('selectedTraits', []));
+<script id="embedded-categories" type="application/json">{"Business": ["Analytical", "Strategic", "Planner", "Organizer", "Documentation", "Decision-Making", "Process Improvement", "Results-Driven", "Presentation", "Writing", "Market Awareness", "Customer-Focused", "Relationship-Building", "Numerical Reasoning", "Data-Driven"], "Technology": ["Systems Thinking", "Problem-Solving", "Troubleshooting", "Security-Minded", "Data-Driven", "Creative", "Documentation", "Logical", "Pattern Recognition", "Research", "Detail-Oriented", "Presentation"], "Education & Community": ["Teaching", "Mentoring", "Communicator", "Listener", "Empathetic", "Encouraging", "Community-Minded", "Service-Driven", "Writing", "Presentation", "Organizer"], "Public Safety": ["Calm Under Pressure", "Ethical", "Accountable", "Safety-First", "Security-Minded", "Detail-Oriented", "Courageous", "Reliable", "Documentation"], "Healthcare": ["Compassionate", "Patient", "Ethical", "Team-Oriented", "Reliable", "Documentation", "Calm Under Pressure", "Service-Driven", "Detail-Oriented"], "Science & Research": ["Research", "Pattern Recognition", "Analytical", "Documentation", "Systems Thinking", "Logical", "Problem-Solving"], "Skilled Trades": ["Hands-On", "Mechanical Aptitude", "Spatial Reasoning", "Tool Proficiency", "Quality Focus", "Safety-First", "Stamina", "Coordinated", "Reliable"], "Finance & Accounting": ["Numerical Reasoning", "Analytical", "Detail-Oriented", "Integrity", "Accountable", "Documentation", "Planner", "Disciplined", "Data-Driven"], "Operations & Logistics": ["Organizer", "Scheduling", "Vendor Management", "Process Improvement", "Reliable", "Team-Oriented", "Detail-Oriented", "Results-Driven"], "Sales & Marketing": ["Persuasive", "Communicator", "Relationship-Building", "Presentation", "Market Awareness", "Optimistic", "Customer-Focused", "Creative"], "Law & Government": ["Ethical", "Integrity", "Documentation", "Communicator", "Analytical", "Diplomatic", "Public Speaking", "Accountable"], "Arts & Media": ["Creative", "Design Sense", "Writing", "Presentation", "Communicator", "Optimistic"], "Essential & Everyday Workers": ["Reliable", "Dependable", "Service-Driven", "Customer-Focused", "Team-Oriented", "Organizer", "Hands-On", "Safety-First", "Quality Focus", "Accountable", "Community-Minded", "Patient", "Encouraging"]}</script>
 
-    function updateSelectedDisplay(){
-      document.getElementById('cap').textContent = `${selected.size} / ${MAX} selected`;
-      document.getElementById('next').disabled = selected.size===0;
-      set('selectedTraits', [...selected]);
-      // attribute hint
-      Promise.all([readJSON('data/trait_to_attributes.json')]).then(([map])=>{
-        const counts = {Cognitive:0,Emotional:0,Social:0,"Moral/Ethical":0,Physical:0,Motivational:0,Spiritual:0};
-        [...selected].forEach(t=> (map[t]||[]).forEach(d=> counts[d]=(counts[d]||0)+1 ));
-        const top = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,2).filter(x=>x[1]>0).map(x=>x[0]);
-        attrHint.textContent = top.length ? `Signal showing: ${top.join(' + ')} strengths.` : '';
+<script type="module">
+  import { readJSON, get, set, byAlpha, dedupe, caseKey } from './assets/js/shared.js';
+  const MAX = 12; const cats = get('selectedCategories', []);
+  const dbg = document.getElementById('dbg');
+  function log(msg){ dbg.style.display='block'; dbg.textContent = msg; }
+  if (!cats || !cats.length) { location.href='categories.html'; }
+
+  document.getElementById('catLine').textContent = `From categories: ${cats.join(', ')}`;
+  const selected = new Set(get('selectedTraits', []));
+
+  function showError(msg) { const ec=document.getElementById('errorCard'); ec.style.display='block'; ec.innerHTML = `<b>Data didn’t load.</b><br/><span class="small">${msg}</span>`; }
+  function updateUI(){ document.getElementById('cap').textContent = `${selected.size} / ${MAX} selected`; document.getElementById('next').disabled = selected.size===0; set('selectedTraits',[...selected]); }
+  function render(list){ const grid=document.getElementById('grid'); grid.innerHTML=''; list.forEach(trait=>{ const el=document.createElement('div'); el.className='pill'; el.textContent=trait; if(selected.has(trait)) el.classList.add('selected'); el.addEventListener('click',()=>{ if(selected.has(trait)){selected.delete(trait); el.classList.remove('selected');} else if(selected.size<MAX){selected.add(trait); el.classList.add('selected');} updateUI(); }); grid.appendChild(el); }); updateUI(); }
+
+  function pickFromMap(map) {
+    const keyMap = Object.fromEntries(Object.keys(map||{}).map(k=>[caseKey(k), map[k]]));
+    const bag=[];
+    cats.forEach(c=>{ const arr = keyMap[caseKey(c)] || []; bag.push(...arr); });
+    return dedupe(bag).sort(byAlpha);
+  }
+
+  // 1) Embedded data
+  try {
+    const emb = JSON.parse(document.getElementById('embedded-categories').textContent||'{}');
+    const list = pickFromMap(emb);
+    if (list.length) { log('Loaded from embedded data'); render(list); }
+    else throw new Error('Embedded data returned 0 traits');
+  } catch(e) {
+    // 2) ./data
+    readJSON('./data/traits_with_categories.json').then(map=>{
+      const list = pickFromMap(map);
+      if (list.length) { log('Loaded from ./data/traits_with_categories.json'); render(list); }
+      else throw new Error('No traits from ./data');
+    }).catch(e1=>{
+      // 3) /data absolute
+      readJSON('/data/traits_with_categories.json').then(map=>{
+        const list = pickFromMap(map);
+        if (list.length) { log('Loaded from /data/traits_with_categories.json'); render(list); }
+        else throw new Error('No traits from /data absolute');
+      }).catch(e2=>{
+        // 4) unified brain map
+        readJSON('/data/nova_brain_map_v1.json').then(bm=>{
+          const list = pickFromMap(bm.categories||{});
+          if (list.length) { log('Loaded from /data/nova_brain_map_v1.json'); render(list); }
+          else { showError('No traits found for your categories.'); }
+        }).catch(e3=>{ console.error(e3); showError('Please confirm data files are deployed in /data.'); });
       });
-    }
-
-    function render(list){
-      const grid = document.getElementById('grid'); grid.innerHTML='';
-      list.forEach(trait => {
-        const el = document.createElement('div'); el.className='pill'; el.textContent=trait;
-        if (selected.has(trait)) el.classList.add('selected');
-        el.addEventListener('click', () => {
-          if (selected.has(trait)) { selected.delete(trait); el.classList.remove('selected'); }
-          else if (selected.size < MAX) { selected.add(trait); el.classList.add('selected'); }
-          updateSelectedDisplay();
-        });
-        grid.appendChild(el);
-      });
-      updateSelectedDisplay();
-    }
-
-    Promise.all([readJSON('data/traits_with_categories.json')]).then(([map]) => {
-      const bag = [];
-      cats.forEach(c => {
-        if (map[c]) bag.push(...map[c]);
-        else {
-          const k = Object.keys(map).find(k => k.toLowerCase() === c.toLowerCase());
-          if (k) bag.push(...map[k]);
-        }
-      });
-      const list = dedupe(bag).sort(byAlpha);
-      render(list);
-    }).catch(e => {
-      document.getElementById('grid').innerHTML = '<div class="card">Could not load traits data.</div>';
-      console.error(e);
     });
+  }
 
-    document.getElementById('next').addEventListener('click', ()=>location.href='role.html');
-  </script>
-</body>
-</html>
+  document.getElementById('next').addEventListener('click',()=>location.href='role.html');
+</script>
+</body></html>
