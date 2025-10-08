@@ -1,28 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nova — Reset</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=H95b">
-</head>
-<body>
-  <div class="header"><a href="index.html">← Back to Welcome</a></div>
-  <main class="wrap">
-    <h1>Resetting Nova…</h1>
-    <div class="card"><p>This page clears saved selections and restarts your session.</p></div>
-    <div class="notice small">You can bookmark this page for QA.</div>
-    <footer>Nova v9.5b — Discover Purpose. Live It Boldly.</footer>
-  </main>
+<!doctype html><html><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reset · Nova</title><link rel="stylesheet" href="assets/css/style.css?v=H95c"></head>
+<body><div class="header"><a href="index.html">← Welcome</a></div>
+<main class="wrap"><h1>Resetting…</h1><div class="card"><p>Clearing prior selections and restarting the session.</p></div>
+<footer>Nova v9.5b — Discover Purpose. Live It Boldly.</footer></main>
 <script>
-(function(){
-  try {
-    localStorage.removeItem('nova_selected_traits');
-    localStorage.removeItem('nova_selected_categories');
-    sessionStorage.clear();
-  } catch(e) {}
-  setTimeout(function(){ location.replace('index.html'); }, 1000);
-})();
-</script>
-</body>
-</html>
+try{localStorage.removeItem('nova_selected_traits');localStorage.removeItem('nova_selected_categories');sessionStorage.clear();}catch(e){} 
+setTimeout(()=>location.replace('index.html'),800);
+</script></body></html>

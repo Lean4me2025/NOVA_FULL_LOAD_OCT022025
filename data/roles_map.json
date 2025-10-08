@@ -1,0 +1,63 @@
+{
+  "roles": {
+    "analyst": {
+      "title": "The Analyst",
+      "positions": [
+        "Data Assistant",
+        "Lab Tech",
+        "Reporting Specialist"
+      ],
+      "traits": [
+        "Analytical",
+        "Logical",
+        "Research",
+        "Detail-Oriented",
+        "Systems Thinking"
+      ],
+      "category_weights": {
+        "Technology": 2,
+        "Finance & Accounting": 2,
+        "Business": 1,
+        "Education": 1
+      }
+    },
+    "strategist": {
+      "title": "The Strategist",
+      "positions": [
+        "Operations Coordinator",
+        "Business Analyst",
+        "Project Planner"
+      ],
+      "traits": [
+        "Organized",
+        "Decision-Making",
+        "Problem-Solving",
+        "Team-Oriented"
+      ],
+      "category_weights": {
+        "Business": 2,
+        "Operations": 2,
+        "Sales & Customer": 1
+      }
+    },
+    "builder": {
+      "title": "The Builder",
+      "positions": [
+        "Skilled Trades",
+        "Technician",
+        "Installer"
+      ],
+      "traits": [
+        "Hands-On",
+        "Problem-Solving",
+        "Adaptable",
+        "Resilient"
+      ],
+      "category_weights": {
+        "Hands-On": 3,
+        "Technology": 1,
+        "Operations": 1
+      }
+    }
+  }
+}

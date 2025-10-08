@@ -1,30 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Welcome to Nova</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=H95b">
-</head>
-<body>
-  <div class="header">
-    <span>Nova</span>
-    <nav>
-      <a href="index.html">Home</a> • <a href="reset.html">Reset</a>
-    </nav>
-  </div>
-  <main class="wrap">
-    <h1>Welcome to Nova</h1>
-    <div class="card">
-      <p class="small"><strong>89%</strong> of people do not know their purpose.</p>
-      <p class="small">You were designed with purpose. Nova doesn’t create it — she reveals it. In the next few minutes, you’ll walk through choices that mirror your mind, heart, drive, and spirit. By the end, you’ll see a reflection of how you’re wired to make impact.</p>
-      <div class="notice">This journey takes about <strong>2–5 minutes</strong>. Take your time — clarity is worth it.</div>
-      <div class="bar">
-        <a id="startJourneyBtn" class="btn" href="categories.html">Start My Journey</a>
-      </div>
-    </div>
-    <footer>Nova v9.5b — Discover Purpose. Live It Boldly.</footer>
-  </main>
-  <script src="assets/js/welcome.js?v=H95b"></script>
-</body>
-</html>
+<!doctype html><html><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welcome to Nova</title><link rel="stylesheet" href="assets/css/style.css?v=H95c"></head>
+<body><div class="header"><a href="reset.html">Reset</a></div>
+<main class="wrap"><h1>Welcome to Nova</h1>
+<div class="card"><p><strong>89%</strong> of people do not know their purpose.</p>
+<p>You were designed with purpose. Nova doesn’t create it — she reveals it. This journey takes about <strong>2–5 minutes</strong>.</p>
+<div class="bar"><a id="start" class="btn" href="categories.html">Start My Journey</a></div></div>
+<footer>Nova v9.5b — Discover Purpose. Live It Boldly.</footer></main>
+<script>document.getElementById('start').addEventListener('click',()=>{try{sessionStorage.clear();localStorage.removeItem('nova_selected_traits');localStorage.removeItem('nova_selected_categories');sessionStorage.setItem('nova_run_started','1')}catch(e){}})</script>
+</body></html>

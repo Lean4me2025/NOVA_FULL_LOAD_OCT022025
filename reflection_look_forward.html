@@ -1,34 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Reflection — Look Forward · Nova</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=H95b">
-</head>
-<body>
-  <div class="header"><a href="traits.html">← Back to Traits</a><nav><a href="invest.html">Invest</a> • <a href="reset.html">Reset</a></nav></div>
-  <main class="wrap">
-    <h1>Reflection — Look Forward</h1>
-    <div class="card">
-      <p>This is the reflection moment — where your choices come together into a direction. Don’t get stuck on the title; look for what it says about how you <em>contribute</em>.</p>
-    </div>
-    <div class="card">
-      <h2>Your New Role</h2>
-      <div id="roleBlock" class="small"></div>
-    </div>
-    <div class="bar">
-      <a class="btn btn-ghost" href="traits.html">Back</a>
-      <a class="btn" href="invest.html">Next: Invest</a>
-    </div>
-    <footer>Nova v9.5b — Discover Purpose. Live It Boldly.</footer>
-  </main>
-  <script>
-    const role = { title: 'The Analyst', tm: 12, dm: 8, jobs: ['Skilled Trades','Technician','Installer'] };
-    const jobsHtml = role.jobs.join(', ');
-    const roleEl = document.getElementById('roleBlock');
-    roleEl.innerHTML = `<b>${role.title}</b><br>Best fit by: ${role.tm} traits · ${role.dm} attributes.<br><span class="role-link">Discover these roles:</span> ${jobsHtml}`;
-    (function(){function swap(){const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){const t=n.nodeValue||'';if(/\bTry these roles:/i.test(t)){n.nodeValue=t.replace(/\bTry these roles:/i,'Discover these roles:');break;}}}(document.readyState==='loading')?document.addEventListener('DOMContentLoaded',swap):swap();)();
-  </script>
-</body>
-</html>
+<!doctype html><html><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reflection — Look Forward · Nova</title><link rel="stylesheet" href="assets/css/style.css?v=H95c"></head>
+<body><div class="header"><a href="traits.html">← Traits</a> <a href="invest.html">Invest</a> <a href="reset.html">Reset</a></div>
+<main class="wrap"><h1>Reflection — Look Forward</h1>
+<div class="card"><p>This is your reveal — how your patterns come together into direction. Don’t overthink the title; look for what it says about your contribution.</p></div>
+<div class="card"><h2>Your New Role</h2><div id="roleBlock" class="small">Loading…</div></div>
+<div class="bar"><a class="btn btn-ghost" href="traits.html">Back</a><a class="btn" href="invest.html">Next: Invest</a></div>
+<footer>Nova v9.5b — Discover Purpose. Live It Boldly.</footer></main>
+<script>
+const readJSON=(k)=>{try{return JSON.parse(localStorage.getItem(k)||'[]')}catch(e){return []}};
+const traits = readJSON('nova_selected_traits').length?readJSON('nova_selected_traits'):readJSON('selectedTraits');
+const categories = readJSON('nova_selected_categories').length?readJSON('nova_selected_categories'):readJSON('selectedCategories');
+
+async function reveal(){
+  const el=document.getElementById('roleBlock');
+  try{
+    const res = await fetch('data/roles_map.json',{cache:'no-store'});
+    const data = await res.json();
+    const scores = Object.entries(data.roles).map(([key,cfg])=>{
+      let s=0; (categories||[]).forEach(c=>{s += (cfg.category_weights||{})[c]||0});
+      (traits||[]).forEach(t=>{s += (cfg.traits||[]).includes(t)?1:0});
+      return {title:cfg.title, positions:cfg.positions||[], s};
+    }).sort((a,b)=>b.s-a.s);
+    const top = scores[0] || {title:'The Analyst', positions:['Data Assistant','Lab Tech','Reporting Specialist']};
+    el.innerHTML = `<b>${top.title}</b><br>Best fit by: ${traits.length} traits · ${categories.length} attributes.<br><span class="role-link">Discover these roles:</span> ${top.positions.join(', ')}`;
+  }catch(e){
+    el.innerHTML = `<b>The Analyst</b><br>Best fit by: ${traits.length} traits · ${categories.length} attributes.<br><span class="role-link">Discover these roles:</span> Data Assistant, Lab Tech, Reporting Specialist`;
+  }
+}
+reveal();
+(function(){const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){const t=n.nodeValue||'';if(/\bTry these roles:/i.test(t)){n.nodeValue=t.replace(/\bTry these roles:/i,'Discover these roles:');}}})();
+</script>
+</body></html>
