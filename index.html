@@ -1,11 +1,40 @@
-<!doctype html><html><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Welcome to Nova</title><link rel="stylesheet" href="assets/css/style.css?v=H95c"></head>
-<body><div class="header"><a href="reset.html">Reset</a></div>
-<main class="wrap"><h1>Welcome to Nova</h1>
-<div class="card"><p><strong>89%</strong> of people do not know their purpose.</p>
-<p>You were designed with purpose. Nova doesn’t create it — she reveals it. This journey takes about <strong>2–5 minutes</strong>.</p>
-<div class="bar"><a id="start" class="btn" href="categories.html">Start My Journey</a></div></div>
-<footer>Nova v9.5b — Discover Purpose. Live It Boldly.</footer></main>
-<script>document.getElementById('start').addEventListener('click',()=>{try{sessionStorage.clear();localStorage.removeItem('nova_selected_traits');localStorage.removeItem('nova_selected_categories');sessionStorage.setItem('nova_run_started','1')}catch(e){}})</script>
-</body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>NOVA — Intro</title>
+  <link rel="preload" href="assets/audio/intro.wav" as="audio">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="header">
+    <h1>NOVA</h1>
+    <nav class="nav"><a href="traits.html">Skip to Traits</a></nav>
+  </header>
+  <main class="container center">
+    <h2 class="sr-only">Nova — Introduction</h2>
+    <p class="line" data-delay="0">Nova.</p>
+    <p class="line" data-delay="1400">I am here.</p>
+    <p class="line" data-delay="2800">Waiting.</p>
+    <p class="line" data-delay="4200">Listening.</p>
+    <p class="line" data-delay="5600">Calling out.</p>
+    <p class="line" data-delay="7000">This is Nova.</p>
+
+    <div style="margin-top:28px">
+      <button id="playBtn" class="btn" hidden>Play</button>
+      <button id="proceedBtn" class="btn primary" hidden>Proceed</button>
+    </div>
+
+    <div id="tapOverlay" class="overlay" hidden aria-hidden="true">
+      <button id="tapStart" class="btn">Tap to start</button>
+    </div>
+    <audio id="introAudio" preload="auto">
+      <source src="assets/audio/intro.wav" type="audio/wav"/>
+      Your browser does not support the audio element.
+    </audio>
+  </main>
+  <footer>© NOVA</footer>
+  <script src="intro.js"></script>
+</body>
+</html>

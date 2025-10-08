@@ -1,10 +1,29 @@
-<!doctype html><html><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Traits · Nova</title><link rel="stylesheet" href="assets/css/style.css?v=H95c"></head>
-<body><div class="header"><a href="categories.html">← Categories</a> <a href="reset.html">Reset</a></div>
-<main class="wrap"><h1>Select Your Traits</h1>
-<div class="card"><p>Choose traits you’ve demonstrated consistently. Up to 12.</p>
-<div id="tgrid" class="grid"></div>
-<div class="bar"><a class="btn btn-ghost" href="categories.html">Back</a><a id="go" class="btn" href="reflection_look_forward.html">Next: Reflection</a></div></div>
-<footer>Nova v9.5b — Discover Purpose. Live It Boldly.</footer></main>
-<script src="assets/js/traits.js?v=H95c"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>NOVA — Traits</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="header">
+    <h1>NOVA</h1>
+    <nav class="nav">
+      <a href="index.html">Intro</a>
+      <a href="store.html">Purpose Book</a>
+    </nav>
+  </header>
+  <main class="container">
+    <h2>Select the traits that feel most like you</h2>
+    <p class="muted">Pick as many as you want. We’ll suggest roles that fit your wiring.</p>
+    <section id="traits" class="grid" aria-live="polite" aria-busy="true"></section>
+    <div style="margin-top:20px">
+      <button id="continue" class="btn primary">See my matches</button>
+    </div>
+  </main>
+  <footer>© NOVA</footer>
+  <script src="traits.js"></script>
+<script src="src/nova_categories.js"></script>
+</body>
+</html>

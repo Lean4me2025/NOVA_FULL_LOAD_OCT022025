@@ -1,451 +1,252 @@
 [
   {
-    "id": "analytical_thinking",
-    "label": "Analytical Thinking",
-    "desc": "You spot patterns in data and use them to make decisions.",
-    "categories": [
-      "finance_analytics",
-      "technology",
-      "business"
-    ]
+    "id": "t01",
+    "name": "Analytical",
+    "desc": "You enjoy breaking problems into parts and finding patterns."
   },
   {
-    "id": "process_improvement",
-    "label": "Process Improvement",
-    "desc": "You streamline steps to make work faster, better, and cheaper.",
-    "categories": [
-      "business",
-      "operations_logistics",
-      "engineering"
-    ]
+    "id": "t02",
+    "name": "Creative",
+    "desc": "You generate original ideas and novel approaches."
   },
   {
-    "id": "problem_solving",
-    "label": "Problem Solving",
-    "desc": "You enjoy figuring out root causes and practical fixes.",
-    "categories": [
-      "engineering",
-      "technology",
-      "business"
-    ]
+    "id": "t03",
+    "name": "Empathetic",
+    "desc": "You sense and care about others’ feelings."
   },
   {
-    "id": "customer_empathy",
-    "label": "Customer Empathy",
-    "desc": "You understand people\u2019s needs and frustrations and respond well.",
-    "categories": [
-      "sales_service",
-      "healthcare",
-      "public_legal"
-    ]
+    "id": "t04",
+    "name": "Detail-Oriented",
+    "desc": "You notice fine details and maintain accuracy."
   },
   {
-    "id": "communication",
-    "label": "Clear Communication",
-    "desc": "You explain ideas clearly in writing and in conversation.",
-    "categories": [
-      "business",
-      "education_training",
-      "sales_service"
-    ]
+    "id": "t05",
+    "name": "Big-Picture",
+    "desc": "You connect dots and see systems and outcomes."
   },
   {
-    "id": "data_visualization",
-    "label": "Data Visualization",
-    "desc": "You turn data into charts and visuals people can understand.",
-    "categories": [
-      "finance_analytics",
-      "technology",
-      "business"
-    ]
+    "id": "t06",
+    "name": "Leader",
+    "desc": "You take initiative and guide teams to outcomes."
   },
   {
-    "id": "sql_proficiency",
-    "label": "SQL Proficiency",
-    "desc": "You can query databases to answer questions with data.",
-    "categories": [
-      "technology",
-      "finance_analytics"
-    ]
+    "id": "t07",
+    "name": "Communicator",
+    "desc": "You express ideas clearly in speech and writing."
   },
   {
-    "id": "python_scripting",
-    "label": "Python Scripting",
-    "desc": "You write simple scripts to automate tasks or analyze data.",
-    "categories": [
-      "technology",
-      "engineering"
-    ]
+    "id": "t08",
+    "name": "Organizer",
+    "desc": "You structure work, time, and resources effectively."
   },
   {
-    "id": "lean_six_sigma",
-    "label": "Lean Six Sigma",
-    "desc": "You use Lean/6\u03c3 ideas to reduce waste and defects.",
-    "categories": [
-      "operations_logistics",
-      "business",
-      "engineering"
-    ]
+    "id": "t09",
+    "name": "Problem Solver",
+    "desc": "You love figuring out how to fix or improve things."
   },
   {
-    "id": "project_management",
-    "label": "Project Management",
-    "desc": "You plan, organize, and deliver work with teams.",
-    "categories": [
-      "business",
-      "engineering",
-      "operations_logistics"
-    ]
+    "id": "t10",
+    "name": "Curious",
+    "desc": "You ask questions and pursue knowledge deeply."
   },
   {
-    "id": "compliance_risk",
-    "label": "Compliance & Risk",
-    "desc": "You help work stay inside rules and manage risks.",
-    "categories": [
-      "public_legal",
-      "finance_analytics",
-      "business"
-    ]
+    "id": "t11",
+    "name": "Resilient",
+    "desc": "You persist through setbacks and learn from them."
   },
   {
-    "id": "it_sox",
-    "label": "IT SOX & Controls",
-    "desc": "You understand IT controls and audit basics for SOX.",
-    "categories": [
-      "technology",
-      "finance_analytics"
-    ]
+    "id": "t12",
+    "name": "Numerate",
+    "desc": "You are comfortable with numbers and data."
   },
   {
-    "id": "privacy_security",
-    "label": "Privacy & Security",
-    "desc": "You think about protecting data and systems from threats.",
-    "categories": [
-      "technology",
-      "public_legal"
-    ]
+    "id": "t13",
+    "name": "Empirical",
+    "desc": "You test ideas and rely on evidence."
   },
   {
-    "id": "ux_design",
-    "label": "UX Design",
-    "desc": "You design interfaces that are easy and enjoyable to use.",
-    "categories": [
-      "creative_media",
-      "technology"
-    ]
+    "id": "t14",
+    "name": "Hands-On",
+    "desc": "You like building and working with physical things."
   },
   {
-    "id": "copywriting",
-    "label": "Copywriting",
-    "desc": "You write words that persuade and inform.",
-    "categories": [
-      "creative_media",
-      "business"
-    ]
+    "id": "t15",
+    "name": "Artistic",
+    "desc": "You enjoy visual, musical, or performing arts."
   },
   {
-    "id": "sales_strategy",
-    "label": "Sales Strategy",
-    "desc": "You plan how to find customers and grow revenue.",
-    "categories": [
-      "sales_service",
-      "business"
-    ]
+    "id": "t16",
+    "name": "Service-Oriented",
+    "desc": "You feel fulfilled by helping others."
   },
   {
-    "id": "account_management",
-    "label": "Account Management",
-    "desc": "You build trust and grow customer relationships.",
-    "categories": [
-      "sales_service",
-      "business"
-    ]
+    "id": "t17",
+    "name": "Technical",
+    "desc": "You understand how technology works and how to apply it."
   },
   {
-    "id": "teaching_coaching",
-    "label": "Teaching & Coaching",
-    "desc": "You help people learn and improve in practical ways.",
-    "categories": [
-      "education_training",
-      "business"
-    ]
+    "id": "t18",
+    "name": "Coding",
+    "desc": "You can write or debug software."
   },
   {
-    "id": "curriculum_design",
-    "label": "Curriculum Design",
-    "desc": "You structure lessons and learning experiences.",
-    "categories": [
-      "education_training",
-      "creative_media"
-    ]
+    "id": "t19",
+    "name": "Teaching",
+    "desc": "You like explaining and guiding learning."
   },
   {
-    "id": "supply_chain",
-    "label": "Supply Chain",
-    "desc": "You coordinate materials, inventory, and deliveries.",
-    "categories": [
-      "operations_logistics",
-      "business"
-    ]
+    "id": "t20",
+    "name": "Research",
+    "desc": "You enjoy investigating questions deeply."
   },
   {
-    "id": "quality_assurance",
-    "label": "Quality Assurance",
-    "desc": "You ensure products or services meet standards.",
-    "categories": [
-      "engineering",
-      "operations_logistics",
-      "technology"
-    ]
+    "id": "t21",
+    "name": "Risk-Aware",
+    "desc": "You assess risks and plan mitigations."
   },
   {
-    "id": "reliability_testing",
-    "label": "Reliability Testing",
-    "desc": "You test for durability and consistent performance.",
-    "categories": [
-      "engineering"
-    ]
+    "id": "t22",
+    "name": "Quality-Driven",
+    "desc": "You set high standards and measure results."
   },
   {
-    "id": "systems_thinking",
-    "label": "Systems Thinking",
-    "desc": "You connect moving parts into a working whole.",
-    "categories": [
-      "engineering",
-      "technology",
-      "business"
-    ]
+    "id": "t23",
+    "name": "Design-Thinking",
+    "desc": "You iterate solutions with user needs in mind."
   },
   {
-    "id": "cloud_infra",
-    "label": "Cloud Infrastructure",
-    "desc": "You understand hosting, servers, and cloud services.",
-    "categories": [
-      "technology"
-    ]
+    "id": "t24",
+    "name": "Strategic",
+    "desc": "You plan long-term and align actions to goals."
   },
   {
-    "id": "api_integration",
-    "label": "API Integration",
-    "desc": "You connect systems so they share data and actions.",
-    "categories": [
-      "technology",
-      "business"
-    ]
+    "id": "t25",
+    "name": "Persuasive",
+    "desc": "You can influence decisions and gain buy-in."
   },
   {
-    "id": "etl_pipelines",
-    "label": "ETL Pipelines",
-    "desc": "You move and clean data so it\u2019s ready for analysis.",
-    "categories": [
-      "technology",
-      "finance_analytics"
-    ]
+    "id": "t26",
+    "name": "Ethical",
+    "desc": "You care about doing what’s right."
   },
   {
-    "id": "power_bi",
-    "label": "Power BI",
-    "desc": "You build dashboards and reports with Power BI.",
-    "categories": [
-      "finance_analytics",
-      "business",
-      "technology"
-    ]
+    "id": "t27",
+    "name": "Independent",
+    "desc": "You work well with autonomy and minimal direction."
   },
   {
-    "id": "excel_advanced",
-    "label": "Excel (Advanced)",
-    "desc": "You use formulas, pivots, and models in spreadsheets.",
-    "categories": [
-      "finance_analytics",
-      "business"
-    ]
+    "id": "t28",
+    "name": "Collaborative",
+    "desc": "You enjoy working in teams and cross-functions."
   },
   {
-    "id": "financial_modeling",
-    "label": "Financial Modeling",
-    "desc": "You project outcomes using revenue and cost drivers.",
-    "categories": [
-      "finance_analytics",
-      "business"
-    ]
+    "id": "t29",
+    "name": "Adaptable",
+    "desc": "You adjust quickly to changing priorities."
   },
   {
-    "id": "budget_forecasting",
-    "label": "Budget & Forecasting",
-    "desc": "You plan spend and predict future results.",
-    "categories": [
-      "finance_analytics",
-      "business"
-    ]
+    "id": "t30",
+    "name": "Patient",
+    "desc": "You can wait and work steadily toward outcomes."
   },
   {
-    "id": "healthcare_admin",
-    "label": "Healthcare Administration",
-    "desc": "You keep clinics and programs running smoothly.",
-    "categories": [
-      "healthcare",
-      "public_legal"
-    ]
+    "id": "t31",
+    "name": "Energetic",
+    "desc": "You bring enthusiasm and momentum."
   },
   {
-    "id": "clinical_compliance",
-    "label": "Clinical Compliance",
-    "desc": "You align with clinical rules and standards.",
-    "categories": [
-      "healthcare"
-    ]
+    "id": "t32",
+    "name": "Meticulous",
+    "desc": "You check, verify, and validate carefully."
   },
   {
-    "id": "grant_writing",
-    "label": "Grant Writing",
-    "desc": "You craft proposals that win funding.",
-    "categories": [
-      "public_legal",
-      "education_training"
-    ]
+    "id": "t33",
+    "name": "Customer-Focused",
+    "desc": "You design with user needs in mind."
   },
   {
-    "id": "policy_analysis",
-    "label": "Policy Analysis",
-    "desc": "You evaluate policies and their real-world impact.",
-    "categories": [
-      "public_legal"
-    ]
+    "id": "t34",
+    "name": "Leadership-Development",
+    "desc": "You build others up to lead."
   },
   {
-    "id": "technical_writing",
-    "label": "Technical Writing",
-    "desc": "You turn complex info into clear documentation.",
-    "categories": [
-      "technology",
-      "engineering",
-      "creative_media"
-    ]
+    "id": "t35",
+    "name": "Data Visualization",
+    "desc": "You translate data into clear visuals."
   },
   {
-    "id": "automation_rpa",
-    "label": "Automation / RPA",
-    "desc": "You automate repetitive tasks and workflows.",
-    "categories": [
-      "technology",
-      "operations_logistics"
-    ]
+    "id": "t36",
+    "name": "Public Speaking",
+    "desc": "You are confident presenting to groups."
   },
   {
-    "id": "testing_qa",
-    "label": "Testing & QA (Software)",
-    "desc": "You test software to catch bugs early.",
-    "categories": [
-      "technology"
-    ]
+    "id": "t37",
+    "name": "Writing",
+    "desc": "You craft clear, compelling narratives."
   },
   {
-    "id": "product_management",
-    "label": "Product Management",
-    "desc": "You align problems, vision, and delivery for products.",
-    "categories": [
-      "business",
-      "technology",
-      "creative_media"
-    ]
+    "id": "t38",
+    "name": "Negotiation",
+    "desc": "You find win–win outcomes."
   },
   {
-    "id": "change_management",
-    "label": "Change Management",
-    "desc": "You guide teams through new ways of working.",
-    "categories": [
-      "business",
-      "education_training"
-    ]
+    "id": "t39",
+    "name": "Planning",
+    "desc": "You timeline, sequence, and organize complex work."
   },
   {
-    "id": "negotiation",
-    "label": "Negotiation",
-    "desc": "You find agreements that work for both sides.",
-    "categories": [
-      "sales_service",
-      "business"
-    ]
+    "id": "t40",
+    "name": "Systems Thinking",
+    "desc": "You understand how parts interact within a whole."
   },
   {
-    "id": "presentation_skills",
-    "label": "Presentation Skills",
-    "desc": "You tell stories and persuade groups live.",
-    "categories": [
-      "business",
-      "education_training"
-    ]
+    "id": "t41",
+    "name": "Security-Minded",
+    "desc": "You think about protection and safeguards."
   },
   {
-    "id": "research_methods",
-    "label": "Research Methods",
-    "desc": "You design studies and analyze findings.",
-    "categories": [
-      "education_training",
-      "finance_analytics"
-    ]
+    "id": "t42",
+    "name": "Compliance",
+    "desc": "You ensure policies and standards are met."
   },
   {
-    "id": "industrial_safety",
-    "label": "Industrial Safety",
-    "desc": "You plan for safe work and prevent accidents.",
-    "categories": [
-      "engineering",
-      "operations_logistics"
-    ]
+    "id": "t43",
+    "name": "Mechanical Aptitude",
+    "desc": "You understand machines and tools."
   },
   {
-    "id": "maintenance_planning",
-    "label": "Maintenance Planning",
-    "desc": "You schedule upkeep so equipment keeps running.",
-    "categories": [
-      "engineering",
-      "operations_logistics"
-    ]
+    "id": "t44",
+    "name": "Financial Acumen",
+    "desc": "You grasp budgets, ROI, and tradeoffs."
   },
   {
-    "id": "inventory_optimization",
-    "label": "Inventory Optimization",
-    "desc": "You balance stock so it\u2019s available without waste.",
-    "categories": [
-      "operations_logistics",
-      "finance_analytics"
-    ]
+    "id": "t45",
+    "name": "Entrepreneurial",
+    "desc": "You spot opportunities and build new things."
   },
   {
-    "id": "customer_success",
-    "label": "Customer Success",
-    "desc": "You help customers realize value and stay long-term.",
-    "categories": [
-      "sales_service",
-      "business",
-      "technology"
-    ]
+    "id": "t46",
+    "name": "Compassionate",
+    "desc": "You care deeply about people’s well-being."
   },
   {
-    "id": "seo_sem",
-    "label": "SEO / SEM",
-    "desc": "You help people find content through search and ads.",
-    "categories": [
-      "creative_media",
-      "business"
-    ]
+    "id": "t47",
+    "name": "Attention to Safety",
+    "desc": "You prioritize safe practices and environments."
   },
   {
-    "id": "video_editing",
-    "label": "Video Editing",
-    "desc": "You craft narratives with footage and sound.",
-    "categories": [
-      "creative_media"
-    ]
+    "id": "t48",
+    "name": "Multilingual",
+    "desc": "You can operate across languages/cultures."
   },
   {
-    "id": "digital_illustration",
-    "label": "Digital Illustration",
-    "desc": "You create visuals with digital tools.",
-    "categories": [
-      "creative_media"
-    ]
+    "id": "t49",
+    "name": "Coaching",
+    "desc": "You mentor others through growth."
+  },
+  {
+    "id": "t50",
+    "name": "Time Management",
+    "desc": "You allocate time effectively to deliver."
   }
 ]

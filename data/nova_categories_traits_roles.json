@@ -1,0 +1,1122 @@
+{
+  "Arts & Media": {
+    "roles": [
+      "The Connector"
+    ],
+    "traits": {
+      "Communicator": {
+        "attributes": [
+          "Social"
+        ],
+        "roles": [
+          "The Connector"
+        ]
+      },
+      "Creative": {
+        "attributes": [
+          "Cognitive",
+          "Emotional"
+        ],
+        "roles": []
+      },
+      "Design Sense": {
+        "attributes": [
+          "Cognitive",
+          "Emotional"
+        ],
+        "roles": []
+      },
+      "Optimistic": {
+        "attributes": [
+          "Emotional",
+          "Motivational"
+        ],
+        "roles": []
+      },
+      "Presentation": {
+        "attributes": [
+          "Social",
+          "Cognitive"
+        ],
+        "roles": [
+          "The Connector"
+        ]
+      },
+      "Writing": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": []
+      }
+    }
+  },
+  "Business": {
+    "roles": [
+      "The Analyst",
+      "The Connector",
+      "The Guardian",
+      "The Strategist"
+    ],
+    "traits": {
+      "Analytical": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": [
+          "The Strategist",
+          "The Analyst"
+        ]
+      },
+      "Customer-Focused": {
+        "attributes": [
+          "Social",
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Connector"
+        ]
+      },
+      "Data-Driven": {
+        "attributes": [
+          "Cognitive",
+          "Motivational"
+        ],
+        "roles": [
+          "The Analyst"
+        ]
+      },
+      "Decision-Making": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": [
+          "The Strategist"
+        ]
+      },
+      "Documentation": {
+        "attributes": [
+          "Cognitive",
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Guardian",
+          "The Analyst"
+        ]
+      },
+      "Market Awareness": {
+        "attributes": [
+          "Cognitive",
+          "Social"
+        ],
+        "roles": []
+      },
+      "Numerical Reasoning": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": []
+      },
+      "Organizer": {
+        "attributes": [
+          "Cognitive",
+          "Motivational"
+        ],
+        "roles": [
+          "The Strategist"
+        ]
+      },
+      "Planner": {
+        "attributes": [
+          "Cognitive",
+          "Motivational"
+        ],
+        "roles": [
+          "The Strategist"
+        ]
+      },
+      "Presentation": {
+        "attributes": [
+          "Social",
+          "Cognitive"
+        ],
+        "roles": [
+          "The Connector"
+        ]
+      },
+      "Process Improvement": {
+        "attributes": [
+          "Motivational",
+          "Cognitive"
+        ],
+        "roles": [
+          "The Strategist"
+        ]
+      },
+      "Relationship-Building": {
+        "attributes": [
+          "Social"
+        ],
+        "roles": [
+          "The Connector"
+        ]
+      },
+      "Results-Driven": {
+        "attributes": [
+          "Motivational"
+        ],
+        "roles": []
+      },
+      "Strategic": {
+        "attributes": [
+          "Cognitive",
+          "Motivational"
+        ],
+        "roles": [
+          "The Strategist"
+        ]
+      },
+      "Writing": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": []
+      }
+    }
+  },
+  "Education & Community": {
+    "roles": [
+      "The Connector",
+      "The Helper",
+      "The Strategist"
+    ],
+    "traits": {
+      "Communicator": {
+        "attributes": [
+          "Social"
+        ],
+        "roles": [
+          "The Connector"
+        ]
+      },
+      "Community-Minded": {
+        "attributes": [
+          "Spiritual",
+          "Social"
+        ],
+        "roles": [
+          "The Helper"
+        ]
+      },
+      "Empathetic": {
+        "attributes": [
+          "Emotional"
+        ],
+        "roles": [
+          "The Helper"
+        ]
+      },
+      "Encouraging": {
+        "attributes": [
+          "Emotional",
+          "Social"
+        ],
+        "roles": [
+          "The Helper"
+        ]
+      },
+      "Listener": {
+        "attributes": [
+          "Social",
+          "Emotional"
+        ],
+        "roles": []
+      },
+      "Mentoring": {
+        "attributes": [
+          "Social",
+          "Emotional"
+        ],
+        "roles": []
+      },
+      "Organizer": {
+        "attributes": [
+          "Cognitive",
+          "Motivational"
+        ],
+        "roles": [
+          "The Strategist"
+        ]
+      },
+      "Presentation": {
+        "attributes": [
+          "Social",
+          "Cognitive"
+        ],
+        "roles": [
+          "The Connector"
+        ]
+      },
+      "Service-Driven": {
+        "attributes": [
+          "Spiritual",
+          "Social"
+        ],
+        "roles": [
+          "The Helper"
+        ]
+      },
+      "Teaching": {
+        "attributes": [
+          "Social",
+          "Cognitive"
+        ],
+        "roles": [
+          "The Connector"
+        ]
+      },
+      "Writing": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": []
+      }
+    }
+  },
+  "Essential & Everyday Workers": {
+    "roles": [
+      "The Builder",
+      "The Connector",
+      "The Guardian",
+      "The Helper",
+      "The Strategist"
+    ],
+    "traits": {
+      "Accountable": {
+        "attributes": [
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Guardian"
+        ]
+      },
+      "Community-Minded": {
+        "attributes": [
+          "Spiritual",
+          "Social"
+        ],
+        "roles": [
+          "The Helper"
+        ]
+      },
+      "Customer-Focused": {
+        "attributes": [
+          "Social",
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Connector"
+        ]
+      },
+      "Dependable": {
+        "attributes": [
+          "Moral/Ethical",
+          "Motivational"
+        ],
+        "roles": []
+      },
+      "Encouraging": {
+        "attributes": [
+          "Emotional",
+          "Social"
+        ],
+        "roles": [
+          "The Helper"
+        ]
+      },
+      "Hands-On": {
+        "attributes": [
+          "Physical"
+        ],
+        "roles": [
+          "The Builder"
+        ]
+      },
+      "Organizer": {
+        "attributes": [
+          "Cognitive",
+          "Motivational"
+        ],
+        "roles": [
+          "The Strategist"
+        ]
+      },
+      "Patient": {
+        "attributes": [
+          "Emotional"
+        ],
+        "roles": [
+          "The Helper"
+        ]
+      },
+      "Quality Focus": {
+        "attributes": [
+          "Physical",
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Builder"
+        ]
+      },
+      "Reliable": {
+        "attributes": [
+          "Moral/Ethical",
+          "Motivational"
+        ],
+        "roles": [
+          "The Guardian"
+        ]
+      },
+      "Safety-First": {
+        "attributes": [
+          "Physical",
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Guardian"
+        ]
+      },
+      "Service-Driven": {
+        "attributes": [
+          "Spiritual",
+          "Social"
+        ],
+        "roles": [
+          "The Helper"
+        ]
+      },
+      "Team-Oriented": {
+        "attributes": [
+          "Social"
+        ],
+        "roles": [
+          "The Helper"
+        ]
+      }
+    }
+  },
+  "Finance & Accounting": {
+    "roles": [
+      "The Analyst",
+      "The Builder",
+      "The Guardian",
+      "The Strategist"
+    ],
+    "traits": {
+      "Accountable": {
+        "attributes": [
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Guardian"
+        ]
+      },
+      "Analytical": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": [
+          "The Strategist",
+          "The Analyst"
+        ]
+      },
+      "Data-Driven": {
+        "attributes": [
+          "Cognitive",
+          "Motivational"
+        ],
+        "roles": [
+          "The Analyst"
+        ]
+      },
+      "Detail-Oriented": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": [
+          "The Builder"
+        ]
+      },
+      "Disciplined": {
+        "attributes": [
+          "Motivational"
+        ],
+        "roles": []
+      },
+      "Documentation": {
+        "attributes": [
+          "Cognitive",
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Guardian",
+          "The Analyst"
+        ]
+      },
+      "Integrity": {
+        "attributes": [
+          "Moral/Ethical"
+        ],
+        "roles": []
+      },
+      "Numerical Reasoning": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": []
+      },
+      "Planner": {
+        "attributes": [
+          "Cognitive",
+          "Motivational"
+        ],
+        "roles": [
+          "The Strategist"
+        ]
+      }
+    }
+  },
+  "Healthcare": {
+    "roles": [
+      "The Analyst",
+      "The Builder",
+      "The Guardian",
+      "The Helper"
+    ],
+    "traits": {
+      "Calm Under Pressure": {
+        "attributes": [
+          "Emotional",
+          "Social"
+        ],
+        "roles": []
+      },
+      "Compassionate": {
+        "attributes": [
+          "Emotional",
+          "Moral/Ethical"
+        ],
+        "roles": []
+      },
+      "Detail-Oriented": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": [
+          "The Builder"
+        ]
+      },
+      "Documentation": {
+        "attributes": [
+          "Cognitive",
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Guardian",
+          "The Analyst"
+        ]
+      },
+      "Ethical": {
+        "attributes": [
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Guardian"
+        ]
+      },
+      "Patient": {
+        "attributes": [
+          "Emotional"
+        ],
+        "roles": [
+          "The Helper"
+        ]
+      },
+      "Reliable": {
+        "attributes": [
+          "Moral/Ethical",
+          "Motivational"
+        ],
+        "roles": [
+          "The Guardian"
+        ]
+      },
+      "Service-Driven": {
+        "attributes": [
+          "Spiritual",
+          "Social"
+        ],
+        "roles": [
+          "The Helper"
+        ]
+      },
+      "Team-Oriented": {
+        "attributes": [
+          "Social"
+        ],
+        "roles": [
+          "The Helper"
+        ]
+      }
+    }
+  },
+  "Law & Government": {
+    "roles": [
+      "The Analyst",
+      "The Connector",
+      "The Guardian",
+      "The Strategist"
+    ],
+    "traits": {
+      "Accountable": {
+        "attributes": [
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Guardian"
+        ]
+      },
+      "Analytical": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": [
+          "The Strategist",
+          "The Analyst"
+        ]
+      },
+      "Communicator": {
+        "attributes": [
+          "Social"
+        ],
+        "roles": [
+          "The Connector"
+        ]
+      },
+      "Diplomatic": {
+        "attributes": [
+          "Social"
+        ],
+        "roles": []
+      },
+      "Documentation": {
+        "attributes": [
+          "Cognitive",
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Guardian",
+          "The Analyst"
+        ]
+      },
+      "Ethical": {
+        "attributes": [
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Guardian"
+        ]
+      },
+      "Integrity": {
+        "attributes": [
+          "Moral/Ethical"
+        ],
+        "roles": []
+      },
+      "Public Speaking": {
+        "attributes": [
+          "Social"
+        ],
+        "roles": []
+      }
+    }
+  },
+  "Operations & Logistics": {
+    "roles": [
+      "The Builder",
+      "The Guardian",
+      "The Helper",
+      "The Strategist"
+    ],
+    "traits": {
+      "Detail-Oriented": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": [
+          "The Builder"
+        ]
+      },
+      "Organizer": {
+        "attributes": [
+          "Cognitive",
+          "Motivational"
+        ],
+        "roles": [
+          "The Strategist"
+        ]
+      },
+      "Process Improvement": {
+        "attributes": [
+          "Motivational",
+          "Cognitive"
+        ],
+        "roles": [
+          "The Strategist"
+        ]
+      },
+      "Reliable": {
+        "attributes": [
+          "Moral/Ethical",
+          "Motivational"
+        ],
+        "roles": [
+          "The Guardian"
+        ]
+      },
+      "Results-Driven": {
+        "attributes": [
+          "Motivational"
+        ],
+        "roles": []
+      },
+      "Scheduling": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": []
+      },
+      "Team-Oriented": {
+        "attributes": [
+          "Social"
+        ],
+        "roles": [
+          "The Helper"
+        ]
+      },
+      "Vendor Management": {
+        "attributes": [
+          "Social",
+          "Cognitive"
+        ],
+        "roles": []
+      }
+    }
+  },
+  "Public Safety": {
+    "roles": [
+      "The Analyst",
+      "The Builder",
+      "The Guardian"
+    ],
+    "traits": {
+      "Accountable": {
+        "attributes": [
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Guardian"
+        ]
+      },
+      "Calm Under Pressure": {
+        "attributes": [
+          "Emotional",
+          "Social"
+        ],
+        "roles": []
+      },
+      "Courageous": {
+        "attributes": [
+          "Moral/Ethical",
+          "Emotional"
+        ],
+        "roles": []
+      },
+      "Detail-Oriented": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": [
+          "The Builder"
+        ]
+      },
+      "Documentation": {
+        "attributes": [
+          "Cognitive",
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Guardian",
+          "The Analyst"
+        ]
+      },
+      "Ethical": {
+        "attributes": [
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Guardian"
+        ]
+      },
+      "Reliable": {
+        "attributes": [
+          "Moral/Ethical",
+          "Motivational"
+        ],
+        "roles": [
+          "The Guardian"
+        ]
+      },
+      "Safety-First": {
+        "attributes": [
+          "Physical",
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Guardian"
+        ]
+      },
+      "Security-Minded": {
+        "attributes": [
+          "Cognitive",
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Guardian"
+        ]
+      }
+    }
+  },
+  "Sales & Marketing": {
+    "roles": [
+      "The Connector"
+    ],
+    "traits": {
+      "Communicator": {
+        "attributes": [
+          "Social"
+        ],
+        "roles": [
+          "The Connector"
+        ]
+      },
+      "Creative": {
+        "attributes": [
+          "Cognitive",
+          "Emotional"
+        ],
+        "roles": []
+      },
+      "Customer-Focused": {
+        "attributes": [
+          "Social",
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Connector"
+        ]
+      },
+      "Market Awareness": {
+        "attributes": [
+          "Cognitive",
+          "Social"
+        ],
+        "roles": []
+      },
+      "Optimistic": {
+        "attributes": [
+          "Emotional",
+          "Motivational"
+        ],
+        "roles": []
+      },
+      "Persuasive": {
+        "attributes": [
+          "Social",
+          "Motivational"
+        ],
+        "roles": [
+          "The Connector"
+        ]
+      },
+      "Presentation": {
+        "attributes": [
+          "Social",
+          "Cognitive"
+        ],
+        "roles": [
+          "The Connector"
+        ]
+      },
+      "Relationship-Building": {
+        "attributes": [
+          "Social"
+        ],
+        "roles": [
+          "The Connector"
+        ]
+      }
+    }
+  },
+  "Science & Research": {
+    "roles": [
+      "The Analyst",
+      "The Guardian",
+      "The Strategist"
+    ],
+    "traits": {
+      "Analytical": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": [
+          "The Strategist",
+          "The Analyst"
+        ]
+      },
+      "Documentation": {
+        "attributes": [
+          "Cognitive",
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Guardian",
+          "The Analyst"
+        ]
+      },
+      "Logical": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": [
+          "The Analyst"
+        ]
+      },
+      "Pattern Recognition": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": [
+          "The Analyst"
+        ]
+      },
+      "Problem-Solving": {
+        "attributes": [
+          "Cognitive",
+          "Motivational"
+        ],
+        "roles": []
+      },
+      "Research": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": [
+          "The Analyst"
+        ]
+      },
+      "Systems Thinking": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": []
+      }
+    }
+  },
+  "Skilled Trades": {
+    "roles": [
+      "The Builder",
+      "The Guardian"
+    ],
+    "traits": {
+      "Coordinated": {
+        "attributes": [
+          "Physical"
+        ],
+        "roles": []
+      },
+      "Hands-On": {
+        "attributes": [
+          "Physical"
+        ],
+        "roles": [
+          "The Builder"
+        ]
+      },
+      "Mechanical Aptitude": {
+        "attributes": [
+          "Physical",
+          "Cognitive"
+        ],
+        "roles": [
+          "The Builder"
+        ]
+      },
+      "Quality Focus": {
+        "attributes": [
+          "Physical",
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Builder"
+        ]
+      },
+      "Reliable": {
+        "attributes": [
+          "Moral/Ethical",
+          "Motivational"
+        ],
+        "roles": [
+          "The Guardian"
+        ]
+      },
+      "Safety-First": {
+        "attributes": [
+          "Physical",
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Guardian"
+        ]
+      },
+      "Spatial Reasoning": {
+        "attributes": [
+          "Physical",
+          "Cognitive"
+        ],
+        "roles": []
+      },
+      "Stamina": {
+        "attributes": [
+          "Physical",
+          "Motivational"
+        ],
+        "roles": []
+      },
+      "Tool Proficiency": {
+        "attributes": [
+          "Physical"
+        ],
+        "roles": [
+          "The Builder"
+        ]
+      }
+    }
+  },
+  "Technology": {
+    "roles": [
+      "The Analyst",
+      "The Builder",
+      "The Connector",
+      "The Guardian"
+    ],
+    "traits": {
+      "Creative": {
+        "attributes": [
+          "Cognitive",
+          "Emotional"
+        ],
+        "roles": []
+      },
+      "Data-Driven": {
+        "attributes": [
+          "Cognitive",
+          "Motivational"
+        ],
+        "roles": [
+          "The Analyst"
+        ]
+      },
+      "Detail-Oriented": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": [
+          "The Builder"
+        ]
+      },
+      "Documentation": {
+        "attributes": [
+          "Cognitive",
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Guardian",
+          "The Analyst"
+        ]
+      },
+      "Logical": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": [
+          "The Analyst"
+        ]
+      },
+      "Pattern Recognition": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": [
+          "The Analyst"
+        ]
+      },
+      "Presentation": {
+        "attributes": [
+          "Social",
+          "Cognitive"
+        ],
+        "roles": [
+          "The Connector"
+        ]
+      },
+      "Problem-Solving": {
+        "attributes": [
+          "Cognitive",
+          "Motivational"
+        ],
+        "roles": []
+      },
+      "Research": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": [
+          "The Analyst"
+        ]
+      },
+      "Security-Minded": {
+        "attributes": [
+          "Cognitive",
+          "Moral/Ethical"
+        ],
+        "roles": [
+          "The Guardian"
+        ]
+      },
+      "Systems Thinking": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": []
+      },
+      "Troubleshooting": {
+        "attributes": [
+          "Cognitive"
+        ],
+        "roles": [
+          "The Builder"
+        ]
+      }
+    }
+  }
+}
