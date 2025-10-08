@@ -1,21 +1,16 @@
-Nova Add‑On: Invest in Yourself Page
-Generated: 2025-10-08 22:22:16
+Nova Patch: Results + Reflection (No SOC in Examples)
+Generated: 2025-10-08 22:37:08
 
-What this is
-------------
-A drop‑in page (`invest.html`) that you can link to *after* Reflection. It shows your Payhip buttons
-for Starter, PRO, Mastery, and the Purpose book — using the green theme you prefer.
+What this does
+--------------
+- Shows BOTH sections on results.html: "Your Result" and "Reflection (Looking Forward)"
+- Example Occupations show **job title + salary range only** (no SOC code displayed)
+- Adds an "Invest in Yourself" CTA only if one is not already present
 
-How to add it
--------------
-1) Copy `invest.html` into the root of your Nova project (same folder as `index.html`).
-2) Ensure Payhip's script is loaded site‑wide once in `<head>`:
-   <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
-   (The page includes it defensively too. Duplicates are safe.)
-3) Add a button on your Reflection/Results step that routes to `invest.html`:
-   <a class="cta" href="invest.html">Invest in Yourself</a>
-
-Optional styling
-----------------
-- The page uses dark theme colors to match Nova. You can paste its CSS into your main stylesheet
-  if you prefer.
+Install (1 minute)
+------------------
+1) Copy `src/results_dual_render_no_soc.js` into your project's `src/` folder.
+2) In `results.html`, just before `</body>`, include:
+   <script src="src/nova_roles.js"></script>
+   <script src="src/nova_categories.js"></script>
+   <script src="src/results_dual_render_no_soc.js"></script>
