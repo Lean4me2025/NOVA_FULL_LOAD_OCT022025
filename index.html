@@ -1,16 +1,48 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Nova • Welcome</title><link rel="stylesheet" href="assets/css/style.css"/><script defer src="assets/js/state.js"></script></head>
-<body><div class="container"><div class="header"><div class="brand">Nova</div><div class="badge">v8.7e • Unified</div></div>
-<div class="card"><div class="grid cols-2" style="align-items:start">
-  <div>
-    <div class="small">Welcome</div>
-    <h1 class="h1">Find your purpose and get clarity.</h1>
-    <p class="p"><strong>89% of people do not know their purpose.</strong> Nova will help you find it and get clarity around your purpose — then Navi will help you act on it.</p>
-    <a class="btn primary" href="categories.html">Start • Choose My Categories</a> <a class="pill" style="margin-left:10px" href="qa.html">QA</a>
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>NOVA · Choose Categories</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Choose Your Categories</h1>
+    <p class="sub">Pick one or more focus areas to tailor the traits you’ll see next.</p>
+    <div id="grid" class="grid" role="list"></div>
+    <div class="bar">
+      <div class="caption" id="cap">0 selected</div>
+      <button id="next" class="btn" disabled>Start: Select Traits</button>
+    </div>
   </div>
-  <div class="card" style="background:transparent;border:1px dashed var(--line)">
-    <div class="small">Returning User Access</div>
-    <label class="small">Username</label><input class="btn block" placeholder="e.g. drew"/>
-    <div style="height:8px"></div><label class="small">PIN</label><input class="btn block" placeholder="4–6 digits"/>
-  </div>
-</div></div></div></body></html>
+  <script type="module">
+    import { setSelectedCategories } from './assets/js/shared.js';
+    const categories = ["Business", "Technology", "Education & Community", "Public Safety", "Arts & Media", "Healthcare", "Science & Research", "Skilled Trades", "Finance & Accounting", "Operations & Logistics", "Sales & Marketing", "Law & Government"];
+    const grid = document.getElementById('grid');
+    const cap = document.getElementById('cap');
+    const chosen = new Set();
+
+    function update(){
+      cap.textContent = `${chosen.size} selected`;
+      document.getElementById('next').disabled = chosen.size===0;
+      setSelectedCategories([...chosen]);
+    }
+
+    categories.forEach(cat=>{
+      const el=document.createElement('div');
+      el.className='pill';
+      el.textContent=cat;
+      el.addEventListener('click',()=>{
+        if(chosen.has(cat)) chosen.delete(cat); else chosen.add(cat);
+        el.classList.toggle('selected', chosen.has(cat));
+        update();
+      });
+      grid.appendChild(el);
+    });
+
+    document.getElementById('next').addEventListener('click',()=>location.href='traits.html');
+  </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+{
+  "Business": [
+    "Analytical",
+    "Organizer",
+    "Strategic",
+    "Leadership",
+    "Planning",
+    "Negotiation",
+    "Project Management",
+    "Ethical",
+    "Customer-Focused",
+    "Problem-Solving",
+    "Detail-Oriented",
+    "Decision-Making"
+  ],
+  "Technology": [
+    "Creative",
+    "Hands-On",
+    "Research",
+    "Empirical",
+    "Data-Driven",
+    "Systems Thinking",
+    "Coding",
+    "Troubleshooting",
+    "Meticulous",
+    "Security-Minded",
+    "Curious",
+    "Experimental"
+  ],
+  "Education & Community": [
+    "Teaching",
+    "Mentoring",
+    "Communicator",
+    "Patient",
+    "Empathetic",
+    "Facilitation",
+    "Inclusive"
+  ],
+  "Public Safety": [
+    "Risk-Aware",
+    "Calm Under Pressure",
+    "Procedural",
+    "Accountable",
+    "Observant",
+    "Teamwork"
+  ],
+  "Arts & Media": [
+    "Storytelling",
+    "Design Sense",
+    "Writing",
+    "Visual Thinking",
+    "Branding",
+    "Presentation"
+  ],
+  "Healthcare": [
+    "Compassionate",
+    "Precise",
+    "Ethical",
+    "Teamwork",
+    "Observant",
+    "Problem-Solving"
+  ],
+  "Science & Research": [
+    "Hypothesis-Driven",
+    "Quantitative",
+    "Methodical",
+    "Documentation",
+    "Curious",
+    "Pattern Recognition"
+  ],
+  "Skilled Trades": [
+    "Hands-On",
+    "Mechanical Aptitude",
+    "Spatial Reasoning",
+    "Quality Focus",
+    "Reliable",
+    "Safety-First"
+  ],
+  "Finance & Accounting": [
+    "Numerical Reasoning",
+    "Compliance",
+    "Risk Assessment",
+    "Meticulous",
+    "Analytical",
+    "Confidentiality"
+  ],
+  "Operations & Logistics": [
+    "Process Improvement",
+    "Organizer",
+    "Scheduling",
+    "Vendor Management",
+    "Systems Thinking",
+    "Reliability"
+  ],
+  "Sales & Marketing": [
+    "Persuasive",
+    "Relationship-Building",
+    "Communicator",
+    "Market Awareness",
+    "Storytelling",
+    "Resilient"
+  ],
+  "Law & Government": [
+    "Policy-Oriented",
+    "Analytical",
+    "Ethical",
+    "Research",
+    "Negotiation",
+    "Public Speaking"
+  ]
+}

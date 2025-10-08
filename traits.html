@@ -1,58 +1,76 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Nova • Traits</title><link rel="stylesheet" href="assets/css/style.css"/><script defer src="assets/js/state.js"></script><script defer src="assets/js/data.js"></script></head>
-<body><div class="container"><div class="header"><div class="brand">Nova</div><div class="badge">Selected: <span id="count">0</span> traits</div></div>
-<div class="card"><h1 class="h1">Select traits that feel true</h1><div id="filters" class="list"></div><div class="hr"></div><div id="tray" class="grid cols-3"></div><div class="hr"></div><div class="grid cols-2"><button id="next" class="btn primary">See My Results</button><button id="clear" class="btn ghost">Clear</button></div></div></div>
-<script>
-(async ()=>{
-  const selectedIds = new Set(JSON.parse(localStorage.getItem('nova.selectedCategoryIds')||'[]'));
-  const selectedLabels = JSON.parse(localStorage.getItem('nova.selectedCategories')||'[]');
-  document.getElementById('filters').innerHTML = selectedLabels.map(l=> `<span class="pill">${l}</span>`).join('');
 
-  const EMBED=[
-    {"id":"detail","name":"Detail-oriented","categoryId":"bizfin"},
-    {"id":"problem","name":"Problem solving","categoryId":"tech"},
-    {"id":"empathy","name":"Empathy","categoryId":"health"},
-    {"id":"comm","name":"Communication","categoryId":"edu"},
-    {"id":"creative","name":"Creativity","categoryId":"creative"},
-    {"id":"lead","name":"Team leadership","categoryId":"pubsvc"},
-    {"id":"analysis","name":"Data analysis","categoryId":"science"},
-    {"id":"hands","name":"Hands-on","categoryId":"trades"},
-    {"id":"customer","name":"Customer focus","categoryId":"hospitality"},
-    {"id":"reliable","name":"Reliability","categoryId":"workers"}
-  ];
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>NOVA · Select Your Traits</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Select Your Traits</h1>
+    <p class="sub">Tap to select up to <b>12</b>. You can change your mind.</p>
+    <p class="small" id="catLine"></p>
+    <div id="grid" class="grid" role="list"></div>
+    <div class="bar">
+      <div class="caption" id="cap">0 / 12 selected</div>
+      <button id="next" class="btn" disabled>Next: Role Reveal</button>
+    </div>
+  </div>
+  <script type="module">
+    import { readJSON, getSelectedCategories, setSelectedTraits, dedupe, byAlpha } from './assets/js/shared.js';
+    const MAX = 12;
+    const grid = document.getElementById('grid');
+    const cap  = document.getElementById('cap');
+    const catLine = document.getElementById('catLine');
+    let selected = new Set();
 
-  let list = EMBED;
-  try {
-    const data = await loadAllData();
-    if(Array.isArray(data.traits) && data.traits.length){ list = data.traits; }
-  } catch(e) {}
+    function update(){
+      cap.textContent = `${selected.size} / ${MAX} selected`;
+      document.getElementById('next').disabled = selected.size===0;
+      setSelectedTraits([...selected]);
+    }
 
-  let pool = list.filter(t=> !selectedIds.size || selectedIds.has(t.categoryId));
-  if(pool.length===0){ pool = list; }
+    function render(list){
+      grid.innerHTML='';
+      list.forEach(trait=>{
+        const el=document.createElement('div');
+        el.className='pill';
+        el.textContent=trait;
+        el.addEventListener('click',()=>{
+          if(selected.has(trait)) { selected.delete(trait); el.classList.remove('selected'); update(); return; }
+          if(selected.size>=MAX) return;
+          selected.add(trait);
+          el.classList.add('selected');
+          update();
+        });
+        grid.appendChild(el);
+      });
+      update();
+    }
 
-  const tray=document.getElementById('tray');
-  const selectedKeys = new Set((JSON.parse(localStorage.getItem('nova.selectedTraits')||'[]')).map(t=> t.id||t.name||t));
+    const cats = getSelectedCategories();
+    catLine.textContent = cats.length ? `From categories: ${cats.join(', ')}` : 'No categories chosen.';
 
-  function render(){
-    tray.innerHTML='';
-    pool.forEach(t=>{
-      const key=t.id||t.name;
-      const b=document.createElement('button'); b.className='btn ghost'; b.innerHTML=`<div><div style="font-weight:800">${t.name}</div><div class="small">${t.categoryId}</div></div>`;
-      if(selectedKeys.has(key)) b.classList.add('active');
-      b.onclick=()=>{ if(selectedKeys.has(key)){ selectedKeys.delete(key); b.classList.remove('active'); } else { selectedKeys.add(key); b.classList.add('active'); } setCount(); };
-      tray.appendChild(b);
+    readJSON('data/traits_with_categories.json').then(map=>{
+      const bag = [];
+      cats.forEach(c=>{
+        if (map[c]) bag.push(...map[c]);
+        else {
+          // case-insensitive fallback
+          const k = Object.keys(map).find(k=>k.toLowerCase()===c.toLowerCase());
+          if (k) bag.push(...map[k]);
+        }
+      });
+      const list = dedupe(bag).sort(byAlpha);
+      render(list);
+    }).catch(e=>{
+      console.error('Failed to load traits JSON', e);
+      grid.innerHTML = '<div class="card">Could not load traits. Check data/traits_with_categories.json path.</div>';
     });
-    setCount();
-  }
-  function setCount(){ document.getElementById('count').textContent = selectedKeys.size; }
-  render();
 
-  document.getElementById('next').onclick=()=>{
-    const chosen = pool.filter(t=> selectedKeys.has(t.id||t.name));
-    localStorage.setItem('nova.selectedTraits', JSON.stringify(chosen));
-    if(window.NOVA&&NOVA.state){ NOVA.state.selectedTraits = chosen; NOVA.save(); }
-    location.href='results.html';
-  };
-  document.getElementById('clear').onclick=()=>{ selectedKeys.clear(); render(); };
-})();
-</script></body></html>
+    document.getElementById('next').addEventListener('click',()=>location.href='role.html');
+  </script>
+</body>
+</html>

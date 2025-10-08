@@ -1,0 +1,31 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>NOVA · Role Reveal</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Your Role Reveal</h1>
+    <div class="card">
+      <div id="summary"></div>
+    </div>
+    <div class="bar">
+      <button class="btn" id="next">Next: Reflection</button>
+    </div>
+  </div>
+  <script type="module">
+    import { getSelectedCategories, getSelectedTraits } from './assets/js/shared.js';
+    const cats = getSelectedCategories();
+    const traits = getSelectedTraits();
+    const s = document.getElementById('summary');
+    s.innerHTML = `<p class="small">Categories: <b>${cats.join(', ')||'—'}</b></p>
+                   <p class="small">Selected Traits (${traits.length}): <b>${traits.join(', ')||'—'}</b></p>
+                   <p class="small">(* Placeholder *) This is where the role logic maps your traits to recommended roles.</p>`;
+    document.getElementById('next').addEventListener('click',()=>location.href='reflection.html');
+  </script>
+</body>
+</html>
