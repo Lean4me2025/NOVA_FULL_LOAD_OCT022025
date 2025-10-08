@@ -1,10 +1,22 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>NOVA · Choose Categories</title><link rel="stylesheet" href="assets/css/style.css"/></head><body><div class="wrap">
-<h1>Choose Your Categories</h1><p class="small">Pick what’s true of your interests or everyday work.</p>
-<div id="grid" class="grid"></div>
-<div class="bar"><div class="small" id="cap">0 selected</div><div><a class="btn" href="index.html">Back</a><button id="next" class="btn" disabled>Next: Traits</button></div></div>
-<footer>Nova v9.4c — Discover Purpose. Live It Boldly.</footer></div>
-<script type="module">import { set } from './assets/js/shared.js'; const cats=["Business", "Technology", "Education & Community", "Public Safety", "Healthcare", "Science & Research", "Skilled Trades", "Finance & Accounting", "Operations & Logistics", "Sales & Marketing", "Law & Government", "Arts & Media", "Essential & Everyday Workers"]; const grid=document.getElementById('grid'); const cap=document.getElementById('cap'); const chosen=new Set();
-function update(){cap.textContent=`${chosen.size} selected`; document.getElementById('next').disabled=chosen.size===0; set('selectedCategories',[...chosen]);}
-cats.forEach(cat=>{const el=document.createElement('div'); el.className='pill'; el.textContent=cat; el.addEventListener('click',()=>{ if(chosen.has(cat)) chosen.delete(cat); else chosen.add(cat); el.classList.toggle('selected',chosen.has(cat)); update(); }); grid.appendChild(el);});
-document.getElementById('next').addEventListener('click',()=>location.href='traits.html');</script></body></html>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>NOVA · Choose Categories</title>
+<link rel="stylesheet" href="assets/css/style.css"/></head><body>
+<div class="wrap">
+  <h1>Choose Your Categories</h1>
+  <p class="small">Pick what’s true of your interests or everyday work. Categories focus the conversation — they don't limit you.</p>
+  <div id="grid" class="grid"></div>
+  <div class="bar"><div class="small" id="cap">0 selected</div><div><a class="btn" href="index.html">Back</a><button id="next" class="btn" disabled>Next: Traits</button></div></div>
+  <footer>Nova v9.4d — Discover Purpose. Live It Boldly.</footer>
+</div>
+<script type="module">
+  import { set } from './assets/js/shared.js';
+  const categories = ["Business", "Technology", "Education & Community", "Public Safety", "Healthcare", "Science & Research", "Skilled Trades", "Finance & Accounting", "Operations & Logistics", "Sales & Marketing", "Law & Government", "Arts & Media", "Essential & Everyday Workers"];
+  const grid = document.getElementById('grid'); const cap = document.getElementById('cap'); const chosen = new Set();
+  function update(){ cap.textContent = `${chosen.size} selected`; document.getElementById('next').disabled = chosen.size===0; set('selectedCategories',[...chosen]); }
+  categories.forEach(cat=>{ const el=document.createElement('div'); el.className='pill'; el.textContent=cat;
+    el.addEventListener('click',()=>{ if(chosen.has(cat)) chosen.delete(cat); else chosen.add(cat); el.classList.toggle('selected', chosen.has(cat)); update(); });
+    grid.appendChild(el);
+  });
+  document.getElementById('next').addEventListener('click',()=>location.href='traits.html');
+</script></body></html>

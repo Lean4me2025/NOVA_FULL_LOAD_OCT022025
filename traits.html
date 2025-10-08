@@ -1,11 +1,34 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>NOVA · Select Your Traits</title><link rel="stylesheet" href="assets/css/style.css"/></head><body><div class="wrap">
-<h1>Select Your Traits</h1><div class="card"><p class="small">Tap traits you’ve actually shown. Up to <b>12</b>.</p><p id="catLine" class="small"></p></div>
-<div id="grid" class="grid"></div>
-<div class="bar"><div class="small" id="cap">0 / 12 selected</div><div><a class="btn" href="categories.html">Back</a><button id="next" class="btn" disabled>Next: Role Reveal</button></div></div></div>
-<script type="module">import {{ get, set, dedupe, byAlpha, caseKey }} from './assets/js/shared.js'; const MAX=12; const cats=get('selectedCategories',[]); if(!cats||!cats.length) location.href='categories.html'; document.getElementById('catLine').textContent=`From categories: ${cats.join(', ')}`;
-const map = await (await fetch('/data/traits_with_categories.json',{cache:'no-store'})).json(); const key=Object.fromEntries(Object.keys(map).map(k=>[k.toLowerCase(), map[k]])); const bag=[]; cats.forEach(c=>bag.push(...(key[(c||'').toLowerCase()]||[]))); const list=[...new Set(bag)].sort(byAlpha);
-const selected=new Set(get('selectedTraits',[]));
-function update(){{ document.getElementById('cap').textContent=`${{selected.size}} / ${MAX} selected`; document.getElementById('next').disabled=selected.size===0; set('selectedTraits',[...selected]); }}
-function render(){{ const grid=document.getElementById('grid'); grid.innerHTML=''; list.forEach(t=>{{ const el=document.createElement('div'); el.className='pill'; el.textContent=t; if(selected.has(t)) el.classList.add('selected'); el.addEventListener('click',()=>{{ if(selected.has(t)){{selected.delete(t); el.classList.remove('selected');}} else if(selected.size<MAX){{selected.add(t); el.classList.add('selected');}} update(); }}); grid.appendChild(el); }}); update(); }}
-render(); document.getElementById('next').addEventListener('click',()=>location.href='role.html');</script></body></html>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>NOVA · Select Your Traits</title>
+<link rel="stylesheet" href="assets/css/style.css"/></head><body>
+<div class="wrap">
+  <h1>Select Your Traits</h1>
+  <div class="card">
+    <p class="small"><b>How to choose:</b> Tap traits you have actually demonstrated. Select up to <b>12</b>.</p>
+    <p id="catLine" class="small" style="margin-top:6px"></p>
+  </div>
+  <div id="grid" class="grid"></div>
+  <div class="bar"><div class="small" id="cap">0 / 12 selected</div><div><a class="btn" href="categories.html">Back</a><button id="next" class="btn" disabled>Next: Role Reveal</button></div></div>
+</div>
+<script type="module">
+  import { get, set, dedupe, byAlpha } from './assets/js/shared.js';
+  const MAX = 12; const cats = get('selectedCategories', []);
+  if(!cats || !cats.length){ document.getElementById('catLine').textContent = 'No categories found. Go back and choose at least one.'; }
+  else { document.getElementById('catLine').textContent = `From categories: ${cats.join(', ')}`; }
+  const selected = new Set(get('selectedTraits', []));
+  function update(){ document.getElementById('cap').textContent = `${selected.size} / ${MAX} selected`; document.getElementById('next').disabled = selected.size===0; set('selectedTraits',[...selected]); }
+  function render(list){ const grid=document.getElementById('grid'); grid.innerHTML=''; if(!list.length){ grid.innerHTML = '<div class="small">No traits were found for these categories. (If you see this, the data file didn\'t load.)</div>'; } list.forEach(trait=>{ const el=document.createElement('div'); el.className='pill'; el.textContent=trait; if(selected.has(trait)) el.classList.add('selected'); el.addEventListener('click',()=>{ if(selected.has(trait)){selected.delete(trait); el.classList.remove('selected');} else if(selected.size<MAX){selected.add(trait); el.classList.add('selected');} update(); }); grid.appendChild(el); }); update(); }
+  // Robust loaders: try ./data then /data then inline brain
+  async function loadTraits(){ 
+    const picks = [];
+    const add = arr => { for (const t of arr) if(!picks.includes(t)) picks.push(t); };
+    const use = (map) => { (cats||[]).forEach(c=> add((map[c]||map[c?.toLowerCase()]||[]))); return picks.sort(byAlpha); };
+    try{ const local = await (await fetch('./data/traits_with_categories.json',{cache:'no-store'})).json(); const list=use(local); if(list.length) return list; }catch(e){}
+    try{ const root = await (await fetch('/data/traits_with_categories.json',{cache:'no-store'})).json(); const list=use(root); if(list.length) return list; }catch(e){}
+    try{ const brain = await (await fetch('/data/nova_brain_map_v1.json',{cache:'no-store'})).json(); const list=use(brain.categories||{}); if(list.length) return list; }catch(e){}
+    return [];
+  }
+  const list = await loadTraits(); render(list);
+  document.getElementById('next').addEventListener('click',()=>location.href='role.html');
+</script></body></html>

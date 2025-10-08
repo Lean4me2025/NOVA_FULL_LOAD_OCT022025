@@ -6,4 +6,4 @@ export function nav(to){ location.href=to; }
 export const byAlpha=(a,b)=>a.localeCompare(b);
 export const dedupe=(arr)=>[...new Set(arr)];
 export const caseKey=(s)=>(s||'').toLowerCase().trim();
-console.log("Nova v9.4c | Purpose Meets Outlook | Guided Start + Navi Bridge");
+console.log("Nova v9.4d | Purpose Meets Outlook | Guided Start + Navi Bridge");

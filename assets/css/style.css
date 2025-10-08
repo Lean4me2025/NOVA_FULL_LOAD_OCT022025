@@ -22,15 +22,4 @@ p{margin:0 0 12px} .small{font-size:16px;line-height:1.55;color:#fff}
 hr{border:none;border-top:1px solid rgba(255,255,255,.14);margin:18px 0}
 .center{text-align:center}
 footer{opacity:.7;font-size:13px;margin-top:18px}
-
-/* Overlay */
-.overlay{position:fixed;inset:0;background:rgba(7,12,20,.85);backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;z-index:50;animation:fadeIn .4s ease}
-.overlay .panel{max-width:720px;margin:0 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:22px}
-.checkrow{display:flex;align-items:center;gap:10px;margin:10px 0 16px}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.badge{display:inline-block;background:rgba(54,211,153,.15);color:#bff1de;border:1px solid rgba(54,211,153,.35);padding:6px 10px;border-radius:999px;font-weight:700;font-size:13px}
-
-/* Pricing */
-.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:12px}
-.tier{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);border-radius:16px;padding:18px}
-.price{font-size:28px;font-weight:900;margin:6px 0 12px}
+.notice{font-size:14px;opacity:.8}
