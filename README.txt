@@ -1,17 +1,18 @@
-Nova v9.4i — Clean Start Package
-=================================
-Drop-in replacements only. Overwrite existing files with the same names/paths.
+Nova v9.4i — Traits Gatekeeper (Drop-in)
+---------------------------------------------
+This is a direct replacement for: assets/js/traits.js
 
-Files:
-- assets/js/welcome.js
-- traits_gatekeeper.js
-- categories_stage_set.js
-- reflection_look_forward.html
-- reset.html
+What it does:
+- If this session hasn't completed Categories (sessionStorage.nova_stage !== 'categories_done')
+  OR Start wasn't clicked this run (sessionStorage.nova_run_started !== '1'),
+  it clears stale selections and redirects to categories.html.
 
-Deploy:
-1) Replace files in GitHub (same names/paths).
-2) Commit to main; on Vercel use Redeploy → Clear build cache.
-3) Test in an incognito window.
+How to use:
+1) In GitHub, navigate to assets/js/
+2) Replace the existing traits.js with this one (same filename).
+3) Commit to main; Vercel will auto-deploy.
+4) Test in Incognito.
 
-Flow enforced: Welcome → Categories → Traits → Reflection.
+Expected result:
+- Welcome → Start → Categories (not Traits)
+- Traits only loads after Categories; no preselected items.
