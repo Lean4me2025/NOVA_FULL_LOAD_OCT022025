@@ -1,0 +1,13 @@
+Nova_Completion_Note_v9_4h_H94H.txt
+Generated: 2025-10-08 15:10:23
+
+This patch guarantees the Welcome header shows on the welcome page WITHOUT touching your layout.
+It auto-injects the H1 directly ABOVE the 89% line at runtime and adds minimal CSS for visibility.
+
+Included fixes (only):
+1) Welcome header injection — “Welcome to Nova” above the 89% line.
+2) Time estimate copy — “This experience takes about 2–5 minutes to complete.”
+3) Reflection wording — “Discover these roles:”
+4) Invest buttons — exact Payhip embeds for Mastery, Pro, Starter, and Purpose Book.
+
+No other styling or layout changed.
