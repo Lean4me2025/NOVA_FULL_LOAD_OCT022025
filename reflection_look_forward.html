@@ -1,7 +1,12 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>NOVA · Reflection — Look Forward</title>
-<link rel="stylesheet" href="assets/css/style.css"/></head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NOVA · Reflection — Look Forward</title>
+  <link rel="stylesheet" href="assets/css/style.css?v=H94i" />
+</head>
+<body>
 <div class="wrap">
   <h1>Reflection — Look Forward</h1>
   <div class="card"><h2>Your New Role</h2><div id="roleBlock" class="small">Loading role…</div></div>
@@ -14,39 +19,47 @@
       <div class="pill" data-choice="Restarting">Restarting</div>
     </div>
   </div>
-  <div class="bar"><a class="btn" href="reflection_look_back.html">Back</a><button id="next" class="btn" disabled>Next → Invest in Yourself</button></div>
+  <div class="bar"><a class="btn" href="reflection_look_back.html">Back</a><button id="next" class="btn" disabled>Next • Invest in Yourself</button></div>
 </div>
-<div id="overlay" class="overlay" style="display:none"><div class="panel"><h2>Got it — you're <span id="choiceTxt"></span>!</h2><p class="small">Let’s build your next step.</p></div></div>
+
+<div id="overlay" class="overlay" style="display:none">
+  <div class="panel">
+    <h2>Got it — you're <span id="choiceTxt"></span></h2>
+    <p class="small">Let's build your next step.</p>
+  </div>
+</div>
+
 <script type="module">
-  import { get, set } from './assets/js/shared.js';
-  const role = get('revealedRole', null);
-  const roleEl = document.getElementById('roleBlock');
-  if(role){ const jobs=(role.jobs||[]).join(', ')||'—'; const match=role.isFallback?'':`Best fit by: ${role.tm} traits · ${role.dm} attributes.`; roleEl.innerHTML=`<b>${role.title}</b><br/>${role.summary}<br/>${match}<br/>Try these roles: ${jobs}`; } else { roleEl.textContent='No role found. Visit Role Reveal first.'; }
-  const omap = await (await fetch('/data/ooh_map.json',{cache:'no-store'})).json();
-  const odata = await (await fetch('/data/ooh_data.json',{cache:'no-store'})).json();
-  const buckets = new Set(); if(role && role.id && omap[role.id]) omap[role.id].forEach(k=>buckets.add(k));
-  if((!buckets.size) && role && role.isFallback && role.categories && role.categories[0]){ const c=role.categories[0].toLowerCase();
-    if(c.includes('health')) omap['helper']?.forEach(k=>buckets.add(k));
-    if(c.includes('trade')) omap['builder']?.forEach(k=>buckets.add(k));
-    if(c.includes('law')||c.includes('government')) omap['guardian']?.forEach(k=>buckets.add(k));
-    if(c.includes('sales')||c.includes('marketing')) omap['connector']?.forEach(k=>buckets.add(k));
-    if(c.includes('art')||c.includes('media')) omap['connector']?.forEach(k=>buckets.add(k));
-    if(c.includes('tech')||c.includes('science')) omap['analyst']?.forEach(k=>buckets.add(k));
-    if(c.includes('business')||c.includes('finance')) omap['strategist']?.forEach(k=>buckets.add(k));
-    if(c.includes('operations')||c.includes('logistics')) omap['strategist']?.forEach(k=>buckets.add(k));
-    if(c.includes('essential')||c.includes('everyday')) omap['helper']?.forEach(k=>buckets.add(k));
-  }
-  const items = [...buckets].map(k=>odata[k]).filter(Boolean);
-  document.getElementById('ooh').innerHTML = items.length ? items.map(it=>`<b>${it.title}</b><br/>${it.summary}<br/><b>10-Year Outlook:</b> ${it.growth_10yr} · <b>Median Pay:</b> ${it.median_pay}<br/><b>Typical Settings:</b> ${(it.settings||[]).join(', ')}`).join('<hr/>') : 'Add outlook data for this role to /data/ooh_data.json.';
-  const cards = Array.from(document.querySelectorAll('.pill[data-choice]')); const next = document.getElementById('next'); let choice=null;
-  cards.forEach(el=>el.addEventListener('click',()=>{ cards.forEach(x=>x.classList.remove('selected')); el.classList.add('selected'); choice=el.getAttribute('data-choice'); next.disabled=false; }));
-  next.addEventListener('click',()=>{
-    if(!choice) return;
-    set('reflectionChoice', choice);
-    const handoff = { selectedTraits: get('selectedTraits', []), revealedRole: role? role.title : '', categoriesChosen: get('selectedCategories', []), reflectionChoice: choice, timestamp: new Date().toISOString(), novaVersion: '9.4d' };
-    set('novaHandoff', handoff);
-    document.getElementById('choiceTxt').textContent = choice;
-    const ov = document.getElementById('overlay'); ov.style.display='flex';
-    setTimeout(()=>{ location.href='invest.html'; }, 1400);
-  });
-</script></body></html>
+import {{ get, set }} from './assets/js/shared.js';
+
+const roleEl = document.getElementById('roleBlock');
+const oohEl  = document.getElementById('ooh');
+const role = get('revealedRole', null);
+const jobsHtml = (role?.jobs || []).join(', ');
+
+// --- Updated line: Discover these roles ---
+if (roleEl && role) {{
+  roleEl.innerHTML = `<b>${{role.title}}</b><br>Best fit by: ${{role.tm}} traits · ${{role.dm}} attributes.<br><span class="role-link">Discover these roles:</span> ${{jobsHtml}}`;
+}}
+
+const odata = get('ooh_data', null);
+if (oohEl && odata && role?.ooh && odata[role.ooh]) {{
+  const $ = odata[role.ooh];
+  oohEl.innerHTML = `<b>${{role.title}}</b><br>${{$.summary}}<br><b>10-Year Outlook:</b> ${{$.growth_10yr}} · <b>Median Pay:</b> ${{$.median_pay}}<br><b>Top Settings:</b> ${{$.settings}}`;
+}}
+
+const pills = Array.from(document.querySelectorAll('.pill[data-choice]'));
+const nextBtn = document.getElementById('next');
+pills.forEach(el => el.addEventListener('click', () => {{
+  pills.forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+  set('reflectionChoice', el.getAttribute('data-choice'));
+  document.getElementById('choiceTxt').textContent = el.getAttribute('data-choice');
+  document.getElementById('overlay').style.display = 'flex';
+  nextBtn.disabled = false;
+}}));
+
+nextBtn?.addEventListener('click', () => {{ location.href = 'invest.html'; }});
+</script>
+</body>
+</html>
