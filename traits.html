@@ -1,38 +1,30 @@
-<!doctype html><html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Nova • Traits</title><link rel="stylesheet" href="assets/css/style.css"/>
-<script defer src="assets/js/state.js"></script><script defer src="assets/js/data.js"></script></head>
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Nova • Traits</title><link rel="stylesheet" href="assets/css/style.css"/><script defer src="assets/js/state.js"></script><script defer src="assets/js/data.js"></script></head>
 <body><div class="container"><div class="header"><div class="brand">Nova</div><div class="badge">Selected: <span id="count">0</span> traits</div></div>
-<div class="card"><h1 class="h1">Select traits that feel true</h1><div id="filters" class="list"></div><div class="hr"></div><div id="tray" class="grid cols-3"></div>
-<div class="hr"></div><div class="grid cols-2"><button id="next" class="btn primary">See My Results</button><button id="clear" class="btn ghost">Clear</button></div></div></div>
+<div class="card"><h1 class="h1">Select traits that feel true</h1><div id="filters" class="list"></div><div class="hr"></div><div id="tray" class="grid cols-3"></div><div class="hr"></div><div class="grid cols-2"><button id="next" class="btn primary">See My Results</button><button id="clear" class="btn ghost">Clear</button></div></div></div>
 <script>
 (async ()=>{
   const data = await loadAllData();
   const selectedIds = new Set(JSON.parse(localStorage.getItem('nova.selectedCategoryIds')||'[]'));
   const selectedLabels = JSON.parse(localStorage.getItem('nova.selectedCategories')||'[]');
-  // Show filter chips (labels)
-  const f=document.getElementById('filters'); f.innerHTML = selectedLabels.map(l=> `<span class="pill">${l}</span>`).join('');
-
+  document.getElementById('filters').innerHTML = selectedLabels.map(l=> `<span class="pill">${l}</span>`).join('');
   const selectedKeys = new Set((JSON.parse(localStorage.getItem('nova.selectedTraits')||'[]')).map(t=> t.id||t.name||t));
   const tray = document.getElementById('tray'); tray.innerHTML='';
-
   const pool = data.traits.filter(t=> !selectedIds.size || selectedIds.has(t.categoryId));
-  if(pool.length===0){
-    const note = document.createElement('div'); note.className='small'; note.textContent='No direct matches — showing all traits.'; tray.appendChild(note);
-  }
+  if(pool.length===0){ const note=document.createElement('div'); note.className='small'; note.textContent='No direct matches — showing all traits.'; tray.appendChild(note); }
   (pool.length? pool: data.traits).forEach(t=>{
     const key=t.id||t.name; const b=document.createElement('button'); b.className='btn ghost'; b.innerHTML=`<div><div style="font-weight:800">${t.name}</div><div class="small">${t.categoryId}</div></div>`;
     if(selectedKeys.has(key)) b.classList.add('active');
-    b.onclick=()=>{ if(selectedKeys.has(key)){selectedKeys.delete(key); b.classList.remove('active');} else {selectedKeys.add(key); b.classList.add('active');} renderCount(); };
+    b.onclick=()=>{ if(selectedKeys.has(key)){ selectedKeys.delete(key); b.classList.remove('active'); } else { selectedKeys.add(key); b.classList.add('active'); } document.getElementById('count').textContent = selectedKeys.size; };
     tray.appendChild(b);
   });
-  function renderCount(){ document.getElementById('count').textContent = selectedKeys.size; }
-  renderCount();
+  document.getElementById('count').textContent = selectedKeys.size;
   document.getElementById('next').onclick=()=>{
     const chosen = data.traits.filter(t=> selectedKeys.has(t.id||t.name));
     localStorage.setItem('nova.selectedTraits', JSON.stringify(chosen));
-    NOVA.state.selectedTraits = chosen; NOVA.save();
+    if(window.NOVA&&NOVA.state){ NOVA.state.selectedTraits = chosen; NOVA.save(); }
     location.href='results.html';
   };
-  document.getElementById('clear').onclick=()=>{ selectedKeys.clear(); document.querySelectorAll('#tray .btn').forEach(b=> b.classList.remove('active')); renderCount(); };
+  document.getElementById('clear').onclick=()=>{ selectedKeys.clear(); document.querySelectorAll('#tray .btn').forEach(b=> b.classList.remove('active')); document.getElementById('count').textContent = 0; };
 })();
 </script></body></html>

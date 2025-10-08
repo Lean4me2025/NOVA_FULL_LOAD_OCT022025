@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Nova • QA</title><link rel="stylesheet" href="assets/css/style.css"/><script defer src="assets/js/state.js"></script><script defer src="assets/js/data.js"></script></head>
+<body><div class="container"><div class="header"><div class="brand">Nova</div><div class="badge">QA dashboard</div></div>
+<div class="card"><h1 class="h1">Quick checks</h1>
+<div class="grid cols-3">
+  <div class="card"><div class="small">LocalStorage</div><pre id="ls" class="small" style="white-space:pre-wrap"></pre><button class="btn" id="reset">Reset</button></div>
+  <div class="card"><div class="small">Data Loads</div><pre id="dl" class="small" style="white-space:pre-wrap"></pre></div>
+  <div class="card"><div class="small">Flow</div><a class="btn" href="categories.html">Start Categories</a><a class="btn" href="traits.html">Go Traits</a><a class="btn" href="results.html">Go Results</a></div>
+</div></div></div>
+<script>
+(async ()=>{
+  function showLS(){ const o={selectedCategoryIds:JSON.parse(localStorage.getItem('nova.selectedCategoryIds')||'[]'),selectedCategories:JSON.parse(localStorage.getItem('nova.selectedCategories')||'[]'),selectedTraits:JSON.parse(localStorage.getItem('nova.selectedTraits')||'[]'),matches:JSON.parse(localStorage.getItem('nova.matches')||'[]')}; document.getElementById('ls').textContent = JSON.stringify(o,null,2); }
+  showLS();
+  document.getElementById('reset').onclick=()=>{ localStorage.removeItem('nova.selectedCategoryIds'); localStorage.removeItem('nova.selectedCategories'); localStorage.removeItem('nova.selectedTraits'); localStorage.removeItem('nova.matches'); showLS(); };
+  const data = await loadAllData(); document.getElementById('dl').textContent = JSON.stringify({categories:data.categories?.length||0, traits:data.traits?.length||0, jobs:data.ooh?.length||0 }, null, 2);
+})();
+</script></body></html>

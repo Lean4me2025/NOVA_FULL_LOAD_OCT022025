@@ -1,7 +1,7 @@
 window.NOVA = {
   state: {
     selectedCategoryIds: JSON.parse(localStorage.getItem('nova.selectedCategoryIds')||'[]'),
-    selectedCategories: JSON.parse(localStorage.getItem('nova.selectedCategories')||'[]'), // labels for display
+    selectedCategories: JSON.parse(localStorage.getItem('nova.selectedCategories')||'[]'),
     selectedTraits: JSON.parse(localStorage.getItem('nova.selectedTraits')||'[]'),
     matches: JSON.parse(localStorage.getItem('nova.matches')||'[]'),
   },
