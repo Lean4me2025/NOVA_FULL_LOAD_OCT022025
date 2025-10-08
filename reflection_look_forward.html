@@ -4,41 +4,31 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Reflection — Look Forward · Nova</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=H94j">
+  <link rel="stylesheet" href="assets/css/style.css?v=H95b">
 </head>
 <body>
+  <div class="header"><a href="traits.html">← Back to Traits</a><nav><a href="invest.html">Invest</a> • <a href="reset.html">Reset</a></nav></div>
   <main class="wrap">
     <h1>Reflection — Look Forward</h1>
+    <div class="card">
+      <p>This is the reflection moment — where your choices come together into a direction. Don’t get stuck on the title; look for what it says about how you <em>contribute</em>.</p>
+    </div>
     <div class="card">
       <h2>Your New Role</h2>
       <div id="roleBlock" class="small"></div>
     </div>
     <div class="bar">
-      <a class="btn" href="traits.html">Back</a>
+      <a class="btn btn-ghost" href="traits.html">Back</a>
       <a class="btn" href="invest.html">Next: Invest</a>
     </div>
+    <footer>Nova v9.5b — Discover Purpose. Live It Boldly.</footer>
   </main>
   <script>
-    // Simple demo render to prove the wording is correct
     const role = { title: 'The Analyst', tm: 12, dm: 8, jobs: ['Skilled Trades','Technician','Installer'] };
     const jobsHtml = role.jobs.join(', ');
     const roleEl = document.getElementById('roleBlock');
     roleEl.innerHTML = `<b>${role.title}</b><br>Best fit by: ${role.tm} traits · ${role.dm} attributes.<br><span class="role-link">Discover these roles:</span> ${jobsHtml}`;
-
-    // Safety swap if any cached "Try" exists
-    (function(){
-      function swap(){
-        const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-        let n; while ((n = w.nextNode())) {
-          const t = n.nodeValue || '';
-          if (/\bTry these roles:/i.test(t)) {
-            n.nodeValue = t.replace(/\bTry these roles:/i, 'Discover these roles:');
-            break;
-          }
-        }
-      }
-      (document.readyState === 'loading') ? document.addEventListener('DOMContentLoaded', swap) : swap();
-    })();
+    (function(){function swap(){const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){const t=n.nodeValue||'';if(/\bTry these roles:/i.test(t)){n.nodeValue=t.replace(/\bTry these roles:/i,'Discover these roles:');break;}}}(document.readyState==='loading')?document.addEventListener('DOMContentLoaded',swap):swap();)();
   </script>
 </body>
 </html>

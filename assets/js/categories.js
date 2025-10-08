@@ -1,7 +1,5 @@
-// H94j — Categories page: set session stage and basic interactions
 (function(){
-  // simple demo categories
-  const cats = ['People', 'Data', 'Design', 'Operations', 'Teaching', 'Logistics', 'Sales', 'Hands-On'];
+  const cats = ['Technology','Business','Finance & Accounting','Creative','Operations','Sales & Customer','Education','Hands-On'];
   const grid = document.getElementById('catGrid');
   const next = document.getElementById('categoriesNextBtn');
   const selected = new Set();
@@ -14,7 +12,7 @@
       el.classList.toggle('selected');
       if (el.classList.contains('selected')) selected.add(name);
       else selected.delete(name);
-      next.disabled = selected.size === 0;
+      next.disabled = selected.size < 2;
     });
     grid.appendChild(el);
   });
@@ -23,11 +21,8 @@
     try {
       sessionStorage.setItem('nova_stage','categories_done');
       sessionStorage.setItem('nova_run_started','1');
-      // DO NOT persist traits here; only categories if needed
-      localStorage.removeItem('nova_selected_traits'); // ensure clean handoff
+      localStorage.setItem('nova_selected_categories', JSON.stringify(Array.from(selected)));
       location.href = 'traits.html';
-    } catch(e) {
-      location.href = 'traits.html';
-    }
+    } catch(e) { location.href = 'traits.html'; }
   });
 })();
