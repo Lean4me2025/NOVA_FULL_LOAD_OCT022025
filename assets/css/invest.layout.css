@@ -1,0 +1,8 @@
+/* Invest page button layout: title left, button right (desktop), stacked on mobile */
+.tier { display: grid; grid-template-rows: auto auto 1fr auto; gap: 8px; }
+.tier .tier-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.tier .tier-head h2 { margin: 0; }
+.tier .paybtn { margin-top: 0; }
+@media (max-width: 720px) {
+  .tier .tier-head { flex-direction: column; align-items: flex-start; }
+}

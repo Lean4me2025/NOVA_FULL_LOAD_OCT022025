@@ -1,0 +1,6 @@
+{
+  "starter": "https://<YOUR_DIRECT_PRODUCT_URL_FOR_STARTER>",
+  "pro": "https://<YOUR_DIRECT_PRODUCT_URL_FOR_PRO>",
+  "mastery": "https://<YOUR_DIRECT_PRODUCT_URL_FOR_MASTERY>",
+  "book": "https://<YOUR_DIRECT_PRODUCT_URL_FOR_PURPOSE_BOOK>"
+}
