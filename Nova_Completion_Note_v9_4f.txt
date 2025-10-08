@@ -1,0 +1,51 @@
+Nova_Completion_Note_v9_4f.txt
+Generated: 2025-10-08 14:33:32
+
+This note confirms the locked scope and the targeted fixes applied for Nova v9.4f.
+
+Key Locked Elements
+- Purpose Statement: “89% of people do not know their purpose.”
+- Guided Flow: Categories → Traits → Roles → Reflection → Invest.
+- Reflection Split: Two-page “Look Back” and “Look Forward” sequence maintained.
+- Invest Page: 2 × 2 grid layout; buttons bottom-anchored; Payhip links (Starter $29.99, Pro $99, Mastery $149, Purpose Book $14.99) open in new tabs.
+- Theme: Deep-blue background, green accents, white text.
+- Footer Tag: Nova v9.4f — Discover Purpose. Live It Boldly.
+
+What changed in v9.4f (patch summary)
+1) Traits layout fix — evenly distributed across the full page
+   - CSS grid with responsive auto-fit columns
+   - Ensures traits no longer bunch on one side
+
+2) Traits loading guarantee
+   - JS guards for missing/empty arrays
+   - Resilient rendering against malformed data
+   - Uses stored selected categories to filter traits
+
+3) Invest links
+   - All Payhip links set to open in a new tab (target="_blank", rel="noopener")
+
+4) Footer tag
+   - Unified footer string: “Nova v9.4f — Discover Purpose. Live It Boldly.”
+
+How to apply
+Option A — Drop-in replace (recommended)
+- Copy “patches/” files into your project, keeping the same relative paths (or adjust imports accordingly).
+- Ensure your pages load the updated CSS/JS (see below).
+
+Option B — Manual diff/merge
+- Open each file under “patches/” and merge the relevant sections into your codebase.
+
+Required imports (examples)
+- CSS:  <link rel="stylesheet" href="/assets/css/style.css" />
+- JS:   <script src="/assets/js/traits.js" defer></script>
+
+Data files expected
+- /data/traits_with_categories.json
+- /data/category_matrix.json
+- /data/ooh.json
+
+Notes
+- We did not change any other styling beyond the traits grid and footer line.
+- Voice intro remains disabled by default. Add your audio later when ready.
+
+— End of Nova_Completion_Note_v9_4f —
