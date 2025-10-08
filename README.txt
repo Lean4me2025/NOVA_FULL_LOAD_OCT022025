@@ -1,11 +1,13 @@
-Nova v9.4d — "Purpose Meets Outlook"
-Fixes: No checkbox gate, Welcome fact restored, robust trait loader.
+Nova v9.4e — Integrated Full Build
 
-Flow
-- Welcome (fact line + time estimate)
-- Categories → Traits (robust loader) → Role Reveal
-- Reflection (Look Back / Look Forward with mandatory choice)
-- Invest (Starter | Pro | Mastery | Purpose Book)
-- Handoff (localStorage: novaHandoff, novaVersion: 9.4d)
+Highlights:
+- Welcome fact line restored: "89% of people do not know their purpose."
+- Traits data loading stabilized (no empty results).
+- Invest layout fixed (buttons aligned right, no overlaps).
+- All prior reflection and role reveal updates included.
 
-Deploy via GitHub/Vercel. Check console for version tag.
+Deployment:
+Upload entire ZIP to your Nova GitHub repo or Vercel project root.
+Make sure /data and /assets folders remain intact.
+
+Version tag: v9.4e | Discover Purpose. Live It Boldly.
