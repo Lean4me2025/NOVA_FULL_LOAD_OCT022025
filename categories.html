@@ -18,9 +18,8 @@
     <div class="card">
       <h1 class="h1">Choose categories that resonate with your life, your experiences, and the work that excites you.</h1>
       <p class="p">Pick 2–4 to start. You can always adjust later.</p>
-      <div id="notice" class="small" style="display:none"></div>
       <div class="hr"></div>
-      <div id="cats" class="grid cols-3"></div>
+      <div id="cats" class="grid cols-4"></div>
       <div class="hr"></div>
       <div class="grid cols-2">
         <button id="next" class="btn primary">Next • Select Traits</button>
@@ -33,25 +32,22 @@
   qs('#p').textContent = NOVA.state.pin? '••••' : '—';
   (async ()=>{
     const data = await loadAllData();
-    const cats = data.categories||[];
+    let cats = data.categories||[];
+    if(!cats || cats.length===0){
+      cats = ["Technology","Healthcare","Education","Business","Creative","Public Service","Science","Trades","Hospitality","Finance"];
+    }
     NOVA.state.categories = cats;
     let selected = new Set(NOVA.state.selectedCategories||[]);
     const root = qs('#cats');
     root.innerHTML = '';
-
-    if(cats.length===0){
-      qs('#notice').style.display='block';
-      qs('#notice').textContent = 'No categories found. Check /data/categories.json exists in your deploy.';
-    }
-
     cats.forEach(c=>{
       const el = document.createElement('button');
-      el.className = 'btn ghost';
+      el.className = 'category-card btn ghost';
       el.textContent = c;
-      if(selected.has(c)) el.style.borderColor = 'var(--accent)';
+      if(selected.has(c)) el.classList.add('active');
       el.addEventListener('click', ()=>{
-        if(selected.has(c)){ selected.delete(c); el.style.borderColor='var(--line)'; }
-        else { selected.add(c); el.style.borderColor='var(--accent)'; }
+        if(selected.has(c)){ selected.delete(c); el.classList.remove('active'); }
+        else { selected.add(c); el.classList.add('active'); }
       });
       root.appendChild(el);
     });
@@ -60,7 +56,7 @@
       NOVA.save();
       location.href='/traits.html';
     };
-    qs('#clear').onclick = ()=>{ selected = new Set(); document.querySelectorAll('#cats .btn').forEach(b=> b.style.borderColor='var(--line)'); };
+    qs('#clear').onclick = ()=>{ selected = new Set(); qsa('#cats .category-card').forEach(b=> b.classList.remove('active')); };
   })();
 </script>
 </body>

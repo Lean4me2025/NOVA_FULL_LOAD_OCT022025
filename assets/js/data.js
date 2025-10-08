@@ -1,9 +1,5 @@
-// IMPORTANT: reads your filenames
-const FILES = {
-  categories: 'categories.json',
-  traits: 'traits.json',
-  jobs: 'jobs.json'
-};
+// Reads user's filenames
+const FILES = { categories:'categories.json', traits:'traits.json', jobs:'jobs.json' };
 
 async function loadJSON(name){
   const url = '/data/'+name;
@@ -16,19 +12,13 @@ async function loadAllData(){
   const out = { categories:[], traits:[], ooh:[] };
   try{
     const cm = await loadJSON(FILES.categories);
-    if(Array.isArray(cm)){
-      out.categories = cm;
-    }else if(cm && typeof cm==='object'){
-      out.categories = Object.keys(cm);
-    }
+    if(Array.isArray(cm)){ out.categories = cm; }
+    else if(cm && typeof cm==='object'){ out.categories = Object.keys(cm); }
   }catch(e){ console.log('[NOVA]', e.message); }
   try{
     const twc = await loadJSON(FILES.traits);
-    if(Array.isArray(twc)){
-      out.traits = twc;
-    }else if(twc && Array.isArray(twc.traits)){
-      out.traits = twc.traits;
-    }
+    if(Array.isArray(twc)){ out.traits = twc; }
+    else if(twc && Array.isArray(twc.traits)){ out.traits = twc.traits; }
   }catch(e){ console.log('[NOVA]', e.message); }
   try{
     const ooh = await loadJSON(FILES.jobs);
@@ -48,14 +38,10 @@ function computeMatches({ooh=[], selectedCategories=[], selectedTraits=[]}, max=
     let score = 0;
     for(const c of catWords){ if(jobCats.has(c)) score += 5; }
     for(const tw of traitWords){
-      if(tw && (title.includes(tw) || summary.includes(tw))){
-        score += 1;
-      }
+      if(tw && (title.includes(tw) || summary.includes(tw))){ score += 1; }
     }
     if(title.includes('engineer')||title.includes('analyst')||title.includes('manager')) score += 0.5;
-    if(score>0){
-      scored.push({job, score});
-    }
+    if(score>0){ scored.push({job, score}); }
   }
   scored.sort((a,b)=> b.score-a.score);
   return scored.slice(0, max).map(({job,score})=> ({

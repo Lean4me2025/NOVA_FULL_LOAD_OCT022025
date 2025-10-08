@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Nova • Plans</title>
   <link rel="stylesheet" href="/assets/css/style.css"/>
+  <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
   <script defer src="/assets/js/state.js"></script>
 </head>
 <body>
@@ -16,45 +17,53 @@
   </div>
   <div class="card">
     <h1 class="h1">Choose your plan</h1>
-    <div id="plans" class="grid cols-3"></div>
+    <p class="p">Pick the path that fits your season. You can return to upgrade anytime.</p>
+    <div id="plans" class="grid cols-4">
+      <!-- Book / Purpose -->
+      <div class="card">
+        <div class="kicker">Resource</div>
+        <div class="h2">How to Know Your Purpose</div>
+        <p class="p">A guided framework to uncover calling, values, and next steps.</p>
+        <a href="https://payhip.com/b/N7Lvg" class="payhip-buy-button" data-theme="green" data-product="N7Lvg">Buy Now</a>
+      </div>
+      <!-- Starter -->
+      <div class="card">
+        <div class="kicker">$29.99/mo</div>
+        <div class="h2">NAVI Starter</div>
+        <p class="p">Essentials to move from clarity to first actions.</p>
+        <a href="https://payhip.com/b/GdfU7" class="payhip-buy-button" data-theme="green" data-product="GdfU7">Buy Now</a>
+        <button class="btn ghost block" data-id="starter">Select Plan</button>
+      </div>
+      <!-- Pro -->
+      <div class="card">
+        <div class="kicker">$99/mo</div>
+        <div class="h2">NAVI Pro</div>
+        <p class="p">Advanced tools and momentum support.</p>
+        <a href="https://payhip.com/b/knC1Z" class="payhip-buy-button" data-theme="green" data-product="knC1Z">Buy Now</a>
+        <button class="btn ghost block" data-id="pro">Select Plan</button>
+      </div>
+      <!-- Mastery -->
+      <div class="card">
+        <div class="kicker">$149.99/mo</div>
+        <div class="h2">NAVI Mastery</div>
+        <p class="p">Everything in Pro plus 1:1 coaching, roadmap PDF, and quarterly masterclasses.</p>
+        <a href="https://payhip.com/b/re4Hy" class="payhip-buy-button" data-theme="green" data-product="re4Hy">Buy Now</a>
+        <button class="btn ghost block" data-id="mastery">Select Plan</button>
+      </div>
+    </div>
     <div class="hr"></div>
     <a class="btn primary" href="/navi.html">Continue to Navi</a>
   </div>
 </div>
 <script>
-async function loadConfig(){
-  try{
-    const r = await fetch('/assets/config.json', {cache:'no-store'});
-    return await r.json();
-  }catch(e){
-    return {payhip:{starter:'#',pro:'#',mastery:'#'}};
-  }
-}
-(async ()=>{
-  const cfg = await loadConfig();
-  const plans = [
-    {id:'starter', name:'NAVI Starter', price:'$29.99/mo', url: cfg.payhip.starter},
-    {id:'pro', name:'NAVI Pro', price:'$99/mo', url: cfg.payhip.pro},
-    {id:'mastery', name:'Mastery', price:'$149.99/mo', url: cfg.payhip.mastery}
-  ];
-  const root = document.getElementById('plans');
-  plans.forEach(p=>{
-    const el = document.createElement('div');
-    el.className='card';
-    el.innerHTML = `<div class="kicker">${p.price}</div><div class="h2">${p.name}</div>
-      <p class="p">Everything you need to move from clarity to action.</p>
-      <div class="grid"><a class="btn block" href="${p.url}" target="_blank">Buy on Payhip</a>
-      <button class="btn ghost block" data-id="${p.id}">Select Plan</button></div>`;
-    root.appendChild(el);
-  });
-  root.addEventListener('click', e=>{
+  // Optional internal selection for tracking
+  document.getElementById('plans').addEventListener('click', e=>{
     const btn = e.target.closest('button[data-id]');
     if(!btn) return;
     NOVA.state.plan = btn.dataset.id;
     NOVA.save();
     alert('Selected plan: '+NOVA.state.plan.toUpperCase());
   });
-})();
 </script>
 </body>
 </html>
