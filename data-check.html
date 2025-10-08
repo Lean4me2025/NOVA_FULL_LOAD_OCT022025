@@ -1,36 +1,17 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Nova • Data Check</title>
-  <link rel="stylesheet" href="/assets/css/style.css"/>
-  <script defer src="/assets/js/state.js"></script>
-  <script defer src="/assets/js/data.js"></script>
-</head>
-<body>
-<div class="container">
-  <div class="header">
-    <div class="brand">Nova</div>
-    <div class="badge">Diagnostic</div>
-  </div>
-  <div class="card">
-    <h1 class="h1">Data Check</h1>
-    <p class="p">This page confirms Nova can read your deployed JSON files.</p>
-    <div class="hr"></div>
-    <div id="out" class="p"></div>
-  </div>
-</div>
+<!doctype html><html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Data Check</title><link rel="stylesheet" href="assets/css/style.css"/><script defer src="assets/js/data.js"></script></head>
+<body><div class="container"><div class="card"><h1 class="h1">Data Check</h1><pre id="out" class="p"></pre></div></div>
 <script>
 (async ()=>{
-  const data = await loadAllData();
-  const out = document.getElementById('out');
-  out.innerHTML = `
-    <div><strong>Categories:</strong> ${data.categories?.length||0} (from /data/categories.json)</div>
-    <div><strong>Traits:</strong> ${data.traits?.length||0} (from /data/traits.json)</div>
-    <div><strong>Jobs (OOH):</strong> ${data.ooh?.length||0} (from /data/jobs.json)</div>
-  `;
+  try{
+    const data = await loadAllData();
+    document.getElementById('out').textContent = JSON.stringify({
+      categories_count: data.categories?.length||0,
+      first_categories: (data.categories||[]).slice(0,12),
+      traits_count: data.traits?.length||0
+    }, null, 2);
+  }catch(e){
+    document.getElementById('out').textContent = 'Error: '+e.message;
+  }
 })();
-</script>
-</body>
-</html>
+</script></body></html>

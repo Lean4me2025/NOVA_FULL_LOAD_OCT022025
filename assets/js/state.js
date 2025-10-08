@@ -21,13 +21,4 @@ window.NOVA = {
     localStorage.setItem('nova.plan', s.plan||'');
   }
 };
-async function loadConfig(){
-  try{
-    const r = await fetch('/assets/config.json', {cache:'no-store'});
-    return await r.json();
-  }catch(e){
-    return { payhip: { starter:"#", pro:"#", mastery:"#", book:"#"} };
-  }
-}
-function qs(sel){ return document.querySelector(sel); }
-function qsa(sel){ return Array.from(document.querySelectorAll(sel)); }
+function qs(s){return document.querySelector(s)}; function qsa(s){return Array.from(document.querySelectorAll(s))};
