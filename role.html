@@ -26,8 +26,10 @@
   </div>
 
   <script type="module">
+    
     import { readJSON, get } from './assets/js/shared.js';
     const traits = get('selectedTraits', []);
+    const cats   = get('selectedCategories', []);
 
     function roleScore(role, map){
       const traitMatches = traits.filter(t => (role.trait_weights||[]).includes(t)).length;
@@ -40,18 +42,54 @@
       return {score, traitMatches, domainMatches};
     }
 
+    // Fallback text for categories
+    const CATEGORY_FALLBACK_TEXT = {
+      "Arts & Media": "Your selections lean toward creativity, expression, and communication. Explore roles that turn ideas into stories, visuals, and experiences.",
+      "Business": "Your selections point to planning, structure, and improving how work gets done. Explore operations, coordination, and analysis roles.",
+      "Technology": "Your selections point to problem-solving, systems, and building with tools and code. Explore maker and technical roles.",
+      "Education & Community": "Your selections show mentoring, communication, and service. Explore teaching, coaching, and community liaison roles.",
+      "Public Safety": "Your selections highlight steadiness, accountability, and protection. Explore safety, security, and compliance roles.",
+      "Healthcare": "Your selections show care, precision, and patience. Explore aide, technician, and patient support roles.",
+      "Science & Research": "Your selections highlight curiosity, testing, and documentation. Explore lab, data, and research assistant roles.",
+      "Skilled Trades": "Your selections point to hands-on craft and quality. Explore maintenance, fabrication, and field service roles.",
+      "Finance & Accounting": "Your selections show numbers, accuracy, and integrity. Explore bookkeeping, accounting support, and analyst roles.",
+      "Operations & Logistics": "Your selections show organizing, flow, and reliability. Explore scheduling, inventory, and coordination roles.",
+      "Sales & Marketing": "Your selections highlight communication, persuasion, and story. Explore sales, outreach, and brand support roles.",
+      "Law & Government": "Your selections show fairness, process, and documentation. Explore administrative, policy, and public service roles.",
+      "Essential & Everyday Workers": "Your selections show service, reliability, and teamwork. Explore retail, clerical, custodial, warehousing, and community support roles."
+    };
+
+    function renderFallback(category){
+      const title = `${category} Role`;
+      const text  = CATEGORY_FALLBACK_TEXT[category] || "Explore this area further to see roles that match your strengths.";
+      document.getElementById('result').innerHTML = `
+        <h2>${title}</h2>
+        <p class="small">${text}</p>
+        <hr/>
+        <div class="small">You chose: ${traits.join(', ') || '—'}</div>
+      `;
+      document.getElementById('alt').innerHTML = '';
+      document.getElementById('meta').textContent = `Based on ${traits.length} selected trait${traits.length===1?'':'s'}.`;
+    }
+
     Promise.all([ readJSON('data/roles.json'), readJSON('data/trait_to_attributes.json') ]).then(([roles, map])=>{
       const scored = roles.map(r => ({...r, __score: roleScore(r,map)})).sort((a,b)=>b.__score.score-a.__score.score);
       const top = scored[0];
-      const alt = scored[1];
+      // If no role scored at all (or zero), present fallback from the selected category
+      if (!top || top.__score.score <= 0){
+        const cat = cats[0] || 'Essential & Everyday Workers';
+        renderFallback(cat);
+        return;
+      }
 
-      const topHTML = top ? `
+      const alt = scored[1];
+      const topHTML = `
         <h2>${top.title}</h2>
         <p class="small">${top.summary}</p>
         <hr/>
         <div class="small">Best fit by: <b>${top.__score.traitMatches}</b> trait matches · <b>${top.__score.domainMatches}</b> attribute matches.</div>
         <div class="small">Try these roles: ${ (top.jobs||[]).join(', ') || '—' }</div>
-      ` : '<p class="small">Pick a few more traits to sharpen your signal.</p>';
+      `;
       document.getElementById('result').innerHTML = topHTML;
 
       const altHTML = alt ? `
@@ -63,9 +101,12 @@
 
       document.getElementById('meta').textContent = `Based on ${traits.length} selected trait${traits.length===1?'':'s'}.`;
     }).catch(e=>{
-      document.getElementById('result').innerHTML = '<div class="small">Unable to compute role. Try reselecting traits.</div>';
+      // If data fails to load for any reason, fall back to category
+      const cat = cats[0] || 'Essential & Everyday Workers';
+      renderFallback(cat);
       console.error(e);
     });
-  </script>
+
+</script>
 </body>
 </html>
