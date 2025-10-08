@@ -1,67 +1,37 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Nova • Results</title>
-  <link rel="stylesheet" href="assets/css/style.css"/>
-  <script defer src="assets/js/state.js"></script>
-  <script defer src="assets/js/data.js"></script>
-</head>
-<body>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Nova • Results</title>
+<link rel="stylesheet" href="assets/css/style.css"/>
+<script defer src="assets/js/state.js"></script>
+<script defer src="assets/js/data.js"></script>
+</head><body>
 <div class="container">
-  <div class="header">
-    <div class="brand">Nova</div>
-    <div class="list"><a class="pill" href="traits.html">Back to Traits</a></div>
-    <div class="badge">PDF & Navi ready</div>
-  </div>
+  <div class="header"><div class="brand">Nova</div><div class="list"><a class="pill" href="traits.html">Back to Traits</a></div><div class="badge">PDF & Navi ready</div></div>
   <div class="card">
     <h1 class="h1">Your results</h1>
-    <p class="p">Based on your selected categories and traits, here are roles to explore. You can print this page to PDF.</p>
-    <div class="grid cols-2">
-      <button class="btn" onclick="window.print()">Export as PDF</button>
-      <a class="btn primary" href="reflection.html">Continue • Reflection</a>
-    </div>
-    <div class="hr"></div>
-    <div id="summary" class="p"></div>
-    <div class="hr"></div>
-    <table>
-      <thead><tr><th>Occupation</th><th>Score</th><th class="small">SOC</th></tr></thead>
-      <tbody id="rows"></tbody>
-    </table>
+    <p class="p">Based on your selections, here are roles to explore. Print this page to PDF.</p>
+    <div class="grid cols-2"><button class="btn" onclick="window.print()">Export as PDF</button><a class="btn primary" href="reflection.html">Continue • Reflection</a></div>
+    <div class="hr"></div><div id="summary" class="p"></div><div class="hr"></div>
+    <table><thead><tr><th>Occupation</th><th>Score</th><th class="small">SOC</th></tr></thead><tbody id="rows"></tbody></table>
   </div>
 </div>
 <script>
 (async ()=>{
+  function getCats(){ try{ return JSON.parse(localStorage.getItem('nova.selectedCategories')||'[]'); }catch(e){ return []; } }
+  function getTraits(){ try{ return JSON.parse(localStorage.getItem('nova.selectedTraits')||'[]'); }catch(e){ return []; } }
   const data = await loadAllData();
   const matches = computeMatches({
     ooh: data.ooh,
-    selectedCategories: NOVA.state.selectedCategories||[],
-    selectedTraits: NOVA.state.selectedTraits||[]
+    selectedCategories: getCats(),
+    selectedTraits: getTraits()
   }, 40);
-  NOVA.state.matches = matches;
-  NOVA.save();
-
+  if(window.NOVA && NOVA.state){ NOVA.state.matches = matches; NOVA.save && NOVA.save(); }
   document.getElementById('summary').innerHTML = `
-    <div class="list">
-      ${(NOVA.state.selectedCategories||[]).map(c=>'<span class="pill">'+c+'</span>').join('')}
-    </div>
-    <div class="list">
-      ${(NOVA.state.selectedTraits||[]).slice(0,10).map(t=>'<span class="pill">'+(t.name||t)+'</span>').join('')}
-      ${ (NOVA.state.selectedTraits||[]).length>10 ? '<span class="pill">+'+((NOVA.state.selectedTraits||[]).length-10)+' more</span>' : ''}
-    </div>
-  `;
-
-  const tb = document.getElementById('rows');
-  tb.innerHTML = '';
-  matches.forEach(m=>{
-    const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${m.title}<div class="small">${m.summary? m.summary.slice(0,120)+'…' : ''}</div></td>
-                    <td>${m.score}</td>
-                    <td class="small">${m.soc||''}</td>`;
-    tb.appendChild(tr);
-  });
+    <div class="list">${getCats().map(c=>'<span class="pill">'+c+'</span>').join('')}</div>
+    <div class="list">${getTraits().slice(0,10).map(t=>'<span class="pill">'+(t.name||t)+'</span>').join('')} ${ getTraits().length>10 ? '<span class="pill">+'+(getTraits().length-10)+' more</span>' : ''}</div>`;
+  const tb = document.getElementById('rows'); tb.innerHTML='';
+  if(matches.length===0){ const tr=document.createElement('tr'); tr.innerHTML='<td class="small" colspan="3">Matches will appear once jobs data is connected.</td>'; tb.appendChild(tr); }
+  matches.forEach(m=>{ const tr=document.createElement('tr'); tr.innerHTML = `<td>${m.title}<div class="small">${m.summary? m.summary.slice(0,120)+'…' : ''}</div></td><td>${m.score}</td><td class="small">${m.soc||''}</td>`; tb.appendChild(tr); });
 })();
 </script>
-</body>
-</html>
+</body></html>

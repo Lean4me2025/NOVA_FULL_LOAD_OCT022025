@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Detail-oriented",
+    "category": "Business & Finance"
+  },
+  {
+    "name": "Problem solving",
+    "category": "Technology"
+  },
+  {
+    "name": "Empathy",
+    "category": "Healthcare"
+  },
+  {
+    "name": "Communication",
+    "category": "Education"
+  },
+  {
+    "name": "Creativity",
+    "category": "Creative"
+  },
+  {
+    "name": "Team leadership",
+    "category": "Public Service"
+  },
+  {
+    "name": "Data analysis",
+    "category": "Science"
+  },
+  {
+    "name": "Hands-on",
+    "category": "Trades"
+  },
+  {
+    "name": "Customer focus",
+    "category": "Hospitality"
+  },
+  {
+    "name": "Reliability",
+    "category": "Workers and Service People"
+  }
+]

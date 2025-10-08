@@ -1,92 +1,94 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Nova • Categories</title>
-  <link rel="stylesheet" href="assets/css/style.css"/>
-  <script defer src="assets/js/state.js"></script>
-  <script defer src="assets/js/data.js"></script>
-  <style>#cats .category-card{min-height:44px}</style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <div class="brand">Nova</div>
-      <div class="list"><a class="pill" href="index.html">Welcome</a><a class="pill" href="categories.html">Categories</a><a class="pill" href="traits.html">Traits</a><a class="pill" href="results.html">Results</a></div>
-      <div class="badge">User: <span id="u"></span> • PIN: <span id="p"></span></div>
-    </div>
-    <div class="card">
-      <h1 class="h1">Choose categories that resonate with your life, your experiences, and the work that excites you.</h1>
-      <p class="p">Pick 2–4 to start. You can always adjust later.</p>
-      <div class="hr"></div>
-
-      <!-- Always-visible default list -->
-      <div id="cats" class="grid cols-4">
-        <button class="category-card btn ghost">Technology</button>
-        <button class="category-card btn ghost">Healthcare</button>
-        <button class="category-card btn ghost">Education</button>
-        <button class="category-card btn ghost">Business & Finance</button>
-        <button class="category-card btn ghost">Creative</button>
-        <button class="category-card btn ghost">Public Service</button>
-        <button class="category-card btn ghost">Science</button>
-        <button class="category-card btn ghost">Trades</button>
-        <button class="category-card btn ghost">Hospitality</button>
-        <button class="category-card btn ghost">Workers & Service People</button>
-      </div>
-
-      <div class="hr"></div>
-      <div class="grid cols-2">
-        <button id="next" class="btn primary">Next • Select Traits</button>
-        <button id="clear" class="btn ghost">Clear</button>
-      </div>
-    </div>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Nova • Categories</title>
+<link rel="stylesheet" href="assets/css/style.css"/>
+<script defer src="assets/js/state.js"></script>
+<script defer src="assets/js/data.js"></script>
+<style>#cats .category-card{min-height:44px}</style>
+</head><body>
+<div class="container">
+  <div class="header">
+    <div class="brand">Nova</div>
+    <div class="list"><a class="pill" href="index.html">Welcome</a><a class="pill" href="categories.html">Categories</a><a class="pill" href="traits.html">Traits</a><a class="pill" href="results.html">Results</a></div>
+    <div class="badge">Selected: <span id="count">0</span> / 2–4</div>
   </div>
+  <div class="card">
+    <h1 class="h1">Choose categories that resonate with your life, your experiences, and the work that excites you.</h1>
+    <p class="p">Pick 2–4 to start. You can always adjust later.</p>
+    <div class="hr"></div>
+    <div id="cats" class="grid cols-4">
+      <button class="category-card btn ghost" type="button">Technology</button>
+      <button class="category-card btn ghost" type="button">Healthcare</button>
+      <button class="category-card btn ghost" type="button">Education</button>
+      <button class="category-card btn ghost" type="button">Business & Finance</button>
+      <button class="category-card btn ghost" type="button">Creative</button>
+      <button class="category-card btn ghost" type="button">Public Service</button>
+      <button class="category-card btn ghost" type="button">Science</button>
+      <button class="category-card btn ghost" type="button">Trades</button>
+      <button class="category-card btn ghost" type="button">Hospitality</button>
+      <button class="category-card btn ghost" type="button">Workers & Service People</button>
+    </div>
+    <div class="hr"></div>
+    <div class="grid cols-2"><button id="next" class="btn primary" type="button">Next • Select Traits</button><button id="clear" class="btn ghost" type="button">Clear</button></div>
+    <div id="hint" class="small" style="margin-top:10px;opacity:.9"></div>
+  </div>
+</div>
 <script>
 (function(){
-  let selected = new Set(NOVA.state.selectedCategories||[]);
-  qs('#u').textContent = NOVA.state.user||'guest';
-  qs('#p').textContent = NOVA.state.pin? '••••' : '—';
+  // Works even if state.js fails — self-save to localStorage
+  const KEY = 'nova.selectedCategories';
+  function getLS(){ try{const v=localStorage.getItem(KEY); return v? JSON.parse(v): []; }catch(e){ return []; } }
+  function setLS(arr){ try{localStorage.setItem(KEY, JSON.stringify(arr));}catch(e){} }
 
+  let selected = new Set(getLS());
+  const countEl = document.getElementById('count'); const hint = document.getElementById('hint');
+
+  function setCount(){
+    countEl.textContent = selected.size;
+    if(selected.size<2){ hint.textContent='Pick at least 2 to continue.'; }
+    else if(selected.size>4){ hint.textContent='You can start with 2–4 (you picked '+selected.size+').'; }
+    else { hint.textContent=''; }
+  }
+  function saveMirror(){
+    const arr = Array.from(selected);
+    setLS(arr);
+    if(window.NOVA && NOVA.state){ NOVA.state.selectedCategories = arr; NOVA.save && NOVA.save(); }
+  }
   function wire(){
-    qsa('#cats .category-card').forEach(btn=>{
+    document.querySelectorAll('#cats .category-card').forEach(btn=>{
       const c = btn.textContent.trim();
       if(selected.has(c)) btn.classList.add('active');
       btn.onclick = ()=>{
         if(selected.has(c)){ selected.delete(c); btn.classList.remove('active'); }
         else { selected.add(c); btn.classList.add('active'); }
+        saveMirror(); setCount();
       };
     });
-    qs('#next').onclick = ()=>{
-      NOVA.state.selectedCategories = Array.from(selected);
-      NOVA.save();
-      location.href = 'traits.html';
+    document.getElementById('next').onclick = ()=>{
+      if(selected.size<2){ setCount(); return; }
+      saveMirror(); location.href='traits.html';
     };
-    qs('#clear').onclick = ()=>{
-      selected = new Set();
-      qsa('#cats .category-card').forEach(b=> b.classList.remove('active'));
+    document.getElementById('clear').onclick = ()=>{
+      selected = new Set(); document.querySelectorAll('#cats .category-card').forEach(b=> b.classList.remove('active'));
+      saveMirror(); setCount();
     };
+    setCount();
   }
   wire();
 
-  // Progressive enhancement — replace with categories.json if it loads
+  // If categories.json loads, replace the list with its content
   (async ()=>{
     try{
+      if(typeof loadAllData!=='function') return;
       const data = await loadAllData();
-      const cats = (data && Array.isArray(data.categories) && data.categories.length>0) ? data.categories : null;
+      const cats = Array.isArray(data.categories) && data.categories.length>0 ? data.categories : null;
       if(cats){
-        const root = qs('#cats'); root.innerHTML='';
-        cats.forEach(c=>{
-          const el = document.createElement('button');
-          el.className='category-card btn ghost';
-          el.textContent=c;
-          root.appendChild(el);
-        });
-        wire(); // re-wire after replacing
+        const root = document.getElementById('cats'); root.innerHTML='';
+        cats.forEach(c=>{ const el=document.createElement('button'); el.className='category-card btn ghost'; el.type='button'; el.textContent=c; root.appendChild(el); });
+        wire();
       }
     }catch(e){ console.log('[NOVA] categories fallback in use:', e.message); }
   })();
 })();
 </script>
-</body>
-</html>
+</body></html>
