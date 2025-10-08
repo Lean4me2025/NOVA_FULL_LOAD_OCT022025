@@ -10,22 +10,62 @@
 <body>
   <div class="wrap">
     <h1>Your Role Reveal</h1>
+    <div class="card" id="result"></div>
+    <div class="card" id="alt"></div>
     <div class="card">
-      <div id="summary"></div>
+      <h2>What this means</h2>
+      <p class="small">This isn’t a label—it’s a <b>signal</b>. Based on your traits and attributes, this pattern explains how you naturally show up. Adjust your traits to refine the signal.</p>
     </div>
     <div class="bar">
-      <button class="btn" id="next">Next: Reflection</button>
+      <div class="small" id="meta"></div>
+      <div>
+        <a class="btn" href="traits.html">Back</a>
+        <a class="btn" href="reflection.html">Next: Reflection</a>
+      </div>
     </div>
   </div>
+
   <script type="module">
-    import { getSelectedCategories, getSelectedTraits } from './assets/js/shared.js';
-    const cats = getSelectedCategories();
-    const traits = getSelectedTraits();
-    const s = document.getElementById('summary');
-    s.innerHTML = `<p class="small">Categories: <b>${cats.join(', ')||'—'}</b></p>
-                   <p class="small">Selected Traits (${traits.length}): <b>${traits.join(', ')||'—'}</b></p>
-                   <p class="small">(* Placeholder *) This is where the role logic maps your traits to recommended roles.</p>`;
-    document.getElementById('next').addEventListener('click',()=>location.href='reflection.html');
+    import { readJSON, get } from './assets/js/shared.js';
+    const traits = get('selectedTraits', []);
+
+    function roleScore(role, map){
+      const traitMatches = traits.filter(t => (role.trait_weights||[]).includes(t)).length;
+      let domainMatches = 0;
+      traits.forEach(t => {
+        const domains = map[t] || [];
+        if ((role.attribute_weights||[]).some(d => domains.includes(d))) domainMatches += 1;
+      });
+      const score = 2*traitMatches + 1*domainMatches;
+      return {score, traitMatches, domainMatches};
+    }
+
+    Promise.all([ readJSON('data/roles.json'), readJSON('data/trait_to_attributes.json') ]).then(([roles, map])=>{
+      const scored = roles.map(r => ({...r, __score: roleScore(r,map)})).sort((a,b)=>b.__score.score-a.__score.score);
+      const top = scored[0];
+      const alt = scored[1];
+
+      const topHTML = top ? `
+        <h2>${top.title}</h2>
+        <p class="small">${top.summary}</p>
+        <hr/>
+        <div class="small">Best fit by: <b>${top.__score.traitMatches}</b> trait matches · <b>${top.__score.domainMatches}</b> attribute matches.</div>
+        <div class="small">Try these roles: ${ (top.jobs||[]).join(', ') || '—' }</div>
+      ` : '<p class="small">Pick a few more traits to sharpen your signal.</p>';
+      document.getElementById('result').innerHTML = topHTML;
+
+      const altHTML = alt ? `
+        <h2>Also Consider: ${alt.title}</h2>
+        <p class="small">${alt.summary}</p>
+        <div class="small">Roles: ${ (alt.jobs||[]).join(', ') || '—' }</div>
+      ` : '';
+      document.getElementById('alt').innerHTML = altHTML;
+
+      document.getElementById('meta').textContent = `Based on ${traits.length} selected trait${traits.length===1?'':'s'}.`;
+    }).catch(e=>{
+      document.getElementById('result').innerHTML = '<div class="small">Unable to compute role. Try reselecting traits.</div>';
+      console.error(e);
+    });
   </script>
 </body>
 </html>

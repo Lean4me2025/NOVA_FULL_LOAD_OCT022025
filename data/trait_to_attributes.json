@@ -1,0 +1,246 @@
+{
+  "Analytical": [
+    "Cognitive"
+  ],
+  "Strategic": [
+    "Cognitive",
+    "Motivational"
+  ],
+  "Logical": [
+    "Cognitive"
+  ],
+  "Problem-Solving": [
+    "Cognitive",
+    "Motivational"
+  ],
+  "Decision-Making": [
+    "Cognitive"
+  ],
+  "Planner": [
+    "Cognitive",
+    "Motivational"
+  ],
+  "Systems Thinking": [
+    "Cognitive"
+  ],
+  "Detail-Oriented": [
+    "Cognitive"
+  ],
+  "Organizer": [
+    "Cognitive",
+    "Motivational"
+  ],
+  "Documentation": [
+    "Cognitive",
+    "Moral/Ethical"
+  ],
+  "Pattern Recognition": [
+    "Cognitive"
+  ],
+  "Research": [
+    "Cognitive"
+  ],
+  "Empathetic": [
+    "Emotional"
+  ],
+  "Compassionate": [
+    "Emotional",
+    "Moral/Ethical"
+  ],
+  "Patient": [
+    "Emotional"
+  ],
+  "Calm Under Pressure": [
+    "Emotional",
+    "Social"
+  ],
+  "Encouraging": [
+    "Emotional",
+    "Social"
+  ],
+  "Self-Aware": [
+    "Emotional",
+    "Spiritual"
+  ],
+  "Optimistic": [
+    "Emotional",
+    "Motivational"
+  ],
+  "Communicator": [
+    "Social"
+  ],
+  "Listener": [
+    "Social",
+    "Emotional"
+  ],
+  "Team-Oriented": [
+    "Social"
+  ],
+  "Leadership": [
+    "Social",
+    "Motivational"
+  ],
+  "Diplomatic": [
+    "Social"
+  ],
+  "Persuasive": [
+    "Social",
+    "Motivational"
+  ],
+  "Customer-Focused": [
+    "Social",
+    "Moral/Ethical"
+  ],
+  "Relationship-Building": [
+    "Social"
+  ],
+  "Public Speaking": [
+    "Social"
+  ],
+  "Teaching": [
+    "Social",
+    "Cognitive"
+  ],
+  "Mentoring": [
+    "Social",
+    "Emotional"
+  ],
+  "Ethical": [
+    "Moral/Ethical"
+  ],
+  "Honest": [
+    "Moral/Ethical"
+  ],
+  "Accountable": [
+    "Moral/Ethical"
+  ],
+  "Dependable": [
+    "Moral/Ethical",
+    "Motivational"
+  ],
+  "Reliable": [
+    "Moral/Ethical",
+    "Motivational"
+  ],
+  "Fair": [
+    "Moral/Ethical"
+  ],
+  "Courageous": [
+    "Moral/Ethical",
+    "Emotional"
+  ],
+  "Hands-On": [
+    "Physical"
+  ],
+  "Safety-First": [
+    "Physical",
+    "Moral/Ethical"
+  ],
+  "Quality Focus": [
+    "Physical",
+    "Moral/Ethical"
+  ],
+  "Mechanical Aptitude": [
+    "Physical",
+    "Cognitive"
+  ],
+  "Tool Proficiency": [
+    "Physical"
+  ],
+  "Spatial Reasoning": [
+    "Physical",
+    "Cognitive"
+  ],
+  "Stamina": [
+    "Physical",
+    "Motivational"
+  ],
+  "Coordinated": [
+    "Physical"
+  ],
+  "Self-Motivated": [
+    "Motivational"
+  ],
+  "Initiative": [
+    "Motivational"
+  ],
+  "Grit": [
+    "Motivational"
+  ],
+  "Tenacious": [
+    "Motivational"
+  ],
+  "Disciplined": [
+    "Motivational"
+  ],
+  "Goal-Oriented": [
+    "Motivational"
+  ],
+  "Process Improvement": [
+    "Motivational",
+    "Cognitive"
+  ],
+  "Results-Driven": [
+    "Motivational"
+  ],
+  "Purpose-Driven": [
+    "Spiritual",
+    "Motivational"
+  ],
+  "Mindful": [
+    "Spiritual",
+    "Emotional"
+  ],
+  "Integrity": [
+    "Moral/Ethical",
+    "Spiritual"
+  ],
+  "Service-Driven": [
+    "Spiritual",
+    "Social"
+  ],
+  "Community-Minded": [
+    "Spiritual",
+    "Social"
+  ],
+  "Scheduling": [
+    "Cognitive"
+  ],
+  "Vendor Management": [
+    "Social",
+    "Cognitive"
+  ],
+  "Numerical Reasoning": [
+    "Cognitive"
+  ],
+  "Security-Minded": [
+    "Cognitive",
+    "Moral/Ethical"
+  ],
+  "Troubleshooting": [
+    "Cognitive"
+  ],
+  "Creative": [
+    "Cognitive",
+    "Emotional"
+  ],
+  "Writing": [
+    "Cognitive"
+  ],
+  "Design Sense": [
+    "Cognitive",
+    "Emotional"
+  ],
+  "Presentation": [
+    "Social",
+    "Cognitive"
+  ],
+  "Market Awareness": [
+    "Cognitive",
+    "Social"
+  ],
+  "Data-Driven": [
+    "Cognitive",
+    "Motivational"
+  ]
+}

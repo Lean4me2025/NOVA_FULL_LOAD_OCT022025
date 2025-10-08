@@ -1,111 +1,152 @@
 {
   "Business": [
     "Analytical",
-    "Organizer",
     "Strategic",
-    "Leadership",
-    "Planning",
-    "Negotiation",
-    "Project Management",
-    "Ethical",
+    "Planner",
+    "Organizer",
+    "Documentation",
+    "Decision-Making",
+    "Process Improvement",
+    "Results-Driven",
+    "Presentation",
+    "Writing",
+    "Market Awareness",
     "Customer-Focused",
-    "Problem-Solving",
-    "Detail-Oriented",
-    "Decision-Making"
+    "Relationship-Building",
+    "Numerical Reasoning",
+    "Data-Driven"
   ],
   "Technology": [
-    "Creative",
-    "Hands-On",
-    "Research",
-    "Empirical",
-    "Data-Driven",
     "Systems Thinking",
-    "Coding",
+    "Problem-Solving",
     "Troubleshooting",
-    "Meticulous",
     "Security-Minded",
-    "Curious",
-    "Experimental"
+    "Data-Driven",
+    "Creative",
+    "Documentation",
+    "Logical",
+    "Pattern Recognition",
+    "Research",
+    "Detail-Oriented",
+    "Presentation"
   ],
   "Education & Community": [
     "Teaching",
     "Mentoring",
     "Communicator",
-    "Patient",
+    "Listener",
     "Empathetic",
-    "Facilitation",
-    "Inclusive"
+    "Encouraging",
+    "Community-Minded",
+    "Service-Driven",
+    "Writing",
+    "Presentation",
+    "Organizer"
   ],
   "Public Safety": [
-    "Risk-Aware",
     "Calm Under Pressure",
-    "Procedural",
+    "Ethical",
     "Accountable",
-    "Observant",
-    "Teamwork"
-  ],
-  "Arts & Media": [
-    "Storytelling",
-    "Design Sense",
-    "Writing",
-    "Visual Thinking",
-    "Branding",
-    "Presentation"
+    "Safety-First",
+    "Security-Minded",
+    "Detail-Oriented",
+    "Courageous",
+    "Reliable",
+    "Documentation"
   ],
   "Healthcare": [
     "Compassionate",
-    "Precise",
+    "Patient",
     "Ethical",
-    "Teamwork",
-    "Observant",
-    "Problem-Solving"
+    "Team-Oriented",
+    "Reliable",
+    "Documentation",
+    "Calm Under Pressure",
+    "Service-Driven",
+    "Detail-Oriented"
   ],
   "Science & Research": [
-    "Hypothesis-Driven",
-    "Quantitative",
-    "Methodical",
+    "Research",
+    "Pattern Recognition",
+    "Analytical",
     "Documentation",
-    "Curious",
-    "Pattern Recognition"
+    "Systems Thinking",
+    "Logical",
+    "Problem-Solving"
   ],
   "Skilled Trades": [
     "Hands-On",
     "Mechanical Aptitude",
     "Spatial Reasoning",
+    "Tool Proficiency",
     "Quality Focus",
-    "Reliable",
-    "Safety-First"
+    "Safety-First",
+    "Stamina",
+    "Coordinated",
+    "Reliable"
   ],
   "Finance & Accounting": [
     "Numerical Reasoning",
-    "Compliance",
-    "Risk Assessment",
-    "Meticulous",
     "Analytical",
-    "Confidentiality"
+    "Detail-Oriented",
+    "Integrity",
+    "Accountable",
+    "Documentation",
+    "Planner",
+    "Disciplined",
+    "Data-Driven"
   ],
   "Operations & Logistics": [
-    "Process Improvement",
     "Organizer",
     "Scheduling",
     "Vendor Management",
-    "Systems Thinking",
-    "Reliability"
+    "Process Improvement",
+    "Reliable",
+    "Team-Oriented",
+    "Detail-Oriented",
+    "Results-Driven"
   ],
   "Sales & Marketing": [
     "Persuasive",
-    "Relationship-Building",
     "Communicator",
+    "Relationship-Building",
+    "Presentation",
     "Market Awareness",
-    "Storytelling",
-    "Resilient"
+    "Optimistic",
+    "Customer-Focused",
+    "Creative"
   ],
   "Law & Government": [
-    "Policy-Oriented",
-    "Analytical",
     "Ethical",
-    "Research",
-    "Negotiation",
-    "Public Speaking"
+    "Integrity",
+    "Documentation",
+    "Communicator",
+    "Analytical",
+    "Diplomatic",
+    "Public Speaking",
+    "Accountable"
+  ],
+  "Arts & Media": [
+    "Creative",
+    "Design Sense",
+    "Writing",
+    "Presentation",
+    "Communicator",
+    "Optimistic"
+  ],
+  "Essential & Everyday Workers": [
+    "Reliable",
+    "Dependable",
+    "Service-Driven",
+    "Customer-Focused",
+    "Team-Oriented",
+    "Organizer",
+    "Hands-On",
+    "Safety-First",
+    "Quality Focus",
+    "Accountable",
+    "Community-Minded",
+    "Patient",
+    "Encouraging"
   ]
 }

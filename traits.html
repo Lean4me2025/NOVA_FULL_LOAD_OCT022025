@@ -10,67 +10,76 @@
 <body>
   <div class="wrap">
     <h1>Select Your Traits</h1>
-    <p class="sub">Tap to select up to <b>12</b>. You can change your mind.</p>
-    <p class="small" id="catLine"></p>
+    <p>Why this matters: <b>Traits are the receipts of your life</b>—clues you’ve shown again and again. When we group them, your direction emerges.</p>
+    <div class="card">
+      <p class="small"><b>How to choose:</b> Tap traits you have actually demonstrated. If you’ve helped customers, kept things organized, fixed what’s broken, or stayed calm under pressure—count it. Select up to <b>12</b>.</p>
+      <p id="catLine" class="small" style="margin-top:6px"></p>
+      <p id="attrHint" class="small"></p>
+    </div>
     <div id="grid" class="grid" role="list"></div>
     <div class="bar">
-      <div class="caption" id="cap">0 / 12 selected</div>
-      <button id="next" class="btn" disabled>Next: Role Reveal</button>
+      <div class="small" id="cap">0 / 12 selected</div>
+      <div>
+        <a class="btn" href="index.html">Back</a>
+        <button id="next" class="btn" disabled>Next: Role Reveal</button>
+      </div>
     </div>
   </div>
   <script type="module">
-    import { readJSON, getSelectedCategories, setSelectedTraits, dedupe, byAlpha } from './assets/js/shared.js';
+    import {{ readJSON, get, set, byAlpha, dedupe }} from './assets/js/shared.js';
     const MAX = 12;
-    const grid = document.getElementById('grid');
-    const cap  = document.getElementById('cap');
+    const cats = get('selectedCategories', []);
     const catLine = document.getElementById('catLine');
-    let selected = new Set();
+    const attrHint = document.getElementById('attrHint');
+    catLine.textContent = cats.length ? `From categories: ${cats.join(', ')}` : 'No categories chosen yet.';
 
-    function update(){
-      cap.textContent = `${selected.size} / ${MAX} selected`;
+    const selected = new Set(get('selectedTraits', []));
+
+    function updateSelectedDisplay(){
+      document.getElementById('cap').textContent = `${selected.size} / ${MAX} selected`;
       document.getElementById('next').disabled = selected.size===0;
-      setSelectedTraits([...selected]);
+      set('selectedTraits', [...selected]);
+      // attribute hint
+      Promise.all([readJSON('data/trait_to_attributes.json')]).then(([map])=>{
+        const counts = {Cognitive:0,Emotional:0,Social:0,"Moral/Ethical":0,Physical:0,Motivational:0,Spiritual:0};
+        [...selected].forEach(t=> (map[t]||[]).forEach(d=> counts[d]=(counts[d]||0)+1 ));
+        const top = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,2).filter(x=>x[1]>0).map(x=>x[0]);
+        attrHint.textContent = top.length ? `Signal showing: ${top.join(' + ')} strengths.` : '';
+      });
     }
 
     function render(list){
-      grid.innerHTML='';
-      list.forEach(trait=>{
-        const el=document.createElement('div');
-        el.className='pill';
-        el.textContent=trait;
-        el.addEventListener('click',()=>{
-          if(selected.has(trait)) { selected.delete(trait); el.classList.remove('selected'); update(); return; }
-          if(selected.size>=MAX) return;
-          selected.add(trait);
-          el.classList.add('selected');
-          update();
+      const grid = document.getElementById('grid'); grid.innerHTML='';
+      list.forEach(trait => {
+        const el = document.createElement('div'); el.className='pill'; el.textContent=trait;
+        if (selected.has(trait)) el.classList.add('selected');
+        el.addEventListener('click', () => {
+          if (selected.has(trait)) { selected.delete(trait); el.classList.remove('selected'); }
+          else if (selected.size < MAX) { selected.add(trait); el.classList.add('selected'); }
+          updateSelectedDisplay();
         });
         grid.appendChild(el);
       });
-      update();
+      updateSelectedDisplay();
     }
 
-    const cats = getSelectedCategories();
-    catLine.textContent = cats.length ? `From categories: ${cats.join(', ')}` : 'No categories chosen.';
-
-    readJSON('data/traits_with_categories.json').then(map=>{
+    Promise.all([readJSON('data/traits_with_categories.json')]).then(([map]) => {
       const bag = [];
-      cats.forEach(c=>{
+      cats.forEach(c => {
         if (map[c]) bag.push(...map[c]);
         else {
-          // case-insensitive fallback
-          const k = Object.keys(map).find(k=>k.toLowerCase()===c.toLowerCase());
+          const k = Object.keys(map).find(k => k.toLowerCase() === c.toLowerCase());
           if (k) bag.push(...map[k]);
         }
       });
       const list = dedupe(bag).sort(byAlpha);
       render(list);
-    }).catch(e=>{
-      console.error('Failed to load traits JSON', e);
-      grid.innerHTML = '<div class="card">Could not load traits. Check data/traits_with_categories.json path.</div>';
+    }).catch(e => {
+      document.getElementById('grid').innerHTML = '<div class="card">Could not load traits data.</div>';
+      console.error(e);
     });
 
-    document.getElementById('next').addEventListener('click',()=>location.href='role.html');
+    document.getElementById('next').addEventListener('click', ()=>location.href='role.html');
   </script>
 </body>
 </html>

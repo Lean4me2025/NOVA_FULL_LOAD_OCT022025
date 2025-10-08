@@ -1,0 +1,139 @@
+[
+  {
+    "id": "strategist",
+    "title": "The Strategist",
+    "summary": "You align people, process, and timing so outcomes become inevitable.",
+    "trait_weights": [
+      "Strategic",
+      "Planner",
+      "Analytical",
+      "Decision-Making",
+      "Organizer",
+      "Process Improvement"
+    ],
+    "attribute_weights": [
+      "Cognitive",
+      "Motivational",
+      "Social"
+    ],
+    "jobs": [
+      "Operations Coordinator",
+      "Business Analyst",
+      "Program Planner"
+    ]
+  },
+  {
+    "id": "builder",
+    "title": "The Builder",
+    "summary": "You turn ideas into working things\u2014steady, precise, and proud of the craft.",
+    "trait_weights": [
+      "Hands-On",
+      "Mechanical Aptitude",
+      "Tool Proficiency",
+      "Quality Focus",
+      "Troubleshooting",
+      "Detail-Oriented"
+    ],
+    "attribute_weights": [
+      "Physical",
+      "Motivational",
+      "Moral/Ethical"
+    ],
+    "jobs": [
+      "Skilled Tradesperson",
+      "Maintenance Tech",
+      "Assembler"
+    ]
+  },
+  {
+    "id": "connector",
+    "title": "The Connector",
+    "summary": "You move work forward by moving people\u2014clear, persuasive, and relational.",
+    "trait_weights": [
+      "Communicator",
+      "Relationship-Building",
+      "Customer-Focused",
+      "Persuasive",
+      "Presentation",
+      "Teaching"
+    ],
+    "attribute_weights": [
+      "Social",
+      "Motivational",
+      "Emotional"
+    ],
+    "jobs": [
+      "Customer Success Rep",
+      "Community Liaison",
+      "Sales Associate"
+    ]
+  },
+  {
+    "id": "guardian",
+    "title": "The Guardian",
+    "summary": "You protect people and processes\u2014ethical, steady, and safety-minded.",
+    "trait_weights": [
+      "Ethical",
+      "Accountable",
+      "Safety-First",
+      "Security-Minded",
+      "Documentation",
+      "Reliable"
+    ],
+    "attribute_weights": [
+      "Moral/Ethical",
+      "Physical",
+      "Cognitive"
+    ],
+    "jobs": [
+      "Security Officer",
+      "Quality Inspector",
+      "Safety Coordinator"
+    ]
+  },
+  {
+    "id": "helper",
+    "title": "The Helper",
+    "summary": "You serve with care and steadiness\u2014people feel supported around you.",
+    "trait_weights": [
+      "Service-Driven",
+      "Empathetic",
+      "Patient",
+      "Team-Oriented",
+      "Community-Minded",
+      "Encouraging"
+    ],
+    "attribute_weights": [
+      "Emotional",
+      "Social",
+      "Spiritual"
+    ],
+    "jobs": [
+      "Clerk",
+      "Care Aide",
+      "Retail Associate"
+    ]
+  },
+  {
+    "id": "analyst",
+    "title": "The Analyst",
+    "summary": "You see patterns, test ideas, and turn data into clear decisions.",
+    "trait_weights": [
+      "Analytical",
+      "Data-Driven",
+      "Research",
+      "Documentation",
+      "Logical",
+      "Pattern Recognition"
+    ],
+    "attribute_weights": [
+      "Cognitive",
+      "Motivational"
+    ],
+    "jobs": [
+      "Data Assistant",
+      "Lab Tech",
+      "Reporting Specialist"
+    ]
+  }
+]
