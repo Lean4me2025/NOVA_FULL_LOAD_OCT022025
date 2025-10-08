@@ -8,6 +8,25 @@
   <div class="card">
     <p class="small"><b>Why this step matters:</b> Purpose doesn’t arrive fully formed—it grows when you take the next faithful step. Choose one focus below and commit to a single action in the next 7 days. Small steps compound into direction.</p>
   </div>
+  
+  <div id="summary" class="card">
+    <h2>Your New Role</h2>
+    <div id="roleBlock" class="small">Loading your role…</div>
+    <hr/>
+    <h2>Looking Back</h2>
+    <div id="traitsBlock" class="small">Loading your traits…</div>
+    <p class="small">These are the signals you’ve shown. They’re why this role fits.</p>
+    <hr/>
+    <h2>Looking Forward</h2>
+    <p id="forwardLine" class="small">This is where you’re going. Choose one focus below and commit to a single action in the next 7 days.</p>
+  </div>
+
+
+  <div id="oohCard" class="card">
+    <h2>Career Snapshot <span class="small">(from U.S. Bureau of Labor Statistics)</span></h2>
+    <div id="oohContent" class="small">Loading career outlook…</div>
+  </div>
+
   <div class="grid">
     <div class="card"><h2>Starting Out</h2><p class="small">New to the field? Identify one skill to learn and one person to ask for guidance this week.</p></div>
     <div class="card"><h2>Switching</h2><p class="small">What skills from your past role transfer here? Note two bridge skills you already have.</p></div>
@@ -15,11 +34,80 @@
     <div class="card"><h2>Restarting</h2><p class="small">Ease back in. Name one low-risk, high-confidence step you can take this week.</p></div>
   </div>
   <div class="card center">
-    <p class="small"><b>You’ve reflected on where you are. Now it’s time to invest in who you’re becoming.</b></p>
+    <p class="small"><b>You’ve reflected on where you are. Now invest in who you’re becoming — carry this role into action.</b></p>
   </div>
   <div class="bar">
     <a class="btn" href="index.html">Back to Welcome</a>
     <a class="btn" href="invest.html">Next: Invest in Yourself →</a>
   </div>
 </div>
+
+<script type="module">
+  import { get } from './assets/js/shared.js';
+  const role = get('revealedRole', null);
+  const traits = get('selectedTraits', []);
+  const roleBlock = document.getElementById('roleBlock');
+  const traitsBlock = document.getElementById('traitsBlock');
+  const forward = document.getElementById('forwardLine');
+
+  if (role) {
+    const jobs = (role.jobs||[]).join(', ') || '—';
+    const matchLine = role.isFallback ? '' : `Best fit by: ${role.tm} trait matches · ${role.dm} attribute matches.`;
+    roleBlock.innerHTML = `<b>${role.title}</b><br/>${role.summary || ''}<br/>${matchLine}<br/>Try these roles: ${jobs}`;
+  } else {
+    roleBlock.textContent = 'No saved role found. Go back to the Role Reveal to generate your role.';
+  }
+
+  if (traits && traits.length) {
+    traitsBlock.textContent = traits.join(', ');
+  } else {
+    traitsBlock.textContent = 'No traits found. Return to Traits to select your strengths.';
+  }
+</script>
+
+
+<script type="module">
+  import { get, readJSON } from './assets/js/shared.js';
+
+  const role = get('revealedRole', null);
+  const oohEl = document.getElementById('oohContent');
+
+  function renderSnapshot(items){
+    if(!items || !items.length){ oohEl.textContent = 'Add outlook data for this role to /data/ooh_data.json.'; return; }
+    const html = items.map(it=>{
+      const settings = (it.settings||[]).join(', ');
+      return `<b>${it.title}</b><br/>${it.summary}
+              <div style="margin:6px 0"></div>
+              <b>10‑Year Outlook:</b> ${it.growth_10yr || '—'} · <b>Median Pay:</b> ${it.median_pay || '—'}<br/>
+              <b>Typical Settings:</b> ${settings || '—'}`;
+    }).join('<hr/>');
+    oohEl.innerHTML = html;
+  }
+
+  Promise.all([readJSON('/data/ooh_map.json'), readJSON('/data/ooh_data.json')]).then(([omap, odata])=>{
+    if(!role){ oohEl.textContent = 'No role found. Visit Role Reveal first.'; return; }
+    // Role.id for core roles; for fallback roles, look at categories
+    const buckets = new Set();
+    if(role && role.id && omap[role.id]) omap[role.id].forEach(k=>buckets.add(k));
+    // If fallback, try to infer from category name
+    if((!buckets.size) && role.isFallback && role.categories && role.categories[0]){
+      const c = role.categories[0].toLowerCase();
+      if(c.includes('health')) omap['helper']?.forEach(k=>buckets.add(k));
+      if(c.includes('trade')) omap['builder']?.forEach(k=>buckets.add(k));
+      if(c.includes('law')||c.includes('government')) omap['guardian']?.forEach(k=>buckets.add(k));
+      if(c.includes('sales')||c.includes('marketing')) omap['connector']?.forEach(k=>buckets.add(k));
+      if(c.includes('art')||c.includes('media')) omap['connector']?.forEach(k=>buckets.add(k));
+      if(c.includes('tech')||c.includes('science')) omap['analyst']?.forEach(k=>buckets.add(k));
+      if(c.includes('business')||c.includes('finance')) omap['strategist']?.forEach(k=>buckets.add(k));
+      if(c.includes('operations')||c.includes('logistics')) omap['strategist']?.forEach(k=>buckets.add(k));
+      if(c.includes('essential')||c.includes('everyday')) omap['helper']?.forEach(k=>buckets.add(k));
+    }
+    const items = [...buckets].map(k=>odata[k]).filter(Boolean);
+    renderSnapshot(items);
+  }).catch(e=>{
+    console.error(e);
+    oohEl.textContent = 'Could not load outlook data. Ensure /data/ooh_map.json and /data/ooh_data.json exist.';
+  });
+</script>
+
 </body></html>

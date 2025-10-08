@@ -1,0 +1,23 @@
+{
+  "strategist": [
+    "business_and_financial_ops"
+  ],
+  "builder": [
+    "installation_maintenance_repair"
+  ],
+  "connector": [
+    "sales_and_related"
+  ],
+  "guardian": [
+    "protective_service",
+    "quality_inspection"
+  ],
+  "helper": [
+    "healthcare_support",
+    "office_and_admin_support"
+  ],
+  "analyst": [
+    "computer_and_math",
+    "life_physical_sciences"
+  ]
+}

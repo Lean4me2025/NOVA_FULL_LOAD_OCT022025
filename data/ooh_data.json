@@ -1,0 +1,101 @@
+{
+  "business_and_financial_ops": {
+    "title": "Business & Financial Operations",
+    "summary": "Plan, analyze, and improve operations across teams. Common settings include corporate offices, consulting, and government.",
+    "growth_10yr": "Faster than average",
+    "median_pay": "$95,000 / year",
+    "settings": [
+      "Corporate offices",
+      "Consulting firms",
+      "Government agencies"
+    ]
+  },
+  "installation_maintenance_repair": {
+    "title": "Installation, Maintenance & Repair",
+    "summary": "Keep systems and equipment running. Work often happens on-site, in facilities, plants, and the field.",
+    "growth_10yr": "Steady demand",
+    "median_pay": "$55,000 / year",
+    "settings": [
+      "Facilities",
+      "Manufacturing plants",
+      "Field service"
+    ]
+  },
+  "sales_and_related": {
+    "title": "Sales & Related",
+    "summary": "Connect customers with solutions. Roles range from retail and inside sales to account management and marketing support.",
+    "growth_10yr": "Average",
+    "median_pay": "$50,000 / year",
+    "settings": [
+      "Retail & e\u2011commerce",
+      "B2B sales teams",
+      "Marketing orgs"
+    ]
+  },
+  "protective_service": {
+    "title": "Protective Service",
+    "summary": "Protect people, property, and processes with clear procedures and vigilance.",
+    "growth_10yr": "Average",
+    "median_pay": "$48,000 / year",
+    "settings": [
+      "Security firms",
+      "Public facilities",
+      "Transportation hubs"
+    ]
+  },
+  "quality_inspection": {
+    "title": "Quality Inspection",
+    "summary": "Ensure products and processes meet standards and safety requirements.",
+    "growth_10yr": "Average",
+    "median_pay": "$47,000 / year",
+    "settings": [
+      "Manufacturing",
+      "Warehousing",
+      "Logistics"
+    ]
+  },
+  "healthcare_support": {
+    "title": "Healthcare Support",
+    "summary": "Support patients and clinical teams with hands-on care and coordination.",
+    "growth_10yr": "Faster than average",
+    "median_pay": "$38,000 / year",
+    "settings": [
+      "Hospitals",
+      "Clinics",
+      "Long\u2011term care"
+    ]
+  },
+  "office_and_admin_support": {
+    "title": "Office & Administrative Support",
+    "summary": "Keep operations moving with documentation, scheduling, and customer support.",
+    "growth_10yr": "Stable",
+    "median_pay": "$41,000 / year",
+    "settings": [
+      "Government",
+      "Education",
+      "Corporate offices"
+    ]
+  },
+  "computer_and_math": {
+    "title": "Computer & Mathematical",
+    "summary": "Analyze data and build systems that power decisions and products.",
+    "growth_10yr": "Faster than average",
+    "median_pay": "$100,000 / year",
+    "settings": [
+      "Tech companies",
+      "Research orgs",
+      "Enterprise IT"
+    ]
+  },
+  "life_physical_sciences": {
+    "title": "Life & Physical Sciences",
+    "summary": "Investigate, test, and document findings in lab and field environments.",
+    "growth_10yr": "Average to faster than average",
+    "median_pay": "$75,000 / year",
+    "settings": [
+      "Laboratories",
+      "Universities",
+      "Government research"
+    ]
+  }
+}
