@@ -1,37 +1,33 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>NOVA · Welcome</title>
-  <link rel="stylesheet" href="assets/css/style.css"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Welcome to Nova</title>
+  <link rel="stylesheet" href="/assets/css/welcome.css">
 </head>
-<body>
-  <div class="wrap">
-    <div class="hero card">
-      <div>
-        <div class="kicker">Welcome to Nova</div>
-        <h1 class="big">I'll help you discover<br/>why you're here.</h1>
-        <div class="stat">89% of people say they’re searching for purpose.</div>
-        <p>Nova doesn’t guess your purpose; it <b>surfaces what your life has already been saying</b>. We look at your human attributes—mind, heart, drive, and spirit—and map them to work that fits.</p>
-        <blockquote class="small">
-          In a few steps we’ll turn scattered strengths into a clear starting direction.
-        </blockquote>
-        <div style="margin-top:12px">
-          <button class="btn" onclick="location.href='index.html'">Start My Journey</button>
-        </div>
-      </div>
-      <div class="card">
-        <h2>What to expect</h2>
-        <p class="small"><b>1) Categories:</b> Focus the conversation to areas that reflect your world.</p>
-        <p class="small"><b>2) Traits:</b> Select signals you’ve actually shown—your attributes in motion.</p>
-        <p class="small"><b>3) Role Reveal:</b> See a role pattern built from your traits and attribute domains.</p>
-        <hr/>
-        <span class="badge">No tests. No pressure. Just clarity.</span>
-        <footer>Tip: If you’re unsure, choose what you’ve done in the last week.</footer>
-      </div>
-    </div>
-  </div>
+<body class="nova-bg">
+  <main class="wrap">
+    <header class="welcome-header">
+      <h1 class="welcome-title">Welcome to Nova</h1>
+      <p class="time-estimate">This experience takes about <strong>2–5 minutes</strong> to complete.</p>
+    </header>
+
+    <section class="purpose-callout">
+      <p class="purpose-stat">89% of people do not know their purpose.</p>
+      <p class="welcome-sub">
+        Nova doesn't guess your purpose; it surfaces what your life has already been saying.
+        We look at your human attributes—mind, heart, drive, and spirit—and map them to work that fits.
+      </p>
+    </section>
+
+    <nav class="cta-row">
+      <a id="startJourneyBtn" class="btn start" href="traits.html">Start My Journey</a>
+    </nav>
+
+    <footer class="site-footer">Nova v9.4h — Discover Purpose. Live It Boldly.</footer>
+  </main>
+
+  <script src="/assets/js/welcome.js" defer></script>
 </body>
 </html>
