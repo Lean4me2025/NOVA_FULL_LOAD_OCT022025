@@ -1,14 +1,13 @@
-// H94i hotfix: "Try these roles" -> "Discover these roles"
+// Runtime hotfix: Try → Discover
 (function(){
-  function swap(){
-    const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-    let n; while ((n = w.nextNode())){
-      const t = n.nodeValue || '';
-      if (t.match(/\bTry these roles:/i)) {
-        n.nodeValue = t.replace(/\bTry these roles:/i, 'Discover these roles:');
-        break;
-      }
-    }
-  }
-  (document.readyState === 'loading') ? document.addEventListener('DOMContentLoaded', swap) : swap();
+function swap(){
+const re=/(^|\b)Try these roles:/i;
+const tree=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+let n;while((n=tree.nextNode())){
+if(re.test(n.nodeValue||'')){
+n.nodeValue=(n.nodeValue||'').replace(re,'$1Discover these roles:');
+break;
+}}
+}
+(document.readyState==='loading')?document.addEventListener('DOMContentLoaded',swap):swap();
 })();
