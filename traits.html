@@ -4,27 +4,55 @@
 <div class="card"><h1 class="h1">Select traits that feel true</h1><div id="filters" class="list"></div><div class="hr"></div><div id="tray" class="grid cols-3"></div><div class="hr"></div><div class="grid cols-2"><button id="next" class="btn primary">See My Results</button><button id="clear" class="btn ghost">Clear</button></div></div></div>
 <script>
 (async ()=>{
-  const data = await loadAllData();
   const selectedIds = new Set(JSON.parse(localStorage.getItem('nova.selectedCategoryIds')||'[]'));
   const selectedLabels = JSON.parse(localStorage.getItem('nova.selectedCategories')||'[]');
   document.getElementById('filters').innerHTML = selectedLabels.map(l=> `<span class="pill">${l}</span>`).join('');
+
+  const EMBED=[
+    {"id":"detail","name":"Detail-oriented","categoryId":"bizfin"},
+    {"id":"problem","name":"Problem solving","categoryId":"tech"},
+    {"id":"empathy","name":"Empathy","categoryId":"health"},
+    {"id":"comm","name":"Communication","categoryId":"edu"},
+    {"id":"creative","name":"Creativity","categoryId":"creative"},
+    {"id":"lead","name":"Team leadership","categoryId":"pubsvc"},
+    {"id":"analysis","name":"Data analysis","categoryId":"science"},
+    {"id":"hands","name":"Hands-on","categoryId":"trades"},
+    {"id":"customer","name":"Customer focus","categoryId":"hospitality"},
+    {"id":"reliable","name":"Reliability","categoryId":"workers"}
+  ];
+
+  let list = EMBED;
+  try {
+    const data = await loadAllData();
+    if(Array.isArray(data.traits) && data.traits.length){ list = data.traits; }
+  } catch(e) {}
+
+  let pool = list.filter(t=> !selectedIds.size || selectedIds.has(t.categoryId));
+  if(pool.length===0){ pool = list; }
+
+  const tray=document.getElementById('tray');
   const selectedKeys = new Set((JSON.parse(localStorage.getItem('nova.selectedTraits')||'[]')).map(t=> t.id||t.name||t));
-  const tray = document.getElementById('tray'); tray.innerHTML='';
-  const pool = data.traits.filter(t=> !selectedIds.size || selectedIds.has(t.categoryId));
-  if(pool.length===0){ const note=document.createElement('div'); note.className='small'; note.textContent='No direct matches — showing all traits.'; tray.appendChild(note); }
-  (pool.length? pool: data.traits).forEach(t=>{
-    const key=t.id||t.name; const b=document.createElement('button'); b.className='btn ghost'; b.innerHTML=`<div><div style="font-weight:800">${t.name}</div><div class="small">${t.categoryId}</div></div>`;
-    if(selectedKeys.has(key)) b.classList.add('active');
-    b.onclick=()=>{ if(selectedKeys.has(key)){ selectedKeys.delete(key); b.classList.remove('active'); } else { selectedKeys.add(key); b.classList.add('active'); } document.getElementById('count').textContent = selectedKeys.size; };
-    tray.appendChild(b);
-  });
-  document.getElementById('count').textContent = selectedKeys.size;
+
+  function render(){
+    tray.innerHTML='';
+    pool.forEach(t=>{
+      const key=t.id||t.name;
+      const b=document.createElement('button'); b.className='btn ghost'; b.innerHTML=`<div><div style="font-weight:800">${t.name}</div><div class="small">${t.categoryId}</div></div>`;
+      if(selectedKeys.has(key)) b.classList.add('active');
+      b.onclick=()=>{ if(selectedKeys.has(key)){ selectedKeys.delete(key); b.classList.remove('active'); } else { selectedKeys.add(key); b.classList.add('active'); } setCount(); };
+      tray.appendChild(b);
+    });
+    setCount();
+  }
+  function setCount(){ document.getElementById('count').textContent = selectedKeys.size; }
+  render();
+
   document.getElementById('next').onclick=()=>{
-    const chosen = data.traits.filter(t=> selectedKeys.has(t.id||t.name));
+    const chosen = pool.filter(t=> selectedKeys.has(t.id||t.name));
     localStorage.setItem('nova.selectedTraits', JSON.stringify(chosen));
     if(window.NOVA&&NOVA.state){ NOVA.state.selectedTraits = chosen; NOVA.save(); }
     location.href='results.html';
   };
-  document.getElementById('clear').onclick=()=>{ selectedKeys.clear(); document.querySelectorAll('#tray .btn').forEach(b=> b.classList.remove('active')); document.getElementById('count').textContent = 0; };
+  document.getElementById('clear').onclick=()=>{ selectedKeys.clear(); render(); };
 })();
 </script></body></html>

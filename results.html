@@ -4,7 +4,15 @@
 <div class="card"><h1 class="h1">Your results</h1><div id="summary" class="p"></div><div class="hr"></div><table><thead><tr><th>Occupation</th><th>Score</th><th class="small">SOC</th></tr></thead><tbody id="rows"></tbody></table><div class="hr"></div><a class="btn" href="reflection.html">Continue • Reflection</a></div></div>
 <script>
 (async ()=>{
-  const data = await loadAllData();
+  const EMBED_JOBS=[
+    {"title":"Data Analyst","summary":"Analyze datasets, build dashboards, support decisions.","categoryIds":["science","bizfin"],"soc_code":"15-2051"},
+    {"title":"Software Engineer","summary":"Design and build applications and services.","categoryIds":["tech"],"soc_code":"15-1252"},
+    {"title":"Registered Nurse","summary":"Provide patient care with empathy and precision.","categoryIds":["health"],"soc_code":"29-1141"},
+    {"title":"Electrician","summary":"Install and maintain electrical systems.","categoryIds":["trades"],"soc_code":"47-2111"},
+    {"title":"Customer Success Specialist","summary":"Support customers with communication and reliability.","categoryIds":["hospitality","workers"],"soc_code":"43-4051"}
+  ];
+  let data={ooh:EMBED_JOBS};
+  try{ const d=await loadAllData(); if(Array.isArray(d.ooh)&&d.ooh.length) data=d; }catch(e){}
   const matches = computeMatches({
     ooh: data.ooh,
     selectedCategoryIds: JSON.parse(localStorage.getItem('nova.selectedCategoryIds')||'[]'),

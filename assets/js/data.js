@@ -1,6 +1,6 @@
-// Relative loaders with graceful failure
+// Data loader helpers with graceful fallback
 const FILES = { categories:'categories.json', traits:'traits.json', jobs:'jobs.json' };
-async function j(name){ const r=await fetch('data/'+name,{cache:'no-store'}); if(!r.ok) throw new Error(name); return r.json(); }
+async function j(name){ const r=await fetch('data/'+name,{cache:'no-store'}); if(!r.ok) throw 0; return r.json(); }
 async function loadAllData(){
   const out={categories:[], traits:[], ooh:[]};
   try{ out.categories = await j(FILES.categories);}catch(e){}
