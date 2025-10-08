@@ -1,42 +1,52 @@
 [
   {
+    "id": "detail",
     "name": "Detail-oriented",
-    "category": "Business & Finance"
+    "categoryId": "bizfin"
   },
   {
+    "id": "problem",
     "name": "Problem solving",
-    "category": "Technology"
+    "categoryId": "tech"
   },
   {
+    "id": "empathy",
     "name": "Empathy",
-    "category": "Healthcare"
+    "categoryId": "health"
   },
   {
+    "id": "comm",
     "name": "Communication",
-    "category": "Education"
+    "categoryId": "edu"
   },
   {
+    "id": "creative",
     "name": "Creativity",
-    "category": "Creative"
+    "categoryId": "creative"
   },
   {
+    "id": "lead",
     "name": "Team leadership",
-    "category": "Public Service"
+    "categoryId": "pubsvc"
   },
   {
+    "id": "analysis",
     "name": "Data analysis",
-    "category": "Science"
+    "categoryId": "science"
   },
   {
+    "id": "hands",
     "name": "Hands-on",
-    "category": "Trades"
+    "categoryId": "trades"
   },
   {
+    "id": "customer",
     "name": "Customer focus",
-    "category": "Hospitality"
+    "categoryId": "hospitality"
   },
   {
+    "id": "reliable",
     "name": "Reliability",
-    "category": "Workers and Service People"
+    "categoryId": "workers"
   }
 ]

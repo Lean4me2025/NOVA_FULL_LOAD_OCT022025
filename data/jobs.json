@@ -2,42 +2,42 @@
   {
     "title": "Data Analyst",
     "summary": "Analyze datasets, build dashboards, support decisions.",
-    "categories": [
-      "Science",
-      "Business & Finance"
+    "categoryIds": [
+      "science",
+      "bizfin"
     ],
     "soc_code": "15-2051"
   },
   {
     "title": "Software Engineer",
     "summary": "Design and build applications and services.",
-    "categories": [
-      "Technology"
+    "categoryIds": [
+      "tech"
     ],
     "soc_code": "15-1252"
   },
   {
     "title": "Registered Nurse",
     "summary": "Provide patient care with empathy and precision.",
-    "categories": [
-      "Healthcare"
+    "categoryIds": [
+      "health"
     ],
     "soc_code": "29-1141"
   },
   {
     "title": "Electrician",
     "summary": "Install and maintain electrical systems.",
-    "categories": [
-      "Trades"
+    "categoryIds": [
+      "trades"
     ],
     "soc_code": "47-2111"
   },
   {
     "title": "Customer Success Specialist",
     "summary": "Support customers with communication and reliability.",
-    "categories": [
-      "Hospitality",
-      "Workers and Service People"
+    "categoryIds": [
+      "hospitality",
+      "workers"
     ],
     "soc_code": "43-4051"
   }

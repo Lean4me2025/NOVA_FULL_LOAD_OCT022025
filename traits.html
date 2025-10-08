@@ -1,57 +1,38 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Nova • Traits</title>
-<link rel="stylesheet" href="assets/css/style.css"/>
-<script defer src="assets/js/state.js"></script>
-<script defer src="assets/js/data.js"></script>
-</head><body>
-<div class="container">
-  <div class="header"><div class="brand">Nova</div><div class="list"><a class="pill" href="categories.html">Back to Categories</a></div><div class="badge">Selected: <span id="count">0</span> traits</div></div>
-  <div class="card">
-    <h1 class="h1">Select traits that feel true</h1>
-    <p class="p">Choose at least 8–12. Filtered by your categories.</p>
-    <div class="list" id="filters"></div><div class="hr"></div><div id="tray" class="grid cols-3"></div><div class="hr"></div>
-    <div class="grid cols-2"><button id="next" class="btn primary">See My Results</button><button id="clear" class="btn ghost">Clear</button></div>
-  </div>
-</div>
+<!doctype html><html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Nova • Traits</title><link rel="stylesheet" href="assets/css/style.css"/>
+<script defer src="assets/js/state.js"></script><script defer src="assets/js/data.js"></script></head>
+<body><div class="container"><div class="header"><div class="brand">Nova</div><div class="badge">Selected: <span id="count">0</span> traits</div></div>
+<div class="card"><h1 class="h1">Select traits that feel true</h1><div id="filters" class="list"></div><div class="hr"></div><div id="tray" class="grid cols-3"></div>
+<div class="hr"></div><div class="grid cols-2"><button id="next" class="btn primary">See My Results</button><button id="clear" class="btn ghost">Clear</button></div></div></div>
 <script>
 (async ()=>{
-  function getSelectedCats(){ try{ return JSON.parse(localStorage.getItem('nova.selectedCategories')||'[]'); }catch(e){ return []; } }
-  function getTraitsLS(){ try{ return JSON.parse(localStorage.getItem('nova.selectedTraits')||'[]'); }catch(e){ return []; } }
-  function setTraitsLS(arr){ try{ localStorage.setItem('nova.selectedTraits', JSON.stringify(arr)); }catch(e){} }
+  const data = await loadAllData();
+  const selectedIds = new Set(JSON.parse(localStorage.getItem('nova.selectedCategoryIds')||'[]'));
+  const selectedLabels = JSON.parse(localStorage.getItem('nova.selectedCategories')||'[]');
+  // Show filter chips (labels)
+  const f=document.getElementById('filters'); f.innerHTML = selectedLabels.map(l=> `<span class="pill">${l}</span>`).join('');
 
-  const data = await loadAllData(); const traits = data.traits||[];
-  const selectedCats = new Set(getSelectedCats());
-  const selectedKeys = new Set(getTraitsLS().map(t=> t.id||t.name||t));
+  const selectedKeys = new Set((JSON.parse(localStorage.getItem('nova.selectedTraits')||'[]')).map(t=> t.id||t.name||t));
+  const tray = document.getElementById('tray'); tray.innerHTML='';
 
-  function setCount(){ document.getElementById('count').textContent = selectedKeys.size; }
-
-  function renderFilters(){
-    const f= document.getElementById('filters'); f.innerHTML='';
-    Array.from(selectedCats).forEach(c=>{ const s=document.createElement('span'); s.className='pill'; s.textContent=c; f.appendChild(s); });
+  const pool = data.traits.filter(t=> !selectedIds.size || selectedIds.has(t.categoryId));
+  if(pool.length===0){
+    const note = document.createElement('div'); note.className='small'; note.textContent='No direct matches — showing all traits.'; tray.appendChild(note);
   }
-  function render(){
-    const tray = document.getElementById('tray'); tray.innerHTML='';
-    const pool = traits.filter(t=> !selectedCats.size || selectedCats.has(t.category));
-    if(pool.length===0){ const note=document.createElement('div'); note.className='small'; note.textContent='No traits found — check your data or categories.'; tray.appendChild(note); }
-    pool.forEach(t=>{
-      const key = t.id||t.name;
-      const b = document.createElement('button'); b.className='btn ghost'; b.innerHTML=`<div><div style="font-weight:800">${t.name||'Trait'}</div><div class="small">${t.category||''}</div></div>`;
-      if(selectedKeys.has(key)) b.classList.add('active');
-      b.onclick=()=>{ if(selectedKeys.has(key)){ selectedKeys.delete(key); b.classList.remove('active'); } else { selectedKeys.add(key); b.classList.add('active'); } setCount(); };
-      tray.appendChild(b);
-    });
-    setCount();
-  }
-  renderFilters(); render();
-
-  document.getElementById('next').onclick = ()=>{
-    const chosen = traits.filter(t=> selectedKeys.has(t.id||t.name));
-    setTraitsLS(chosen);
-    if(window.NOVA && NOVA.state){ NOVA.state.selectedTraits = chosen; NOVA.save && NOVA.save(); }
+  (pool.length? pool: data.traits).forEach(t=>{
+    const key=t.id||t.name; const b=document.createElement('button'); b.className='btn ghost'; b.innerHTML=`<div><div style="font-weight:800">${t.name}</div><div class="small">${t.categoryId}</div></div>`;
+    if(selectedKeys.has(key)) b.classList.add('active');
+    b.onclick=()=>{ if(selectedKeys.has(key)){selectedKeys.delete(key); b.classList.remove('active');} else {selectedKeys.add(key); b.classList.add('active');} renderCount(); };
+    tray.appendChild(b);
+  });
+  function renderCount(){ document.getElementById('count').textContent = selectedKeys.size; }
+  renderCount();
+  document.getElementById('next').onclick=()=>{
+    const chosen = data.traits.filter(t=> selectedKeys.has(t.id||t.name));
+    localStorage.setItem('nova.selectedTraits', JSON.stringify(chosen));
+    NOVA.state.selectedTraits = chosen; NOVA.save();
     location.href='results.html';
   };
-  document.getElementById('clear').onclick = ()=>{ selectedKeys.clear(); render(); };
+  document.getElementById('clear').onclick=()=>{ selectedKeys.clear(); document.querySelectorAll('#tray .btn').forEach(b=> b.classList.remove('active')); renderCount(); };
 })();
-</script>
-</body></html>
+</script></body></html>

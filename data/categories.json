@@ -1,12 +1,42 @@
 [
-  "Technology",
-  "Healthcare",
-  "Education",
-  "Business & Finance",
-  "Creative",
-  "Public Service",
-  "Science",
-  "Trades",
-  "Hospitality",
-  "Workers and Service People"
+  {
+    "id": "tech",
+    "label": "Technology"
+  },
+  {
+    "id": "health",
+    "label": "Healthcare"
+  },
+  {
+    "id": "edu",
+    "label": "Education"
+  },
+  {
+    "id": "bizfin",
+    "label": "Business & Finance"
+  },
+  {
+    "id": "creative",
+    "label": "Creative"
+  },
+  {
+    "id": "pubsvc",
+    "label": "Public Service"
+  },
+  {
+    "id": "science",
+    "label": "Science"
+  },
+  {
+    "id": "trades",
+    "label": "Trades"
+  },
+  {
+    "id": "hospitality",
+    "label": "Hospitality"
+  },
+  {
+    "id": "workers",
+    "label": "Workers & Service People"
+  }
 ]

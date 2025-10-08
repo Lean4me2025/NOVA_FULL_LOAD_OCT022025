@@ -1,18 +1,10 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Nova • Plans</title>
-<link rel="stylesheet" href="assets/css/style.css"/>
-<script type="text/javascript" src="https://payhip.com/payhip.js"></script>
-<script defer src="assets/js/state.js"></script>
-</head><body>
-<div class="container"><div class="header"><div class="brand">Nova</div><div class="list"><a class="pill" href="reflection.html">Back</a></div><div class="badge">Payhip Connected</div></div>
-<div class="card"><h1 class="h1">Choose your plan</h1><p class="p">Pick the path that fits your season. You can return to upgrade anytime.</p>
-<div id="plans" class="grid cols-4">
-  <div class="card"><div class="kicker">Resource</div><div class="h2">How to Know Your Purpose</div><p class="p">A guided framework to uncover calling, values, and next steps.</p><a href="https://payhip.com/b/N7Lvg" class="payhip-buy-button" data-theme="green" data-product="N7Lvg">Buy Now</a></div>
-  <div class="card"><div class="kicker">$29.99/mo</div><div class="h2">NAVI Starter</div><p class="p">Essentials to move from clarity to first actions.</p><a href="https://payhip.com/b/GdfU7" class="payhip-buy-button" data-theme="green" data-product="GdfU7">Buy Now</a><button class="btn ghost block" data-id="starter">Select Plan</button></div>
-  <div class="card"><div class="kicker">$99/mo</div><div class="h2">NAVI Pro</div><p class="p">Advanced tools and momentum support.</p><a href="https://payhip.com/b/knC1Z" class="payhip-buy-button" data-theme="green" data-product="knC1Z">Buy Now</a><button class="btn ghost block" data-id="pro">Select Plan</button></div>
-  <div class="card"><div class="kicker">$149.99/mo</div><div class="h2">NAVI Mastery</div><p class="p">Everything in Pro plus 1:1 coaching, roadmap PDF, and quarterly masterclasses.</p><a href="https://payhip.com/b/re4Hy" class="payhip-buy-button" data-theme="green" data-product="re4Hy">Buy Now</a><button class="btn ghost block" data-id="mastery">Select Plan</button></div>
-</div>
-<div class="hr"></div><a class="btn primary" href="navi.html">Continue to Navi</a></div>
-<script>document.getElementById('plans').addEventListener('click',e=>{const b=e.target.closest('button[data-id]');if(!b)return;NOVA.state.plan=b.dataset.id;NOVA.save();alert('Selected plan: '+NOVA.state.plan.toUpperCase());});</script>
-</body></html>
+<!doctype html><html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Nova • Plans</title><link rel="stylesheet" href="assets/css/style.css"/>
+<script type="text/javascript" src="https://payhip.com/payhip.js"></script><script defer src="assets/js/state.js"></script></head>
+<body><div class="container"><div class="header"><div class="brand">Nova</div><div class="badge">Payhip Connected</div></div>
+<div class="card"><h1 class="h1">Choose your plan</h1><div class="grid cols-4">
+  <div class="card"><div class="small">Resource</div><div class="h1" style="font-size:18px">How to Know Your Purpose</div><a href="https://payhip.com/b/N7Lvg" class="payhip-buy-button" data-theme="green" data-product="N7Lvg">Buy Now</a></div>
+  <div class="card"><div class="small">$29.99/mo</div><div class="h1" style="font-size:18px">NAVI Starter</div><a href="https://payhip.com/b/GdfU7" class="payhip-buy-button" data-theme="green" data-product="GdfU7">Buy Now</a></div>
+  <div class="card"><div class="small">$99/mo</div><div class="h1" style="font-size:18px">NAVI Pro</div><a href="https://payhip.com/b/knC1Z" class="payhip-buy-button" data-theme="green" data-product="knC1Z">Buy Now</a></div>
+  <div class="card"><div class="small">$149.99/mo</div><div class="h1" style="font-size:18px">NAVI Mastery</div><a href="https://payhip.com/b/re4Hy" class="payhip-buy-button" data-theme="green" data-product="re4Hy">Buy Now</a></div>
+</div></div></div></body></html>
