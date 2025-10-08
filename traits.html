@@ -40,26 +40,23 @@
     return dedupe(bag).sort(byAlpha);
   }
 
-  // 1) Embedded data
+  // Embedded → ./data → /data → /data/nova_brain_map_v1.json
   try {
     const emb = JSON.parse(document.getElementById('embedded-categories').textContent||'{}');
     const list = pickFromMap(emb);
     if (list.length) { log('Loaded from embedded data'); render(list); }
     else throw new Error('Embedded data returned 0 traits');
   } catch(e) {
-    // 2) ./data
     readJSON('./data/traits_with_categories.json').then(map=>{
       const list = pickFromMap(map);
       if (list.length) { log('Loaded from ./data/traits_with_categories.json'); render(list); }
       else throw new Error('No traits from ./data');
     }).catch(e1=>{
-      // 3) /data absolute
       readJSON('/data/traits_with_categories.json').then(map=>{
         const list = pickFromMap(map);
         if (list.length) { log('Loaded from /data/traits_with_categories.json'); render(list); }
         else throw new Error('No traits from /data absolute');
       }).catch(e2=>{
-        // 4) unified brain map
         readJSON('/data/nova_brain_map_v1.json').then(bm=>{
           const list = pickFromMap(bm.categories||{});
           if (list.length) { log('Loaded from /data/nova_brain_map_v1.json'); render(list); }
