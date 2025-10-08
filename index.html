@@ -2,28 +2,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nova — Welcome</title>
-<style>
-body{margin:0;padding:0;background:#0b1524;color:#fff;font-family:sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;text-align:left;}
-.container{max-width:900px;padding:40px;}
-h1{font-size:2.5em;margin-bottom:0.2em;}
-p{font-size:1.2em;line-height:1.6;}
-strong{color:#1fbf6b;}
-.btn{display:inline-block;margin-top:1.4em;padding:12px 20px;background:#1fbf6b;color:#071c16;font-weight:700;text-decoration:none;border-radius:8px;}
-.btn:hover{background:#18a05c;}
-footer{opacity:.7;margin-top:3em;font-size:0.9em;}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome to Nova</title>
+  <style>
+    :root{--bg:#0b1e3a;--green:#21c65e;--white:#fff;}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;background:radial-gradient(ellipse at top,rgba(255,255,255,.03),transparent 40%),var(--bg);color:var(--white);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial}
+    .wrap{max-width:1100px;margin:0 auto;padding:48px 20px 60px}
+    .welcome-title{color:#4ef58b;font-weight:800;letter-spacing:.5px;font-size:clamp(2.2rem,4.8vw,3.2rem);margin:0 0 8px;text-align:center}
+    .time{opacity:.9;margin:0 0 24px;text-align:center}
+    .purpose{margin:28px auto 22px;max-width:900px;text-align:center}
+    .fact{color:#4ef58b;font-weight:700;margin:0 0 10px;font-size:clamp(1.15rem,2.6vw,1.35rem)}
+    .sub{opacity:.9;line-height:1.55;margin:0 auto;max-width:840px}
+    .cta{display:flex;justify-content:center;margin:28px 0 40px}
+    .btn{background:var(--green);color:#062013;border:none;border-radius:10px;padding:14px 22px;font-weight:700;text-decoration:none;display:inline-block;box-shadow:0 4px 14px rgba(33,198,94,.25)}
+    .btn:hover{transform:translateY(-1px)}
+    footer{opacity:.8;text-align:center;font-size:.95rem;margin-top:40px;border-top:1px solid rgba(255,255,255,.08);padding-top:16px}
+  </style>
 </head>
 <body>
-<div class="container">
-  <h1>I'll help you discover why you're here.</h1>
-  <p><strong>89% of people do not know their purpose.</strong></p>
-  <p>Nova doesn't guess your purpose; it surfaces what your life has already been saying. We look at your human attributes—mind, heart, drive, and spirit—and map them to work that fits.</p>
-  <a href="categories.html" class="btn">Start My Journey</a>
-  <footer>Nova v9.4e — Discover Purpose. Live It Boldly.</footer>
-</div>
-<script>console.log("Nova v9.4e | Fact locked: 89% of people do not know their purpose.");</script>
+  <main class="wrap">
+    <h1 class="welcome-title">Welcome to Nova</h1>
+    <p class="time">This experience takes about <strong>2–5 minutes</strong> to complete.</p>
+
+    <section class="purpose">
+      <p class="fact">89% of people do not know their purpose.</p>
+      <p class="sub">
+        Nova doesn't guess your purpose; it surfaces what your life has already been saying.
+        We look at your human attributes—mind, heart, drive, and spirit—and map them to work that fits.
+      </p>
+    </section>
+
+    <div class="cta">
+      <a id="startJourneyBtn" class="btn" href="traits.html">Start My Journey</a>
+    </div>
+
+    <footer>Nova v9.4h — Discover Purpose. Live It Boldly.</footer>
+  </main>
+
+  <script>
+    // Start fresh each run
+    document.getElementById('startJourneyBtn')?.addEventListener('click', () => {
+      localStorage.removeItem('nova_selected_traits');
+      localStorage.removeItem('nova_selected_categories');
+    });
+  </script>
 </body>
 </html>
