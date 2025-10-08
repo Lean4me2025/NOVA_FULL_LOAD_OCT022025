@@ -1,18 +1,44 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>NOVA · Reflection — Look Forward</title>
-<link rel="stylesheet" href="assets/css/style.css?v=H94i"/>
-</head><body>
-<div class="wrap"><h1>Reflection — Look Forward</h1>
-<div class="card"><h2>Your New Role</h2><div id="roleBlock" class="small">Loading role…</div></div>
-<script type="module">
-import {get,set} from './assets/js/shared.js';
-const roleEl=document.getElementById('roleBlock');
-const role=get('revealedRole',null);
-const jobsHtml=(role?.jobs||[]).join(', ');
-if(roleEl&&role){
-roleEl.innerHTML=`<b>${role.title}</b><br>Best fit by: ${role.tm} traits · ${role.dm} attributes.<br><span class="role-link">Discover these roles:</span> ${jobsHtml}`;
-}
-</script>
-<script>(function(){function swap(){const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){const t=n.nodeValue||'';if(/\bTry these roles:/i.test(t)){n.nodeValue=t.replace(/\bTry these roles:/i,'Discover these roles:');break;}}}(document.readyState==='loading')?document.addEventListener('DOMContentLoaded',swap):swap());})();</script>
-</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reflection — Look Forward · Nova</title>
+  <link rel="stylesheet" href="assets/css/style.css?v=H94j">
+</head>
+<body>
+  <main class="wrap">
+    <h1>Reflection — Look Forward</h1>
+    <div class="card">
+      <h2>Your New Role</h2>
+      <div id="roleBlock" class="small"></div>
+    </div>
+    <div class="bar">
+      <a class="btn" href="traits.html">Back</a>
+      <a class="btn" href="invest.html">Next: Invest</a>
+    </div>
+  </main>
+  <script>
+    // Simple demo render to prove the wording is correct
+    const role = { title: 'The Analyst', tm: 12, dm: 8, jobs: ['Skilled Trades','Technician','Installer'] };
+    const jobsHtml = role.jobs.join(', ');
+    const roleEl = document.getElementById('roleBlock');
+    roleEl.innerHTML = `<b>${role.title}</b><br>Best fit by: ${role.tm} traits · ${role.dm} attributes.<br><span class="role-link">Discover these roles:</span> ${jobsHtml}`;
+
+    // Safety swap if any cached "Try" exists
+    (function(){
+      function swap(){
+        const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+        let n; while ((n = w.nextNode())) {
+          const t = n.nodeValue || '';
+          if (/\bTry these roles:/i.test(t)) {
+            n.nodeValue = t.replace(/\bTry these roles:/i, 'Discover these roles:');
+            break;
+          }
+        }
+      }
+      (document.readyState === 'loading') ? document.addEventListener('DOMContentLoaded', swap) : swap();
+    })();
+  </script>
+</body>
+</html>

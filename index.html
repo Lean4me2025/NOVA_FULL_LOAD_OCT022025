@@ -1,52 +1,25 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Welcome to Nova</title>
-  <style>
-    :root{--bg:#0b1e3a;--green:#21c65e;--white:#fff;}
-    *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0;background:radial-gradient(ellipse at top,rgba(255,255,255,.03),transparent 40%),var(--bg);color:var(--white);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial}
-    .wrap{max-width:1100px;margin:0 auto;padding:48px 20px 60px}
-    .welcome-title{color:#4ef58b;font-weight:800;letter-spacing:.5px;font-size:clamp(2.2rem,4.8vw,3.2rem);margin:0 0 8px;text-align:center}
-    .time{opacity:.9;margin:0 0 24px;text-align:center}
-    .purpose{margin:28px auto 22px;max-width:900px;text-align:center}
-    .fact{color:#4ef58b;font-weight:700;margin:0 0 10px;font-size:clamp(1.15rem,2.6vw,1.35rem)}
-    .sub{opacity:.9;line-height:1.55;margin:0 auto;max-width:840px}
-    .cta{display:flex;justify-content:center;margin:28px 0 40px}
-    .btn{background:var(--green);color:#062013;border:none;border-radius:10px;padding:14px 22px;font-weight:700;text-decoration:none;display:inline-block;box-shadow:0 4px 14px rgba(33,198,94,.25)}
-    .btn:hover{transform:translateY(-1px)}
-    footer{opacity:.8;text-align:center;font-size:.95rem;margin-top:40px;border-top:1px solid rgba(255,255,255,.08);padding-top:16px}
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css?v=H94j">
 </head>
 <body>
   <main class="wrap">
-    <h1 class="welcome-title">Welcome to Nova</h1>
-    <p class="time">This experience takes about <strong>2–5 minutes</strong> to complete.</p>
-
-    <section class="purpose">
-      <p class="fact">89% of people do not know their purpose.</p>
-      <p class="sub">
-        Nova doesn't guess your purpose; it surfaces what your life has already been saying.
-        We look at your human attributes—mind, heart, drive, and spirit—and map them to work that fits.
-      </p>
-    </section>
-
-    <div class="cta">
-      <a id="startJourneyBtn" class="btn" href="traits.html">Start My Journey</a>
+    <h1>Welcome to Nova</h1>
+    <p class="lead">This experience takes about <strong>2–5 minutes</strong> to complete.</p>
+    <div class="card">
+      <p class="small"><strong>89%</strong> of people do not know their purpose.</p>
+      <p class="small">Nova helps surface the work that fits your mind, heart, drive, and spirit.</p>
+      <div class="bar">
+        <a id="startJourneyBtn" class="btn" href="categories.html">Start My Journey</a>
+      </div>
     </div>
-
-    <footer>Nova v9.4h — Discover Purpose. Live It Boldly.</footer>
+    <div class="notice small">H94j Frontend Rebuild — 2025-10-08 19:09</div>
+    <footer>Nova v9.4j — Discover Purpose. Live It Boldly.</footer>
   </main>
-
-  <script>
-    // Start fresh each run
-    document.getElementById('startJourneyBtn')?.addEventListener('click', () => {
-      localStorage.removeItem('nova_selected_traits');
-      localStorage.removeItem('nova_selected_categories');
-    });
-  </script>
+  <script src="assets/js/welcome.js?v=H94j"></script>
 </body>
 </html>
