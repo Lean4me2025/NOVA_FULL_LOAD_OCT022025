@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nova · Starting…</title>
+<style>
+  body{background:#0b1e3a;color:#fff;font-family:system-ui;margin:0;height:100vh;display:flex;align-items:center;justify-content:center}
+  .card{padding:24px 28px;border-radius:12px;background:rgba(255,255,255,.08)}
+</style>
+</head><body>
+  <div class="card">
+    <b>Starting Nova…</b><br>Preparing a clean run.
+  </div>
+<script>
+  (function(){
+    try {
+      // Clean any stale state that could skip Categories
+      localStorage.removeItem('nova_selected_traits');
+      localStorage.removeItem('nova_selected_categories');
+      sessionStorage.clear();
+      sessionStorage.setItem('nova_run_started','1');
+    } catch(e) {}
+    // Route straight to Categories
+    setTimeout(function(){ location.replace('categories.html'); }, 400);
+  })();
+</script>
+</body></html>

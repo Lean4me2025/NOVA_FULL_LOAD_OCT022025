@@ -1,18 +1,16 @@
-Nova v9.4i — Traits Gatekeeper (Drop-in)
----------------------------------------------
-This is a direct replacement for: assets/js/traits.js
+Nova v9.4i — Start Route Fix (No HTML edits)
+-------------------------------------------------
+This package forces a clean launch path using Vercel routing.
 
-What it does:
-- If this session hasn't completed Categories (sessionStorage.nova_stage !== 'categories_done')
-  OR Start wasn't clicked this run (sessionStorage.nova_run_started !== '1'),
-  it clears stale selections and redirects to categories.html.
+Included:
+- vercel.json      → rewrites "/" to /start.html
+- start.html       → clears storage and redirects to categories.html
 
-How to use:
-1) In GitHub, navigate to assets/js/
-2) Replace the existing traits.js with this one (same filename).
-3) Commit to main; Vercel will auto-deploy.
-4) Test in Incognito.
+How to apply:
+1) Upload BOTH files (vercel.json and start.html) to the ROOT of your repo.
+2) Commit to main; in Vercel, Redeploy → Clear build cache.
+3) Open your site in Incognito. Visiting "/" will now:
+   - clear stale traits/categories and session
+   - go directly to categories.html (clean slate).
 
-Expected result:
-- Welcome → Start → Categories (not Traits)
-- Traits only loads after Categories; no preselected items.
+To restore the Welcome page as your root later, remove vercel.json (or change rewrite).
