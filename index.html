@@ -4,39 +4,34 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>NOVA · Choose Categories</title>
+  <title>NOVA · Welcome</title>
   <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body>
   <div class="wrap">
-    <h1>Choose Your Categories</h1>
-    <p class="small">Why this matters: Categories <b>focus the conversation</b>. They don’t limit you—<b>they clarify the next step</b>. Pick what’s true of your interests or your everyday work (choose more than one if it fits).</p>
-    <div class="card">
-      <p class="small"><b>If you’re unsure:</b> If you’re in retail, warehousing, maintenance, clerical, or customer support, choose <b>Essential & Everyday Workers</b> so you’re fully represented.</p>
-    </div>
-    <div id="grid" class="grid" role="list"></div>
-    <div class="bar">
-      <div class="small" id="cap">0 selected</div>
+    <div class="hero card">
       <div>
-        <a class="btn" href="welcome.html">Back</a>
-        <button id="next" class="btn" disabled>Start: Select Traits</button>
+        <div class="kicker">Welcome to Nova</div>
+        <h1 class="big">I'll help you discover<br/>why you're here.</h1>
+        <div class="stat">89% of people say they’re searching for purpose.</div>
+        <p>Nova doesn’t guess your purpose; it <b>surfaces what your life has already been saying</b>. We look at your human attributes—mind, heart, drive, and spirit—and map them to work that fits.</p>
+        <blockquote class="small">
+          In a few steps we’ll turn scattered strengths into a clear starting direction.
+        </blockquote>
+        <div style="margin-top:12px">
+          <button class="btn" onclick="location.href='categories.html'">Start My Journey</button>
+        </div>
+      </div>
+      <div class="card">
+        <h2>What to expect</h2>
+        <p class="small"><b>1) Categories:</b> Focus the conversation to areas that reflect your world.</p>
+        <p class="small"><b>2) Traits:</b> Select signals you’ve actually shown—your attributes in motion.</p>
+        <p class="small"><b>3) Role Reveal:</b> See a role pattern built from your traits and attribute domains.</p>
+        <hr/>
+        <span class="badge">No tests. No pressure. Just clarity.</span>
+        <footer>Tip: If you’re unsure, choose what you’ve done in the last week.</footer>
       </div>
     </div>
   </div>
-  <script type="module">
-    import { set } from './assets/js/shared.js';
-    const categories = ["Business", "Technology", "Education & Community", "Public Safety", "Healthcare", "Science & Research", "Skilled Trades", "Finance & Accounting", "Operations & Logistics", "Sales & Marketing", "Law & Government", "Arts & Media", "Essential & Everyday Workers"];
-    const grid = document.getElementById('grid');
-    const cap  = document.getElementById('cap');
-    const chosen = new Set();
-
-    function update(){ cap.textContent = `${chosen.size} selected`; document.getElementById('next').disabled = chosen.size===0; set('selectedCategories',[...chosen]); }
-    categories.forEach(cat=>{
-      const el=document.createElement('div'); el.className='pill'; el.textContent=cat;
-      el.addEventListener('click',()=>{ if(chosen.has(cat)) chosen.delete(cat); else chosen.add(cat); el.classList.toggle('selected', chosen.has(cat)); update(); });
-      grid.appendChild(el);
-    });
-    document.getElementById('next').addEventListener('click',()=>location.href='traits.html');
-  </script>
 </body>
 </html>
