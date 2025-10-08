@@ -1,1 +1,36 @@
-<!doctype html><html><head><meta charset='utf-8'/><meta name='viewport' content='width=device-width,initial-scale=1'/><link rel='stylesheet' href='assets/css/style.css'/><script defer src='assets/js/state.js'></script><title>Nova • Reflection</title></head><body><div class='container'><div class='header'><div class='brand'>Nova</div><div class='list'><a class='pill' href='results.html'>Back to Results</a></div><div class='badge'>Bridge step</div></div><div class='card'><h1 class='h1'>Which moment are you in?</h1><div class='grid cols-2'><button class='btn ghost' onclick="setRef('starting')">Starting</button><button class='btn ghost' onclick="setRef('switching')">Switching</button><button class='btn ghost' onclick="setRef('leveling')">Leveling up</button><button class='btn ghost' onclick="setRef('restarting')">Restarting</button></div><div class='hr'></div><a class='btn primary' href='plans.html'>Next • Choose Plan</a></div></div><script>function setRef(s){NOVA.state.reflection=s;NOVA.save();}</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Nova • Reflection</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <script defer src="assets/js/state.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="brand">Nova</div>
+    <div class="list"><a class="pill" href="results.html">Back to Results</a></div>
+    <div class="badge">Bridge step</div>
+  </div>
+  <div class="card">
+    <h1 class="h1">Which moment are you in?</h1>
+    <div class="grid cols-2">
+      <button class="btn ghost" onclick="setRef('starting')"><div><div><strong>Starting a career</strong></div><div class="small">First steps, first wins.</div></div></button>
+      <button class="btn ghost" onclick="setRef('switching')"><div><div><strong>Switching careers</strong></div><div class="small">Pivot with purpose.</div></div></button>
+      <button class="btn ghost" onclick="setRef('leveling')"><div><div><strong>Leveling up</strong></div><div class="small">Advance with focus.</div></div></button>
+      <button class="btn ghost" onclick="setRef('restarting')"><div><div><strong>Restarting</strong></div><div class="small">New season, fresh grace.</div></div></button>
+    </div>
+    <div class="hr"></div>
+    <a class="btn primary" href="plans.html">Next • Choose Plan</a>
+  </div>
+</div>
+<script>
+  function setRef(stage){
+    NOVA.state.reflection = stage;
+    NOVA.save();
+  }
+</script>
+</body>
+</html>

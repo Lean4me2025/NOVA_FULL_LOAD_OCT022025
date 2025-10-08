@@ -1,29 +1,60 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Nova • Welcome</title>
-<link rel="stylesheet" href="assets/css/style.css"/>
-<script defer src="assets/js/state.js"></script>
-</head><body>
-<div class="container"><div class="header"><div class="brand">Nova</div><div class="tag">v8.7r • Ready</div></div>
-<div class="card"><div class="grid cols-2" style="align-items:start">
-<div><div class="kicker">Welcome</div><h1 class="h1">Find your purpose and get clarity.</h1>
-<p class="p"><strong>89%</strong> want clearer purpose — Nova helps you name it, Navi helps you act.</p>
-<div class="kicker" style="margin-top:10px">How it works</div>
-<ul class="p"><li>Pick <strong>categories</strong>.</li><li>Select <strong>traits</strong>.</li><li>See <strong>matches</strong>.</li><li>Bridge to <strong>Navi</strong>.</li></ul>
-<div style="margin-top:12px;"><a class="btn primary" href="categories.html">Start • Choose My Categories</a></div></div>
-<div class="card" style="background:transparent;border:1px dashed var(--line)">
-<div class="kicker">Returning User Access</div><label class="small">Username</label><input id="user" class="input" placeholder="e.g. drew"/>
-<div style="height:8px"></div><label class="small">PIN</label><input id="pin" class="input" placeholder="4–6 digits" maxlength="6"/>
-<div style="height:14px"></div><button class="btn block" id="btnResume">Resume where I left off</button>
-<div class="small" style="margin-top:10px">Your PIN saves progress locally on this device.</div></div>
-</div></div>
-<div class="footer">© Nova & Navi</div></div>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Nova • Welcome</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <script defer src="assets/js/state.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand">Nova</div>
+      <div class="tag">v8.7b • Ready</div>
+    </div>
+
+    <div class="card">
+      <div class="grid cols-2" style="align-items:start">
+        <div>
+          <div class="kicker">Welcome</div>
+          <h1 class="h1">Find your purpose and get clarity.</h1>
+          <p class="p"><strong>89% of people do not know their purpose.</strong> Nova will help you find it and get clarity around your purpose — then Navi will help you act on it.</p>
+          <div class="kicker" style="margin-top:10px">How it works</div>
+          <ul class="p">
+            <li>Pick a few <strong>categories</strong> that call to you.</li>
+            <li>Select <strong>traits</strong> that feel true.</li>
+            <li>See <strong>matches</strong> and next steps.</li>
+            <li>Bridge to <strong>Navi</strong> for resume, plan, and opportunities.</li>
+          </ul>
+          <div style="margin-top:12px;">
+            <a class="btn primary" href="categories.html">Start • Choose My Categories</a>
+          </div>
+        </div>
+        <div class="card" style="background:transparent;border:1px dashed var(--line)">
+          <div class="kicker">Returning User Access</div>
+          <label class="small">Username</label>
+          <input id="user" class="input" placeholder="e.g. drew" />
+          <div style="height:8px"></div>
+          <label class="small">PIN</label>
+          <input id="pin" class="input" placeholder="4–6 digits" maxlength="6"/>
+          <div style="height:14px"></div>
+          <button class="btn block" id="btnResume">Resume where I left off</button>
+          <div class="small" style="margin-top:10px">Your PIN saves progress locally on this device.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">© Nova & Navi — v8.7b</div>
+  </div>
+
 <script>
-document.getElementById('btnResume').addEventListener('click',()=>{
-  NOVA.state.user = document.getElementById('user').value.trim();
-  NOVA.state.pin  = document.getElementById('pin').value.trim();
-  NOVA.save();
-  location.href = 'categories.html';
-});
+  document.getElementById('btnResume').addEventListener('click', ()=>{
+    NOVA.state.user = document.getElementById('user').value.trim();
+    NOVA.state.pin  = document.getElementById('pin').value.trim();
+    NOVA.save();
+    location.href = 'categories.html';
+  });
 </script>
-</body></html>
+</body>
+</html>
