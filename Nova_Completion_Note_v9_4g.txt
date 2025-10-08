@@ -1,0 +1,16 @@
+Nova_Completion_Note_v9_4g.txt
+Generated: 2025-10-08 14:50:05
+
+Scope: ONLY the fixes Drew requested this morning.
+
+Included edits
+1) Welcome page — add the text “Welcome to Nova” at the very top. (Nothing else on the page changed.)
+2) Time estimate — replace with “This experience takes about 2–5 minutes to complete.”
+3) Reflection (Look Forward) — change copy from “Try these roles:” to “Discover these roles:”
+4) Invest page — replace Payhip buttons with the exact product embed links provided so each button goes directly to its product:
+   - Mastery: https://payhip.com/b/re4Hy (data-product="re4Hy")
+   - Pro:     https://payhip.com/b/knC1Z (data-product="knC1Z")
+   - Starter: https://payhip.com/b/GdfU7 (data-product="GdfU7")
+   - Book:    https://payhip.com/b/N7LVg (data-product="N7LVg")
+
+No other styling, layout, or behaviors were changed.

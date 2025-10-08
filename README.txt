@@ -1,26 +1,13 @@
-README.txt — Nova v9.4f Patch + Note
+README — Nova v9.4g patch
 
-This bundle contains:
-- Nova_Completion_Note_v9_4f.txt (the locked elements + changelog)
-- patches/assets/css/style.css (traits grid improvements + footer tag)
-- patches/assets/js/traits.js (robust trait loading + rendering)
-- patches/invest.html.snippet (ensures Payhip links open in new tabs)
-- patches/footer.html.snippet (footer tag markup)
+Files in this bundle are small, drop-in snippets you can paste into your existing pages.
 
-Apply Steps (Drop-in Replace)
-1) Back up your current project.
-2) Copy /patches/assets/css/style.css to /assets/css/style.css in your codebase (or merge the marked sections).
-3) Copy /patches/assets/js/traits.js to /assets/js/traits.js (or merge the functions below into your existing JS).
-4) Open your Invest page and ensure buttons/links use the provided pattern (see invest.html.snippet).
-5) Ensure your pages include the CSS/JS links shown in the Completion Note.
+Files:
+- patches/welcome_h1.snippet.html         -> add H1 at very top of the welcome page
+- patches/welcome_time_text.snippet.html  -> replace the time estimate line
+- patches/reflection_roles_text.snippet.html -> change wording from 'Try these roles:' to 'Discover these roles:'
+- patches/invest_payhip_buttons.snippet.html -> exact Payhip embeds (script + four product buttons)
 
-Manual Merge Tips
-- Search for “/* NOVA v9.4f PATCH START */” and “/* NOVA v9.4f PATCH END */” markers.
-
-Expected Data Structure
-- traits_with_categories.json: array of objects like { "id": "t1", "name": "Analytical", "category": "Strategy" }
-- category_matrix.json: list of available categories
-- ooh.json: any reference dataset you use for roles/outcomes
-
-Contact
-- If file paths differ in your project, adjust the <link> and <script> paths accordingly.
+How to apply:
+- Open your existing files and paste the snippet content in the indicated spot.
+- Keep your current CSS/JS untouched; these are pure content updates.
