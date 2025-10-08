@@ -1,11 +1,23 @@
-Nova H94i RoleFix — Reflection Page Patch
-------------------------------------------------
+Nova H94i — FlowGuard Patch
+-----------------------------------
+Purpose: Fix navigation order (Welcome → Categories → Traits) and stop preselected traits.
 Includes:
-- reflection_look_forward.html (main fix, line updated to "Discover these roles:")
-- role_text_hotfix.js (runtime fallback for cached builds)
+1. welcome_flow_fix.js      — ensures clean start and directs to Categories
+2. categories_stage_set.js  — marks session as 'categories_done'
+3. traits_gatekeeper.js     — prevents skipping Categories or loading old traits
 
-Usage:
-Option 1: Replace reflection_look_forward.html in your repo and redeploy.
-Option 2: Keep your file, add <script src="role_text_hotfix.js"></script> before </body>.
+How to apply:
+- Add the corresponding <script src="..."> tag for each file into your pages as described below.
 
-Either way, it will display "Discover these roles:" correctly after deployment.
+1️⃣ index.html (Welcome)
+   Add: <script src="welcome_flow_fix.js"></script> before </body>
+
+2️⃣ categories.html
+   Add: <script src="categories_stage_set.js"></script> before </body>
+
+3️⃣ traits.html (or traits.js)
+   Add: <script src="traits_gatekeeper.js"></script> at top or before traits code
+
+Result:
+- Always flows Welcome → Categories → Traits.
+- Clears stale selections each run.
