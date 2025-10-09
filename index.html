@@ -1,4 +1,3 @@
-
 <!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Nova • Welcome</title><link rel="stylesheet" href="assets/css/style.css"/><script defer src="assets/js/state.js"></script></head>
 <body><div class="container"><div class="header"><div class="brand">Nova</div><div class="badge">Unified</div></div>
@@ -7,11 +6,35 @@
     <div class="small">Welcome</div>
     <h1 class="h1">Find your purpose and get clarity.</h1>
     <p class="p"><strong>89% of people do not know their purpose.</strong> Nova will help you find it and get clarity around your purpose — then Navi will help you act on it.</p>
-    <a class="btn primary" href="categories.html">Start • Choose My Categories</a> <a class="pill" style="margin-left:10px" href="qa.html">QA</a>
+    <div class="grid cols-2">
+      <a class="btn primary" href="categories.html">Start • Choose My Categories</a>
+      <a class="btn ghost" href="traits.html">Skip to Traits</a>
+    </div>
+    <div style="margin-top:14px" class="small">Prefer listening?</div>
+    <audio controls preload="auto" style="width:100%">
+      <source src="assets/audio/intro.wav" type="audio/wav"/>
+      Your browser does not support audio playback.
+    </audio>
   </div>
   <div class="card" style="background:transparent;border:1px dashed var(--line)">
     <div class="small">Returning User Access</div>
-    <label class="small">Username</label><input class="btn block" placeholder="e.g. drew"/>
-    <div style="height:8px"></div><label class="small">PIN</label><input class="btn block" placeholder="4–6 digits"/>
+    <label class="small">Username</label><input id="u" class="btn block" placeholder="e.g. drew"/>
+    <div style="height:8px"></div><label class="small">PIN</label><input id="p" class="btn block" placeholder="4–6 digits"/>
+    <div class="hr"></div><button id="resume" class="btn">Resume where I left off</button>
+    <div id="rnote" class="small"></div>
   </div>
-</div></div><div class="footer-ver">v8.7f • Unified</div></div></body></html>
+</div></div><div class="footer-ver">v8.8b • Unified 12-Category Edition</div></div>
+<script>
+document.getElementById('resume').onclick = ()=>{
+  const s = {
+    cats: JSON.parse(localStorage.getItem('nova.selectedCategoryIds')||'[]'),
+    traits: JSON.parse(localStorage.getItem('nova.selectedTraits')||'[]'),
+    matches: JSON.parse(localStorage.getItem('nova.matches')||'[]')
+  };
+  const note = document.getElementById('rnote');
+  if((s.traits||[]).length>0){ location.href='results.html'; return; }
+  if((s.cats||[]).length>0){ location.href='traits.html'; return; }
+  note.textContent = 'No previous selections found on this device.';
+};
+</script>
+</body></html>

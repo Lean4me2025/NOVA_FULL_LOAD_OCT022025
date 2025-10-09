@@ -1,67 +1,24 @@
-// IMPORTANT: reads your filenames
-const FILES = {
-  categories: 'categories.json',
-  traits: 'traits.json',
-  jobs: 'jobs.json'
-};
-
-async function loadJSON(name){
-  const url = '/data/'+name;
-  const r = await fetch(url, {cache:'no-store'});
-  if(!r.ok) throw new Error('Missing or unreadable: '+name);
-  return await r.json();
-}
-
+// Data loader helpers with graceful fallback
+const FILES = { categories:'categories.json', traits:'traits.json', jobs:'jobs.json' };
+async function j(name){ const r=await fetch('data/'+name,{cache:'no-store'}); if(!r.ok) throw 0; return r.json(); }
 async function loadAllData(){
-  const out = { categories:[], traits:[], ooh:[] };
-  try{
-    const cm = await loadJSON(FILES.categories);
-    if(Array.isArray(cm)){
-      out.categories = cm;
-    }else if(cm && typeof cm==='object'){
-      out.categories = Object.keys(cm);
-    }
-  }catch(e){ console.log('[NOVA]', e.message); }
-  try{
-    const twc = await loadJSON(FILES.traits);
-    if(Array.isArray(twc)){
-      out.traits = twc;
-    }else if(twc && Array.isArray(twc.traits)){
-      out.traits = twc.traits;
-    }
-  }catch(e){ console.log('[NOVA]', e.message); }
-  try{
-    const ooh = await loadJSON(FILES.jobs);
-    if(Array.isArray(ooh)) out.ooh = ooh;
-  }catch(e){ console.log('[NOVA]', e.message); }
+  const out={categories:[], traits:[], ooh:[]};
+  try{ out.categories = await j(FILES.categories);}catch(e){}
+  try{ out.traits = await j(FILES.traits);}catch(e){}
+  try{ out.ooh = await j(FILES.jobs);}catch(e){}
   return out;
 }
-
-function computeMatches({ooh=[], selectedCategories=[], selectedTraits=[]}, max=30){
+function computeMatches({ooh=[], selectedCategoryIds=[], selectedTraits=[]}, max=30){
   const traitWords = new Set(selectedTraits.map(t=> (t.name||t).toLowerCase()));
-  const catWords = new Set(selectedCategories.map(c=> String(c).toLowerCase()));
-  const scored = [];
+  const catIds = new Set(selectedCategoryIds);
+  const scored=[];
   for(const job of ooh){
-    const title = (job.title||'').toLowerCase();
-    const summary = (job.summary||'').toLowerCase();
-    const jobCats = new Set((job.categories||[]).map(x=> String(x).toLowerCase()));
-    let score = 0;
-    for(const c of catWords){ if(jobCats.has(c)) score += 5; }
-    for(const tw of traitWords){
-      if(tw && (title.includes(tw) || summary.includes(tw))){
-        score += 1;
-      }
-    }
-    if(title.includes('engineer')||title.includes('analyst')||title.includes('manager')) score += 0.5;
-    if(score>0){
-      scored.push({job, score});
-    }
+    const title=(job.title||'').toLowerCase(); const summary=(job.summary||'').toLowerCase();
+    const jobCats=new Set(job.categoryIds||[]); let score=0;
+    for(const id of catIds){ if(jobCats.has(id)) score+=5; }
+    for(const tw of traitWords){ if(tw && (title.includes(tw)||summary.includes(tw))) score+=1; }
+    if(score>0) scored.push({job,score});
   }
   scored.sort((a,b)=> b.score-a.score);
-  return scored.slice(0, max).map(({job,score})=> ({
-    title: job.title || 'Occupation',
-    soc: job.soc_code || '',
-    summary: job.summary || '',
-    score: Math.round(score*10)/10
-  }));
+  return scored.slice(0,max).map(({job,score})=>({title:job.title,soc:job.soc_code||'',summary:job.summary||'',pay:job.median_pay||'',growth:job.growth||'',edu:job.education||'',score:Math.round(score*10)/10}));
 }

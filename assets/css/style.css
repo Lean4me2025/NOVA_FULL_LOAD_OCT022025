@@ -1,4 +1,4 @@
-:root{--bg:#0a1324;--bg2:#101c3a;--primary:#0f1e3a;--ink:#ffffff;--muted:#e2e8ff;--accent:#43d17c;--card:#0e1a33;--line:#2b3a5c;--zebra:#0b1630}
+:root{--bg:#0a1324;--bg2:#101c3a;--primary:#0f1e3a;--ink:#ffffff;--muted:#e8edff;--accent:#43d17c;--card:#0f1c38;--line:#2a3a62}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:radial-gradient(1200px 800px at 40% 0%, var(--bg2) 0%, var(--bg) 60%);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
 .container{max-width:1040px;margin:0 auto;padding:32px 24px;position:relative;min-height:100vh}
@@ -6,7 +6,7 @@ html,body{margin:0;padding:0;background:radial-gradient(1200px 800px at 40% 0%, 
 .brand{font-weight:800;letter-spacing:.4px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
 .h1{font-size:32px;font-weight:900;margin:0 0 12px}
-.p{font-size:16px;line-height:1.7;color:var(--muted);margin:0 0 16px}
+.p{font-size:16px;line-height:1.8;color:var(--muted);margin:0 0 16px}
 .grid{display:grid;gap:12px}
 .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -24,3 +24,9 @@ html,body{margin:0;padding:0;background:radial-gradient(1200px 800px at 40% 0%, 
 .category-card.active,.btn.active{border-color:var(--accent)!important;box-shadow:0 0 12px rgba(67,209,124,.35);background:rgba(67,209,124,.12)}
 .small{font-size:13px;color:var(--muted)}
 .footer-ver{position:fixed;right:14px;bottom:10px;opacity:.55;font-size:12px;border:1px solid var(--line);padding:2px 8px;border-radius:8px;background:rgba(0,0,0,.2);backdrop-filter:blur(2px)}
+.table{width:100%;border-collapse:separate;border-spacing:0 8px}
+.tr{background:rgba(255,255,255,0.02);border:1px solid var(--line);border-radius:12px}
+.tr>td{padding:10px 12px}
+.disclosure{cursor:pointer}
+.details{display:none;padding:8px 12px;color:var(--muted);border-top:1px solid var(--line)}
+.tr.open .details{display:block}

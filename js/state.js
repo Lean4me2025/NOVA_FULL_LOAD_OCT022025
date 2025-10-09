@@ -1,41 +1,17 @@
 window.NOVA = {
   state: {
-    pin: localStorage.getItem('nova.pin') || '',
-    user: localStorage.getItem('nova.user') || '',
-    categories: JSON.parse(localStorage.getItem('nova.categories')||'[]'),
-    traits: JSON.parse(localStorage.getItem('nova.traits')||'[]'),
+    selectedCategoryIds: JSON.parse(localStorage.getItem('nova.selectedCategoryIds')||'[]'),
     selectedCategories: JSON.parse(localStorage.getItem('nova.selectedCategories')||'[]'),
     selectedTraits: JSON.parse(localStorage.getItem('nova.selectedTraits')||'[]'),
     matches: JSON.parse(localStorage.getItem('nova.matches')||'[]'),
-    plan: localStorage.getItem('nova.plan') || ''
+    reflection: JSON.parse(localStorage.getItem('nova.reflection')||'{}'),
   },
   save(){
     const s=this.state;
-    localStorage.setItem('nova.pin', s.pin||'');
-    localStorage.setItem('nova.user', s.user||'');
-    localStorage.setItem('nova.categories', JSON.stringify(s.categories||[]));
-    localStorage.setItem('nova.traits', JSON.stringify(s.traits||[]));
+    localStorage.setItem('nova.selectedCategoryIds', JSON.stringify(s.selectedCategoryIds||[]));
     localStorage.setItem('nova.selectedCategories', JSON.stringify(s.selectedCategories||[]));
     localStorage.setItem('nova.selectedTraits', JSON.stringify(s.selectedTraits||[]));
     localStorage.setItem('nova.matches', JSON.stringify(s.matches||[]));
-    localStorage.setItem('nova.plan', s.plan||'');
+    localStorage.setItem('nova.reflection', JSON.stringify(s.reflection||{}));
   }
 };
-
-async function loadConfig(){
-  try{
-    const r = await fetch('/assets/config.json', {cache:'no-store'});
-    return await r.json();
-  }catch(e){
-    return {
-      payhip: {
-        starter: "#",
-        pro: "#",
-        mastery: "#"
-      }
-    };
-  }
-}
-
-function qs(sel){ return document.querySelector(sel); }
-function qsa(sel){ return Array.from(document.querySelectorAll(sel)); }

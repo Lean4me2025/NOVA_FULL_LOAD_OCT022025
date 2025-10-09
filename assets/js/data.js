@@ -20,5 +20,5 @@ function computeMatches({ooh=[], selectedCategoryIds=[], selectedTraits=[]}, max
     if(score>0) scored.push({job,score});
   }
   scored.sort((a,b)=> b.score-a.score);
-  return scored.slice(0,max).map(({job,score})=>({title:job.title,soc:job.soc_code||'',summary:job.summary||'',score:Math.round(score*10)/10}));
+  return scored.slice(0,max).map(({job,score})=>({title:job.title,soc:job.soc_code||'',summary:job.summary||'',pay:job.median_pay||'',growth:job.growth||'',edu:job.education||'',score:Math.round(score*10)/10}));
 }
