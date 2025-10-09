@@ -1,57 +1,48 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Nova • Results</title><link rel="stylesheet" href="assets/css/style.css"/><script defer src="assets/js/state.js"></script><script defer src="assets/js/data.js"></script></head>
-<body><div class="container"><div class="header"><div class="brand">Nova</div><div class="badge">OOH details reveal</div></div>
-<div class="card"><h1 class="h1">Your results</h1><div id="summary" class="p"></div><div class="hr"></div>
-<table class="table" id="tbl"></table><div class="hr"></div><a class="btn" href="reflection.html">Continue • Reflection</a></div><div class="footer-ver">v8.8b • Unified 12-Category Edition</div></div>
+<body><div class="container"><div class="header"><div class="brand">Nova</div><div class="badge">Top Matches</div></div>
+<div class="card"><h1 class="h1">Your results</h1><p class="p">Here’s what your categories and traits reveal — roles where your purpose can thrive. Expand a role to see details.</p><div id="summary" class="p"></div><div class="hr"></div>
+<table class="table" id="tbl"></table><div class="hr"></div><a class="btn primary" href="reflection.html">Continue • Reflection</a></div><div class="footer-ver">v8.8d • Refined</div></div>
 <script>
 (async ()=>{
-  const EMBED_JOBS=[
-    {"title":"Data Analyst","summary":"Analyze datasets, build dashboards, support decisions.","categoryIds":["science","bizfin"],"soc_code":"15-2051","median_pay":"$98,000","growth":"Faster than average","education":"Bachelor's"},
-    {"title":"Software Engineer","summary":"Design and build applications and services.","categoryIds":["tech"],"soc_code":"15-1252","median_pay":"$120,000","growth":"Much faster than average","education":"Bachelor's"},
-    {"title":"Registered Nurse","summary":"Provide patient care with empathy and precision.","categoryIds":["health"],"soc_code":"29-1141","median_pay":"$86,000","growth":"Much faster than average","education":"Bachelor's / license"},
-    {"title":"Electrician","summary":"Install and maintain electrical systems.","categoryIds":["trades"],"soc_code":"47-2111","median_pay":"$60,000","growth":"Average","education":"Apprenticeship"},
-    {"title":"Customer Success Specialist","summary":"Support customers with communication and reliability.","categoryIds":["hospitality","workers"],"soc_code":"43-4051","median_pay":"$55,000","growth":"Average","education":"Varies"},
-
-    {"title":"Mechanical Engineer","summary":"Design mechanical devices and systems; precision and safety required.","categoryIds":["engineering"],"soc_code":"17-2141","median_pay":"$99,000","growth":"Average","education":"Bachelor's"},
-    {"title":"Electrical Engineer","summary":"Develop electrical systems and components; analytical and safety-minded.","categoryIds":["engineering"],"soc_code":"17-2071","median_pay":"$104,000","growth":"Average","education":"Bachelor's"},
-    {"title":"Civil Engineer","summary":"Plan and oversee infrastructure projects; systems design and writing.","categoryIds":["engineering"],"soc_code":"17-2051","median_pay":"$97,000","growth":"Average","education":"Bachelor's"},
-    {"title":"Aerospace Engineer","summary":"Design aircraft and spacecraft; problem-solving and precision at scale.","categoryIds":["engineering"],"soc_code":"17-2011","median_pay":"$130,000","growth":"Average","education":"Bachelor's"},
-    {"title":"Industrial / Manufacturing Engineer","summary":"Optimize production systems; process, quality, safety.","categoryIds":["engineering","operations"],"soc_code":"17-2112","median_pay":"$95,000","growth":"Average","education":"Bachelor's"},
-    {"title":"Quality Engineer","summary":"Establish quality systems; reliability and documentation.","categoryIds":["engineering","operations"],"soc_code":"17-2112","median_pay":"$92,000","growth":"Average","education":"Bachelor's"},
-
-    {"title":"Operations Manager","summary":"Lead operations; scheduling, resources, and people to hit goals.","categoryIds":["operations"],"soc_code":"11-1021","median_pay":"$103,000","growth":"Average","education":"Varies"},
-    {"title":"Supply Chain Analyst","summary":"Analyze demand and flow; improve on-time and cost.","categoryIds":["operations"],"soc_code":"13-1081","median_pay":"$78,000","growth":"Faster than average","education":"Bachelor's"},
-    {"title":"Logistics Coordinator","summary":"Coordinate shipments and inventory; communication and scheduling.","categoryIds":["operations"],"soc_code":"43-5061","median_pay":"$54,000","growth":"Average","education":"Associate/Bachelor's"},
-    {"title":"Production Planner","summary":"Plan builds and capacity; scheduling and materials alignment.","categoryIds":["operations"],"soc_code":"13-1191","median_pay":"$70,000","growth":"Average","education":"Bachelor's"},
-    {"title":"Procurement Specialist","summary":"Source materials and services; negotiate and manage vendors.","categoryIds":["operations"],"soc_code":"13-1023","median_pay":"$75,000","growth":"Average","education":"Bachelor's"}
-  ];
+  const EMBED_JOBS=[{"title": "Data Analyst", "summary": "Analyze datasets, build dashboards, support decisions.", "categoryIds": ["science", "bizfin"], "soc_code": "15-2051", "median_pay": "$98,000", "growth": "Faster than average", "education": "Bachelor's", "tasks": ["Clean data", "Build dashboards", "Partner with stakeholders"]}, {"title": "Software Engineer", "summary": "Design and build applications and services.", "categoryIds": ["tech"], "soc_code": "15-1252", "median_pay": "$120,000", "growth": "Much faster than average", "education": "Bachelor's", "tasks": ["Design systems", "Write code", "Review PRs"]}, {"title": "Registered Nurse", "summary": "Provide patient care with empathy and precision.", "categoryIds": ["health"], "soc_code": "29-1141", "median_pay": "$86,000", "growth": "Much faster than average", "education": "Bachelor's / license", "tasks": ["Assess patients", "Coordinate care", "Educate families"]}, {"title": "Electrician", "summary": "Install and maintain electrical systems.", "categoryIds": ["trades"], "soc_code": "47-2111", "median_pay": "$60,000", "growth": "Average", "education": "Apprenticeship", "tasks": ["Install wiring", "Test circuits", "Read blueprints"]}, {"title": "Customer Success Specialist", "summary": "Support customers with communication and reliability.", "categoryIds": ["hospitality", "workers"], "soc_code": "43-4051", "median_pay": "$55,000", "growth": "Average", "education": "Varies", "tasks": ["Onboard users", "Troubleshoot", "Collect feedback"]}, {"title": "Mechanical Engineer", "summary": "Design mechanical devices and systems; precision and safety required.", "categoryIds": ["engineering"], "soc_code": "17-2141", "median_pay": "$99,000", "growth": "Average", "education": "Bachelor's", "tasks": ["CAD design", "Prototype & test", "Spec writing"]}, {"title": "Electrical Engineer", "summary": "Develop electrical systems and components; analytical and safety-minded.", "categoryIds": ["engineering"], "soc_code": "17-2071", "median_pay": "$104,000", "growth": "Average", "education": "Bachelor's", "tasks": ["Circuit design", "Validation", "Documentation"]}, {"title": "Civil Engineer", "summary": "Plan and oversee infrastructure projects; systems design and writing.", "categoryIds": ["engineering"], "soc_code": "17-2051", "median_pay": "$97,000", "growth": "Average", "education": "Bachelor's", "tasks": ["Site analysis", "Project plans", "Compliance"]}, {"title": "Aerospace Engineer", "summary": "Design aircraft and spacecraft; problem-solving and precision at scale.", "categoryIds": ["engineering"], "soc_code": "17-2011", "median_pay": "$130,000", "growth": "Average", "education": "Bachelor's", "tasks": ["Structural analysis", "Flight systems", "Testing"]}, {"title": "Industrial / Manufacturing Engineer", "summary": "Optimize production systems; process, quality, safety.", "categoryIds": ["engineering", "operations"], "soc_code": "17-2112", "median_pay": "$95,000", "growth": "Average", "education": "Bachelor's", "tasks": ["Lean improvements", "Throughput", "Quality systems"]}, {"title": "Quality Engineer", "summary": "Establish quality systems; reliability and documentation.", "categoryIds": ["engineering", "operations"], "soc_code": "17-2112", "median_pay": "$92,000", "growth": "Average", "education": "Bachelor's", "tasks": ["Root-cause", "Audits", "Process control"]}, {"title": "Operations Manager", "summary": "Lead operations; scheduling, resources, and people to hit goals.", "categoryIds": ["operations"], "soc_code": "11-1021", "median_pay": "$103,000", "growth": "Average", "education": "Varies", "tasks": ["Scheduling", "Resource planning", "Team leadership"]}, {"title": "Supply Chain Analyst", "summary": "Analyze demand and flow; improve on-time and cost.", "categoryIds": ["operations"], "soc_code": "13-1081", "median_pay": "$78,000", "growth": "Faster than average", "education": "Bachelor's", "tasks": ["Forecasting", "Inventory analysis", "Vendor metrics"]}, {"title": "Logistics Coordinator", "summary": "Coordinate shipments and inventory; communication and scheduling.", "categoryIds": ["operations"], "soc_code": "43-5061", "median_pay": "$54,000", "growth": "Average", "education": "Associate/Bachelor's", "tasks": ["Shipments", "Tracking", "Customer comms"]}, {"title": "Production Planner", "summary": "Plan builds and capacity; scheduling and materials alignment.", "categoryIds": ["operations"], "soc_code": "13-1191", "median_pay": "$70,000", "growth": "Average", "education": "Bachelor's", "tasks": ["MRP runs", "Capacity plans", "Work orders"]}, {"title": "Procurement Specialist", "summary": "Source materials and services; negotiate and manage vendors.", "categoryIds": ["operations"], "soc_code": "13-1023", "median_pay": "$75,000", "growth": "Average", "education": "Bachelor's", "tasks": ["RFQs", "Contracts", "Cost savings"]}];
   let data={ooh:EMBED_JOBS};
   try{ const d=await loadAllData(); if(Array.isArray(d.ooh)&&d.ooh.length) data=d; }catch(e){}
 
-  const matches = computeMatches({
-    ooh: data.ooh,
-    selectedCategoryIds: JSON.parse(localStorage.getItem('nova.selectedCategoryIds')||'[]'),
-    selectedTraits: JSON.parse(localStorage.getItem('nova.selectedTraits')||'[]')
-  }, 40);
+  const selectedTraits = JSON.parse(localStorage.getItem('nova.selectedTraits')||'[]');
+  const selectedCatIds = JSON.parse(localStorage.getItem('nova.selectedCategoryIds')||'[]') || [];
+  const matchesRaw = computeMatches({ooh:data.ooh, selectedCategoryIds:selectedCatIds, selectedTraits:selectedTraits}, 40);
+
+  const maxScore = matchesRaw.reduce((m,x)=> Math.max(m, x.score), 0) || 1;
+  const matches = matchesRaw.map(x=>{
+    const pct = x.score / maxScore;
+    let band = 'Emerging Fit', cls='fit-emerging';
+    if(pct>=0.85){ band='Excellent Fit'; cls='fit-excellent'; }
+    else if(pct>=0.55){ band='Good Fit'; cls='fit-good'; }
+    return {...x, pct: Math.round(pct*100), band, cls};
+  });
+
   if(window.NOVA&&NOVA.state){ NOVA.state.matches=matches; NOVA.save(); }
 
   const sum = '<div class="list">'+(JSON.parse(localStorage.getItem('nova.selectedCategories')||'[]')).map(c=>'<span class="pill">'+c+'</span>').join('')+'</div>' +
-              '<div class="list">'+(JSON.parse(localStorage.getItem('nova.selectedTraits')||'[]')).slice(0,12).map(t=>'<span class="pill">'+(t.name||t)+'</span>').join('')+'</div>';
+              '<div class="list">'+selectedTraits.slice(0,12).map(t=>'<span class="pill">'+(t.name||t)+'</span>').join('')+'</div>';
   document.getElementById('summary').innerHTML = sum;
 
   const tbl=document.getElementById('tbl');
-  if(matches.length===0){ tbl.innerHTML='<tr class="tr"><td class="small">Matches will appear once jobs data is connected.</td></tr>'; return; }
+  if(matches.length===0){ tbl.innerHTML='<tr class="tr"><td class="small">No matches yet — pick at least 5 traits to see suggestions.</td></tr>'; return; }
   tbl.innerHTML = matches.map((m)=>{
     const job = (data.ooh.find(j=> j.title===m.title) || {});
+    const tasks = (job.tasks||[]).map(t=> '<li>'+t+'</li>').join('');
     return '<tr class="tr"><td>'+
       '<div class="disclosure" onclick="this.parentNode.parentNode.classList.toggle(\'open\')">'+
-        '<strong>'+m.title+'</strong> — score '+m.score+
+        '<strong>'+m.title+'</strong> <span class="fit-badge '+m.cls+'">'+m.band+'</span>'+
         '<div class="small">'+(m.soc||'')+'</div>'+
         '<div class="details">'+
-          '<div><strong>Summary:</strong> '+(job.summary||'')+'</div>'+
-          '<div><strong>Median Pay:</strong> '+(job.median_pay||'')+'</div>'+
-          '<div><strong>Growth:</strong> '+(job.growth||'')+'</div>'+
-          '<div><strong>Typical Education:</strong> '+(job.education||'')+'</div>'+
+          '<div class="p"><strong>Summary:</strong> '+(job.summary||'')+'</div>'+
+          (tasks? '<div class="p"><strong>Typical Tasks:</strong><ul style="margin-top:6px">'+tasks+'</ul></div>':'' )+
+          '<div class="p"><strong>Median Pay:</strong> '+(job.median_pay||'')+'</div>'+
+          '<div class="p"><strong>Growth Outlook:</strong> '+(job.growth||'')+'</div>'+
+          '<div class="p"><strong>Typical Education:</strong> '+(job.education||'')+'</div>'+
         '</div>'+
       '</div>'+
     '</td></tr>';

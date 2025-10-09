@@ -9,7 +9,12 @@
     "soc_code": "15-2051",
     "median_pay": "$98,000",
     "growth": "Faster than average",
-    "education": "Bachelor's"
+    "education": "Bachelor's",
+    "tasks": [
+      "Clean data",
+      "Build dashboards",
+      "Partner with stakeholders"
+    ]
   },
   {
     "title": "Software Engineer",
@@ -20,7 +25,12 @@
     "soc_code": "15-1252",
     "median_pay": "$120,000",
     "growth": "Much faster than average",
-    "education": "Bachelor's"
+    "education": "Bachelor's",
+    "tasks": [
+      "Design systems",
+      "Write code",
+      "Review PRs"
+    ]
   },
   {
     "title": "Registered Nurse",
@@ -31,7 +41,12 @@
     "soc_code": "29-1141",
     "median_pay": "$86,000",
     "growth": "Much faster than average",
-    "education": "Bachelor's / license"
+    "education": "Bachelor's / license",
+    "tasks": [
+      "Assess patients",
+      "Coordinate care",
+      "Educate families"
+    ]
   },
   {
     "title": "Electrician",
@@ -42,7 +57,12 @@
     "soc_code": "47-2111",
     "median_pay": "$60,000",
     "growth": "Average",
-    "education": "Apprenticeship"
+    "education": "Apprenticeship",
+    "tasks": [
+      "Install wiring",
+      "Test circuits",
+      "Read blueprints"
+    ]
   },
   {
     "title": "Customer Success Specialist",
@@ -54,7 +74,12 @@
     "soc_code": "43-4051",
     "median_pay": "$55,000",
     "growth": "Average",
-    "education": "Varies"
+    "education": "Varies",
+    "tasks": [
+      "Onboard users",
+      "Troubleshoot",
+      "Collect feedback"
+    ]
   },
   {
     "title": "Mechanical Engineer",
@@ -65,7 +90,12 @@
     "soc_code": "17-2141",
     "median_pay": "$99,000",
     "growth": "Average",
-    "education": "Bachelor's"
+    "education": "Bachelor's",
+    "tasks": [
+      "CAD design",
+      "Prototype & test",
+      "Spec writing"
+    ]
   },
   {
     "title": "Electrical Engineer",
@@ -76,7 +106,12 @@
     "soc_code": "17-2071",
     "median_pay": "$104,000",
     "growth": "Average",
-    "education": "Bachelor's"
+    "education": "Bachelor's",
+    "tasks": [
+      "Circuit design",
+      "Validation",
+      "Documentation"
+    ]
   },
   {
     "title": "Civil Engineer",
@@ -87,7 +122,12 @@
     "soc_code": "17-2051",
     "median_pay": "$97,000",
     "growth": "Average",
-    "education": "Bachelor's"
+    "education": "Bachelor's",
+    "tasks": [
+      "Site analysis",
+      "Project plans",
+      "Compliance"
+    ]
   },
   {
     "title": "Aerospace Engineer",
@@ -98,7 +138,12 @@
     "soc_code": "17-2011",
     "median_pay": "$130,000",
     "growth": "Average",
-    "education": "Bachelor's"
+    "education": "Bachelor's",
+    "tasks": [
+      "Structural analysis",
+      "Flight systems",
+      "Testing"
+    ]
   },
   {
     "title": "Industrial / Manufacturing Engineer",
@@ -110,7 +155,12 @@
     "soc_code": "17-2112",
     "median_pay": "$95,000",
     "growth": "Average",
-    "education": "Bachelor's"
+    "education": "Bachelor's",
+    "tasks": [
+      "Lean improvements",
+      "Throughput",
+      "Quality systems"
+    ]
   },
   {
     "title": "Quality Engineer",
@@ -122,7 +172,12 @@
     "soc_code": "17-2112",
     "median_pay": "$92,000",
     "growth": "Average",
-    "education": "Bachelor's"
+    "education": "Bachelor's",
+    "tasks": [
+      "Root-cause",
+      "Audits",
+      "Process control"
+    ]
   },
   {
     "title": "Operations Manager",
@@ -133,7 +188,12 @@
     "soc_code": "11-1021",
     "median_pay": "$103,000",
     "growth": "Average",
-    "education": "Varies"
+    "education": "Varies",
+    "tasks": [
+      "Scheduling",
+      "Resource planning",
+      "Team leadership"
+    ]
   },
   {
     "title": "Supply Chain Analyst",
@@ -144,7 +204,12 @@
     "soc_code": "13-1081",
     "median_pay": "$78,000",
     "growth": "Faster than average",
-    "education": "Bachelor's"
+    "education": "Bachelor's",
+    "tasks": [
+      "Forecasting",
+      "Inventory analysis",
+      "Vendor metrics"
+    ]
   },
   {
     "title": "Logistics Coordinator",
@@ -155,7 +220,12 @@
     "soc_code": "43-5061",
     "median_pay": "$54,000",
     "growth": "Average",
-    "education": "Associate/Bachelor's"
+    "education": "Associate/Bachelor's",
+    "tasks": [
+      "Shipments",
+      "Tracking",
+      "Customer comms"
+    ]
   },
   {
     "title": "Production Planner",
@@ -166,7 +236,12 @@
     "soc_code": "13-1191",
     "median_pay": "$70,000",
     "growth": "Average",
-    "education": "Bachelor's"
+    "education": "Bachelor's",
+    "tasks": [
+      "MRP runs",
+      "Capacity plans",
+      "Work orders"
+    ]
   },
   {
     "title": "Procurement Specialist",
@@ -177,6 +252,11 @@
     "soc_code": "13-1023",
     "median_pay": "$75,000",
     "growth": "Average",
-    "education": "Bachelor's"
+    "education": "Bachelor's",
+    "tasks": [
+      "RFQs",
+      "Contracts",
+      "Cost savings"
+    ]
   }
 ]

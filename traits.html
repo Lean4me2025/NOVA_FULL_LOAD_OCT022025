@@ -1,8 +1,8 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Nova • Traits</title><link rel="stylesheet" href="assets/css/style.css"/><script defer src="assets/js/state.js"></script><script defer src="assets/js/data.js"></script></head>
 <body><div class="container"><div class="header"><div class="brand">Nova</div><div class="badge">Selected: <span id="count">0</span> traits</div></div>
-<div class="card"><h1 class="h1">Select traits that feel true</h1><div id="filters" class="list"></div><div class="hr"></div><div id="tray" class="grid cols-3"></div><div class="hr"></div>
-<div class="grid cols-3"><button id="next" class="btn primary" disabled>See My Results</button><a class="btn ghost" href="categories.html">Back to Categories</a><button id="clear" class="btn ghost">Clear</button></div><div id="hint" class="small" style="margin-top:10px;opacity:.9"></div></div><div class="footer-ver">v8.8b • Unified 12-Category Edition</div></div>
+<div class="card"><h1 class="h1">Select traits that feel true</h1><p class="p">Choose the strengths that reflect how you naturally show up and make impact. Each one helps Nova match you to roles where your purpose can thrive.</p><div id="filters" class="list"></div><div class="hr"></div><div id="tray" class="grid cols-3"></div><div class="hr"></div>
+<div class="grid cols-3"><button id="next" class="btn primary" disabled style="font-size:17px">See My Results</button><a class="btn ghost" href="categories.html">Back to Categories</a><button id="clear" class="btn ghost">Clear</button></div><div id="hint" class="small" style="margin-top:10px;opacity:.9"></div></div><div class="footer-ver">v8.8d • Refined</div></div>
 <script>
 (async ()=>{
   const selectedIds = new Set(JSON.parse(localStorage.getItem('nova.selectedCategoryIds')||'[]'));
@@ -30,14 +30,12 @@
     {"id":"hospitality_team","name":"Team player","categoryId":"hospitality"},
     {"id":"workers_reliable","name":"Reliability","categoryId":"workers"},
     {"id":"workers_time","name":"Time management","categoryId":"workers"},
-
     {"id":"eng_problem","name":"Problem solving","categoryId":"engineering"},
     {"id":"eng_analytical","name":"Analytical thinking","categoryId":"engineering"},
     {"id":"eng_precision","name":"Precision","categoryId":"engineering"},
     {"id":"eng_safety","name":"Safety minded","categoryId":"engineering"},
     {"id":"eng_systems","name":"Systems design","categoryId":"engineering"},
     {"id":"eng_techwriting","name":"Technical writing","categoryId":"engineering"},
-
     {"id":"ops_org","name":"Organization","categoryId":"operations"},
     {"id":"ops_eff","name":"Efficiency","categoryId":"operations"},
     {"id":"ops_sched","name":"Scheduling / planning activities","categoryId":"operations"},
@@ -62,10 +60,10 @@
   function updateGate(){
     const n = selectedKeys.size;
     document.getElementById('count').textContent = n;
-    if(n>=8){ nextBtn.disabled=false; hint.textContent=''; } else { nextBtn.disabled=true; hint.textContent='Pick at least 8 traits to unlock results.'; }
+    if(n>=5){ nextBtn.disabled=false; hint.textContent=''; } else { nextBtn.disabled=true; hint.textContent='Pick at least 5 traits to unlock results.'; }
   }
 
-  function render(){ tray.innerHTML=''; pool.forEach(t=>{ const key=t.id||t.name; const b=document.createElement('button'); b.className='btn ghost'; b.innerHTML='<div><div style="font-weight:800">'+t.name+'</div><div class="small">'+t.categoryId+'</div></div>'; if(selectedKeys.has(key)) b.classList.add('active'); b.onclick=()=>{ if(selectedKeys.has(key)){ selectedKeys.delete(key); b.classList.remove('active'); } else { selectedKeys.add(key); b.classList.add('active'); } updateGate(); }; tray.appendChild(b); }); updateGate(); }
+  function render(){ tray.innerHTML=''; pool.forEach(t=>{ const key=t.id||t.name; const b=document.createElement('button'); b.className='btn ghost'; b.style.fontSize='16px'; b.innerHTML='<div><div style="font-weight:800">'+t.name+'</div><div class="small">'+t.categoryId+'</div></div>'; if(selectedKeys.has(key)) b.classList.add('active'); b.onclick=()=>{ if(selectedKeys.has(key)){ selectedKeys.delete(key); b.classList.remove('active'); } else { selectedKeys.add(key); b.classList.add('active'); } updateGate(); }; tray.appendChild(b); }); updateGate(); }
   render();
 
   nextBtn.onclick=()=>{ const chosen = pool.filter(t=> selectedKeys.has(t.id||t.name)); localStorage.setItem('nova.selectedTraits', JSON.stringify(chosen)); if(window.NOVA&&NOVA.state){ NOVA.state.selectedTraits = chosen; NOVA.save(); } location.href='results.html'; };

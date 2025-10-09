@@ -1,25 +1,14 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Nova • Categories</title><link rel="stylesheet" href="assets/css/style.css"/><script defer src="assets/js/state.js"></script><script defer src="assets/js/data.js"></script>
-<style>#cats .category-card{min-height:44px}</style></head>
+<style>#cats .category-card{min-height:48px}</style></head>
 <body><div class="container"><div class="header"><div class="brand">Nova</div><div class="badge">Selected: <span id="count">0</span> / 2–4</div></div>
-<div class="card"><h1 class="h1">Choose categories that resonate with your life, your experiences, and the work that excites you.</h1><div class="hr"></div>
-<div id="cats" class="grid cols-4"></div><div class="hr"></div><div class="grid cols-3"><button id="next" class="btn primary">Next • Select Traits</button><button id="clear" class="btn ghost">Clear</button><a class="btn ghost" href="traits.html">Skip</a></div><div id="hint" class="small" style="margin-top:10px;opacity:.9"></div></div><div class="footer-ver">v8.8b • Unified 12-Category Edition</div></div>
+<div class="card"><h1 class="h1">Choose categories that resonate with your life, your experiences, and the work that excites you.</h1>
+<p class="p">Your purpose leaves clues — start where your passions and experience connect.</p>
+<div class="hr"></div>
+<div id="cats" class="grid cols-4"></div><div class="hr"></div><div class="grid cols-3"><button id="next" class="btn primary" style="font-size:17px">Next • Select Traits</button><button id="clear" class="btn ghost">Clear</button><a class="btn ghost" href="traits.html">Skip</a></div><div id="hint" class="small" style="margin-top:10px;opacity:.9"></div></div><div class="footer-ver">v8.8d • Refined</div></div>
 <script>
 (function(){
-  const EMBED=[
-    {id:"tech",label:"Technology"},
-    {id:"health",label:"Healthcare"},
-    {id:"edu",label:"Education"},
-    {id:"bizfin",label:"Business & Finance"},
-    {id:"creative",label:"Creative"},
-    {id:"pubsvc",label:"Public Service"},
-    {id:"science",label:"Science"},
-    {id:"trades",label:"Trades"},
-    {id:"hospitality",label:"Hospitality"},
-    {id:"workers",label:"Workers & Service People"},
-    {id:"engineering",label:"Engineering"},
-    {id:"operations",label:"Operations & Supply Chain"}
-  ];
+  const EMBED=[{id:"tech",label:"Technology"},{id:"health",label:"Healthcare"},{id:"edu",label:"Education"},{id:"bizfin",label:"Business & Finance"},{id:"creative",label:"Creative"},{id:"pubsvc",label:"Public Service"},{id:"science",label:"Science"},{id:"trades",label:"Trades"},{id:"hospitality",label:"Hospitality"},{id:"workers",label:"Workers & Service People"},{id:"engineering",label:"Engineering"},{id:"operations",label:"Operations & Supply Chain"}];
   let ids=new Set(JSON.parse(localStorage.getItem('nova.selectedCategoryIds')||'[]'));
   let labels=new Set(JSON.parse(localStorage.getItem('nova.selectedCategories')||'[]'));
   const countEl=document.getElementById('count'), hint=document.getElementById('hint');
