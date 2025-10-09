@@ -1,0 +1,106 @@
+{
+  "roles": [
+    {
+      "id": "r1",
+      "title": "Business Analyst",
+      "summary": "Bridge business goals with data-driven improvements across processes.",
+      "details": "Analyzes operations, elicits requirements, and partners with stakeholders to deliver measurable improvements.",
+      "median_pay": "$95,000+ (varies by region)",
+      "outlook": "Strong demand across tech, healthcare, finance, and public sectors.",
+      "key_traits": [
+        "t3",
+        "t4",
+        "t6",
+        "t16",
+        "t35",
+        "t41",
+        "t45"
+      ]
+    },
+    {
+      "id": "r2",
+      "title": "Operations Manager",
+      "summary": "Own day-to-day excellence with Lean practices and KPI accountability.",
+      "details": "Drives throughput, quality, and cost with cross-functional teams and continuous improvement.",
+      "median_pay": "$100,000+ (varies)",
+      "outlook": "Consistent demand in manufacturing, logistics, and services.",
+      "key_traits": [
+        "t16",
+        "t17",
+        "t18",
+        "t41",
+        "t42",
+        "t43",
+        "t45"
+      ]
+    },
+    {
+      "id": "r3",
+      "title": "Cybersecurity Analyst",
+      "summary": "Protect systems and data with proactive monitoring and controls.",
+      "details": "Implements security controls, detects anomalies, and responds to incidents.",
+      "median_pay": "$110,000+ (varies)",
+      "outlook": "Faster-than-average growth as threats rise.",
+      "key_traits": [
+        "t11",
+        "t13",
+        "t15",
+        "t48",
+        "t27",
+        "t26",
+        "t14"
+      ]
+    },
+    {
+      "id": "r4",
+      "title": "Product Manager",
+      "summary": "Define vision, align teams, and ship outcomes customers love.",
+      "details": "Owns roadmap, prioritizes problems, and coordinates delivery across engineering, design, and GTM.",
+      "median_pay": "$130,000+ (varies)",
+      "outlook": "Strong in software and platform companies.",
+      "key_traits": [
+        "t1",
+        "t2",
+        "t6",
+        "t33",
+        "t34",
+        "t35",
+        "t46"
+      ]
+    },
+    {
+      "id": "r5",
+      "title": "Data Analyst",
+      "summary": "Turn raw data into insights and decision-ready visuals.",
+      "details": "Builds analyses, dashboards, and experiments to drive action.",
+      "median_pay": "$85,000+ (varies)",
+      "outlook": "Broad demand as orgs modernize analytics.",
+      "key_traits": [
+        "t4",
+        "t5",
+        "t3",
+        "t45",
+        "t47",
+        "t38",
+        "t40"
+      ]
+    },
+    {
+      "id": "r6",
+      "title": "Project Manager",
+      "summary": "Plan, coordinate, and deliver projects on time and budget.",
+      "details": "Owns scope, schedule, and risk; facilitates teams and stakeholders.",
+      "median_pay": "$95,000+ (varies)",
+      "outlook": "Stable demand across industries.",
+      "key_traits": [
+        "t45",
+        "t44",
+        "t41",
+        "t42",
+        "t39",
+        "t20",
+        "t30"
+      ]
+    }
+  ]
+}

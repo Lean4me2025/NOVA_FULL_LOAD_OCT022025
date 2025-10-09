@@ -1,40 +1,120 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Nova • Welcome</title><link rel="stylesheet" href="assets/css/style.css"/><script defer src="assets/js/state.js"></script></head>
-<body><div class="container"><div class="header"><div class="brand">Nova</div><div class="badge">Refined</div></div>
-<div class="card"><div class="grid cols-2" style="align-items:start">
-  <div>
-    <div class="small">The problem</div>
-    <h1 class="h1">89% of people do not know their purpose.</h1>
-    <p class="p">Nova helps you find it — and gain clarity around why you’re here. She also suggests purposeful roles where your strengths can thrive and helps you act on what you discover.</p>
-    <div class="small">Find it. Clarify it. Live it.</div>
-    <div class="hr"></div>
-    <div class="grid cols-2">
-      <a class="btn primary" href="categories.html">Start • Choose My Categories</a>
-      <a class="btn ghost" href="traits.html">Skip to Traits</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NOVA 8.5 Final</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <script defer src="js/app.js"></script>
+  <!-- Payhip embed (replace data-product and IDs as needed) -->
+  <script src="https://payhip.com/payhip.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <h1>Welcome to Nova</h1>
+    <div class="auth-mini">
+      <input id="returnEmail" type="email" placeholder="Email (returning)"/>
+      <input id="returnPin" type="password" placeholder="PIN"/>
+      <button id="returnBtn">Enter PIN</button>
     </div>
-    <div style="margin-top:14px" class="small">Prefer listening?</div>
-    <audio controls preload="auto" style="width:100%">
-      <source src="assets/audio/welcome.mp3" type="audio/mpeg"/>
-      <source src="assets/audio/welcome_placeholder.wav" type="audio/wav"/>
-      Your browser does not support audio playback.
-    </audio>
-    <div class="small">Tip: replace <code>assets/audio/welcome.mp3</code> with your recorded intro (trimmed + soft fade-out).</div>
-  </div>
-  <div class="card">
-    <div class="small">Returning User Access</div>
-    <label class="small">Username</label><input id="u" class="btn block" placeholder="e.g. drew"/>
-    <div style="height:8px"></div><label class="small">PIN</label><input id="p" class="btn block" placeholder="4–6 digits"/>
-    <div class="hr"></div><button id="resume" class="btn">Resume where I left off</button>
-    <div id="rnote" class="small"></div>
-  </div>
-</div></div><div class="footer-ver">v8.8d • Refined</div></div>
-<script>
-document.getElementById('resume').onclick = ()=>{
-  const s = {cats: JSON.parse(localStorage.getItem('nova.selectedCategoryIds')||'[]'),traits: JSON.parse(localStorage.getItem('nova.selectedTraits')||'[]')};
-  const note = document.getElementById('rnote');
-  if((s.traits||[]).length>0){ location.href='results.html'; return; }
-  if((s.cats||[]).length>0){ location.href='traits.html'; return; }
-  note.textContent = 'No previous selections found on this device.';
-};
-</script>
-</body></html>
+  </header>
+
+  <main>
+    <!-- Section: Welcome -->
+    <section id="welcome" class="view active">
+      <div class="card center">
+        <h2>I’ll help you understand your unique design.</h2>
+        <audio id="welcomeAudio" src="assets/welcome.mp3"></audio>
+        <div class="audio-row">
+          <button id="playAudio">Play Welcome Note</button>
+          <span class="audio-hint">If your browser blocks autoplay, tap Play.</span>
+        </div>
+        <button id="startBtn" class="primary">Start</button>
+      </div>
+    </section>
+
+    <!-- Section: Categories -->
+    <section id="categories" class="view">
+      <h2>Select Your Categories</h2>
+      <div id="categoryGrid" class="grid"></div>
+      <div class="actions">
+        <button id="toTraits" class="primary">Choose My Categories</button>
+      </div>
+    </section>
+
+    <!-- Section: Traits -->
+    <section id="traits" class="view">
+      <h2>Select Your Traits</h2>
+      <div id="traitGrid" class="grid traits"></div>
+      <div class="actions">
+        <button id="toResults" class="primary">See My Results</button>
+      </div>
+    </section>
+
+    <!-- Section: Analyzing -->
+    <section id="analyzing" class="view">
+      <div class="card center">
+        <h2>Analyzing your life inputs…</h2>
+        <p class="muted">This will take about 3–4 seconds.</p>
+      </div>
+    </section>
+
+    <!-- Section: Results (Role Reveal) -->
+    <section id="results" class="view">
+      <h2>Your Role Reveal</h2>
+      <div id="roleGrid" class="grid roles"></div>
+      <div class="actions">
+        <button id="toReflection" class="primary">Continue</button>
+      </div>
+    </section>
+
+    <!-- Section: Reflection -->
+    <section id="reflection" class="view">
+      <h2>Looking Forward</h2>
+      <div id="reflectionContent" class="reflection"></div>
+
+      <div class="invest card">
+        <h3>Invest in Yourself</h3>
+        <p>Add your email and a PIN to return to your results and continue your journey.</p>
+        <div class="save-row">
+          <input id="saveEmail" type="email" placeholder="Email"/>
+          <input id="savePin" type="password" placeholder="Create a PIN"/>
+          <button id="saveJourney" class="primary">Save My Journey</button>
+        </div>
+        <p id="saveMsg" class="muted"></p>
+      </div>
+
+      <div class="payhip card">
+        <h3>Go Further with Nova + Navi</h3>
+        <div class="payhip-grid">
+          <!-- Purpose Book -->
+          <div class="ph-item">
+            <h4>Purpose Book • $14.99</h4>
+            <a class="payhip-add-to-cart" data-product="PURPOSE_BOOK_ID" href="https://payhip.com/b/PURPOSE_BOOK_ID">Buy Now</a>
+          </div>
+          <!-- Starter -->
+          <div class="ph-item">
+            <h4>Starter Plan • $29.99/mo</h4>
+            <a class="payhip-add-to-cart" data-product="STARTER_ID" href="https://payhip.com/b/STARTER_ID">Subscribe</a>
+          </div>
+          <!-- Pro -->
+          <div class="ph-item">
+            <h4>Pro Plan • $99/mo</h4>
+            <a class="payhip-add-to-cart" data-product="PRO_ID" href="https://payhip.com/b/PRO_ID">Subscribe</a>
+          </div>
+          <!-- Mastery -->
+          <div class="ph-item">
+            <h4>Mastery Plan • $149.99/mo</h4>
+            <a class="payhip-add-to-cart" data-product="MASTERY_ID" href="https://payhip.com/b/MASTERY_ID">Subscribe</a>
+          </div>
+        </div>
+        <p class="muted small">Replace the IDs above with your live PayHip product IDs for full embed behavior.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footnote">
+    <small>© 2025 Nova • Built with love.</small>
+  </footer>
+</body>
+</html>
