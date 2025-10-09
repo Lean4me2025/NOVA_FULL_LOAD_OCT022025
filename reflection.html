@@ -1,113 +1,101 @@
-
 <!doctype html><html lang="en"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>NOVA · Reflection</title>
-<link rel="stylesheet" href="assets/css/style.css"/></head><body>
-<div class="wrap">
-  <h1>Reflection</h1>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Nova • Reflection</title>
+<link rel="stylesheet" href="assets/css/style.css"/>
+<script defer src="assets/js/state.js"></script>
+<style>
+.help{color:var(--muted);font-size:14px;line-height:1.7}
+.note{width:100%;min-height:120px;border-radius:12px;border:1px solid var(--line);background:#0d1931;color:#fff;padding:12px}
+.moment{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:760px){.moment{grid-template-columns:1fr}}
+.moment .btn.active{border-color:var(--accent)!important;box-shadow:0 0 12px rgba(67,209,124,.35);background:rgba(67,209,124,.12)}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="brand">Nova</div>
+    <div class="badge">Bridge step</div>
+  </div>
   <div class="card">
-    <p class="small"><b>Why this step matters:</b> Purpose doesn’t arrive fully formed—it grows when you take the next faithful step. Choose one focus below and commit to a single action in the next 7 days. Small steps compound into direction.</p>
-  </div>
-  
-  <div id="summary" class="card">
-    <h2>Your New Role</h2>
-    <div id="roleBlock" class="small">Loading your role…</div>
-    <hr/>
-    <h2>Looking Back</h2>
-    <div id="traitsBlock" class="small">Loading your traits…</div>
-    <p class="small">These are the signals you’ve shown. They’re why this role fits.</p>
-    <hr/>
-    <h2>Looking Forward</h2>
-    <p id="forwardLine" class="small">This is where you’re going. Choose one focus below and commit to a single action in the next 7 days.</p>
-  </div>
+    <h1 class="h1">Pause for a moment of reflection</h1>
+    <p class="help">
+      A quick check-in helps Nova tailor your next steps. Think about what’s true for you right now:
+      your season, your energy, and what you’re aiming for. This takes less than a minute and makes your plan sharper.
+    </p>
+    <ul class="help" style="margin-top:8px">
+      <li><strong>Starting a career</strong> — breaking in, exploring first roles, building foundations.</li>
+      <li><strong>Switching careers</strong> — pivoting paths, translating skills, rebranding your story.</li>
+      <li><strong>Leveling up</strong> — growing impact, targeting leadership or higher comp.</li>
+      <li><strong>Restarting</strong> — returning after a break or rebooting with fresh direction.</li>
+    </ul>
 
+    <div class="hr"></div>
 
-  <div id="oohCard" class="card">
-    <h2>Career Snapshot <span class="small">(from U.S. Bureau of Labor Statistics)</span></h2>
-    <div id="oohContent" class="small">Loading career outlook…</div>
-  </div>
+    <div class="moment">
+      <button class="btn ghost" data-moment="starting">Starting a career</button>
+      <button class="btn ghost" data-moment="switching">Switching careers</button>
+      <button class="btn ghost" data-moment="leveling">Leveling up</button>
+      <button class="btn ghost" data-moment="restarting">Restarting</button>
+    </div>
 
-  <div class="grid">
-    <div class="card"><h2>Starting Out</h2><p class="small">New to the field? Identify one skill to learn and one person to ask for guidance this week.</p></div>
-    <div class="card"><h2>Switching</h2><p class="small">What skills from your past role transfer here? Note two bridge skills you already have.</p></div>
-    <div class="card"><h2>Leveling Up</h2><p class="small">List one certification or project that would raise your ceiling in the next 60 days.</p></div>
-    <div class="card"><h2>Restarting</h2><p class="small">Ease back in. Name one low-risk, high-confidence step you can take this week.</p></div>
-  </div>
-  <div class="card center">
-    <p class="small"><b>You’ve reflected on where you are. Now invest in who you’re becoming — carry this role into action.</b></p>
-  </div>
-  <div class="bar">
-    <a class="btn" href="index.html">Back to Welcome</a>
-    <a class="btn" href="invest.html">Next: Invest in Yourself →</a>
+    <div class="hr"></div>
+
+    <label class="small">Anything else Nova + Navi should know right now? (optional)</label>
+    <textarea id="notes" class="note" placeholder="Type a sentence or two—recent wins, constraints, goals..."></textarea>
+
+    <div class="hr"></div>
+
+    <div class="grid cols-2">
+      <button id="next" class="btn primary">Next • Choose Plan</button>
+      <button id="skip" class="btn ghost">Skip for now</button>
+    </div>
+    <div id="hint" class="small" style="margin-top:10px;opacity:.9"></div>
   </div>
 </div>
 
-<script type="module">
-  import { get } from './assets/js/shared.js';
-  const role = get('revealedRole', null);
-  const traits = get('selectedTraits', []);
-  const roleBlock = document.getElementById('roleBlock');
-  const traitsBlock = document.getElementById('traitsBlock');
-  const forward = document.getElementById('forwardLine');
-
-  if (role) {
-    const jobs = (role.jobs||[]).join(', ') || '—';
-    const matchLine = role.isFallback ? '' : `Best fit by: ${role.tm} trait matches · ${role.dm} attribute matches.`;
-    roleBlock.innerHTML = `<b>${role.title}</b><br/>${role.summary || ''}<br/>${matchLine}<br/>Try these roles: ${jobs}`;
-  } else {
-    roleBlock.textContent = 'No saved role found. Go back to the Role Reveal to generate your role.';
-  }
-
-  if (traits && traits.length) {
-    traitsBlock.textContent = traits.join(', ');
-  } else {
-    traitsBlock.textContent = 'No traits found. Return to Traits to select your strengths.';
-  }
-</script>
-
-
-<script type="module">
-  import { get, readJSON } from './assets/js/shared.js';
-
-  const role = get('revealedRole', null);
-  const oohEl = document.getElementById('oohContent');
-
-  function renderSnapshot(items){
-    if(!items || !items.length){ oohEl.textContent = 'Add outlook data for this role to /data/ooh_data.json.'; return; }
-    const html = items.map(it=>{
-      const settings = (it.settings||[]).join(', ');
-      return `<b>${it.title}</b><br/>${it.summary}
-              <div style="margin:6px 0"></div>
-              <b>10‑Year Outlook:</b> ${it.growth_10yr || '—'} · <b>Median Pay:</b> ${it.median_pay || '—'}<br/>
-              <b>Typical Settings:</b> ${settings || '—'}`;
-    }).join('<hr/>');
-    oohEl.innerHTML = html;
-  }
-
-  Promise.all([readJSON('/data/ooh_map.json'), readJSON('/data/ooh_data.json')]).then(([omap, odata])=>{
-    if(!role){ oohEl.textContent = 'No role found. Visit Role Reveal first.'; return; }
-    // Role.id for core roles; for fallback roles, look at categories
-    const buckets = new Set();
-    if(role && role.id && omap[role.id]) omap[role.id].forEach(k=>buckets.add(k));
-    // If fallback, try to infer from category name
-    if((!buckets.size) && role.isFallback && role.categories && role.categories[0]){
-      const c = role.categories[0].toLowerCase();
-      if(c.includes('health')) omap['helper']?.forEach(k=>buckets.add(k));
-      if(c.includes('trade')) omap['builder']?.forEach(k=>buckets.add(k));
-      if(c.includes('law')||c.includes('government')) omap['guardian']?.forEach(k=>buckets.add(k));
-      if(c.includes('sales')||c.includes('marketing')) omap['connector']?.forEach(k=>buckets.add(k));
-      if(c.includes('art')||c.includes('media')) omap['connector']?.forEach(k=>buckets.add(k));
-      if(c.includes('tech')||c.includes('science')) omap['analyst']?.forEach(k=>buckets.add(k));
-      if(c.includes('business')||c.includes('finance')) omap['strategist']?.forEach(k=>buckets.add(k));
-      if(c.includes('operations')||c.includes('logistics')) omap['strategist']?.forEach(k=>buckets.add(k));
-      if(c.includes('essential')||c.includes('everyday')) omap['helper']?.forEach(k=>buckets.add(k));
+<script>
+(function(){
+  const key='nova.reflection';
+  // Load any previous
+  try{
+    const saved = JSON.parse(localStorage.getItem(key)||'{}');
+    if(saved?.notes){ document.getElementById('notes').value = saved.notes; }
+    if(saved?.moment){
+      const btn = document.querySelector('[data-moment="'+saved.moment+'"]');
+      if(btn){ btn.classList.add('active'); }
     }
-    const items = [...buckets].map(k=>odata[k]).filter(Boolean);
-    renderSnapshot(items);
-  }).catch(e=>{
-    console.error(e);
-    oohEl.textContent = 'Could not load outlook data. Ensure /data/ooh_map.json and /data/ooh_data.json exist.';
-  });
-</script>
+  }catch(e){}
 
-</body></html>
+  let chosen = (JSON.parse(localStorage.getItem(key)||'{}')).moment || '';
+  const buttons = document.querySelectorAll('[data-moment]');
+  buttons.forEach(b=>{
+    b.onclick = ()=>{
+      buttons.forEach(x=> x.classList.remove('active'));
+      b.classList.add('active');
+      chosen = b.getAttribute('data-moment');
+      persist();
+      document.getElementById('hint').textContent='';
+    };
+  });
+
+  function persist(){
+    const notes = document.getElementById('notes').value.trim();
+    const payload = { moment: chosen, notes };
+    try{ localStorage.setItem(key, JSON.stringify(payload)); }catch(e){}
+    if(window.NOVA&&NOVA.state){ NOVA.state.reflection = payload; NOVA.save && NOVA.save(); }
+  }
+
+  document.getElementById('notes').addEventListener('input', persist);
+  document.getElementById('next').onclick = ()=>{
+    if(!chosen){
+      document.getElementById('hint').textContent = 'Pick the moment that best fits you (you can change it later).';
+      return;
+    }
+    persist(); location.href='plans.html';
+  };
+  document.getElementById('skip').onclick = ()=>{ persist(); location.href='plans.html'; };
+})();
+</script>
+</body>
+</html>
