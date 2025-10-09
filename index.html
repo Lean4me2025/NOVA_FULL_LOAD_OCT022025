@@ -1,40 +1,16 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>NOVA — Intro</title>
-  <link rel="preload" href="assets/audio/intro.wav" as="audio">
-  <link rel="stylesheet" href="styles.css"/>
-</head>
-<body>
-  <header class="header">
-    <h1>NOVA</h1>
-    <nav class="nav"><a href="traits.html">Skip to Traits</a></nav>
-  </header>
-  <main class="container center">
-    <h2 class="sr-only">Nova — Introduction</h2>
-    <p class="line" data-delay="0">Nova.</p>
-    <p class="line" data-delay="1400">I am here.</p>
-    <p class="line" data-delay="2800">Waiting.</p>
-    <p class="line" data-delay="4200">Listening.</p>
-    <p class="line" data-delay="5600">Calling out.</p>
-    <p class="line" data-delay="7000">This is Nova.</p>
-
-    <div style="margin-top:28px">
-      <button id="playBtn" class="btn" hidden>Play</button>
-      <button id="proceedBtn" class="btn primary" hidden>Proceed</button>
-    </div>
-
-    <div id="tapOverlay" class="overlay" hidden aria-hidden="true">
-      <button id="tapStart" class="btn">Tap to start</button>
-    </div>
-    <audio id="introAudio" preload="auto">
-      <source src="assets/audio/intro.wav" type="audio/wav"/>
-      Your browser does not support the audio element.
-    </audio>
-  </main>
-  <footer>© NOVA</footer>
-  <script src="intro.js"></script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Nova • Welcome</title><link rel="stylesheet" href="assets/css/style.css"/><script defer src="assets/js/state.js"></script></head>
+<body><div class="container"><div class="header"><div class="brand">Nova</div><div class="badge">v8.7e • Unified</div></div>
+<div class="card"><div class="grid cols-2" style="align-items:start">
+  <div>
+    <div class="small">Welcome</div>
+    <h1 class="h1">Find your purpose and get clarity.</h1>
+    <p class="p"><strong>89% of people do not know their purpose.</strong> Nova will help you find it and get clarity around your purpose — then Navi will help you act on it.</p>
+    <a class="btn primary" href="categories.html">Start • Choose My Categories</a> <a class="pill" style="margin-left:10px" href="qa.html">QA</a>
+  </div>
+  <div class="card" style="background:transparent;border:1px dashed var(--line)">
+    <div class="small">Returning User Access</div>
+    <label class="small">Username</label><input class="btn block" placeholder="e.g. drew"/>
+    <div style="height:8px"></div><label class="small">PIN</label><input class="btn block" placeholder="4–6 digits"/>
+  </div>
+</div></div></div></body></html>
