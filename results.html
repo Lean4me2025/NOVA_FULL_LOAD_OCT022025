@@ -1,7 +1,8 @@
+
 <!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Nova • Results</title><link rel="stylesheet" href="assets/css/style.css"/><script defer src="assets/js/state.js"></script><script defer src="assets/js/data.js"></script></head>
 <body><div class="container"><div class="header"><div class="brand">Nova</div><div class="badge">PDF & Navi ready</div></div>
-<div class="card"><h1 class="h1">Your results</h1><div id="summary" class="p"></div><div class="hr"></div><table><thead><tr><th>Occupation</th><th>Score</th><th class="small">SOC</th></tr></thead><tbody id="rows"></tbody></table><div class="hr"></div><a class="btn" href="reflection.html">Continue • Reflection</a></div></div>
+<div class="card"><h1 class="h1">Your results</h1><div id="summary" class="p"></div><div class="hr"></div><table><thead><tr><th>Occupation</th><th>Score</th><th class="small">SOC</th></tr></thead><tbody id="rows"></tbody></table><div class="hr"></div><a class="btn" href="reflection.html">Continue • Reflection</a></div><div class="footer-ver">v8.7f • Unified</div></div>
 <script>
 (async ()=>{
   const EMBED_JOBS=[
@@ -20,8 +21,8 @@
   }, 40);
   if(window.NOVA&&NOVA.state){ NOVA.state.matches=matches; NOVA.save(); }
   document.getElementById('summary').innerHTML = `
-    <div class="list">${(JSON.parse(localStorage.getItem('nova.selectedCategories')||'[]')).map(c=>'<span class="pill">'+c+'</span>').join('')}</div>
-    <div class="list">${(JSON.parse(localStorage.getItem('nova.selectedTraits')||'[]')).slice(0,10).map(t=>'<span class="pill">'+(t.name||t)+'</span>').join('')}</div>`;
+    <div class="list">${(JSON.parse(localStorage.getItem('nova.selectedCategories')||'[]')).map(c=>'<span class="pill">'+c+'</span>').join('')} </div>
+    <div class="list">${(JSON.parse(localStorage.getItem('nova.selectedTraits')||'[]')).slice(0,10).map(t=>'<span class="pill">'+(t.name||t)+'</span>').join('')} </div>`;
   const tb=document.getElementById('rows'); tb.innerHTML='';
   if(matches.length===0){ const tr=document.createElement('tr'); tr.innerHTML='<td colspan="3" class="small">Matches will appear once jobs data is connected.</td>'; tb.appendChild(tr); }
   matches.forEach(m=>{ const tr=document.createElement('tr'); tr.innerHTML = `<td>${m.title}<div class="small">${m.summary||''}</div></td><td>${m.score}</td><td class="small">${m.soc||''}</td>`; tb.appendChild(tr); });

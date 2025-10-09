@@ -1,4 +1,44 @@
+
 <!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Nova • Reflection</title><link rel="stylesheet" href="assets/css/style.css"/><script defer src="assets/js/state.js"></script></head>
+<title>Nova • Reflection</title><link rel="stylesheet" href="assets/css/style.css"/><script defer src="assets/js/state.js"></script>
+<style>
+.help{color:var(--muted);font-size:14px;line-height:1.7}
+.note{width:100%;min-height:120px;border-radius:12px;border:1px solid var(--line);background:#0d1931;color:#fff;padding:12px}
+.moment{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:760px){.moment{grid-template-columns:1fr}}
+.moment .btn.active{border-color:var(--accent)!important;box-shadow:0 0 12px rgba(67,209,124,.35);background:rgba(67,209,124,.12)}
+</style></head>
 <body><div class="container"><div class="header"><div class="brand">Nova</div><div class="badge">Bridge step</div></div>
-<div class="card"><h1 class="h1">Which moment are you in?</h1><div class="grid cols-2"><button class="btn ghost">Starting a career</button><button class="btn ghost">Switching careers</button><button class="btn ghost">Leveling up</button><button class="btn ghost">Restarting</button></div><div class="hr"></div><a class="btn primary" href="plans.html">Next • Choose Plan</a></div></div></body></html>
+<div class="card"><h1 class="h1">Pause for a moment of reflection</h1>
+<p class="help">A quick check-in helps Nova tailor your next steps. Think about what’s true for you right now: your season, your energy, and what you’re aiming for. This takes less than a minute and makes your plan sharper.</p>
+<ul class="help" style="margin-top:8px">
+<li><strong>Starting a career</strong> — breaking in, exploring first roles, building foundations.</li>
+<li><strong>Switching careers</strong> — pivoting paths, translating skills, rebranding your story.</li>
+<li><strong>Leveling up</strong> — growing impact, targeting leadership or higher comp.</li>
+<li><strong>Restarting</strong> — returning after a break or rebooting with fresh direction.</li></ul>
+<div class="hr"></div>
+<div class="moment">
+  <button class="btn ghost" data-moment="starting">Starting a career</button>
+  <button class="btn ghost" data-moment="switching">Switching careers</button>
+  <button class="btn ghost" data-moment="leveling">Leveling up</button>
+  <button class="btn ghost" data-moment="restarting">Restarting</button>
+</div>
+<div class="hr"></div>
+<label class="small">Anything else Nova + Navi should know right now? (optional)</label>
+<textarea id="notes" class="note" placeholder="Type a sentence or two—recent wins, constraints, goals..."></textarea>
+<div class="hr"></div>
+<div class="grid cols-2"><button id="next" class="btn primary">Next • Choose Plan</button><button id="skip" class="btn ghost">Skip for now</button></div>
+<div id="hint" class="small" style="margin-top:10px;opacity:.9"></div></div><div class="footer-ver">v8.7f • Unified</div></div>
+<script>
+(function(){
+  const key='nova.reflection';
+  try{ const saved = JSON.parse(localStorage.getItem(key)||'{}'); if(saved?.notes){ document.getElementById('notes').value = saved.notes; } if(saved?.moment){ const btn = document.querySelector('[data-moment="'+saved.moment+'"]'); if(btn) btn.classList.add('active'); } }catch(e){}
+  let chosen = (JSON.parse(localStorage.getItem(key)||'{}')).moment || '';
+  const buttons = document.querySelectorAll('[data-moment]');
+  buttons.forEach(b=>{ b.onclick = ()=>{ buttons.forEach(x=> x.classList.remove('active')); b.classList.add('active'); chosen = b.getAttribute('data-moment'); persist(); document.getElementById('hint').textContent=''; }; });
+  function persist(){ const notes = document.getElementById('notes').value.trim(); const payload = { moment: chosen, notes }; try{ localStorage.setItem(key, JSON.stringify(payload)); }catch(e){} if(window.NOVA&&NOVA.state){ NOVA.state.reflection = payload; NOVA.save && NOVA.save(); } }
+  document.getElementById('notes').addEventListener('input', persist);
+  document.getElementById('next').onclick = ()=>{ if(!chosen){ document.getElementById('hint').textContent = 'Pick the moment that best fits you (you can change it later).'; return; } persist(); location.href='plans.html'; };
+  document.getElementById('skip').onclick = ()=>{ persist(); location.href='plans.html'; };
+})();
+</script></body></html>
