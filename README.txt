@@ -1,41 +1,40 @@
 
-Nova 8.5A Final — Audio Trim Patch
-==================================
+Nova 8.5A — Updated Final (Light Theme, No-Audio Edition)
+=========================================================
 
-What this does
---------------
-This build makes your existing welcome audio start IMMEDIATELY by trimming the leading silence
-**client‑side** (in the browser) using the Web Audio API. You do NOT need to edit the audio file.
-Just drop your existing welcome audio into the folder below and the script will auto‑trim and play.
+Build date: 2025-10-10
 
-Audio files (preferred order)
------------------------
-Preferred:
-  assets/audio/welcome_trimmed.mp3 (your new clean version)
+What’s included
+---------------
+- Light/white theme UI (no dark mode)
+- Original Welcome page layout restored with the **89% fact** above the tagline
+- Email + PIN capture with note: "You can invest in yourself and add your email and PIN so you can return to your results and further your journey."
+- Category → Traits → Role Reveal → Reflection full flow
+- Client-side welcome audio **pre-wired** to play `assets/audio/welcome_trimmed.mp3` instantly when added
+- Smooth transitions; no debug/console noise
+- GitHub/Vercel-ready structure
 
-Fallbacks (client-side trim applied):
-  assets/audio/welcome_original.mp3
-  assets/audio/welcome_original.m4a
+Audio (pending)
+---------------
+Place your audio here later (optional):
+  assets/audio/welcome_trimmed.mp3   (preferred)
+The player is wired to auto-play the trimmed file on page load. If not present, no error is shown.
 
-You can keep both files—MP3 is preferred for widest compatibility.
+Data
+----
+This app looks for these JSON files (drop yours in later with the same names/shape):
+  - assets/data/traits_with_categories.json
+  - assets/data/category_matrix.json
+  - assets/data/ooh.json
 
-How it works
-------------
-- On page load, the script fetches the audio, decodes it, scans for the first non‑silent sample,
-  then starts playback from that exact offset. The rest plays naturally to the end—no fade added.
-- If the browser blocks autoplay, the page will show a small “Play Welcome” button for the user
-  to tap once. After a single tap, it will play immediately with the trimmed start.
+If files are missing, the app displays a gentle placeholder and remains navigable.
 
-Integration
------------
-If you're merging this into your existing Nova 8.5 build:
-- Replace your current welcome page's index.html and script.js with these versions,
-  or merge the autoplay/trim logic into your files (search for "playWelcomeWithTrim").
-- Ensure your audio file is named as above and placed in assets/audio/.
-- Deploy to Vercel. That's it.
+Deploy
+------
+Upload this folder to your GitHub repo and deploy through Vercel as usual.
+No build step required (plain HTML/CSS/JS).
 
-Notes
------
-- This is a client‑side trim; it does not modify your audio file on disk.
-- If you later prefer a permanently trimmed file, you can swap in a trimmed MP3 with
-  the same filename (welcome_original.mp3), and the logic will still work.
+Files to edit later (if needed)
+-------------------------------
+- assets/data/*.json  (your actual data files)
+- assets/audio/welcome_trimmed.mp3 (your trimmed welcome audio)

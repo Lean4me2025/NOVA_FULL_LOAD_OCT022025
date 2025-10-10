@@ -1,206 +1,221 @@
 
-/* NOVA 8.5 Final – white background SPA */
-let CATEGORIES = [];
-let TRAITS = [];
-let OOH = {};
-let selectedCategories = new Set();
-let selectedTraits = new Set();
-let computedRoles = [];
+/**
+ * NOVA 8.5A Light — SPA flow controller
+ * Sections: welcome -> categories -> traits -> roles -> reflection
+ * Data files loaded if present; otherwise graceful placeholders.
+ */
 
-const $ = (q) => document.querySelector(q);
-const $$ = (q) => Array.from(document.querySelectorAll(q));
+const S = {
+  sections: ['welcome','categories','traits','roles','reflection'],
+  data: { categories: [], traits: [], roles: [] },
+  state: {
+    category: null,
+    selectedTraits: new Set(),
+    selectedRole: null,
+    email: '', pin: ''
+  }
+};
 
 function show(id) {
-  $$('.view').forEach(v => v.classList.remove('active'));
-  $('#'+id).classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  for (const s of S.sections) {
+    const el = document.getElementById(s);
+    if (!el) continue;
+    el.classList.toggle('visible', s === id);
+  }
 }
 
-async function loadData() {
-  const [cats, traits, ooh] = await Promise.all([
-    fetch('data/category_matrix.json').then(r=>r.json()),
-    fetch('data/traits_with_categories.json').then(r=>r.json()),
-    fetch('data/ooh.json').then(r=>r.json()),
-  ]);
-  CATEGORIES = cats.categories;
-  TRAITS = traits.traits;
-  OOH = ooh;
+async function loadJSON(path) {
+  try {
+    const res = await fetch(path, { cache: 'no-store' });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (e) { return null; }
 }
+
+function byId(id){ return document.getElementById(id); }
 
 function renderCategories() {
-  const grid = $('#categoryGrid');
+  const grid = byId('categoryGrid');
   grid.innerHTML = '';
-  CATEGORIES.forEach(cat => {
+  const list = S.data.categories?.length ? S.data.categories :
+    ['General Engineering','General Social Work','Business & Ops','Creative','Healthcare','Education','Technology','Public Service','Trades','Finance','Sales','Operations'];
+
+  list.forEach(cat => {
     const div = document.createElement('div');
-    div.className = 'tile';
-    div.textContent = cat.name;
+    div.className = 'cat-item' + (S.state.category === cat ? ' active' : '');
+    div.textContent = cat;
     div.onclick = () => {
-      if (selectedCategories.has(cat.id)) {
-        selectedCategories.delete(cat.id);
-        div.style.borderColor = '#e5e7eb';
-      } else {
-        selectedCategories.add(cat.id);
-        div.style.borderColor = '#10b981';
-      }
+      S.state.category = cat;
+      renderCategories();
+      byId('toTraits').disabled = false;
     };
     grid.appendChild(div);
   });
 }
 
 function renderTraits() {
-  const grid = $('#traitGrid');
+  const grid = byId('traitsGrid');
   grid.innerHTML = '';
-  let list = TRAITS;
-  if (selectedCategories.size) {
-    list = list.filter(t => selectedCategories.has(t.categoryId));
-  }
+
+  const list = S.data.traits?.length ? S.data.traits.filter(t => {
+    if (!S.state.category) return true;
+    return !t.category || t.category === S.state.category;
+  }).slice(0, 50) : Array.from({length:50}, (_,i)=>({id:'t'+(i+1), name:'Trait '+(i+1)}));
+
   list.forEach(tr => {
     const div = document.createElement('div');
-    div.className = 'trait';
-    div.textContent = tr.name;
+    const selected = S.state.selectedTraits.has(tr.id || tr.name);
+    div.className = 'trait-item' + (selected ? ' selected' : '');
+    div.textContent = tr.name || tr.id;
     div.onclick = () => {
-      if (selectedTraits.has(tr.id)) {
-        selectedTraits.delete(tr.id);
-        div.classList.remove('selected');
-      } else {
-        selectedTraits.add(tr.id);
-        div.classList.add('selected');
-      }
+      const key = tr.id || tr.name;
+      if (S.state.selectedTraits.has(key)) S.state.selectedTraits.delete(key);
+      else S.state.selectedTraits.add(key);
+      renderTraits();
     };
     grid.appendChild(div);
   });
 }
 
 function scoreRoles() {
-  const roles = OOH.roles || [];
-  const res = roles.map(role => {
-    const needs = new Set(role.key_traits || []);
-    const have = selectedTraits;
-    const hit = [...needs].filter(tid => have.has(tid)).length;
-    const pct = needs.size ? (hit / needs.size) : 0;
-    let tier = 'silver';
-    if (pct >= 0.8) tier = 'gold';
-    else if (pct >= 0.5) tier = 'green';
-    return { ...role, score: pct, tier };
-  }).sort((a,b) => b.score - a.score);
-  return res.slice(0, 6);
+  // If we have roles with traitWeights, compute scores. Else make placeholders.
+  if (S.data.roles?.length) {
+    const sel = S.state.selectedTraits;
+    return S.data.roles.map(r => {
+      let score = 0;
+      if (r.traitWeights) {
+        for (const [trait, w] of Object.entries(r.traitWeights)) {
+          if (sel.has(trait)) score += w;
+        }
+      }
+      return { role: r, score };
+    }).sort((a,b)=>b.score-a.score);
+  } else {
+    // Placeholder roles
+    const roles = [
+      {title: 'Project Manager', medianPay: '$98,000', outlook: 'Faster than average', id:'pm'},
+      {title: 'Data Analyst', medianPay: '$82,000', outlook: 'Much faster than average', id:'da'},
+      {title: 'Operations Coordinator', medianPay: '$68,000', outlook: 'Average', id:'oc'}
+    ];
+    return roles.map((r,i)=>({role:r, score: 100 - i*10}));
+  }
 }
 
-function tierBadge(tier) {
-  const map = { gold: 'Excellent fit', green: 'Better fit', silver: 'Good fit' };
-  return `<span class="badge ${tier}">${map[tier]}</span>`;
-}
-
-function renderResults() {
-  const grid = $('#roleGrid');
-  grid.innerHTML = '';
-  computedRoles.forEach(r => {
+function renderRoles() {
+  const cards = byId('roleCards');
+  cards.innerHTML = '';
+  const scored = scoreRoles();
+  const top = scored.slice(0, 3); // show top 3
+  top.forEach((it, idx) => {
     const div = document.createElement('div');
-    div.className = 'role-card';
+    const cls = idx===0 ? 'excellent' : idx===1 ? 'better' : 'good';
+    const label = idx===0 ? 'Excellent fit' : idx===1 ? 'Better fit' : 'Good fit';
+    div.className = 'role-card '+cls;
     div.innerHTML = `
-      ${tierBadge(r.tier)}
-      <h4>${r.title}</h4>
-      <p class="muted">${r.summary || ''}</p>
+      <div class="bar"></div>
+      <div class="body">
+        <div class="label">${label}</div>
+        <div class="title">${it.role.title}</div>
+        <div class="meta">${it.role.medianPay || ''} • ${it.role.outlook || ''}</div>
+        <div class="meta">Selected traits considered: ${S.state.selectedTraits.size}</div>
+        <div><button class="btn select" data-id="${it.role.id || it.role.title}">Choose this role</button></div>
+      </div>
     `;
-    grid.appendChild(div);
+    cards.appendChild(div);
+  });
+
+  cards.querySelectorAll('button.select').forEach(btn => {
+    btn.onclick = () => {
+      S.state.selectedRole = btn.dataset.id;
+      byId('toReflection').disabled = false;
+    };
   });
 }
 
 function renderReflection() {
-  const el = $('#reflectionContent');
-  if (!computedRoles.length) return;
-  const top = computedRoles[0];
-  el.innerHTML = `
-    <div class="card">
-      <h3>${top.title}</h3>
-      <p>${top.details || ''}</p>
-      <p><strong>Median Pay:</strong> ${top.median_pay || '—'}<br/>
-         <strong>Outlook:</strong> ${top.outlook || '—'}</p>
-      <p class="muted">Understanding your life inputs and how they align with opportunity.</p>
-    </div>
-  `;
-}
+  const el = byId('reflectionBody');
+  const chosen = S.state.selectedRole;
+  let roleData = null;
 
-function saveJourney() {
-  const email = $('#saveEmail').value.trim().toLowerCase();
-  const pin = $('#savePin').value.trim();
-  if (!email || !pin) {
-    $('#saveMsg').textContent = 'Enter email and PIN to save.';
-    return;
+  if (S.data.roles?.length) {
+    roleData = S.data.roles.find(r => (r.id || r.title) === chosen);
   }
-  const key = `nova:${email}:${pin}`;
-  const payload = {
-    ts: Date.now(),
-    selectedCategories: [...selectedCategories],
-    selectedTraits: [...selectedTraits],
-    roles: computedRoles
-  };
-  localStorage.setItem(key, JSON.stringify(payload));
-  $('#saveMsg').textContent = 'Saved. Use the header PIN box to return later.';
-}
-
-function tryReturn() {
-  const email = $('#returnEmail').value.trim().toLowerCase();
-  const pin = $('#returnPin').value.trim();
-  if (!email || !pin) return;
-  const key = `nova:${email}:${pin}`;
-  const raw = localStorage.getItem(key);
-  if (!raw) { alert('No saved journey found for those credentials.'); return; }
-  try {
-    const data = JSON.parse(raw);
-    selectedCategories = new Set(data.selectedCategories || []);
-    selectedTraits = new Set(data.selectedTraits || []);
-    computedRoles = data.roles || [];
-    renderCategories();
-    renderTraits();
-    renderResults();
-    renderReflection();
-    show('reflection');
-  } catch(e) {
-    alert('Could not load saved journey.');
+  if (!roleData) {
+    el.innerHTML = `
+      <p><strong>${chosen || 'Selected role'}</strong></p>
+      <p>What it involves: Overview of day-to-day responsibilities and impact.</p>
+      <p>Outlook & Pay: See the Occupational Outlook Handbook for detailed projections.</p>
+      <p>Traits that fit: ${Array.from(S.state.selectedTraits).slice(0,8).join(', ') || 'Based on your selections'}</p>
+    `;
+  } else {
+    el.innerHTML = `
+      <p><strong>${roleData.title}</strong></p>
+      <p>${roleData.description || 'Role details coming from OOH data.'}</p>
+      <p><em>${roleData.medianPay || ''} • ${roleData.outlook || ''}</em></p>
+      <p>Traits that fit: ${
+        roleData.topTraits?.length ? roleData.topTraits.join(', ') :
+        Array.from(S.state.selectedTraits).slice(0,8).join(', ')
+      }</p>
+      <p>Sources: Occupational Outlook Handbook.</p>
+    `;
   }
 }
 
-function autoplayAudio() {
-  const audio = $('#welcomeAudio');
-  if (!audio) return;
-  const play = () => audio.play().catch(()=>{});
-  // try autoplay, else show hint and rely on button
-  play();
-}
-
+// Navigation
 document.addEventListener('DOMContentLoaded', async () => {
-  await loadData();
-  renderCategories();
+  // Load data if present
+  S.data.traits = (await loadJSON('assets/data/traits_with_categories.json')) || [];
+  const catData = (await loadJSON('assets/data/category_matrix.json')) || [];
+  S.data.categories = Array.isArray(catData) ? catData : (catData.categories || []);
+  S.data.roles = (await loadJSON('assets/data/ooh.json'))?.roles || [];
 
-  $('#playAudio').addEventListener('click', () => {
-    $('#welcomeAudio').play().catch(()=>{});
-  });
-
-  $('#startBtn').addEventListener('click', () => {
-    autoplayAudio();
+  // Wire welcome
+  byId('continueBtn').onclick = () => {
+    S.state.email = byId('email').value.trim();
+    S.state.pin = byId('pin').value.trim();
     show('categories');
-  });
+    renderCategories();
+  };
 
-  $('#toTraits').addEventListener('click', () => {
-    renderTraits();
+  // Categories actions
+  byId('backToWelcome').onclick = () => show('welcome');
+  byId('toTraits').onclick = () => {
     show('traits');
-  });
+    renderTraits();
+  };
 
-  $('#toResults').addEventListener('click', () => {
-    show('analyzing');
-    setTimeout(() => {
-      computedRoles = scoreRoles();
-      renderResults();
-      show('results');
-    }, 3200);
-  });
+  // Traits actions
+  byId('backToCategories').onclick = () => {
+    show('categories');
+    renderCategories();
+  };
+  byId('resetTraits').onclick = () => {
+    S.state.selectedTraits.clear();
+    renderTraits();
+  };
+  byId('revealJobs').onclick = () => {
+    show('roles');
+    renderRoles();
+  };
 
-  $('#toReflection').addEventListener('click', () => {
-    renderReflection();
+  // Roles actions
+  byId('backToTraits').onclick = () => {
+    show('traits');
+    renderTraits();
+  };
+  byId('toReflection').onclick = () => {
     show('reflection');
-  });
+    renderReflection();
+  };
 
-  $('#saveJourney').addEventListener('click', saveJourney);
-  $('#returnBtn').addEventListener('click', tryReturn);
+  // Reflection actions
+  byId('backToRoles').onclick = () => show('roles');
+  byId('finish').onclick = () => {
+    // reset only navigation, keep email/pin
+    S.state.category = null;
+    S.state.selectedTraits.clear();
+    S.state.selectedRole = null;
+    byId('toTraits').disabled = true;
+    show('welcome');
+  };
 });

@@ -1,26 +1,93 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NOVA — Welcome</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>NOVA 8.5A — Discover Your Purpose</title>
   <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body>
-  <main class="container">
-    <h1>Welcome to NOVA</h1>
-    <p class="subtitle">Helping you discover purpose—step by step.</p>
+  <!-- Welcome (original) -->
+  <section id="welcome" class="section visible">
+    <div class="container">
+      <div class="fact-banner">
+        <strong>89%:</strong> People who align work with purpose report significantly higher fulfillment.
+      </div>
+      <h1>Welcome to NOVA</h1>
+      <p class="tagline">Let’s uncover who you are and where you thrive.</p>
+      <div id="autoplayStatus" class="status small">Audio pending — add <code>welcome_trimmed.mp3</code> later.</div>
+      <div class="pin-card">
+        <label class="note">You can invest in yourself and add your email and PIN so you can return to your results and further your journey.</label>
+        <div class="pin-row">
+          <input id="email" type="email" placeholder="Email (optional)"/>
+          <input id="pin" type="password" inputmode="numeric" maxlength="6" placeholder="PIN (optional)"/>
+        </div>
+        <button id="continueBtn" class="btn primary">Continue</button>
+      </div>
+    </div>
+  </section>
 
-    <div id="autoplayStatus" class="status">Preparing welcome audio…</div>
-    <button id="playBtn" class="btn" style="display:none;">Play Welcome</button>
+  <!-- Categories -->
+  <section id="categories" class="section">
+    <div class="container">
+      <h2>Select a Category</h2>
+      <p class="sub">Choose where you want to start. You can change categories anytime.</p>
+      <div id="categoryGrid" class="grid"></div>
+      <div class="nav-row">
+        <button class="btn ghost" id="backToWelcome">Back</button>
+        <button class="btn primary" id="toTraits" disabled>Go to Traits</button>
+      </div>
+    </div>
+  </section>
 
-    <!-- Optional hidden audio tag as a secondary fallback -->
-    <audio id="welcomeAudio" preload="auto" style="display:none;"></audio>
+  <!-- Traits -->
+  <section id="traits" class="section">
+    <div class="container">
+      <h2>Select Traits</h2>
+      <p class="sub emphasis">Your role is based on the trait selections you choose.</p>
+      <div id="traitsGrid" class="grid"></div>
+      <div class="nav-row">
+        <button class="btn ghost" id="backToCategories">Back</button>
+        <button class="btn primary" id="revealJobs">Reveal Jobs</button>
+        <button class="btn danger ghost" id="resetTraits">Reset</button>
+      </div>
+    </div>
+  </section>
 
-    <div class="footer-note">Audio starts immediately—no delay.</div>
-  </main>
+  <!-- Role Reveal -->
+  <section id="roles" class="section">
+    <div class="container">
+      <h2>Your Matches</h2>
+      <div id="roleCards" class="cards"></div>
+      <div class="nav-row">
+        <button class="btn ghost" id="backToTraits">Back</button>
+        <button class="btn primary" id="toReflection" disabled>See Reflection</button>
+      </div>
+    </div>
+  </section>
 
-  <script src="script.js"></script>
+  <!-- Reflection -->
+  <section id="reflection" class="section">
+    <div class="container">
+      <h2>Reflection & Next Steps</h2>
+      <div id="reflectionBody" class="reflection"></div>
+      <div class="plans">
+        <h3>Ready to grow?</h3>
+        <ul class="plan-list">
+          <li><span class="plan-name">Starter</span> — Essentials to get moving</li>
+          <li><span class="plan-name">Pro</span> — Advanced tools and reports</li>
+          <li><span class="plan-name">Mastery</span> — Coaching and full suite</li>
+        </ul>
+      </div>
+      <div class="nav-row">
+        <button class="btn ghost" id="backToRoles">Back</button>
+        <button class="btn primary" id="finish">Back to Start</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="assets/js/audio.js"></script>
+  <script src="assets/js/app.js"></script>
 </body>
 </html>

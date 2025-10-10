@@ -1,52 +1,16 @@
 {
   "categories": [
-    {
-      "id": "cat1",
-      "name": "Leadership"
-    },
-    {
-      "id": "cat2",
-      "name": "Analysis"
-    },
-    {
-      "id": "cat3",
-      "name": "Creativity"
-    },
-    {
-      "id": "cat4",
-      "name": "Technology"
-    },
-    {
-      "id": "cat5",
-      "name": "Operations"
-    },
-    {
-      "id": "cat6",
-      "name": "People & Culture"
-    },
-    {
-      "id": "cat7",
-      "name": "Finance"
-    },
-    {
-      "id": "cat8",
-      "name": "Compliance & Risk"
-    },
-    {
-      "id": "cat9",
-      "name": "Service & Support"
-    },
-    {
-      "id": "cat10",
-      "name": "Sales & Growth"
-    },
-    {
-      "id": "cat11",
-      "name": "Strategy"
-    },
-    {
-      "id": "cat12",
-      "name": "Learning & Teaching"
-    }
+    "General Engineering",
+    "General Social Work",
+    "Business & Ops",
+    "Creative",
+    "Healthcare",
+    "Education",
+    "Technology",
+    "Public Service",
+    "Trades",
+    "Finance",
+    "Sales",
+    "Operations"
   ]
 }

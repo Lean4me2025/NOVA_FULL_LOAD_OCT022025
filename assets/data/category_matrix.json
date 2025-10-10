@@ -1,48 +1,16 @@
 {
   "categories": [
-    "Technology",
-    "Education & Community",
-    "Public Safety",
+    "General Engineering",
+    "General Social Work",
+    "Business & Ops",
+    "Creative",
     "Healthcare",
-    "Business & Operations",
-    "Creative & Media",
-    "Skilled Trades",
-    "Government & Civic",
-    "Society, Workforce, and Service Pathways"
-  ],
-  "map": {
-    "Society, Workforce, and Service Pathways": {
-      "keywords": [
-        "security",
-        "guard",
-        "protection",
-        "driver",
-        "rideshare",
-        "uber",
-        "transport",
-        "delivery",
-        "courier",
-        "logistics",
-        "warehouse",
-        "forklift",
-        "hospitality",
-        "hotel",
-        "restaurant",
-        "server",
-        "janitor",
-        "custodial",
-        "maintenance",
-        "grounds",
-        "retail",
-        "cashier",
-        "front desk",
-        "guest services",
-        "childcare",
-        "eldercare",
-        "caregiver"
-      ],
-      "color": "#1b6b63",
-      "theme": "service-motion"
-    }
-  }
+    "Education",
+    "Technology",
+    "Public Service",
+    "Trades",
+    "Finance",
+    "Sales",
+    "Operations"
+  ]
 }

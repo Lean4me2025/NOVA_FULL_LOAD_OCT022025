@@ -1,39 +1,180 @@
 
+:root {
+  --bg: #ffffff;
+  --text: #0a0a0a;
+  --muted: #525252;
+  --primary: #1f6f3d; /* green */
+  --primary-contrast: #ffffff;
+  --gold: #d4af37;
+  --good: #2ea043; /* better fit */
+  --border: #e6e6e6;
+  --card: #fafafa;
+}
+
+* { box-sizing: border-box; }
+
 html, body {
   margin: 0;
   padding: 0;
+  background: var(--bg);
+  color: var(--text);
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  background: #0a0f1f;
-  color: #fff;
 }
+
+.section { display: none; opacity: 0; transition: opacity .22s ease; }
+.section.visible { display: block; opacity: 1; }
+
 .container {
-  max-width: 720px;
-  margin: 14vh auto;
-  padding: 0 24px;
-  text-align: center;
+  max-width: 940px;
+  margin: 32px auto;
+  padding: 0 20px;
 }
-h1 {
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.subtitle {
-  opacity: 0.9;
-  margin-bottom: 24px;
-}
-.status {
+
+.fact-banner {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin: 12px 0 16px;
   font-size: 14px;
-  opacity: 0.85;
-  margin-bottom: 12px;
 }
+
+h1 {
+  margin: 8px 0 6px;
+  font-weight: 700;
+  font-size: 32px;
+}
+.tagline { margin: 0 0 16px; color: var(--muted); }
+
+.status.small {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.pin-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 16px;
+  border-radius: 12px;
+}
+.pin-row {
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  gap: 12px;
+  margin: 12px 0 12px;
+}
+.pin-row input {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  background: #fff;
+}
+.note {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.sub { color: var(--muted); margin: 8px 0 16px; }
+.sub.emphasis { font-weight: 600; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+@media (min-width: 720px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+}
+
 .btn {
-  border: 0;
-  padding: 12px 18px;
-  border-radius: 8px;
-  font-size: 16px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.btn.primary {
+  background: var(--primary);
+  color: var(--primary-contrast);
+  border-color: var(--primary);
+}
+.btn.ghost { background: transparent; }
+.btn.danger { border-color: #d3d3d3; }
+
+.nav-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.cat-item, .trait-item {
+  padding: 12px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
   cursor: pointer;
 }
-.footer-note {
-  opacity: 0.7;
-  font-size: 12px;
-  margin-top: 28px;
+.cat-item.active, .trait-item.selected {
+  outline: 2px solid var(--primary);
+  outline-offset: 0;
 }
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media (min-width: 860px) {
+  .cards { grid-template-columns: 1fr 1fr; }
+}
+
+.role-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+}
+.role-card .bar {
+  height: 6px;
+  background: var(--border);
+}
+.role-card.excellent .bar { background: var(--gold); }
+.role-card.better .bar { background: var(--good); }
+.role-card.good .bar { background: var(--border); }
+
+.role-card .body {
+  padding: 14px;
+}
+.role-card .label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  opacity: .85;
+  margin-bottom: 6px;
+}
+.role-card .title { font-weight: 700; margin: 4px 0; }
+.role-card .meta { font-size: 13px; color: var(--muted); }
+
+.reflection {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.plan-list { list-style: none; padding: 0; margin: 8px 0 0; }
+.plan-list li { padding: 4px 0; }
+.plan-name { font-weight: 600; }
