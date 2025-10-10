@@ -1,135 +1,39 @@
 
-:root {
-  --bg: #ffffff;
-  --text: #111111;
-  --muted: #6b7280;
-  --border: #e5e7eb;
-  --accent: #10b981; /* green */
-  --gold: #b8860b;
-  --silver: #8a8a8a;
-  --green: #0d8b61;
-  --shadow: rgba(0,0,0,0.06);
-}
-
-* { box-sizing: border-box; }
-body {
+html, body {
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color: var(--text);
-  background: var(--bg);
+  padding: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: #0a0f1f;
+  color: #fff;
 }
-
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--border);
-  background: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.topbar h1 { font-size: 20px; margin: 0; }
-.auth-mini input { padding: 8px; margin-right: 8px; border: 1px solid var(--border); border-radius: 8px; }
-.auth-mini button { padding: 8px 12px; border: 0; border-radius: 8px; background: var(--accent); color: #fff; cursor: pointer; }
-
-main { padding: 24px; max-width: 1100px; margin: 0 auto; }
-
-.view { display: none; }
-.view.active { display: block; }
-
-.center {
+.container {
+  max-width: 720px;
+  margin: 14vh auto;
+  padding: 0 24px;
   text-align: center;
 }
-
-.card {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 24px;
-  box-shadow: 0 10px 20px var(--shadow);
-  margin: 16px auto;
-  max-width: 800px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.grid.traits { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.grid.roles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-
-.tile, .trait, .role-card {
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 14px;
-  background: #fff;
-  box-shadow: 0 4px 10px var(--shadow);
-}
-
-.tile:hover, .trait:hover {
-  border-color: var(--accent);
-}
-
-.trait.selected {
-  border: 2px solid var(--accent);
-}
-
-.role-card h4 {
-  margin: 8px 0;
-  font-size: 18px;
-}
-
-.badge { 
-  display: inline-block; 
-  padding: 4px 8px; 
-  border-radius: 999px; 
-  font-size: 12px; 
-  font-weight: 600; 
+h1 {
+  font-weight: 700;
   margin-bottom: 8px;
 }
-
-.badge.gold { background: #fff7e6; color: var(--gold); border: 1px solid #f2d28b; }
-.badge.green { background: #eafff6; color: var(--green); border: 1px solid #9de8cf; }
-.badge.silver { background: #f4f4f5; color: var(--silver); border: 1px solid #d1d5db; }
-
-.actions { margin-top: 16px; }
-.primary {
-  background: var(--accent);
-  color: #fff;
+.subtitle {
+  opacity: 0.9;
+  margin-bottom: 24px;
+}
+.status {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 12px;
+}
+.btn {
   border: 0;
-  border-radius: 10px;
-  padding: 12px 16px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 16px;
   cursor: pointer;
-  font-weight: 600;
 }
-
-.audio-row { margin: 12px 0; }
-.audio-hint { color: var(--muted); margin-left: 8px; }
-
-.reflection { margin-bottom: 18px; }
-.invest .save-row input {
-  padding: 10px; border: 1px solid var(--border); border-radius: 10px; margin-right: 8px;
-}
-.invest .save-row button { margin-left: 8px; }
-.muted { color: var(--muted); }
-.small { font-size: 12px; }
-
-.payhip .payhip-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-.ph-item { border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
-
-.footnote {
-  padding: 20px;
-  border-top: 1px solid var(--border);
-  text-align: center;
-  color: var(--muted);
-  margin-top: 24px;
+.footer-note {
+  opacity: 0.7;
+  font-size: 12px;
+  margin-top: 28px;
 }

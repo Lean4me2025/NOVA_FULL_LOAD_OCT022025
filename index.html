@@ -1,62 +1,26 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Nova — Sector → Traits → Jobs</title>
-  <style>
-    :root{ --bg:#0b0f14; --bg2:#0f1520; --text:#e6edf3; --muted:#9fb3c8; --accent:#7dd3fc; --ring:#22d3ee; }
-    html,body{margin:0;height:100%;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial}
-    .container{max-width:1000px;margin:0 auto;padding:20px}
-    .title{font-size:28px;font-weight:800;margin:8px 0 16px}
-    .muted{color:var(--muted);font-size:14px}
-    .card{background:rgba(255,255,255,0.04);border:1px solid #203245;border-radius:16px;padding:14px;margin:16px 0}
-    .row{display:flex;flex-wrap:wrap;gap:8px}
-    .pill{display:inline-flex;align-items:center;border:1px solid #2a3b52;border-radius:999px;padding:6px 10px;margin:6px 6px 0 0;cursor:pointer}
-    .pill input{display:none}
-    .pill.selected{background:#162236;border-color:#38506e}
-    .btn{background:linear-gradient(90deg,var(--accent),#a78bfa);color:#0b0f14;border:none;padding:10px 14px;border-radius:12px;font-weight:700;cursor:pointer}
-    .btn.secondary{background:transparent;color:var(--text);border:1px solid #2a3b52}
-    .footer{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
-    .job{padding:12px;border:1px solid #2a3b52;border-radius:12px;margin:8px 0;background:rgba(255,255,255,.03)}
-    .job h4{margin:0 0 6px 0}
-    .why{color:var(--muted);font-size:14px;margin:6px 0}
-    .badge{background:#1b2a40;color:#cfe6ff;border:1px solid #2c455f;border-radius:8px;padding:4px 8px;font-size:12px;margin-right:6px}
-    .disabled{opacity:.6;pointer-events:none}
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NOVA — Welcome</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body>
-  <div class="container">
-    <div class="title">Meet <span style="color:var(--accent)">Nova</span></div>
-    <p class="muted">Pick 1–2 sectors, then pick 3–7 traits. Nova reveals jobs that fit you—grounded in the Occupational Outlook Handbook.</p>
+  <main class="container">
+    <h1>Welcome to NOVA</h1>
+    <p class="subtitle">Helping you discover purpose—step by step.</p>
 
-    <div class="card">
-      <h3>1) Choose sector(s)</h3>
-      <div id="sectors" class="row"></div>
-      <div class="muted">Choose at least 1 and at most 2 sectors.</div>
-    </div>
+    <div id="autoplayStatus" class="status">Preparing welcome audio…</div>
+    <button id="playBtn" class="btn" style="display:none;">Play Welcome</button>
 
-    <div class="card">
-      <h3>2) Choose your traits</h3>
-      <div id="traits" class="row"></div>
-      <div class="muted">Pick 3–7 traits that feel true for you.</div>
-    </div>
+    <!-- Optional hidden audio tag as a secondary fallback -->
+    <audio id="welcomeAudio" preload="auto" style="display:none;"></audio>
 
-    <div class="footer">
-      <button id="revealBtn" class="btn disabled" aria-disabled="true">Reveal Jobs</button>
-      <button id="resetBtn" class="btn secondary">Reset</button>
-    </div>
+    <div class="footer-note">Audio starts immediately—no delay.</div>
+  </main>
 
-    <div id="results" class="card" style="display:none">
-      <h3>3) Your matches</h3>
-      <div id="jobs"></div>
-      <div style="margin-top:12px">
-        <a class="btn" href="./invest.html">Invest in Yourself</a>
-      </div>
-    </div>
-  </div>
-
-  <script src="../src/config.js"></script>
-  <script src="../src/app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
