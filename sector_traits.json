@@ -1,0 +1,185 @@
+{
+  "Common": {
+    "traits": [
+      "Problem-Solving",
+      "Communication",
+      "Organization",
+      "Reliability",
+      "Adaptability",
+      "Attention to Detail",
+      "Teamwork",
+      "Learning Agility"
+    ]
+  },
+  "Healthcare & Wellness": {
+    "traits": [
+      "Empathy",
+      "Active Listening",
+      "Stress Tolerance",
+      "Planning & Organization",
+      "Precision / Accuracy",
+      "Problem-Solving",
+      "Adaptability to Tools/Tech",
+      "People Orientation",
+      "Rapid Response",
+      "Endurance / Vitality",
+      "Encouragement / Motivating Others",
+      "Creativity in Problem-Solving",
+      "Manual Skill / Coordination",
+      "Client Orientation",
+      "Calm Presence"
+    ]
+  },
+  "Engineering & Technology": {
+    "traits": [
+      "Analytical Thinking",
+      "Creative Problem-Solving",
+      "Precision / Accuracy",
+      "Innovation",
+      "Tool/Tech Adaptability",
+      "Systems Thinking",
+      "Project Planning",
+      "Collaboration",
+      "Continuous Learning",
+      "Focus / Concentration"
+    ]
+  },
+  "Education & Training": {
+    "traits": [
+      "Patience",
+      "Clear Communication",
+      "Organization",
+      "Empathy",
+      "Assessment",
+      "Facilitation",
+      "Curriculum Thinking",
+      "Conflict De-escalation",
+      "Encouragement",
+      "Documentation"
+    ]
+  },
+  "Society & Service Workers": {
+    "traits": [
+      "Compassion",
+      "Active Listening",
+      "Communication Clarity",
+      "Cultural Awareness",
+      "Mediation",
+      "Organization & Documentation",
+      "Patience & Persistence",
+      "Community Orientation",
+      "Boundaries & Ethics"
+    ]
+  },
+  "Business, Finance & Administration": {
+    "traits": [
+      "Planning & Organization",
+      "Accuracy",
+      "Analytical Thinking",
+      "Professional Communication",
+      "Prioritization",
+      "Stakeholder Management",
+      "Spreadsheet Fluency",
+      "Documentation",
+      "Confidentiality"
+    ]
+  },
+  "Creative, Media & Entertainment": {
+    "traits": [
+      "Creativity",
+      "Storytelling",
+      "Visual Sense",
+      "Adaptability",
+      "Audience Insight",
+      "Editing",
+      "Consistency",
+      "Collaboration",
+      "Self-Direction"
+    ]
+  },
+  "Skilled Trades, Logistics & Transportation": {
+    "traits": [
+      "Hands-on Skill",
+      "Endurance",
+      "Reliability",
+      "Diagnostic Thinking",
+      "Safety First",
+      "Time Management",
+      "Route Planning",
+      "Equipment Care"
+    ]
+  },
+  "Public Safety & Government": {
+    "traits": [
+      "Integrity",
+      "Observation",
+      "Leadership",
+      "Discipline",
+      "Calm Under Pressure",
+      "Report Writing",
+      "Procedural Compliance"
+    ]
+  },
+  "Retail, Food & Hospitality": {
+    "traits": [
+      "Service Orientation",
+      "Energy",
+      "Teamwork",
+      "Multi-tasking",
+      "Cash Handling Accuracy",
+      "Upselling / Influence",
+      "Complaint Resolution"
+    ]
+  },
+  "Legal & Compliance": {
+    "traits": [
+      "Precision / Accuracy",
+      "Analytical Thinking",
+      "Clear Writing",
+      "Integrity / Discretion",
+      "Planning & Organization",
+      "Professional Communication",
+      "Critical Thinking",
+      "Tool/Tech Adaptability",
+      "Docket Management",
+      "Evidence Handling"
+    ]
+  },
+  "Real Estate & Property": {
+    "traits": [
+      "Client Orientation / Influence",
+      "Analytical Thinking",
+      "Precision / Accuracy",
+      "Planning & Organization",
+      "Negotiation / Conflict Resolution",
+      "Reliability / Persistence",
+      "Tool/Tech Adaptability",
+      "Clear Communication",
+      "Lead Follow-up",
+      "Time Management"
+    ]
+  },
+  "Information Technology": {
+    "traits": [
+      "Logic",
+      "Troubleshooting",
+      "Curiosity",
+      "Continuous Learning",
+      "Documentation",
+      "Security Mindset",
+      "User Empathy",
+      "Scripting Basics"
+    ]
+  },
+  "Science & Research": {
+    "traits": [
+      "Observation",
+      "Data Analysis",
+      "Curiosity",
+      "Methodical Approach",
+      "Reporting",
+      "Lab Safety",
+      "Precision / Accuracy"
+    ]
+  }
+}

@@ -1,262 +1,366 @@
 [
   {
-    "title": "Data Analyst",
-    "summary": "Analyze datasets, build dashboards, support decisions.",
-    "categoryIds": [
-      "science",
-      "bizfin"
-    ],
-    "soc_code": "15-2051",
-    "median_pay": "$98,000",
-    "growth": "Faster than average",
-    "education": "Bachelor's",
-    "tasks": [
-      "Clean data",
-      "Build dashboards",
-      "Partner with stakeholders"
-    ]
-  },
-  {
-    "title": "Software Engineer",
-    "summary": "Design and build applications and services.",
-    "categoryIds": [
-      "tech"
-    ],
-    "soc_code": "15-1252",
-    "median_pay": "$120,000",
-    "growth": "Much faster than average",
-    "education": "Bachelor's",
-    "tasks": [
-      "Design systems",
-      "Write code",
-      "Review PRs"
-    ]
-  },
-  {
     "title": "Registered Nurse",
-    "summary": "Provide patient care with empathy and precision.",
-    "categoryIds": [
-      "health"
-    ],
-    "soc_code": "29-1141",
-    "median_pay": "$86,000",
-    "growth": "Much faster than average",
-    "education": "Bachelor's / license",
-    "tasks": [
-      "Assess patients",
-      "Coordinate care",
-      "Educate families"
-    ]
+    "sector": "Healthcare & Wellness",
+    "trait_weights": {
+      "Empathy": 3,
+      "Active Listening": 2,
+      "Precision / Accuracy": 2,
+      "Planning & Organization": 2,
+      "Stress Tolerance": 2
+    },
+    "salary": "$61k\u2013$97k",
+    "outlook": "Faster than average",
+    "note": "Coordinates patient care and education."
   },
   {
-    "title": "Electrician",
-    "summary": "Install and maintain electrical systems.",
-    "categoryIds": [
-      "trades"
-    ],
-    "soc_code": "47-2111",
-    "median_pay": "$60,000",
-    "growth": "Average",
-    "education": "Apprenticeship",
-    "tasks": [
-      "Install wiring",
-      "Test circuits",
-      "Read blueprints"
-    ]
+    "title": "Medical Assistant",
+    "sector": "Healthcare & Wellness",
+    "trait_weights": {
+      "Precision / Accuracy": 2,
+      "Client Orientation": 2,
+      "People Orientation": 2,
+      "Planning & Organization": 1
+    },
+    "salary": "$36k\u2013$48k",
+    "outlook": "Much faster than average",
+    "note": "Supports clinicians; patient intake and records."
   },
   {
-    "title": "Customer Success Specialist",
-    "summary": "Support customers with communication and reliability.",
-    "categoryIds": [
-      "hospitality",
-      "workers"
-    ],
-    "soc_code": "43-4051",
-    "median_pay": "$55,000",
-    "growth": "Average",
-    "education": "Varies",
-    "tasks": [
-      "Onboard users",
-      "Troubleshoot",
-      "Collect feedback"
-    ]
+    "title": "EMT / Paramedic",
+    "sector": "Healthcare & Wellness",
+    "trait_weights": {
+      "Rapid Response": 3,
+      "Endurance / Vitality": 2,
+      "Calm Presence": 2,
+      "Empathy": 1
+    },
+    "salary": "$35k\u2013$60k",
+    "outlook": "Average",
+    "note": "Responds to emergencies; stabilizes patients."
   },
   {
-    "title": "Mechanical Engineer",
-    "summary": "Design mechanical devices and systems; precision and safety required.",
-    "categoryIds": [
-      "engineering"
-    ],
-    "soc_code": "17-2141",
-    "median_pay": "$99,000",
-    "growth": "Average",
-    "education": "Bachelor's",
-    "tasks": [
-      "CAD design",
-      "Prototype & test",
-      "Spec writing"
-    ]
+    "title": "Software Developer",
+    "sector": "Engineering & Technology",
+    "trait_weights": {
+      "Analytical Thinking": 3,
+      "Creative Problem-Solving": 2,
+      "Continuous Learning": 2,
+      "Precision / Accuracy": 1
+    },
+    "salary": "$78k\u2013$140k",
+    "outlook": "Much faster than average",
+    "note": "Builds and ships software systems."
+  },
+  {
+    "title": "Data Analyst",
+    "sector": "Engineering & Technology",
+    "trait_weights": {
+      "Analytical Thinking": 3,
+      "Systems Thinking": 2,
+      "Precision / Accuracy": 2
+    },
+    "salary": "$58k\u2013$95k",
+    "outlook": "Faster than average",
+    "note": "Turns data into decisions using analysis."
   },
   {
     "title": "Electrical Engineer",
-    "summary": "Develop electrical systems and components; analytical and safety-minded.",
-    "categoryIds": [
-      "engineering"
-    ],
-    "soc_code": "17-2071",
-    "median_pay": "$104,000",
-    "growth": "Average",
-    "education": "Bachelor's",
-    "tasks": [
-      "Circuit design",
-      "Validation",
-      "Documentation"
-    ]
+    "sector": "Engineering & Technology",
+    "trait_weights": {
+      "Analytical Thinking": 3,
+      "Precision / Accuracy": 2,
+      "Project Planning": 1,
+      "Collaboration": 1
+    },
+    "salary": "$80k\u2013$125k",
+    "outlook": "Average",
+    "note": "Designs circuits, systems, and tests."
   },
   {
-    "title": "Civil Engineer",
-    "summary": "Plan and oversee infrastructure projects; systems design and writing.",
-    "categoryIds": [
-      "engineering"
-    ],
-    "soc_code": "17-2051",
-    "median_pay": "$97,000",
-    "growth": "Average",
-    "education": "Bachelor's",
-    "tasks": [
-      "Site analysis",
-      "Project plans",
-      "Compliance"
-    ]
+    "title": "Teacher / Instructor",
+    "sector": "Education & Training",
+    "trait_weights": {
+      "Patience": 3,
+      "Clear Communication": 2,
+      "Organization": 2,
+      "Facilitation": 1
+    },
+    "salary": "$42k\u2013$78k",
+    "outlook": "Average",
+    "note": "Guides learning; plans instruction."
   },
   {
-    "title": "Aerospace Engineer",
-    "summary": "Design aircraft and spacecraft; problem-solving and precision at scale.",
-    "categoryIds": [
-      "engineering"
-    ],
-    "soc_code": "17-2011",
-    "median_pay": "$130,000",
-    "growth": "Average",
-    "education": "Bachelor's",
-    "tasks": [
-      "Structural analysis",
-      "Flight systems",
-      "Testing"
-    ]
+    "title": "Corporate Trainer",
+    "sector": "Education & Training",
+    "trait_weights": {
+      "Facilitation": 3,
+      "Clear Communication": 2,
+      "Organization": 2,
+      "Assessment": 1
+    },
+    "salary": "$55k\u2013$92k",
+    "outlook": "Faster than average",
+    "note": "Designs and delivers training programs."
   },
   {
-    "title": "Industrial / Manufacturing Engineer",
-    "summary": "Optimize production systems; process, quality, safety.",
-    "categoryIds": [
-      "engineering",
-      "operations"
-    ],
-    "soc_code": "17-2112",
-    "median_pay": "$95,000",
-    "growth": "Average",
-    "education": "Bachelor's",
-    "tasks": [
-      "Lean improvements",
-      "Throughput",
-      "Quality systems"
-    ]
+    "title": "Social Worker",
+    "sector": "Society & Service Workers",
+    "trait_weights": {
+      "Compassion": 3,
+      "Active Listening": 2,
+      "Mediation": 2,
+      "Organization & Documentation": 1
+    },
+    "salary": "$45k\u2013$76k",
+    "outlook": "Faster than average",
+    "note": "Connects clients to resources; advocacy."
   },
   {
-    "title": "Quality Engineer",
-    "summary": "Establish quality systems; reliability and documentation.",
-    "categoryIds": [
-      "engineering",
-      "operations"
-    ],
-    "soc_code": "17-2112",
-    "median_pay": "$92,000",
-    "growth": "Average",
-    "education": "Bachelor's",
-    "tasks": [
-      "Root-cause",
-      "Audits",
-      "Process control"
-    ]
+    "title": "Counselor",
+    "sector": "Society & Service Workers",
+    "trait_weights": {
+      "Compassion": 3,
+      "Active Listening": 2,
+      "Communication Clarity": 2,
+      "Patience & Persistence": 1
+    },
+    "salary": "$48k\u2013$76k",
+    "outlook": "Faster than average",
+    "note": "Supports mental health and guidance."
   },
   {
-    "title": "Operations Manager",
-    "summary": "Lead operations; scheduling, resources, and people to hit goals.",
-    "categoryIds": [
-      "operations"
-    ],
-    "soc_code": "11-1021",
-    "median_pay": "$103,000",
-    "growth": "Average",
-    "education": "Varies",
-    "tasks": [
-      "Scheduling",
-      "Resource planning",
-      "Team leadership"
-    ]
+    "title": "Project Coordinator",
+    "sector": "Business, Finance & Administration",
+    "trait_weights": {
+      "Planning & Organization": 3,
+      "Professional Communication": 2,
+      "Documentation": 2,
+      "Prioritization": 1
+    },
+    "salary": "$48k\u2013$78k",
+    "outlook": "Average",
+    "note": "Keeps teams on track and on time."
   },
   {
-    "title": "Supply Chain Analyst",
-    "summary": "Analyze demand and flow; improve on-time and cost.",
-    "categoryIds": [
-      "operations"
-    ],
-    "soc_code": "13-1081",
-    "median_pay": "$78,000",
-    "growth": "Faster than average",
-    "education": "Bachelor's",
-    "tasks": [
-      "Forecasting",
-      "Inventory analysis",
-      "Vendor metrics"
-    ]
+    "title": "Accountant / Bookkeeper",
+    "sector": "Business, Finance & Administration",
+    "trait_weights": {
+      "Accuracy": 3,
+      "Analytical Thinking": 2,
+      "Confidentiality": 2,
+      "Spreadsheet Fluency": 1
+    },
+    "salary": "$50k\u2013$85k",
+    "outlook": "Average",
+    "note": "Manages financial records and reporting."
   },
   {
-    "title": "Logistics Coordinator",
-    "summary": "Coordinate shipments and inventory; communication and scheduling.",
-    "categoryIds": [
-      "operations"
-    ],
-    "soc_code": "43-5061",
-    "median_pay": "$54,000",
-    "growth": "Average",
-    "education": "Associate/Bachelor's",
-    "tasks": [
-      "Shipments",
-      "Tracking",
-      "Customer comms"
-    ]
+    "title": "Graphic Designer",
+    "sector": "Creative, Media & Entertainment",
+    "trait_weights": {
+      "Creativity": 3,
+      "Visual Sense": 2,
+      "Consistency": 1,
+      "Collaboration": 1
+    },
+    "salary": "$45k\u2013$78k",
+    "outlook": "Average",
+    "note": "Creates brand visuals and layouts."
   },
   {
-    "title": "Production Planner",
-    "summary": "Plan builds and capacity; scheduling and materials alignment.",
-    "categoryIds": [
-      "operations"
-    ],
-    "soc_code": "13-1191",
-    "median_pay": "$70,000",
-    "growth": "Average",
-    "education": "Bachelor's",
-    "tasks": [
-      "MRP runs",
-      "Capacity plans",
-      "Work orders"
-    ]
+    "title": "Content Creator / Writer",
+    "sector": "Creative, Media & Entertainment",
+    "trait_weights": {
+      "Storytelling": 3,
+      "Creativity": 2,
+      "Editing": 2,
+      "Consistency": 1
+    },
+    "salary": "$40k\u2013$80k",
+    "outlook": "Average",
+    "note": "Writes and produces engaging content."
   },
   {
-    "title": "Procurement Specialist",
-    "summary": "Source materials and services; negotiate and manage vendors.",
-    "categoryIds": [
-      "operations"
-    ],
-    "soc_code": "13-1023",
-    "median_pay": "$75,000",
-    "growth": "Average",
-    "education": "Bachelor's",
-    "tasks": [
-      "RFQs",
-      "Contracts",
-      "Cost savings"
-    ]
+    "title": "Maintenance Technician",
+    "sector": "Skilled Trades, Logistics & Transportation",
+    "trait_weights": {
+      "Hands-on Skill": 3,
+      "Diagnostic Thinking": 2,
+      "Reliability": 2,
+      "Equipment Care": 1
+    },
+    "salary": "$42k\u2013$72k",
+    "outlook": "Average",
+    "note": "Repairs and maintains equipment."
+  },
+  {
+    "title": "Delivery / Route Specialist",
+    "sector": "Skilled Trades, Logistics & Transportation",
+    "trait_weights": {
+      "Time Management": 3,
+      "Route Planning": 2,
+      "Reliability": 2,
+      "Safety First": 1
+    },
+    "salary": "$35k\u2013$60k",
+    "outlook": "Average",
+    "note": "Executes efficient, safe deliveries."
+  },
+  {
+    "title": "Police / Public Safety Officer",
+    "sector": "Public Safety & Government",
+    "trait_weights": {
+      "Integrity": 3,
+      "Observation": 2,
+      "Calm Under Pressure": 2,
+      "Procedural Compliance": 1
+    },
+    "salary": "$52k\u2013$95k",
+    "outlook": "Average",
+    "note": "Protects community; follows procedures."
+  },
+  {
+    "title": "Firefighter",
+    "sector": "Public Safety & Government",
+    "trait_weights": {
+      "Endurance": 3,
+      "Teamwork": 2,
+      "Calm Under Pressure": 2,
+      "Report Writing": 1
+    },
+    "salary": "$48k\u2013$92k",
+    "outlook": "Average",
+    "note": "Responds to incidents; emergency support."
+  },
+  {
+    "title": "Sales Associate / Specialist",
+    "sector": "Retail, Food & Hospitality",
+    "trait_weights": {
+      "Service Orientation": 3,
+      "Teamwork": 2,
+      "Upselling / Influence": 2,
+      "Complaint Resolution": 1
+    },
+    "salary": "$28k\u2013$55k",
+    "outlook": "Average",
+    "note": "Advises customers; drives revenue."
+  },
+  {
+    "title": "Front-of-House Supervisor",
+    "sector": "Retail, Food & Hospitality",
+    "trait_weights": {
+      "Multi-tasking": 3,
+      "Teamwork": 2,
+      "Service Orientation": 2,
+      "Cash Handling Accuracy": 1
+    },
+    "salary": "$36k\u2013$58k",
+    "outlook": "Average",
+    "note": "Leads service shifts and staff."
+  },
+  {
+    "title": "Paralegal / Legal Assistant",
+    "sector": "Legal & Compliance",
+    "trait_weights": {
+      "Precision / Accuracy": 3,
+      "Clear Writing": 2,
+      "Planning & Organization": 2,
+      "Integrity / Discretion": 1
+    },
+    "salary": "$48k\u2013$82k",
+    "outlook": "Average",
+    "note": "Supports attorneys; manages filings."
+  },
+  {
+    "title": "Compliance Analyst",
+    "sector": "Legal & Compliance",
+    "trait_weights": {
+      "Analytical Thinking": 3,
+      "Documentation": 2,
+      "Integrity / Discretion": 2,
+      "Critical Thinking": 1
+    },
+    "salary": "$58k\u2013$95k",
+    "outlook": "Average",
+    "note": "Monitors rules and risk controls."
+  },
+  {
+    "title": "Leasing Consultant",
+    "sector": "Real Estate & Property",
+    "trait_weights": {
+      "Client Orientation / Influence": 3,
+      "Clear Communication": 2,
+      "Planning & Organization": 2,
+      "Lead Follow-up": 1
+    },
+    "salary": "$38k\u2013$68k",
+    "outlook": "Average",
+    "note": "Guides prospective tenants to leases."
+  },
+  {
+    "title": "Property Manager",
+    "sector": "Real Estate & Property",
+    "trait_weights": {
+      "Reliability / Persistence": 3,
+      "Planning & Organization": 2,
+      "Negotiation / Conflict Resolution": 2,
+      "Time Management": 1
+    },
+    "salary": "$48k\u2013$85k",
+    "outlook": "Average",
+    "note": "Oversees properties, tenants, vendors."
+  },
+  {
+    "title": "IT Support Specialist",
+    "sector": "Information Technology",
+    "trait_weights": {
+      "Troubleshooting": 3,
+      "User Empathy": 2,
+      "Documentation": 2,
+      "Logic": 1
+    },
+    "salary": "$44k\u2013$72k",
+    "outlook": "Average",
+    "note": "Helps people solve tech issues."
+  },
+  {
+    "title": "Cybersecurity Analyst",
+    "sector": "Information Technology",
+    "trait_weights": {
+      "Security Mindset": 3,
+      "Logic": 2,
+      "Documentation": 2,
+      "Continuous Learning": 1
+    },
+    "salary": "$72k\u2013$120k",
+    "outlook": "Much faster than average",
+    "note": "Monitors and defends systems."
+  },
+  {
+    "title": "Lab Technician",
+    "sector": "Science & Research",
+    "trait_weights": {
+      "Precision / Accuracy": 3,
+      "Methodical Approach": 2,
+      "Reporting": 2,
+      "Observation": 1
+    },
+    "salary": "$44k\u2013$68k",
+    "outlook": "Average",
+    "note": "Runs experiments; records results."
+  },
+  {
+    "title": "Research Assistant",
+    "sector": "Science & Research",
+    "trait_weights": {
+      "Data Analysis": 3,
+      "Observation": 2,
+      "Reporting": 2,
+      "Curiosity": 1
+    },
+    "salary": "$46k\u2013$72k",
+    "outlook": "Average",
+    "note": "Supports research projects and analysis."
   }
 ]
